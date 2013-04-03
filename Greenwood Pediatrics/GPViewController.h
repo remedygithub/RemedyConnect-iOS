@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
-@interface GPViewController : UIViewController
-
+@interface GPViewController : UIViewController <MBProgressHUDDelegate, NSURLConnectionDelegate>
+{
+    MBProgressHUD *statusHUD;
+}
+- (IBAction)startDownload:(id)sender;
 @end
