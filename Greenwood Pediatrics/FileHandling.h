@@ -10,4 +10,5 @@
 
 @interface FileHandling : NSObject
 + (NSString *)getFilePathWithComponent:(NSString *)pathComponent;
++ (NSString *)IYCScategoryIDtoFileName:(NSString *)categoryID;
 @end

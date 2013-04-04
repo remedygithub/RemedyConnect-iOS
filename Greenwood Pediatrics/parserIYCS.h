@@ -13,6 +13,4 @@
 // Get category ID / name pairs.
 -(NSArray*)getCategories;
 
-// This is just a reminder, doesn't need to be implemented...
-//-(void)downloadSubFeeds;
 @end

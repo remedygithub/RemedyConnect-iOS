@@ -25,9 +25,11 @@ NSMutableData *downloadedData;
     NSURL *urlToDownload = [NSURL URLWithString:
                             [NSString stringWithFormat:
                              @"%@%@", link_base, iycs]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:urlToDownload];
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
+    NSURLRequest *request =
+        [NSURLRequest requestWithURL:urlToDownload];
+    NSURLConnection *connection =
+        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+
     [connection start];
     statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
     [statusHUD setDelegate:self];
@@ -52,13 +54,20 @@ NSMutableData *downloadedData;
     [statusHUD setLabelText:@"Download finished!"];
     NSError *saveError;
     NSString *filePath = [FileHandling getFilePathWithComponent:@"iycs.xml"];
-    if ([downloadedData writeToFile:filePath options:NSDataWritingAtomic error:&saveError] == YES) {
+    if ([downloadedData writeToFile:filePath
+                            options:NSDataWritingAtomic
+                              error:&saveError] == YES) {
         [statusHUD setLabelText:@"Saved data, starting parse..."];
         NSLog(@"Downloaded %lld bytes of data to %@.", currentLength, filePath);
         parserIYCS *parser = [[parserIYCS alloc] init];
         NSArray *categories = [parser getCategories];
-        for (NSString *category in categories) {
-            NSLog(@"Talált kategória: %@", category);
+        for (NSDictionary *category in categories) {
+            NSLog(@"Found category: #%@: %@",
+                  [category objectForKey:@"categoryid"],
+                  [category objectForKey:@"categoryname"]);
+            NSLog(@"Feed to download: %@",
+                  [FileHandling IYCScategoryIDtoFileName:
+                   [category objectForKey:@"categoryid"]]);
         }
         [statusHUD setLabelText:@"Parsed ;)"];
         [statusHUD hide:YES afterDelay:2];

@@ -27,7 +27,7 @@
             return nil;
         }
     }
-    return self;
+    return self;	
 }
 
 -(NSArray*)getCategories {
@@ -36,11 +36,23 @@
     TBXMLElement *categoryXML =
         [TBXML childElementNamed:@"pw_medical_category" parentElement:root];
     while (categoryXML != nil) {
-        TBXMLElement *categoryName = [TBXML childElementNamed:@"categoryname" parentElement:categoryXML];
-        [categories addObject:[TBXML textForElement:categoryName]];
-        categoryXML = [TBXML nextSiblingNamed:@"pw_medical_category"  searchFromElement:categoryXML];
+        TBXMLElement *categoryName = [TBXML childElementNamed:@"categoryname"
+                                                parentElement:categoryXML];
+        TBXMLElement *categoryID = [TBXML childElementNamed:@"categoryid"
+                                              parentElement:categoryXML];
+        NSMutableDictionary *nameAndIndex =
+            [[NSMutableDictionary alloc] init];
+        [nameAndIndex setObject:[TBXML textForElement:categoryName]
+                         forKey:@"categoryname"];
+        [nameAndIndex setObject:[TBXML textForElement:categoryID]
+                         forKey:@"categoryid"];
+        [categories addObject:nameAndIndex];
+        categoryXML = [TBXML nextSiblingNamed:@"pw_medical_category"
+                            searchFromElement:categoryXML];
         
     }
     return [[NSArray alloc] initWithArray:categories];
 }
+
+
 @end
