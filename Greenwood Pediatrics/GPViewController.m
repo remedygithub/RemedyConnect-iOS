@@ -10,81 +10,87 @@
 #import "DataSourceConstants.h"
 #import "FileHandling.h"
 #import "parserIYCS.h"
+#import "Downloader.h"
 
 @interface GPViewController ()
 
 @end
 
 @implementation GPViewController
-
-long long expectedLength;
-long long currentLength;
+Downloader *downloader;
 NSMutableData *downloadedData;
 
 - (IBAction)startDownload:(id)sender {
-    NSURL *urlToDownload = [NSURL URLWithString:
-                            [NSString stringWithFormat:
-                             @"%@%@", link_base, iycs]];
-    NSURLRequest *request =
-        [NSURLRequest requestWithURL:urlToDownload];
-    NSURLConnection *connection =
-        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    downloader = [[Downloader alloc] init];
+    [downloader setDelegate:self];
+    [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, iycs]
+                saveAs:[FileHandling getFilePathWithComponent:@"iycs.xml"]];
+    [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, office]
+                          saveAs:[FileHandling getFilePathWithComponent:@"office.xml"]];
+    [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, location]
+                          saveAs:[FileHandling getFilePathWithComponent:@"location.xml"]];
+    [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, news]
+                          saveAs:[FileHandling getFilePathWithComponent:@"news.xml"]];
+    [downloader startDownload];
+}
 
-    [connection start];
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+	[statusHUD removeFromSuperview];
+	statusHUD = nil;
+}
+
+// DownloaderDelegate
+- (void)hasStartedDownloadingFirst {
     statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
     [statusHUD setDelegate:self];
     [statusHUD setDimBackground:TRUE];
     [statusHUD setLabelText:@"Starting download..."];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)hasStartedDownloadingNext {
+    [statusHUD setMode:MBProgressHUDModeIndeterminate];
+}
+
+- (void)didReceiveResponseForAFile {
     [statusHUD setMode:MBProgressHUDModeDeterminate];
-    expectedLength = [response expectedContentLength];
-	currentLength = 0;
-    downloadedData = [[NSMutableData alloc] init];
+    [statusHUD setLabelText:
+        [[NSString alloc] initWithFormat:@"Downloading %d/%d...",
+            [[downloader status] currentFileIndex] + 1,
+            [[downloader status] numberOfFilesToDownload]]];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    currentLength += [data length];
-	statusHUD.progress = currentLength / (float)expectedLength;
-    [downloadedData appendData:data];
+- (void)didReceiveDataForAFile {
+    if ([[downloader status] expectedLength] > 0) {
+        statusHUD.progress =
+            [[downloader status] currentLength] /
+            (float)[[downloader status] expectedLength];
+    }
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [statusHUD setLabelText:@"Download finished!"];
-    NSError *saveError;
-    NSString *filePath = [FileHandling getFilePathWithComponent:@"iycs.xml"];
-    if ([downloadedData writeToFile:filePath
-                            options:NSDataWritingAtomic
-                              error:&saveError] == YES) {
-        [statusHUD setLabelText:@"Saved data, starting parse..."];
-        NSLog(@"Downloaded %lld bytes of data to %@.", currentLength, filePath);
+- (void)didFinishForAFile {
+    if ([[downloader status] currentFileIndex] == 0) {
         parserIYCS *parser = [[parserIYCS alloc] init];
         NSArray *categories = [parser getCategories];
         for (NSDictionary *category in categories) {
-            NSLog(@"Found category: #%@: %@",
-                  [category objectForKey:@"categoryid"],
-                  [category objectForKey:@"categoryname"]);
-            NSLog(@"Feed to download: %@",
-                  [FileHandling IYCScategoryIDtoFileName:
-                   [category objectForKey:@"categoryid"]]);
+            NSString *categoryid = [category objectForKey:@"categoryid"];
+            NSString *URL = [NSString stringWithFormat:@"%@%@/%@", link_base, iycs, categoryid];
+            [downloader addURLToDownload:URL
+                                  saveAs:[FileHandling IYCScategoryIDtoFileName:categoryid]];
         }
-        [statusHUD setLabelText:@"Parsed ;)"];
-        [statusHUD hide:YES afterDelay:2];
+        [downloader startNextDownload];
+    }
+    else if ([[downloader status] currentFileIndex] + 1 <
+             [[downloader status] numberOfFilesToDownload]) {
+        [downloader startNextDownload];
     }
     else {
-        [statusHUD setLabelText:@"Save failed :("];
+        [statusHUD setLabelText:@"Finished!"];
         [statusHUD hide:YES afterDelay:2];
     }
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [statusHUD hide:YES];
-    downloadedData = nil;
-}
-
-- (void)hudWasHidden:(MBProgressHUD *)hud {
-	[statusHUD removeFromSuperview];
-	statusHUD = nil;
+- (void)hasFailedToDownloadAFile {
+    [statusHUD setLabelText:@"Failed to download files.\nPlease try again later."];
+    [statusHUD hide:YES afterDelay:2];
 }
 @end

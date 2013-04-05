@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "Downloader.h"
 
-@interface GPViewController : UIViewController <MBProgressHUDDelegate, NSURLConnectionDelegate>
+@interface GPViewController : UIViewController <MBProgressHUDDelegate, DownloaderDelegate>
 {
     MBProgressHUD *statusHUD;
 }
 - (IBAction)startDownload:(id)sender;
+
+// DownloaderDelegate
+- (void)hasStartedDownloadingFirst;
+- (void)hasStartedDownloadingNext;
+- (void)didReceiveResponseForAFile;
+- (void)didReceiveDataForAFile;
+- (void)didFinishForAFile;
+- (void)hasFailedToDownloadAFile;
 @end
