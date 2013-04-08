@@ -8,17 +8,25 @@
 
 #import "GPAppDelegate.h"
 
+#import "GPRootViewController.h"
 #import "GPViewController.h"
 
 @implementation GPAppDelegate
+
+@synthesize navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[GPViewController alloc] initWithNibName:@"GPViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    UIViewController *rootController = [[GPRootViewController alloc] initWithNibName:@"GPRootViewController" bundle:nil];
+    navigationController = [[UINavigationController alloc] initWithRootViewController:rootController];
+    
+    self.window.rootViewController = rootController;
+    [self.window addSubview:navigationController.view];
     [self.window makeKeyAndVisible];
+    UIViewController *downloadView = [[GPViewController alloc] initWithNibName:@"GPViewController" bundle:nil];
+    [navigationController pushViewController:downloadView animated:TRUE];
     return YES;
 }
 
