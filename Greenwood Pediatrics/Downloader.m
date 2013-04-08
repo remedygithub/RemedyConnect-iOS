@@ -67,6 +67,15 @@
     }
 }
 
+- (Boolean)isDownloadingNecessary:(NSArray *)filesToCheck {
+    for (NSString *path in filesToCheck) {
+        if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            return true;
+        }
+    }
+    return false;
+}
+
 // NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     downloadedData = [[NSMutableData alloc] init];
@@ -89,7 +98,6 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSDictionary *URLandPath = [filesToDownload objectAtIndex:[[self status] currentFileIndex]];
     NSString *filePath = [URLandPath objectForKey:@"path"];
-    //NSString *filePath = [FileHandling getFilePathWithComponent:component];
     NSError *error;
     [downloadedData writeToFile:filePath options:NSDataWritingAtomic error:&error];
     if (error) {

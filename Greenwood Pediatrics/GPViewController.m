@@ -20,11 +20,16 @@
 Downloader *downloader;
 NSMutableData *downloadedData;
 
-- (IBAction)startDownload:(id)sender {
+- (void)viewDidLoad {
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
+    NSArray *filesToCheck = [NSArray arrayWithObjects:[FileHandling getFilePathWithComponent:@"iycs.xml"], nil];
+    [self.startDownloadButton setEnabled:[downloader isDownloadingNecessary:filesToCheck]];
+}
+
+- (IBAction)startDownload:(id)sender {
     [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, iycs]
-                saveAs:[FileHandling getFilePathWithComponent:@"iycs.xml"]];
+                          saveAs:[FileHandling getFilePathWithComponent:@"iycs.xml"]];
     [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, office]
                           saveAs:[FileHandling getFilePathWithComponent:@"office.xml"]];
     [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, location]

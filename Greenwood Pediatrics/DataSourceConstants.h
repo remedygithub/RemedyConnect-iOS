@@ -10,4 +10,4 @@ FOUNDATION_EXPORT NSString *const link_base;
 FOUNDATION_EXPORT NSString *const iycs;
 FOUNDATION_EXPORT NSString *const office;
 FOUNDATION_EXPORT NSString *const location;
-FOUNDATION_EXPORT NSString *const news;
+FOUNDATION_EXPORT NSString *const news;		

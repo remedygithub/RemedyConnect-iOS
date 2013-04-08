@@ -28,6 +28,7 @@
 - (void)addURLToDownload:(NSString *)URL saveAs:(NSString *)path;
 - (void)startDownload;
 - (void)startNextDownload;
+- (Boolean)isDownloadingNecessary:(NSArray *)filesToCheck;
 
 // NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection

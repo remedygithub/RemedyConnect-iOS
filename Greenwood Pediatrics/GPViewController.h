@@ -15,6 +15,7 @@
     MBProgressHUD *statusHUD;
 }
 - (IBAction)startDownload:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *startDownloadButton;
 
 // DownloaderDelegate
 - (void)hasStartedDownloadingFirst;
