@@ -20,13 +20,13 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     UIViewController *rootController = [[GPRootViewController alloc] initWithNibName:@"GPRootViewController" bundle:nil];
-    navigationController = [[UINavigationController alloc] initWithRootViewController:rootController];
-    
-    self.window.rootViewController = rootController;
-    [self.window addSubview:navigationController.view];
+    navigationController = [[UINavigationController alloc] init];
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
-    UIViewController *downloadView = [[GPViewController alloc] initWithNibName:@"GPViewController" bundle:nil];
-    [navigationController pushViewController:downloadView animated:TRUE];
+    [navigationController setTitle:@"Welcome to Greenwood Pediatrics!"];
+    [navigationController setNavigationBarHidden:TRUE];
+//    UIViewController *downloadView = [[GPViewController alloc] initWithNibName:@"GPViewController" bundle:nil];
+    [navigationController pushViewController:rootController animated:FALSE];
     return YES;
 }
 

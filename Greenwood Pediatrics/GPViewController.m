@@ -27,6 +27,15 @@ NSMutableData *downloadedData;
     [self.startDownloadButton setEnabled:[downloader isDownloadingNecessary:filesToCheck]];
 }
 
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
+    }
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:TRUE animated:TRUE];
+}
+
 - (IBAction)startDownload:(id)sender {
     [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, iycs]
                           saveAs:[FileHandling getFilePathWithComponent:@"iycs.xml"]];

@@ -8,5 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GPRootViewController : UIViewController
+@interface GPRootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *menuTableView;
+@property (nonatomic, readonly, strong) NSMutableArray *menuItems;
 @end
