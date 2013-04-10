@@ -8,6 +8,7 @@
 
 #import "GPRootViewController.h"
 #import "GPDownloadViewController.h"
+#import "GPAboutViewController.h"
 
 @interface GPRootViewController ()
 
@@ -17,11 +18,15 @@
 @synthesize menuTableView;
 @synthesize menuItems;
 
+NSMutableDictionary *pathIndexToTitle;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        pathIndexToTitle = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -68,15 +73,25 @@
     }
     // Configure the cell... setting the text of our cell's label
     cell.textLabel.text = [menuItems objectAtIndex:indexPath.row];
+    [pathIndexToTitle setObject:[menuItems objectAtIndex:indexPath.row] forKey:indexPath];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    // If you want to push another view upon tapping one of the cells on your table.
-    GPDownloadViewController *downloadController = [[GPDownloadViewController alloc] initWithNibName:@"GPViewController" bundle:nil];
-    [self.navigationController pushViewController:downloadController animated:TRUE];
-    [self.navigationController setNavigationBarHidden:FALSE animated:TRUE];
+    // Navigation logic may go here.
+    
+    if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"About"]) {
+        GPAboutViewController *aboutController = [[GPAboutViewController alloc] initWithNibName:@"GPAboutViewController" bundle:nil];
+        [self.navigationController pushViewController:aboutController animated:TRUE];
+        [self.navigationController setNavigationBarHidden:FALSE animated:TRUE];
+    }
+    if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"Download database"]) {
+        GPDownloadViewController *downloadController = [[GPDownloadViewController alloc] initWithNibName:@"GPDownloadViewController" bundle:nil];
+        [self.navigationController pushViewController:downloadController animated:TRUE];
+        [self.navigationController setNavigationBarHidden:FALSE animated:TRUE];
+    }
+    
+
 }
 
 @end
