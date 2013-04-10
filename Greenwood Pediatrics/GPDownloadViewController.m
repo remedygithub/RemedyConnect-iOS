@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 NewPush LLC. All rights reserved.
 //
 
-#import "GPViewController.h"
+#import "GPDownloadViewController.h"
 #import "DataSourceConstants.h"
 #import "FileHandling.h"
 #import "parserIYCS.h"
 #import "Downloader.h"
 
-@interface GPViewController ()
+@interface GPDownloadViewController ()
 
 @end
 
-@implementation GPViewController
+@implementation GPDownloadViewController
 Downloader *downloader;
 NSMutableData *downloadedData;
 
@@ -25,6 +25,7 @@ NSMutableData *downloadedData;
     [downloader setDelegate:self];
     NSArray *filesToCheck = [NSArray arrayWithObjects:[FileHandling getFilePathWithComponent:@"iycs.xml"], nil];
     [self.startDownloadButton setEnabled:[downloader isDownloadingNecessary:filesToCheck]];
+    [self setTitle:@"Download database"];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {

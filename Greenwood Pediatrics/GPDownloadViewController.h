@@ -10,7 +10,7 @@
 #import "MBProgressHUD.h"
 #import "Downloader.h"
 
-@interface GPViewController : UIViewController <MBProgressHUDDelegate, DownloaderDelegate>
+@interface GPDownloadViewController : UIViewController <MBProgressHUDDelegate, DownloaderDelegate>
 {
     MBProgressHUD *statusHUD;
 }

@@ -9,7 +9,7 @@
 #import "GPAppDelegate.h"
 
 #import "GPRootViewController.h"
-#import "GPViewController.h"
+#import "GPDownloadViewController.h"
 
 @implementation GPAppDelegate
 
@@ -24,8 +24,7 @@
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     [navigationController setTitle:@"Welcome to Greenwood Pediatrics!"];
-    [navigationController setNavigationBarHidden:TRUE];
-//    UIViewController *downloadView = [[GPViewController alloc] initWithNibName:@"GPViewController" bundle:nil];
+    [navigationController setNavigationBarHidden:TRUE animated:FALSE];
     [navigationController pushViewController:rootController animated:FALSE];
     return YES;
 }
