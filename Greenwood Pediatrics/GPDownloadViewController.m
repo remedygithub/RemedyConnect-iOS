@@ -23,8 +23,6 @@ NSMutableData *downloadedData;
 - (void)viewDidLoad {
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
-    NSArray *filesToCheck = [NSArray arrayWithObjects:[FileHandling getFilePathWithComponent:@"iycs.xml"], nil];
-    [self.startDownloadButton setEnabled:[downloader isDownloadingNecessary:filesToCheck]];
     [self setTitle:@"Download database"];
 }
 
@@ -52,6 +50,7 @@ NSMutableData *downloadedData;
 - (void)hudWasHidden:(MBProgressHUD *)hud {
 	[statusHUD removeFromSuperview];
 	statusHUD = nil;
+    [self.navigationController popToRootViewControllerAnimated:TRUE];
 }
 
 // DownloaderDelegate

@@ -9,6 +9,8 @@
 #import "GPRootViewController.h"
 #import "GPDownloadViewController.h"
 #import "GPAboutViewController.h"
+#import "Downloader.h"
+#import "FileHandling.h"
 
 @interface GPRootViewController ()
 
@@ -32,7 +34,14 @@ NSMutableDictionary *pathIndexToTitle;
 }
 
 - (void)viewDidLoad {
-    menuItems = [[NSMutableArray alloc] initWithObjects:@"Download database", @"About", nil];
+    menuItems = [[NSMutableArray alloc] initWithObjects:
+                 @"Is Your Child Sick?",
+                 @"Office Info",
+                 @"Office Location / Hours",
+                 @"Practice News",
+                 @"Page My Doctor",	
+                 @"Download database",
+                 @"About", nil];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -46,8 +55,22 @@ NSMutableDictionary *pathIndexToTitle;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [menuTableView deselectRowAtIndexPath:[menuTableView indexPathForSelectedRow] animated:FALSE];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([self shouldPopupDownload]) {
+        GPDownloadViewController *downloadController = [[GPDownloadViewController alloc] initWithNibName:@"GPDownloadViewController" bundle:nil];
+        [self.navigationController pushViewController:downloadController animated:TRUE];
+    }
+}
+
+- (BOOL)shouldPopupDownload {
+    Downloader *downloader = [[Downloader alloc] init];
+    NSArray *filesToCheck = [NSArray arrayWithObjects:[FileHandling getFilePathWithComponent:@"iycs.xml"], nil];
+    return [downloader isDownloadingNecessary:filesToCheck];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -78,20 +101,25 @@ NSMutableDictionary *pathIndexToTitle;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here.
-    
+    // Let's control our table view menu here.
     if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"About"]) {
         GPAboutViewController *aboutController = [[GPAboutViewController alloc] initWithNibName:@"GPAboutViewController" bundle:nil];
         [self.navigationController pushViewController:aboutController animated:TRUE];
-        [self.navigationController setNavigationBarHidden:FALSE animated:TRUE];
     }
     if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"Download database"]) {
         GPDownloadViewController *downloadController = [[GPDownloadViewController alloc] initWithNibName:@"GPDownloadViewController" bundle:nil];
         [self.navigationController pushViewController:downloadController animated:TRUE];
-        [self.navigationController setNavigationBarHidden:FALSE animated:TRUE];
     }
-    
+    if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"Page My Doctor"]) {
+        [menuTableView deselectRowAtIndexPath:[menuTableView indexPathForSelectedRow] animated:FALSE];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://greenwood.pagemydoctor.net"]];
+    }    
+}
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [menuTableView deselectRowAtIndexPath:[menuTableView indexPathForSelectedRow] animated:FALSE];
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:FALSE animated:TRUE];
 }
 
 @end
