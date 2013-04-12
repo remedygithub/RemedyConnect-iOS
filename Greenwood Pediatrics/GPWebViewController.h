@@ -10,5 +10,4 @@
 
 @interface GPWebViewController : UIViewController <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
 @end

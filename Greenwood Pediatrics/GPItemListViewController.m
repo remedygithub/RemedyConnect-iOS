@@ -7,6 +7,7 @@
 //
 
 #import "GPItemListViewController.h"
+#import "GPItemListWithHTMLCell.h"
 
 @interface GPItemListViewController ()
 
@@ -26,19 +27,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell;
-    
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    GPItemListWithHTMLCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GPItemListWithHTMLCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
-    cell.textLabel.text = [tableItems objectAtIndex:indexPath.row];
+    NSDictionary *itemData = [tableItems objectAtIndex:indexPath.row];
+    cell.title.text = [itemData objectForKey:@"title"];
+    [cell.webview loadHTMLString:[itemData objectForKey:@"text"]
+                         baseURL:[NSURL URLWithString:@"localhost"]];
+    [cell.title sizeToFit];
+    [cell.webview sizeToFit];
+    [cell sizeToFit];
     return cell;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:TRUE animated:TRUE];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 260;
 }
 
 @end

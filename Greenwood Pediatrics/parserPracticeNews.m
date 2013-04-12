@@ -38,13 +38,15 @@
     while (newsXML != nil) {
         TBXMLElement *title = [TBXML childElementNamed:@"NewsTitle"
                                                 parentElement:newsXML];
-        /*
+        TBXMLElement *text = [TBXML childElementNamed:@"NewsText"
+                                         parentElement:newsXML];
         NSMutableDictionary *newsItem =
             [[NSMutableDictionary alloc] init];
         [newsItem setObject:[TBXML textForElement:title]
-                         forKey:@"NewsTitle"];
-        [news addObject:newsItem];*/
-        [news addObject:[TBXML textForElement:title]];
+                         forKey:@"title"];
+        [newsItem setObject:[TBXML textForElement:text]
+                     forKey:@"text"];
+        [news addObject:newsItem];
         
         newsXML = [TBXML nextSiblingNamed:@"CMS_News"
                             searchFromElement:newsXML];

@@ -19,8 +19,6 @@
 	if (webViewURL != nil) {
 		NSURLRequest *requestObj = [NSURLRequest requestWithURL:webViewURL];
 		[webView loadRequest:requestObj];
-	} else {
-		NSLog(@"What to do? We don't have a URL...");
 	}
 }
 
@@ -44,7 +42,9 @@
 	[forwardButton setEnabled:[webView canGoForward]]; // Enable or disable forward
 
 	// Set the title of the new page.
-	self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    if (!self.title) {
+        self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    }
 }
 
 - (void)webView:(UIWebView *)wv didFailLoadWithError:(NSError *)error {
