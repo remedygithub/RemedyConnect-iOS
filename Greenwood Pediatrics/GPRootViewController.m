@@ -9,6 +9,10 @@
 #import "GPRootViewController.h"
 #import "GPDownloadViewController.h"
 #import "GPAboutViewController.h"
+#import "GPWebViewController.h"
+#import "GPItemListViewController.h"
+#import "parserPracticeNews.h"
+#import "JJGWebView.h"
 #import "Downloader.h"
 #import "FileHandling.h"
 
@@ -110,9 +114,18 @@ NSMutableDictionary *pathIndexToTitle;
         GPDownloadViewController *downloadController = [[GPDownloadViewController alloc] initWithNibName:@"GPDownloadViewController" bundle:nil];
         [self.navigationController pushViewController:downloadController animated:TRUE];
     }
+    if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"Practice News"]) {
+        GPItemListViewController *practiceNewsController = [[GPItemListViewController alloc] initWithNibName:@"GPItemListViewController" bundle:nil];
+        [self.navigationController pushViewController:practiceNewsController animated:TRUE];
+        parserPracticeNews *newsParser = [[parserPracticeNews alloc] init];
+        [practiceNewsController setTableItems:[[NSMutableArray alloc] initWithArray:[newsParser getNews]]];
+    }
     if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"Page My Doctor"]) {
-        [menuTableView deselectRowAtIndexPath:[menuTableView indexPathForSelectedRow] animated:FALSE];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://greenwood.pagemydoctor.net"]];
+        NSURL *pageMyDoctorURL = [NSURL URLWithString:@"http://greenwood.pagemydoctor.net"];
+        JJGWebView *webView = [[JJGWebView alloc] initWithNibName:@"JJGWebView" bundle:nil];
+        webView.title = @"Page My Doctor";
+        webView.webViewURL = pageMyDoctorURL;
+        [self.navigationController pushViewController:webView animated:TRUE];
     }    
 }
 

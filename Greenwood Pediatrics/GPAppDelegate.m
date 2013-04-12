@@ -23,7 +23,6 @@
     navigationController = [[UINavigationController alloc] init];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
-    [navigationController setTitle:@"Welcome to Greenwood Pediatrics!"];
     [navigationController setNavigationBarHidden:TRUE animated:FALSE];
     [navigationController pushViewController:rootController animated:FALSE];
     return YES;
