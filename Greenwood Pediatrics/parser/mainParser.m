@@ -49,6 +49,10 @@
     return !notFound;
 }
 
+- (Boolean)isRoot {
+    return [self hasElements:@"mobilefeed practices Practice"];
+}
+
 - (Boolean)isPage {
     return [self hasElements:@"mobilefeed PageText"];
 }
@@ -83,18 +87,22 @@
     TBXMLElement *buttonsElement = [TBXML childElementNamed:@"buttons" parentElement:root];
     TBXMLElement *currentButton =
             [TBXML childElementNamed:@"Button" parentElement:buttonsElement];
-    TBXMLElement *name, *nextFeed;
+    TBXMLElement *name, *nextFeed, *externalLink;
     NSMutableDictionary *button;
     while (currentButton != nil) {
         name = [TBXML childElementNamed:@"ButtonName"
                                          parentElement:currentButton];
         nextFeed = [TBXML childElementNamed:@"NextFeed"
                                         parentElement:currentButton];
+        externalLink = [TBXML childElementNamed:@"ExternalLink"
+                                        parentElement:currentButton];
         button = [[NSMutableDictionary alloc] init];
         [button setObject:[TBXML textForElement:name]
                      forKey:@"name"];
         [button setObject:[TBXML textForElement:nextFeed]
                      forKey:@"feed"];
+        [button setObject:[TBXML textForElement:externalLink]
+                     forKey:@"externalLink"];
         [buttons addObject:button];
         
         currentButton = [TBXML nextSiblingNamed:@"Button"
@@ -181,4 +189,42 @@
                                                     withString:@""]];
 }
 
-@end	
+- (NSArray*)getRootPractices {
+    NSMutableArray *rootPractices = [[NSMutableArray alloc] init];
+    TBXMLElement *root = xml.rootXMLElement;
+    TBXMLElement *currentPractice =
+        [TBXML childElementNamed:@"Practice" parentElement:root];
+    TBXMLElement *name, *feed, *designPack;
+    NSString *location;
+    NSMutableDictionary *practice;
+    while (currentPractice != nil) {
+        name = [TBXML childElementNamed:@"PracticeName"
+                              parentElement:currentPractice];
+        // @TODO: for this, an additional method is necessary.
+        location = [self getRootPracticesLocation:currentPractice];
+        feed = [TBXML childElementNamed:@"PracticeFeed"
+                          parentElement:currentPractice];
+        designPack = [TBXML childElementNamed:@"PracticeDesignPack"
+                          parentElement:currentPractice];
+        practice = [[NSMutableDictionary alloc] init];
+        [practice setObject:[TBXML textForElement:name]
+                    forKey:@"name"];
+        [practice setObject:location forKey:@"location"];
+        [practice setObject:[TBXML textForElement:feed]
+                     forKey:@"feed"];
+        [practice setObject:[TBXML textForElement:designPack]
+                     forKey:@"designPack"];
+        [rootPractices addObject:practice];
+        
+        currentPractice = [TBXML nextSiblingNamed:@"Practice"
+                               searchFromElement:currentPractice];
+    }
+    return [[NSArray alloc] initWithArray:rootPractices];
+}
+
+- (NSString*)getRootPracticesLocation:(TBXMLElement *)practiceElement {
+    // @TODO Port the Android version
+    return @"";
+}
+
+@end
