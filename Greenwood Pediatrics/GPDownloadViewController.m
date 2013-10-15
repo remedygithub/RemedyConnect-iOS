@@ -11,6 +11,8 @@
 #import "FileHandling.h"
 #import "parserIYCS.h"
 #import "Downloader.h"
+#import "Data.h"
+#import "mainParser.h"
 
 @interface GPDownloadViewController ()
 
@@ -36,14 +38,8 @@ NSMutableData *downloadedData;
 }
 
 - (IBAction)startDownload:(id)sender {
-    [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, iycs]
-                          saveAs:[FileHandling getFilePathWithComponent:@"iycs.xml"]];
-    [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, office]
-                          saveAs:[FileHandling getFilePathWithComponent:@"office.xml"]];
-    [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, location]
-                          saveAs:[FileHandling getFilePathWithComponent:@"location.xml"]];
-    [downloader addURLToDownload:[NSString stringWithFormat:@"%@%@", link_base, news]
-                          saveAs:[FileHandling getFilePathWithComponent:@"news.xml"]];
+    [downloader addURLToDownload:[NSString stringWithFormat:@"%@", FEED_ROOT]
+                          saveAs:[FileHandling getFilePathWithComponent:@"index.xml"]];
     [downloader startDownload];
 }
 
@@ -82,18 +78,18 @@ NSMutableData *downloadedData;
 }
 
 - (void)didFinishForAFile {
-    if ([[downloader status] currentFileIndex] == 0) {
-        parserIYCS *parser = [[parserIYCS alloc] init];
-        NSArray *categories = [parser getCategories];
-        for (NSDictionary *category in categories) {
-            NSString *categoryid = [category objectForKey:@"categoryid"];
-            NSString *URL = [NSString stringWithFormat:@"%@%@/%@", link_base, iycs, categoryid];
-            [downloader addURLToDownload:URL
-                                  saveAs:[FileHandling IYCScategoryIDtoFileName:categoryid]];
+    NSArray *files = [downloader filesToDownload];
+    NSUInteger fileIndex = [[downloader status] currentFileIndex];
+    NSString *filePath = [[files objectAtIndex:fileIndex] objectForKey:@"path"];
+    mainParser *parser = [[mainParser alloc]
+                          initWithXML:filePath];
+    if ([parser isMenu]) {
+        NSArray *subFeedURLs = [parser getSubFeedURLs];
+        for (NSString *URL in subFeedURLs) {
+            [downloader addURLToDownload:URL saveAs:[mainParser subFeedURLToLocal:URL]];
         }
-        [downloader startNextDownload];
     }
-    else if ([[downloader status] currentFileIndex] + 1 <
+    if ([[downloader status] currentFileIndex] + 1 <
              [[downloader status] numberOfFilesToDownload]) {
         [downloader startNextDownload];
     }

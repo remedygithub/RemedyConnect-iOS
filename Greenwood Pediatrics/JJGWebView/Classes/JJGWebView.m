@@ -43,7 +43,7 @@
 
 	// Set the title of the new page.
     if (!self.title) {
-        self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        	self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     }
 }
 

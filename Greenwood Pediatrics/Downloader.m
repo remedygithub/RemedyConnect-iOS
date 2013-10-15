@@ -11,9 +11,12 @@
 
 @implementation Downloader
 {
-    NSMutableArray *filesToDownload;
     NSMutableData *downloadedData;
 }
+
+@synthesize filesToDownload;
+@synthesize delegate;
+@synthesize status;
 
 - (id)init {
     self = [super init];
@@ -23,9 +26,6 @@
     }
     return self;
 }
-
-@synthesize delegate;
-@synthesize status;
 
 - (void)addURLToDownload:(NSString *)URL saveAs:(NSString *)path {
     NSMutableDictionary *URLandPath = [[NSMutableDictionary alloc] init];

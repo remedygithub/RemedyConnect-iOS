@@ -22,6 +22,7 @@
 
 
 @interface Downloader : NSObject <NSURLConnectionDelegate>
+@property (nonatomic, readonly, strong) NSMutableArray *filesToDownload;
 @property (nonatomic, weak) id <DownloaderDelegate> delegate;
 @property (nonatomic, readonly, strong) DownloadStatus *status;
 

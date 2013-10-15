@@ -27,6 +27,8 @@
 		5FAA898B170C3D6600FE4200 /* parserIYCS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA898A170C3D6600FE4200 /* parserIYCS.m */; };
 		5FAA898F170C3FEB00FE4200 /* FileHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA898E170C3FEB00FE4200 /* FileHandling.m */; };
 		5FC30851170EAC79002883A6 /* DownloadStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC30850170EAC79002883A6 /* DownloadStatus.m */; };
+		5FDC67F01786CC8E00671F79 /* mainParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC67EF1786CC8E00671F79 /* mainParser.m */; };
+		5FDC67F41786F15900671F79 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC67F31786F15900671F79 /* Data.m */; };
 		5FFA0232170D8C22007CD360 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA0231170D8C22007CD360 /* Downloader.m */; };
 		5FFF28BE17156ECA0000B80B /* GPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF28BC17156ECA0000B80B /* GPAboutViewController.m */; };
 		5FFF28BF17156ECA0000B80B /* GPAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF28BD17156ECA0000B80B /* GPAboutViewController.xib */; };
@@ -82,6 +84,10 @@
 		5FAA898E170C3FEB00FE4200 /* FileHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHandling.m; sourceTree = "<group>"; };
 		5FC3084F170EAC79002883A6 /* DownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadStatus.h; sourceTree = "<group>"; };
 		5FC30850170EAC79002883A6 /* DownloadStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadStatus.m; sourceTree = "<group>"; };
+		5FDC67EE1786CC8E00671F79 /* mainParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mainParser.h; path = parser/mainParser.h; sourceTree = "<group>"; };
+		5FDC67EF1786CC8E00671F79 /* mainParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mainParser.m; path = parser/mainParser.m; sourceTree = "<group>"; };
+		5FDC67F21786F15900671F79 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		5FDC67F31786F15900671F79 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 		5FFA0230170D8C22007CD360 /* Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
 		5FFA0231170D8C22007CD360 /* Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
 		5FFF28BB17156ECA0000B80B /* GPAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPAboutViewController.h; sourceTree = "<group>"; };
@@ -187,6 +193,8 @@
 				5FFF2AD417180B670000B80B /* GPItemListWithHTMLCell.xib */,
 				5FFF2AD617180E440000B80B /* GPItemListWithHTMLCell.h */,
 				5FFF2AD717180E440000B80B /* GPItemListWithHTMLCell.m */,
+				5FDC67F21786F15900671F79 /* Data.h */,
+				5FDC67F31786F15900671F79 /* Data.m */,
 			);
 			path = "Greenwood Pediatrics";
 			sourceTree = "<group>";
@@ -223,6 +231,8 @@
 				5FAA898A170C3D6600FE4200 /* parserIYCS.m */,
 				5FFF2AD1171803DC0000B80B /* parserPracticeNews.h */,
 				5FFF2AD2171803DC0000B80B /* parserPracticeNews.m */,
+				5FDC67EE1786CC8E00671F79 /* mainParser.h */,
+				5FDC67EF1786CC8E00671F79 /* mainParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -408,6 +418,8 @@
 				5FFF2AD3171803DC0000B80B /* parserPracticeNews.m in Sources */,
 				5FFF2AD817180E440000B80B /* GPItemListWithHTMLCell.m in Sources */,
 				5FFF2ADB171822350000B80B /* HTMLUtils.m in Sources */,
+				5FDC67F01786CC8E00671F79 /* mainParser.m in Sources */,
+				5FDC67F41786F15900671F79 /* Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
