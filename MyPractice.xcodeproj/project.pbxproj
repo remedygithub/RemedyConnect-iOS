@@ -24,7 +24,6 @@
 		5F921B9A171334D300BBEB7A /* GPRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F921B98171334D300BBEB7A /* GPRootViewController.xib */; };
 		5F921B9C1713405800BBEB7A /* gplogo_long.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F921B9B1713405800BBEB7A /* gplogo_long.png */; };
 		5FAA8986170C3B5B00FE4200 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA8985170C3B5B00FE4200 /* TBXML.m */; };
-		5FAA898B170C3D6600FE4200 /* parserIYCS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA898A170C3D6600FE4200 /* parserIYCS.m */; };
 		5FAA898F170C3FEB00FE4200 /* FileHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA898E170C3FEB00FE4200 /* FileHandling.m */; };
 		5FC30851170EAC79002883A6 /* DownloadStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC30850170EAC79002883A6 /* DownloadStatus.m */; };
 		5FDC67F01786CC8E00671F79 /* mainParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC67EF1786CC8E00671F79 /* mainParser.m */; };
@@ -42,7 +41,6 @@
 		5FFF28D41717F9A10000B80B /* JJGWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF28CE1717F9A10000B80B /* JJGWebView.xib */; };
 		5FFF2ACF171801FD0000B80B /* GPItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF2ACD171801FC0000B80B /* GPItemListViewController.m */; };
 		5FFF2AD0171801FD0000B80B /* GPItemListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF2ACE171801FD0000B80B /* GPItemListViewController.xib */; };
-		5FFF2AD3171803DC0000B80B /* parserPracticeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF2AD2171803DC0000B80B /* parserPracticeNews.m */; };
 		5FFF2AD517180B670000B80B /* GPItemListWithHTMLCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF2AD417180B670000B80B /* GPItemListWithHTMLCell.xib */; };
 		5FFF2AD817180E440000B80B /* GPItemListWithHTMLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF2AD717180E440000B80B /* GPItemListWithHTMLCell.m */; };
 		5FFF2ADB171822350000B80B /* HTMLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF2ADA171822350000B80B /* HTMLUtils.m */; };
@@ -78,8 +76,6 @@
 		5FAA8984170C3B3400FE4200 /* TBXML-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		5FAA8985170C3B5B00FE4200 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 		5FAA8987170C3B6E00FE4200 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
-		5FAA8989170C3D6600FE4200 /* parserIYCS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parserIYCS.h; sourceTree = "<group>"; };
-		5FAA898A170C3D6600FE4200 /* parserIYCS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parserIYCS.m; sourceTree = "<group>"; };
 		5FAA898D170C3FEB00FE4200 /* FileHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHandling.h; sourceTree = "<group>"; };
 		5FAA898E170C3FEB00FE4200 /* FileHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHandling.m; sourceTree = "<group>"; };
 		5FC3084F170EAC79002883A6 /* DownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadStatus.h; sourceTree = "<group>"; };
@@ -109,8 +105,6 @@
 		5FFF2ACC171801FC0000B80B /* GPItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPItemListViewController.h; sourceTree = "<group>"; };
 		5FFF2ACD171801FC0000B80B /* GPItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPItemListViewController.m; sourceTree = "<group>"; };
 		5FFF2ACE171801FD0000B80B /* GPItemListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPItemListViewController.xib; sourceTree = "<group>"; };
-		5FFF2AD1171803DC0000B80B /* parserPracticeNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parserPracticeNews.h; sourceTree = "<group>"; };
-		5FFF2AD2171803DC0000B80B /* parserPracticeNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parserPracticeNews.m; sourceTree = "<group>"; };
 		5FFF2AD417180B670000B80B /* GPItemListWithHTMLCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPItemListWithHTMLCell.xib; sourceTree = "<group>"; };
 		5FFF2AD617180E440000B80B /* GPItemListWithHTMLCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPItemListWithHTMLCell.h; sourceTree = "<group>"; };
 		5FFF2AD717180E440000B80B /* GPItemListWithHTMLCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPItemListWithHTMLCell.m; sourceTree = "<group>"; };
@@ -228,10 +222,6 @@
 		5FAA8988170C3D3F00FE4200 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				5FAA8989170C3D6600FE4200 /* parserIYCS.h */,
-				5FAA898A170C3D6600FE4200 /* parserIYCS.m */,
-				5FFF2AD1171803DC0000B80B /* parserPracticeNews.h */,
-				5FFF2AD2171803DC0000B80B /* parserPracticeNews.m */,
 				5FDC67EE1786CC8E00671F79 /* mainParser.h */,
 				5FDC67EF1786CC8E00671F79 /* mainParser.m */,
 			);
@@ -407,7 +397,6 @@
 				5F82A8BB170B403D00FE72B8 /* MBProgressHUD.m in Sources */,
 				5F82A8BE170B470E00FE72B8 /* DataSourceConstants.m in Sources */,
 				5FAA8986170C3B5B00FE4200 /* TBXML.m in Sources */,
-				5FAA898B170C3D6600FE4200 /* parserIYCS.m in Sources */,
 				5FAA898F170C3FEB00FE4200 /* FileHandling.m in Sources */,
 				5FFA0232170D8C22007CD360 /* Downloader.m in Sources */,
 				5FC30851170EAC79002883A6 /* DownloadStatus.m in Sources */,
@@ -416,7 +405,6 @@
 				5FFF28C31717EF160000B80B /* GPWebViewController.m in Sources */,
 				5FFF28CF1717F9A10000B80B /* JJGWebView.m in Sources */,
 				5FFF2ACF171801FD0000B80B /* GPItemListViewController.m in Sources */,
-				5FFF2AD3171803DC0000B80B /* parserPracticeNews.m in Sources */,
 				5FFF2AD817180E440000B80B /* GPItemListWithHTMLCell.m in Sources */,
 				5FFF2ADB171822350000B80B /* HTMLUtils.m in Sources */,
 				5FDC67F01786CC8E00671F79 /* mainParser.m in Sources */,

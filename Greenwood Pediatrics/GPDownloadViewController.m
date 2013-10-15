@@ -9,7 +9,6 @@
 #import "GPDownloadViewController.h"
 #import "DataSourceConstants.h"
 #import "FileHandling.h"
-#import "parserIYCS.h"
 #import "Downloader.h"
 #import "Data.h"
 #import "mainParser.h"
@@ -26,6 +25,12 @@ NSMutableData *downloadedData;
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     [self setTitle:@"Download database"];
+    
+    // The following is necessary to keep the content from getting below the
+    // navigation bar (see: http://stackoverflow.com/questions/18103715)
+    /*if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }*/
 }
 
 -(void) viewWillDisappear:(BOOL)animated {

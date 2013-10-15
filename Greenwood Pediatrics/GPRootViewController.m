@@ -11,7 +11,6 @@
 #import "GPAboutViewController.h"
 #import "GPWebViewController.h"
 #import "GPItemListViewController.h"
-#import "parserPracticeNews.h"
 #import "JJGWebView.h"
 #import "Downloader.h"
 #import "FileHandling.h"
@@ -40,13 +39,13 @@ NSMutableDictionary *pathIndexToTitle;
 
 - (void)viewDidLoad {
     menuItems = [[NSMutableArray alloc] initWithObjects:
-                 @"Is Your Child Sick?",
+                 /*@"Is Your Child Sick?",
                  @"Office Info",
                  @"Office Location / Hours",
                  @"Practice News",
-                 @"Page My Doctor",	
+                 @"Page My Doctor",	*/
                  @"Download database",
-                 @"About", nil];
+                 /*@"About",*/ nil];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -66,10 +65,10 @@ NSMutableDictionary *pathIndexToTitle;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if ([self shouldPopupDownload]) {
+    /*if ([self shouldPopupDownload]) {
         GPDownloadViewController *downloadController = [[GPDownloadViewController alloc] initWithNibName:@"GPDownloadViewController" bundle:nil];
         [self.navigationController pushViewController:downloadController animated:TRUE];
-    }
+    }*/
 }
 
 - (BOOL)shouldPopupDownload {
@@ -107,30 +106,22 @@ NSMutableDictionary *pathIndexToTitle;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Let's control our table view menu here.
-    if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"About"]) {
+    /*if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"About"]) {
         GPAboutViewController *aboutController = [[GPAboutViewController alloc] initWithNibName:@"GPAboutViewController" bundle:nil];
         [self.navigationController pushViewController:aboutController animated:TRUE];
-    }
+    }*/
     if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"Download database"]) {
         GPDownloadViewController *downloadController = [[GPDownloadViewController alloc] initWithNibName:@"GPDownloadViewController" bundle:nil];
         [self.navigationController pushViewController:downloadController animated:TRUE];
     }
-    if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"Practice News"]) {
-        JJGWebView *practiceNewsController = [[JJGWebView alloc] initWithNibName:@"JJGWebView" bundle:nil];
-        [self.navigationController pushViewController:practiceNewsController animated:TRUE];
-        parserPracticeNews *newsParser = [[parserPracticeNews alloc] init];
-        practiceNewsController.title = @"Practice News";
-        
-        [practiceNewsController.webView loadHTMLString:[HTMLUtils HTMLFromArray:[newsParser getNews]]
-                                               baseURL:[NSURL URLWithString:@"localhost"]];
-    }
+    /*
     if ([[pathIndexToTitle objectForKey:indexPath] isEqual: @"Page My Doctor"]) {
         NSURL *pageMyDoctorURL = [NSURL URLWithString:@"http://greenwood.pagemydoctor.net"];
         JJGWebView *webView = [[JJGWebView alloc] initWithNibName:@"JJGWebView" bundle:nil];
         webView.title = @"Page My Doctor";
         webView.webViewURL = pageMyDoctorURL;
         [self.navigationController pushViewController:webView animated:TRUE];
-    }    
+    }*/
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
