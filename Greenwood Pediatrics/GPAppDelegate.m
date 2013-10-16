@@ -17,14 +17,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     UIViewController *rootController = [[GPRootViewController alloc] initWithNibName:@"GPRootViewController" bundle:nil];
     navigationController = [[UINavigationController alloc] init];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     [navigationController setNavigationBarHidden:TRUE animated:FALSE];
-    [navigationController pushViewController:rootController animated:FALSE];
+    [navigationController pushViewController:rootController animated:FALSE];*/
     return YES;
 }
 
