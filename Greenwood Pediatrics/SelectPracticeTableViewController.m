@@ -16,6 +16,7 @@
 @implementation SelectPracticeTableViewController
 
 @synthesize practiceNames;
+@synthesize practiceLocations;
 
 #pragma mark - Table view data source
 
@@ -35,6 +36,7 @@
     SelectYourPracticeTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
     [cell.practiceName setText:[practiceNames objectAtIndex:indexPath.row]];
+    [cell.practiceLocation setText:[practiceLocations objectAtIndex:indexPath.row]];
     
     return cell;
 }

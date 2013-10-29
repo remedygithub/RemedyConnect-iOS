@@ -224,8 +224,29 @@
 }
 
 - (NSString*)getRootPracticesLocation:(TBXMLElement *)practiceElement {
-    // @TODO Port the Android version
-    return @"";
+    NSString *locations = @"";
+    NSString *location = @"";
+    TBXMLElement *practiceLocations = [TBXML childElementNamed:@"PracticeLocations"
+                                                 parentElement:practiceElement];
+    if (practiceElement->firstChild) {
+        TBXMLElement *currentLocation = [TBXML childElementNamed:@"practicelocation"
+                                               parentElement:practiceLocations];
+        while (currentLocation != nil) {
+            location =
+                [NSString stringWithFormat:@"%@, %@",
+                    [TBXML textForElement:[TBXML childElementNamed:@"city" parentElement:currentLocation]],
+                    [TBXML textForElement:[TBXML childElementNamed:@"state" parentElement:currentLocation]]];
+            if ([locations  isEqual: @""]) {
+                locations = [[NSString alloc] initWithString:location];
+            }
+            else {
+                locations = [NSString stringWithFormat:@"%@ | %@", locations, location];
+            }
+            currentLocation =
+                [TBXML nextSiblingNamed:@"practicelocation" searchFromElement:currentLocation];
+        }
+    }
+    return locations;
 }
 
 @end

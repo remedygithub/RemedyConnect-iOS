@@ -11,5 +11,6 @@
 @interface SelectPracticeTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *practiceNames;
+@property (nonatomic, strong) NSArray *practiceLocations;
 
 @end
