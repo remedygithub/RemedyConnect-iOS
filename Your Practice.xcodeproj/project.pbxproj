@@ -30,6 +30,10 @@
 		5F8EC153180EA4010080A62E /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC150180EA4010080A62E /* icon@2x.png */; };
 		5F8EC155180EA42B0080A62E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC154180EA42B0080A62E /* Images.xcassets */; };
 		5F8EC158180EA8790080A62E /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8EC157180EA8790080A62E /* SplashViewController.m */; };
+		5F91352C180FDDF700CB60E4 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91352B180FDDF700CB60E4 /* MainMenuViewController.m */; };
+		5F91352F180FE7EC00CB60E4 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91352E180FE7EC00CB60E4 /* PageViewController.m */; };
+		5F913535181159B500CB60E4 /* SelectPracticeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F913534181159B500CB60E4 /* SelectPracticeTableViewController.m */; };
+		5F91353818115E8F00CB60E4 /* SelectYourPracticeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91353718115E8F00CB60E4 /* SelectYourPracticeTableCell.m */; };
 		5F921B99171334D300BBEB7A /* GPRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F921B97171334D300BBEB7A /* GPRootViewController.m */; };
 		5F921B9A171334D300BBEB7A /* GPRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F921B98171334D300BBEB7A /* GPRootViewController.xib */; };
 		5F921B9C1713405800BBEB7A /* gplogo_long.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F921B9B1713405800BBEB7A /* gplogo_long.png */; };
@@ -57,14 +61,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5F82A893170B3D8E00FE72B8 /* MyPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F82A893170B3D8E00FE72B8 /* Your Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Your Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F82A896170B3D8E00FE72B8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5F82A898170B3D8E00FE72B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5F82A89A170B3D8E00FE72B8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5F82A89E170B3D8E00FE72B8 /* MyPractice-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyPractice-Info.plist"; sourceTree = "<group>"; };
+		5F82A89E170B3D8E00FE72B8 /* Your Practice-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Your Practice-Info.plist"; sourceTree = "<group>"; };
 		5F82A8A0170B3D8E00FE72B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5F82A8A2170B3D8E00FE72B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5F82A8A4170B3D8E00FE72B8 /* MyPractice-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyPractice-Prefix.pch"; sourceTree = "<group>"; };
+		5F82A8A4170B3D8E00FE72B8 /* Your Practice-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Your Practice-Prefix.pch"; sourceTree = "<group>"; };
 		5F82A8A5170B3D8E00FE72B8 /* GPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAppDelegate.h; sourceTree = "<group>"; };
 		5F82A8A6170B3D8E00FE72B8 /* GPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAppDelegate.m; sourceTree = "<group>"; };
 		5F82A8A8170B3D8E00FE72B8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -88,6 +92,14 @@
 		5F8EC154180EA42B0080A62E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyPractice/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		5F8EC156180EA8790080A62E /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		5F8EC157180EA8790080A62E /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		5F91352A180FDDF700CB60E4 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		5F91352B180FDDF700CB60E4 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		5F91352D180FE7EC00CB60E4 /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
+		5F91352E180FE7EC00CB60E4 /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
+		5F913533181159B500CB60E4 /* SelectPracticeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPracticeTableViewController.h; sourceTree = "<group>"; };
+		5F913534181159B500CB60E4 /* SelectPracticeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPracticeTableViewController.m; sourceTree = "<group>"; };
+		5F91353618115E8F00CB60E4 /* SelectYourPracticeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectYourPracticeTableCell.h; sourceTree = "<group>"; };
+		5F91353718115E8F00CB60E4 /* SelectYourPracticeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectYourPracticeTableCell.m; sourceTree = "<group>"; };
 		5F921B96171334D300BBEB7A /* GPRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPRootViewController.h; sourceTree = "<group>"; };
 		5F921B97171334D300BBEB7A /* GPRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPRootViewController.m; sourceTree = "<group>"; };
 		5F921B98171334D300BBEB7A /* GPRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPRootViewController.xib; sourceTree = "<group>"; };
@@ -148,7 +160,7 @@
 		5F82A88A170B3D8E00FE72B8 = {
 			isa = PBXGroup;
 			children = (
-				5F82A89C170B3D8E00FE72B8 /* MyPractice */,
+				5F82A89C170B3D8E00FE72B8 /* Your Practice */,
 				5F82A895170B3D8E00FE72B8 /* Frameworks */,
 				5F82A894170B3D8E00FE72B8 /* Products */,
 			);
@@ -157,7 +169,7 @@
 		5F82A894170B3D8E00FE72B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F82A893170B3D8E00FE72B8 /* MyPractice.app */,
+				5F82A893170B3D8E00FE72B8 /* Your Practice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,7 +187,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5F82A89C170B3D8E00FE72B8 /* MyPractice */ = {
+		5F82A89C170B3D8E00FE72B8 /* Your Practice */ = {
 			isa = PBXGroup;
 			children = (
 				5FFF2AE0171824A70000B80B /* Resources */,
@@ -204,14 +216,22 @@
 				5FFF2AD417180B670000B80B /* GPItemListWithHTMLCell.xib */,
 				5FFF2AD617180E440000B80B /* GPItemListWithHTMLCell.h */,
 				5FFF2AD717180E440000B80B /* GPItemListWithHTMLCell.m */,
+				5F8EC154180EA42B0080A62E /* Images.xcassets */,
+				5F8EC140180E99060080A62E /* Storyboard.storyboard */,
 				5FDC67F21786F15900671F79 /* Data.h */,
 				5FDC67F31786F15900671F79 /* Data.m */,
-				5F8EC140180E99060080A62E /* Storyboard.storyboard */,
-				5F8EC154180EA42B0080A62E /* Images.xcassets */,
+				5F91352D180FE7EC00CB60E4 /* PageViewController.h */,
+				5F91352E180FE7EC00CB60E4 /* PageViewController.m */,
 				5F8EC156180EA8790080A62E /* SplashViewController.h */,
 				5F8EC157180EA8790080A62E /* SplashViewController.m */,
+				5F91352A180FDDF700CB60E4 /* MainMenuViewController.h */,
+				5F91352B180FDDF700CB60E4 /* MainMenuViewController.m */,
+				5F913533181159B500CB60E4 /* SelectPracticeTableViewController.h */,
+				5F913534181159B500CB60E4 /* SelectPracticeTableViewController.m */,
+				5F91353618115E8F00CB60E4 /* SelectYourPracticeTableCell.h */,
+				5F91353718115E8F00CB60E4 /* SelectYourPracticeTableCell.m */,
 			);
-			name = MyPractice;
+			name = "Your Practice";
 			path = "Greenwood Pediatrics";
 			sourceTree = "<group>";
 		};
@@ -219,10 +239,10 @@
 			isa = PBXGroup;
 			children = (
 				5F921B9B1713405800BBEB7A /* gplogo_long.png */,
-				5F82A89E170B3D8E00FE72B8 /* MyPractice-Info.plist */,
+				5F82A89E170B3D8E00FE72B8 /* Your Practice-Info.plist */,
 				5F82A89F170B3D8E00FE72B8 /* InfoPlist.strings */,
 				5F82A8A2170B3D8E00FE72B8 /* main.m */,
-				5F82A8A4170B3D8E00FE72B8 /* MyPractice-Prefix.pch */,
+				5F82A8A4170B3D8E00FE72B8 /* Your Practice-Prefix.pch */,
 				5F82A8A8170B3D8E00FE72B8 /* Default.png */,
 				5F82A8AA170B3D8E00FE72B8 /* Default@2x.png */,
 				5F82A8AC170B3D8E00FE72B8 /* Default-568h@2x.png */,
@@ -339,9 +359,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5F82A892170B3D8E00FE72B8 /* MyPractice */ = {
+		5F82A892170B3D8E00FE72B8 /* Your Practice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F82A8B6170B3D8E00FE72B8 /* Build configuration list for PBXNativeTarget "MyPractice" */;
+			buildConfigurationList = 5F82A8B6170B3D8E00FE72B8 /* Build configuration list for PBXNativeTarget "Your Practice" */;
 			buildPhases = (
 				5F82A88F170B3D8E00FE72B8 /* Sources */,
 				5F82A890170B3D8E00FE72B8 /* Frameworks */,
@@ -351,9 +371,9 @@
 			);
 			dependencies = (
 			);
-			name = MyPractice;
+			name = "Your Practice";
 			productName = "Greenwood Pediatrics";
-			productReference = 5F82A893170B3D8E00FE72B8 /* MyPractice.app */;
+			productReference = 5F82A893170B3D8E00FE72B8 /* Your Practice.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -365,8 +385,13 @@
 				CLASSPREFIX = GP;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "NewPush LLC";
+				TargetAttributes = {
+					5F82A892170B3D8E00FE72B8 = {
+						DevelopmentTeam = 4JXDQ48W69;
+					};
+				};
 			};
-			buildConfigurationList = 5F82A88E170B3D8E00FE72B8 /* Build configuration list for PBXProject "MyPractice" */;
+			buildConfigurationList = 5F82A88E170B3D8E00FE72B8 /* Build configuration list for PBXProject "Your Practice" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -379,7 +404,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5F82A892170B3D8E00FE72B8 /* MyPractice */,
+				5F82A892170B3D8E00FE72B8 /* Your Practice */,
 			);
 		};
 /* End PBXProject section */
@@ -424,10 +449,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F91353818115E8F00CB60E4 /* SelectYourPracticeTableCell.m in Sources */,
 				5F82A8A3170B3D8E00FE72B8 /* main.m in Sources */,
 				5F82A8A7170B3D8E00FE72B8 /* GPAppDelegate.m in Sources */,
+				5F913535181159B500CB60E4 /* SelectPracticeTableViewController.m in Sources */,
 				5F82A8B0170B3D8E00FE72B8 /* GPDownloadViewController.m in Sources */,
 				5F82A8BB170B403D00FE72B8 /* MBProgressHUD.m in Sources */,
+				5F91352C180FDDF700CB60E4 /* MainMenuViewController.m in Sources */,
 				5F82A8BE170B470E00FE72B8 /* DataSourceConstants.m in Sources */,
 				5FAA8986170C3B5B00FE4200 /* TBXML.m in Sources */,
 				5FAA898F170C3FEB00FE4200 /* FileHandling.m in Sources */,
@@ -443,6 +471,7 @@
 				5FFF2ADB171822350000B80B /* HTMLUtils.m in Sources */,
 				5FDC67F01786CC8E00671F79 /* mainParser.m in Sources */,
 				5FDC67F41786F15900671F79 /* Data.m in Sources */,
+				5F91352F180FE7EC00CB60E4 /* PageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,10 +558,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Greenwood Pediatrics/MyPractice-Prefix.pch";
-				INFOPLIST_FILE = "Greenwood Pediatrics/MyPractice-Info.plist";
-				PRODUCT_NAME = MyPractice;
+				GCC_PREFIX_HEADER = "Greenwood Pediatrics/Your Practice-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Greenwood Pediatrics/Your Practice-Info.plist";
+				PRODUCT_NAME = "Your Practice";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -542,10 +572,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Greenwood Pediatrics/MyPractice-Prefix.pch";
-				INFOPLIST_FILE = "Greenwood Pediatrics/MyPractice-Info.plist";
-				PRODUCT_NAME = MyPractice;
+				GCC_PREFIX_HEADER = "Greenwood Pediatrics/Your Practice-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Greenwood Pediatrics/Your Practice-Info.plist";
+				PRODUCT_NAME = "Your Practice";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -553,7 +584,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5F82A88E170B3D8E00FE72B8 /* Build configuration list for PBXProject "MyPractice" */ = {
+		5F82A88E170B3D8E00FE72B8 /* Build configuration list for PBXProject "Your Practice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F82A8B4170B3D8E00FE72B8 /* Debug */,
@@ -562,7 +593,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F82A8B6170B3D8E00FE72B8 /* Build configuration list for PBXNativeTarget "MyPractice" */ = {
+		5F82A8B6170B3D8E00FE72B8 /* Build configuration list for PBXNativeTarget "Your Practice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F82A8B7170B3D8E00FE72B8 /* Debug */,

@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5F82A892170B3D8E00FE72B8"
                BuildableName = "MyPractice.app"
-               BlueprintName = "MyPractice"
-               ReferencedContainer = "container:MyPractice.xcodeproj">
+               BlueprintName = "Your Practice"
+               ReferencedContainer = "container:Your Practice.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5F82A892170B3D8E00FE72B8"
             BuildableName = "MyPractice.app"
-            BlueprintName = "MyPractice"
-            ReferencedContainer = "container:MyPractice.xcodeproj">
+            BlueprintName = "Your Practice"
+            ReferencedContainer = "container:Your Practice.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,8 +53,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5F82A892170B3D8E00FE72B8"
             BuildableName = "MyPractice.app"
-            BlueprintName = "MyPractice"
-            ReferencedContainer = "container:MyPractice.xcodeproj">
+            BlueprintName = "Your Practice"
+            ReferencedContainer = "container:Your Practice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -71,8 +71,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5F82A892170B3D8E00FE72B8"
             BuildableName = "MyPractice.app"
-            BlueprintName = "MyPractice"
-            ReferencedContainer = "container:MyPractice.xcodeproj">
+            BlueprintName = "Your Practice"
+            ReferencedContainer = "container:Your Practice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

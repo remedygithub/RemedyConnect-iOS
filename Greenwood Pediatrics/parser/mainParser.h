@@ -10,6 +10,7 @@
 
 @interface mainParser : NSObject
 - (id)initWithXML:(NSString *)path;
+- (Boolean)isRoot;
 - (Boolean)isPage;
 - (Boolean)isMenu;
 - (Boolean)isArticleSet;
@@ -20,4 +21,5 @@
 - (NSString*)getArticleFromSet:(NSUInteger)index;
 - (NSArray*)getSubFeedURLs;
 + (NSString*)subFeedURLToLocal:(NSString*)subFeedURL;
+- (NSArray*)getRootPractices;
 @end

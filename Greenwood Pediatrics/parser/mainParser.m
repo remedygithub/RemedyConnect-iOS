@@ -192,8 +192,9 @@
 - (NSArray*)getRootPractices {
     NSMutableArray *rootPractices = [[NSMutableArray alloc] init];
     TBXMLElement *root = xml.rootXMLElement;
+    TBXMLElement *practices = [TBXML childElementNamed:@"practices" parentElement:root];
     TBXMLElement *currentPractice =
-        [TBXML childElementNamed:@"Practice" parentElement:root];
+        [TBXML childElementNamed:@"Practice" parentElement:practices];
     TBXMLElement *name, *feed, *designPack;
     NSString *location;
     NSMutableDictionary *practice;

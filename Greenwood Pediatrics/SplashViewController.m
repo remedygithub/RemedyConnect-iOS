@@ -15,9 +15,23 @@
 @implementation SplashViewController
 NSTimer *timer;
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarHidden:FALSE
+                                            withAnimation:UIStatusBarAnimationFade];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
-    timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(startSegue) userInfo:nil repeats:NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval:3.0
+                                            target:self
+                                            selector:@selector(startSegue)
+                                            userInfo:nil
+                                            repeats:NO];
 }
 
 - (void)startSegue
