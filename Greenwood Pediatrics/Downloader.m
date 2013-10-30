@@ -30,6 +30,7 @@
 - (void)addURLToDownload:(NSString *)URL saveAs:(NSString *)path {
     NSMutableDictionary *URLandPath = [[NSMutableDictionary alloc] init];
     [URLandPath setValue:URL forKey:@"URL"];
+    //NSString
     [URLandPath setValue:path forKey:@"path"];
     [filesToDownload addObject:URLandPath];
     [[self status]

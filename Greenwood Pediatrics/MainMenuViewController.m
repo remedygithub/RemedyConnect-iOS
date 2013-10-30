@@ -52,13 +52,16 @@ NSString *filePath;
         if ([parser isRoot]) {
             NSArray *practices = [parser getRootPractices];
             NSMutableArray *practiceNames = [[NSMutableArray alloc] init];
+            NSMutableArray *practiceFeeds = [[NSMutableArray alloc] init];
             NSMutableArray *practiceLocations =  [[NSMutableArray alloc] init];
             for (NSDictionary *practice in practices) {
                 [practiceNames addObject:[practice objectForKey:@"name"]];
                 [practiceLocations addObject:[practice objectForKey:@"location"]];
+                [practiceFeeds addObject:[practice objectForKey:@"feed"]];
             }
             SelectPracticeTableViewController *sp = segue.destinationViewController;
             sp.practiceNames = [[NSArray alloc] initWithArray:practiceNames];
+            sp.practiceFeeds = [[NSArray alloc] initWithArray:practiceFeeds];
             sp.practiceLocations = [[NSArray alloc] initWithArray:practiceLocations];
         }
     }

@@ -91,7 +91,7 @@ NSMutableData *downloadedData;
     if ([parser isMenu]) {
         NSArray *subFeedURLs = [parser getSubFeedURLs];
         for (NSString *URL in subFeedURLs) {
-            [downloader addURLToDownload:URL saveAs:[mainParser subFeedURLToLocal:URL]];
+            //[downloader addURLToDownload:URL saveAs:[mainParser subFeedURLToLocal:URL]];
         }
     }
     if ([[downloader status] currentFileIndex] + 1 <

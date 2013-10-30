@@ -14,13 +14,4 @@
         NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	return [[path objectAtIndex:0] stringByAppendingPathComponent:pathComponent];
 }
-
-+(NSString *)IYCScategoryIDtoFileName:(NSString *)categoryID {
-    NSMutableString *fileName =
-    [[NSMutableString alloc]
-     initWithFormat:@"%@%@.xml",
-     [FileHandling getFilePathWithComponent:@"iycs-"],
-     categoryID];
-    return [[NSString alloc] initWithString:fileName];
-}
 @end

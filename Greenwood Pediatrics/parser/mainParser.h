@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TBXML.h"
 
 @interface mainParser : NSObject
 - (id)initWithXML:(NSString *)path;
@@ -20,6 +21,8 @@
 - (NSArray*)getArticleSetTitles;
 - (NSString*)getArticleFromSet:(NSUInteger)index;
 - (NSArray*)getSubFeedURLs;
-+ (NSString*)subFeedURLToLocal:(NSString*)subFeedURL;
++ (NSString*)subFeedURLToLocal:(NSString*)subFeedURL withFeedRoot:(NSString*)feedRoot;
 - (NSArray*)getRootPractices;
+
++ (NSString*)stringForElement:(TBXMLElement *)element;
 @end

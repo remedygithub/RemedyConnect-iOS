@@ -19,7 +19,6 @@
 		5F82A8B0170B3D8E00FE72B8 /* GPDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F82A8AF170B3D8E00FE72B8 /* GPDownloadViewController.m */; };
 		5F82A8B3170B3D8E00FE72B8 /* GPDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F82A8B1170B3D8E00FE72B8 /* GPDownloadViewController.xib */; };
 		5F82A8BB170B403D00FE72B8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F82A8BA170B403D00FE72B8 /* MBProgressHUD.m */; };
-		5F82A8BE170B470E00FE72B8 /* DataSourceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F82A8BD170B470E00FE72B8 /* DataSourceConstants.m */; };
 		5F8EC141180E99060080A62E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC140180E99060080A62E /* Storyboard.storyboard */; };
 		5F8EC148180EA2620080A62E /* background_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC142180EA2620080A62E /* background_texture.png */; };
 		5F8EC149180EA2620080A62E /* button.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC143180EA2620080A62E /* button.9.png */; };
@@ -79,8 +78,6 @@
 		5F82A8B2170B3D8E00FE72B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GPDownloadViewController.xib; sourceTree = "<group>"; };
 		5F82A8B9170B403D00FE72B8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		5F82A8BA170B403D00FE72B8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		5F82A8BC170B470E00FE72B8 /* DataSourceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceConstants.h; sourceTree = "<group>"; };
-		5F82A8BD170B470E00FE72B8 /* DataSourceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceConstants.m; sourceTree = "<group>"; };
 		5F8EC140180E99060080A62E /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		5F8EC142180EA2620080A62E /* background_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_texture.png; sourceTree = "<group>"; };
 		5F8EC143180EA2620080A62E /* button.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.9.png; sourceTree = "<group>"; };
@@ -160,6 +157,7 @@
 		5F73240518211BE500EB757B /* Actual code */ = {
 			isa = PBXGroup;
 			children = (
+				5F7324071821252C00EB757B /* Utilities */,
 				5FFA022D170D8BC0007CD360 /* Downloader */,
 				5FAA8988170C3D3F00FE4200 /* Parser */,
 				5F8EC154180EA42B0080A62E /* Images.xcassets */,
@@ -206,6 +204,15 @@
 				5FFF2AD717180E440000B80B /* GPItemListWithHTMLCell.m */,
 			);
 			name = "Legacy code";
+			sourceTree = "<group>";
+		};
+		5F7324071821252C00EB757B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5FAA898D170C3FEB00FE4200 /* FileHandling.h */,
+				5FAA898E170C3FEB00FE4200 /* FileHandling.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		5F82A88A170B3D8E00FE72B8 = {
@@ -288,8 +295,6 @@
 		5FAA898C170C3FB900FE4200 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				5FAA898D170C3FEB00FE4200 /* FileHandling.h */,
-				5FAA898E170C3FEB00FE4200 /* FileHandling.m */,
 				5FFF2AD9171822350000B80B /* HTMLUtils.h */,
 				5FFF2ADA171822350000B80B /* HTMLUtils.m */,
 			);
@@ -299,8 +304,6 @@
 		5FFA022D170D8BC0007CD360 /* Downloader */ = {
 			isa = PBXGroup;
 			children = (
-				5F82A8BC170B470E00FE72B8 /* DataSourceConstants.h */,
-				5F82A8BD170B470E00FE72B8 /* DataSourceConstants.m */,
 				5FC3084F170EAC79002883A6 /* DownloadStatus.h */,
 				5FC30850170EAC79002883A6 /* DownloadStatus.m */,
 				5FFA0230170D8C22007CD360 /* Downloader.h */,
@@ -472,7 +475,6 @@
 				5F82A8B0170B3D8E00FE72B8 /* GPDownloadViewController.m in Sources */,
 				5F82A8BB170B403D00FE72B8 /* MBProgressHUD.m in Sources */,
 				5F91352C180FDDF700CB60E4 /* MainMenuViewController.m in Sources */,
-				5F82A8BE170B470E00FE72B8 /* DataSourceConstants.m in Sources */,
 				5FAA8986170C3B5B00FE4200 /* TBXML.m in Sources */,
 				5FAA898F170C3FEB00FE4200 /* FileHandling.m in Sources */,
 				5FFA0232170D8C22007CD360 /* Downloader.m in Sources */,

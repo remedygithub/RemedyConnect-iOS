@@ -81,6 +81,18 @@
     return [[NSDictionary alloc] initWithDictionary:pageData];
 }
 
+// This returns a string, empty if the element is NULL
++ (NSString*)stringForElement:(TBXMLElement *)element {
+    NSString *result = [[NSString alloc] init];
+    if (nil != element) {
+        result = [TBXML textForElement:element];
+    }
+    else {
+        result = @"";
+    }
+    return result;
+}
+
 - (NSArray*)getMenu {
     NSMutableArray *buttons = [[NSMutableArray alloc] init];
     TBXMLElement *root = xml.rootXMLElement;
@@ -99,10 +111,9 @@
         button = [[NSMutableDictionary alloc] init];
         [button setObject:[TBXML textForElement:name]
                      forKey:@"name"];
-        [button setObject:[TBXML textForElement:nextFeed]
-                     forKey:@"feed"];
-        [button setObject:[TBXML textForElement:externalLink]
-                     forKey:@"externalLink"];
+        [button setObject:[mainParser stringForElement:nextFeed] forKey:@"feed"];
+        [button setObject:[mainParser stringForElement:externalLink] forKey:@"externalLink"];
+
         [buttons addObject:button];
         
         currentButton = [TBXML nextSiblingNamed:@"Button"
@@ -183,10 +194,28 @@
     return [[NSArray alloc] initWithArray:subFeedURLs];
 }
 
-+ (NSString*)subFeedURLToLocal:(NSString*)subFeedURL {
-    return [FileHandling  getFilePathWithComponent:
-                [subFeedURL stringByReplacingOccurrencesOfString:FEED_ROOT
-                                                    withString:@""]];
++ (NSString*)subFeedURLToLocal:(NSString*)subFeedURL withFeedRoot:(NSString*)feedRoot {
+    NSError *regexError;
+    NSRegularExpression *regex =
+        [NSRegularExpression regularExpressionWithPattern:@"^http(s)?"
+                                                  options:NSRegularExpressionCaseInsensitive error:&regexError];
+    NSString *URLwithoutProtocol =
+        [regex stringByReplacingMatchesInString:subFeedURL
+                                        options:0
+                                          range:NSMakeRange(0, [subFeedURL length])
+                                   withTemplate:@""];
+    NSString *feedRootWithoutProtocol =
+        [regex stringByReplacingMatchesInString:feedRoot
+                                        options:0
+                                          range:NSMakeRange(0, [feedRoot length])
+                                   withTemplate:@""];
+    
+    NSString *result = [URLwithoutProtocol stringByReplacingOccurrencesOfString:feedRootWithoutProtocol
+                                                                     withString:@""];
+    if (nil == result) {
+        result = @"";
+    }
+    return [FileHandling getFilePathWithComponent:result];
 }
 
 - (NSArray*)getRootPractices {

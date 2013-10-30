@@ -9,3 +9,10 @@
 #import <Foundation/Foundation.h>
 
 extern NSString* const FEED_ROOT;
+
+@interface Data : NSObject
+
++(void)saveFeedRoot:(NSString *)feedRoot;
++(NSString *)getFeedRoot;
+
+@end
