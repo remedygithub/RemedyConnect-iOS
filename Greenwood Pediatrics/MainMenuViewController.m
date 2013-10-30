@@ -67,7 +67,6 @@ NSString *filePath;
 - (void)hudWasHidden:(MBProgressHUD *)hud {
 	[statusHUD removeFromSuperview];
 	statusHUD = nil;
-    [self.navigationController popToRootViewControllerAnimated:TRUE];
 }
 
 #pragma mark "DownloaderDelegate"
