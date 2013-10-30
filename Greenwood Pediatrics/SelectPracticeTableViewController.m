@@ -21,6 +21,7 @@
 @synthesize practiceNames;
 @synthesize practiceLocations;
 @synthesize practiceFeeds;
+@synthesize practiceDesignPacks;
 
 Downloader *downloader;
 NSMutableData *downloadedData;
@@ -54,11 +55,28 @@ NSMutableData *downloadedData;
     return cell;
 }
 
+- (void)prepareSkinDirectory {
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"/skin"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath
+                                  withIntermediateDirectories:NO
+                                                   attributes:nil error:&error];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *feedURL = [practiceFeeds objectAtIndex:indexPath.row];
+    NSString *designPackURL = [practiceDesignPacks objectAtIndex:indexPath.row];
+    [self prepareSkinDirectory];
     [Data saveFeedRoot:feedURL];
+    [Data saveDesignPackURL:designPackURL];
     [downloader addURLToDownload:feedURL
                           saveAs:[FileHandling getFilePathWithComponent:@"index.xml"]];
+    [downloader addURLToDownload:designPackURL
+                          saveAs:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip"]];
     [downloader startDownload];
 }
 
@@ -117,6 +135,7 @@ NSMutableData *downloadedData;
         [downloader startNextDownload];
     }
     else {
+        [statusHUD setMode:MBProgressHUDModeText];
         [statusHUD setLabelText:@"Finished!"];
         [statusHUD hide:YES afterDelay:2];
     }

@@ -15,4 +15,7 @@ extern NSString* const FEED_ROOT;
 +(void)saveFeedRoot:(NSString *)feedRoot;
 +(NSString *)getFeedRoot;
 
++(void)saveDesignPackURL:(NSString *)designPackURL;
++(NSString *)getDesignPackURL;
+
 @end

@@ -54,15 +54,18 @@ NSString *filePath;
             NSMutableArray *practiceNames = [[NSMutableArray alloc] init];
             NSMutableArray *practiceFeeds = [[NSMutableArray alloc] init];
             NSMutableArray *practiceLocations =  [[NSMutableArray alloc] init];
+            NSMutableArray *practiceDesignPacks =  [[NSMutableArray alloc] init];
             for (NSDictionary *practice in practices) {
                 [practiceNames addObject:[practice objectForKey:@"name"]];
                 [practiceLocations addObject:[practice objectForKey:@"location"]];
                 [practiceFeeds addObject:[practice objectForKey:@"feed"]];
+                [practiceDesignPacks addObject:[practice objectForKey:@"designPack"]];
             }
             SelectPracticeTableViewController *sp = segue.destinationViewController;
             sp.practiceNames = [[NSArray alloc] initWithArray:practiceNames];
             sp.practiceFeeds = [[NSArray alloc] initWithArray:practiceFeeds];
             sp.practiceLocations = [[NSArray alloc] initWithArray:practiceLocations];
+            sp.practiceDesignPacks = [[NSArray alloc] initWithArray: practiceDesignPacks];
         }
     }
 }
@@ -109,6 +112,7 @@ NSString *filePath;
         [downloader startNextDownload];
     }
     else {
+        [statusHUD setMode:MBProgressHUDModeText];
         [statusHUD setLabelText:@"Finished!"];
         [statusHUD hide:YES afterDelay:2];
         [self performSegueWithIdentifier:@"selectPracticeSegue" sender:self];

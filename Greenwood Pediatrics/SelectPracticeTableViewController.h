@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray *practiceNames;
 @property (nonatomic, strong) NSArray *practiceFeeds;
 @property (nonatomic, strong) NSArray *practiceLocations;
+@property (nonatomic, strong) NSArray *practiceDesignPacks;
 
 #pragma mark DownloaderDelegate
 - (void)hasStartedDownloadingFirst;

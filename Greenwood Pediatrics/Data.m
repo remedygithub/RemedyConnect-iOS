@@ -28,4 +28,16 @@ NSString* const FEED_ROOT = @"https://cms.pediatricweb.com/mobile-app";
     return result;
 }
 
++(void)saveDesignPackURL:(NSString *)designPackURL {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:designPackURL forKey:@"designPackURL"];
+    [defaults synchronize];
+}
+
++(NSString *)getDesignPackURL {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *result = [defaults objectForKey:@"designPackURL"];
+    return result;
+}
+
 @end
