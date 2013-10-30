@@ -157,6 +157,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F73240518211BE500EB757B /* Actual code */ = {
+			isa = PBXGroup;
+			children = (
+				5FFA022D170D8BC0007CD360 /* Downloader */,
+				5FAA8988170C3D3F00FE4200 /* Parser */,
+				5F8EC154180EA42B0080A62E /* Images.xcassets */,
+				5F8EC140180E99060080A62E /* Storyboard.storyboard */,
+				5FDC67F21786F15900671F79 /* Data.h */,
+				5FDC67F31786F15900671F79 /* Data.m */,
+				5F91352D180FE7EC00CB60E4 /* PageViewController.h */,
+				5F91352E180FE7EC00CB60E4 /* PageViewController.m */,
+				5F8EC156180EA8790080A62E /* SplashViewController.h */,
+				5F8EC157180EA8790080A62E /* SplashViewController.m */,
+				5F91352A180FDDF700CB60E4 /* MainMenuViewController.h */,
+				5F91352B180FDDF700CB60E4 /* MainMenuViewController.m */,
+				5F913533181159B500CB60E4 /* SelectPracticeTableViewController.h */,
+				5F913534181159B500CB60E4 /* SelectPracticeTableViewController.m */,
+				5F91353618115E8F00CB60E4 /* SelectYourPracticeTableCell.h */,
+				5F91353718115E8F00CB60E4 /* SelectYourPracticeTableCell.m */,
+			);
+			name = "Actual code";
+			sourceTree = "<group>";
+		};
+		5F73240618211C0800EB757B /* Legacy code */ = {
+			isa = PBXGroup;
+			children = (
+				5FAA898C170C3FB900FE4200 /* Utilities */,
+				5F82A8A5170B3D8E00FE72B8 /* GPAppDelegate.h */,
+				5F82A8A6170B3D8E00FE72B8 /* GPAppDelegate.m */,
+				5F82A8AE170B3D8E00FE72B8 /* GPDownloadViewController.h */,
+				5F82A8AF170B3D8E00FE72B8 /* GPDownloadViewController.m */,
+				5F82A8B1170B3D8E00FE72B8 /* GPDownloadViewController.xib */,
+				5F921B96171334D300BBEB7A /* GPRootViewController.h */,
+				5F921B97171334D300BBEB7A /* GPRootViewController.m */,
+				5F921B98171334D300BBEB7A /* GPRootViewController.xib */,
+				5FFF28BB17156ECA0000B80B /* GPAboutViewController.h */,
+				5FFF28BC17156ECA0000B80B /* GPAboutViewController.m */,
+				5FFF28BD17156ECA0000B80B /* GPAboutViewController.xib */,
+				5FFF28C01717EF150000B80B /* GPWebViewController.h */,
+				5FFF28C11717EF150000B80B /* GPWebViewController.m */,
+				5FFF28C21717EF150000B80B /* GPWebViewController.xib */,
+				5FFF2ACC171801FC0000B80B /* GPItemListViewController.h */,
+				5FFF2ACD171801FC0000B80B /* GPItemListViewController.m */,
+				5FFF2ACE171801FD0000B80B /* GPItemListViewController.xib */,
+				5FFF2AD417180B670000B80B /* GPItemListWithHTMLCell.xib */,
+				5FFF2AD617180E440000B80B /* GPItemListWithHTMLCell.h */,
+				5FFF2AD717180E440000B80B /* GPItemListWithHTMLCell.m */,
+			);
+			name = "Legacy code";
+			sourceTree = "<group>";
+		};
 		5F82A88A170B3D8E00FE72B8 = {
 			isa = PBXGroup;
 			children = (
@@ -192,44 +243,9 @@
 			children = (
 				5FFF2AE0171824A70000B80B /* Resources */,
 				5FFA022F170D8BD5007CD360 /* Libs */,
-				5FFA022D170D8BC0007CD360 /* Downloader */,
-				5FAA898C170C3FB900FE4200 /* Utilities */,
-				5FAA8988170C3D3F00FE4200 /* Parser */,
 				5F82A89D170B3D8E00FE72B8 /* Supporting Files */,
-				5F82A8A5170B3D8E00FE72B8 /* GPAppDelegate.h */,
-				5F82A8A6170B3D8E00FE72B8 /* GPAppDelegate.m */,
-				5F82A8AE170B3D8E00FE72B8 /* GPDownloadViewController.h */,
-				5F82A8AF170B3D8E00FE72B8 /* GPDownloadViewController.m */,
-				5F82A8B1170B3D8E00FE72B8 /* GPDownloadViewController.xib */,
-				5F921B96171334D300BBEB7A /* GPRootViewController.h */,
-				5F921B97171334D300BBEB7A /* GPRootViewController.m */,
-				5F921B98171334D300BBEB7A /* GPRootViewController.xib */,
-				5FFF28BB17156ECA0000B80B /* GPAboutViewController.h */,
-				5FFF28BC17156ECA0000B80B /* GPAboutViewController.m */,
-				5FFF28BD17156ECA0000B80B /* GPAboutViewController.xib */,
-				5FFF28C01717EF150000B80B /* GPWebViewController.h */,
-				5FFF28C11717EF150000B80B /* GPWebViewController.m */,
-				5FFF28C21717EF150000B80B /* GPWebViewController.xib */,
-				5FFF2ACC171801FC0000B80B /* GPItemListViewController.h */,
-				5FFF2ACD171801FC0000B80B /* GPItemListViewController.m */,
-				5FFF2ACE171801FD0000B80B /* GPItemListViewController.xib */,
-				5FFF2AD417180B670000B80B /* GPItemListWithHTMLCell.xib */,
-				5FFF2AD617180E440000B80B /* GPItemListWithHTMLCell.h */,
-				5FFF2AD717180E440000B80B /* GPItemListWithHTMLCell.m */,
-				5F8EC154180EA42B0080A62E /* Images.xcassets */,
-				5F8EC140180E99060080A62E /* Storyboard.storyboard */,
-				5FDC67F21786F15900671F79 /* Data.h */,
-				5FDC67F31786F15900671F79 /* Data.m */,
-				5F91352D180FE7EC00CB60E4 /* PageViewController.h */,
-				5F91352E180FE7EC00CB60E4 /* PageViewController.m */,
-				5F8EC156180EA8790080A62E /* SplashViewController.h */,
-				5F8EC157180EA8790080A62E /* SplashViewController.m */,
-				5F91352A180FDDF700CB60E4 /* MainMenuViewController.h */,
-				5F91352B180FDDF700CB60E4 /* MainMenuViewController.m */,
-				5F913533181159B500CB60E4 /* SelectPracticeTableViewController.h */,
-				5F913534181159B500CB60E4 /* SelectPracticeTableViewController.m */,
-				5F91353618115E8F00CB60E4 /* SelectYourPracticeTableCell.h */,
-				5F91353718115E8F00CB60E4 /* SelectYourPracticeTableCell.m */,
+				5F73240618211C0800EB757B /* Legacy code */,
+				5F73240518211BE500EB757B /* Actual code */,
 			);
 			name = "Your Practice";
 			path = "Greenwood Pediatrics";
