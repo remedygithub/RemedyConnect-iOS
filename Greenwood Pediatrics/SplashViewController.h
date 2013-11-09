@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Logic.h"
 
-@interface SplashViewController : UIViewController
+@interface SplashViewController : UIViewController <ShouldDownloadStartDelegate>
 
 @end

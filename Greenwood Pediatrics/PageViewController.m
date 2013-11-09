@@ -7,6 +7,7 @@
 //
 
 #import "PageViewController.h"
+#import "Logic.h"
 
 @interface PageViewController ()
 
@@ -14,23 +15,34 @@
 
 @implementation PageViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
+Logic *logic;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    logic = [Logic sharedLogic];
+    
+    NSDictionary *page = [logic getDataToDisplayForPage];
+    NSString *title = [page objectForKey:@"title"];
+    NSString *text = [page objectForKey:@"text"];
+    [self setTitle:title];
     
     [_pageWebView setDelegate:self];
-     
-    NSURL *URL = [NSURL URLWithString:@"http://zoltanadamek.com"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    [_pageWebView loadRequest:request];
+    
+    if (nil != text) {
+        NSURL *baseURL = [NSURL URLWithString:@""];
+        [_pageWebView loadHTMLString:text baseURL:baseURL];
+    }
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    if (nil == parent) {
+        [logic unwindBackStack];
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSString *title = [_pageWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    [self setTitle:title];
+    //NSString *title = [_pageWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    //[self setTitle:title];
 }
 
 @end

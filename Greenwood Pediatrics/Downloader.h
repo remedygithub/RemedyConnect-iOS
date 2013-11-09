@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MBProgressHUD.h"
 #import "DownloadStatus.h"
 
 @protocol DownloaderDelegate <NSObject>
-@optional
 - (void)hasStartedDownloadingFirst;
 - (void)hasStartedDownloadingNext;
 - (void)didReceiveResponseForAFile;

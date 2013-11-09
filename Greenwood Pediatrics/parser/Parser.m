@@ -6,15 +6,17 @@
 //  Copyright (c) 2013 NewPush LLC. All rights reserved.
 //
 
-#import "mainParser.h"
+#import "Parser.h"
 #import "TBXML.h"
 #import "FileHandling.h"
 #import "Data.h"
 
-@implementation mainParser
+@implementation Parser
 {
     TBXML *xml;
 }
+
+#pragma mark - Initializing
 
 - (id)initWithXML:(NSString *)path {
     if (self = [super init]) {
@@ -28,6 +30,8 @@
     }
     return self;
 }
+
+#pragma mark - Internal utilities
 
 - (Boolean)hasElements:(NSString *)elements {
     NSArray *listOfElements = [elements componentsSeparatedByString:@" "];
@@ -49,6 +53,8 @@
     return !notFound;
 }
 
+#pragma mark - Feed type checks
+
 - (Boolean)isRoot {
     return [self hasElements:@"mobilefeed practices Practice"];
 }
@@ -65,19 +71,86 @@
     return [self hasElements:@"mobilefeed articles article"];
 }
 
+#pragma mark - Getters
+
+- (NSArray*)getRootPractices {
+    NSMutableArray *rootPractices = [[NSMutableArray alloc] init];
+    TBXMLElement *root = xml.rootXMLElement;
+    TBXMLElement *practices = [TBXML childElementNamed:@"practices" parentElement:root];
+    TBXMLElement *currentPractice =
+    [TBXML childElementNamed:@"Practice" parentElement:practices];
+    TBXMLElement *name, *feed, *designPack;
+    NSString *location;
+    NSMutableDictionary *practice;
+    while (currentPractice != nil) {
+        name = [TBXML childElementNamed:@"PracticeName"
+                          parentElement:currentPractice];
+        // @TODO: for this, an additional method is necessary.
+        location = [self getRootPracticesLocation:currentPractice];
+        feed = [TBXML childElementNamed:@"PracticeFeed"
+                          parentElement:currentPractice];
+        designPack = [TBXML childElementNamed:@"PracticeDesignPack"
+                                parentElement:currentPractice];
+        practice = [[NSMutableDictionary alloc] init];
+        [practice setObject:[TBXML textForElement:name]
+                     forKey:@"name"];
+        [practice setObject:location forKey:@"location"];
+        [practice setObject:[TBXML textForElement:feed]
+                     forKey:@"feed"];
+        [practice setObject:[TBXML textForElement:designPack]
+                     forKey:@"designPack"];
+        [rootPractices addObject:practice];
+        
+        currentPractice = [TBXML nextSiblingNamed:@"Practice"
+                                searchFromElement:currentPractice];
+    }
+    return [[NSArray alloc] initWithArray:rootPractices];
+}
+
+- (NSString*)getRootPracticesLocation:(TBXMLElement *)practiceElement {
+    NSString *locations = @"";
+    NSString *location = @"";
+    TBXMLElement *practiceLocations = [TBXML childElementNamed:@"PracticeLocations"
+                                                 parentElement:practiceElement];
+    if (practiceElement->firstChild) {
+        TBXMLElement *currentLocation = [TBXML childElementNamed:@"practicelocation"
+                                                   parentElement:practiceLocations];
+        while (currentLocation != nil) {
+            location =
+            [NSString stringWithFormat:@"%@, %@",
+             [TBXML textForElement:[TBXML childElementNamed:@"city" parentElement:currentLocation]],
+             [TBXML textForElement:[TBXML childElementNamed:@"state" parentElement:currentLocation]]];
+            if ([locations  isEqual: @""]) {
+                locations = [[NSString alloc] initWithString:location];
+            }
+            else {
+                locations = [NSString stringWithFormat:@"%@ | %@", locations, location];
+            }
+            currentLocation =
+            [TBXML nextSiblingNamed:@"practicelocation" searchFromElement:currentLocation];
+        }
+    }
+    return locations;
+}
+
 - (NSDictionary*)getPage {
     NSMutableDictionary *pageData = [[NSMutableDictionary alloc] init];
-    TBXMLElement *feed = [TBXML childElementNamed:@"mobilefeed"
-                                        parentElement:xml.rootXMLElement];
+    TBXMLElement *root = xml.rootXMLElement;
     TBXMLElement *pageModified = [TBXML childElementNamed:@"PageModified"
-                                        parentElement:feed];
+                                        parentElement:root];
     TBXMLElement *pageTitle = [TBXML childElementNamed: @"PageTitle"
-                                        parentElement:feed];
+                                        parentElement:root];
     TBXMLElement *pageText = [TBXML childElementNamed: @"PageText"
-                                       parentElement:feed];
-    [pageData setObject:[TBXML textForElement:pageModified] forKey:@"modified"];
-    [pageData setObject:[TBXML textForElement:pageTitle] forKey:@"title"];
-    [pageData setObject:[TBXML textForElement:pageText] forKey:@"text"];
+                                       parentElement:root];
+    if (nil != pageModified) {
+        [pageData setObject:[TBXML textForElement:pageModified] forKey:@"modified"];
+    }
+    if (nil != pageTitle) {
+        [pageData setObject:[TBXML textForElement:pageTitle] forKey:@"title"];
+    }
+    if (nil != pageText) {
+        [pageData setObject:[TBXML textForElement:pageText] forKey:@"text"];
+    }
     return [[NSDictionary alloc] initWithDictionary:pageData];
 }
 
@@ -111,8 +184,8 @@
         button = [[NSMutableDictionary alloc] init];
         [button setObject:[TBXML textForElement:name]
                      forKey:@"name"];
-        [button setObject:[mainParser stringForElement:nextFeed] forKey:@"feed"];
-        [button setObject:[mainParser stringForElement:externalLink] forKey:@"externalLink"];
+        [button setObject:[Parser stringForElement:nextFeed] forKey:@"feed"];
+        [button setObject:[Parser stringForElement:externalLink] forKey:@"externalLink"];
 
         [buttons addObject:button];
         
@@ -125,8 +198,9 @@
 - (NSArray*)getArticleSet {
     NSMutableArray *articles = [[NSMutableArray alloc] init];
     TBXMLElement *root = xml.rootXMLElement;
+    TBXMLElement *articlesElement = [TBXML childElementNamed:@"articles" parentElement:root];
     TBXMLElement *currentArticle =
-            [TBXML childElementNamed:@"Article" parentElement:root];
+            [TBXML childElementNamed:@"article" parentElement:articlesElement];
     TBXMLElement *modified, *title, *text;
     NSMutableDictionary *article;
     while (currentArticle != nil) {
@@ -145,7 +219,7 @@
                     forKey:@"text"];
         [articles addObject:article];
         
-        currentArticle = [TBXML nextSiblingNamed:@"Article"
+        currentArticle = [TBXML nextSiblingNamed:@"article"
                               searchFromElement:currentArticle];
     }
     return [[NSArray alloc] initWithArray:articles];
@@ -154,36 +228,45 @@
 - (NSArray*)getArticleSetTitles {
     NSMutableArray *titles = [[NSMutableArray alloc] init];
     TBXMLElement *root = xml.rootXMLElement;
+    TBXMLElement *articles = [TBXML childElementNamed:@"articles" parentElement:root];
     TBXMLElement *currentArticle =
-            [TBXML childElementNamed:@"Article" parentElement:root];
+            [TBXML childElementNamed:@"article" parentElement:articles];
     TBXMLElement *title;
     while (currentArticle != nil) {
         title = [TBXML childElementNamed:@"articleTitle"
                                          parentElement:currentArticle];
         [titles addObject:[TBXML textForElement:title]];
-        currentArticle = [TBXML nextSiblingNamed:@"Article"
+        currentArticle = [TBXML nextSiblingNamed:@"article"
                                searchFromElement:currentArticle];
     }
     return [[NSArray alloc] initWithArray:titles];
 }
 
-- (NSString*)getArticleFromSet:(NSUInteger)index {
+- (NSDictionary*)getArticleFromSet:(NSUInteger)index {
+    NSDictionary *article = [[NSMutableDictionary alloc] init];
     TBXMLElement *root = xml.rootXMLElement;
+    TBXMLElement *articles = [TBXML childElementNamed:@"articles" parentElement:root];
     TBXMLElement *currentArticle =
-            [TBXML childElementNamed:@"Article" parentElement:root];
+            [TBXML childElementNamed:@"article" parentElement:articles];
     NSUInteger currentIndex = 0;
-    TBXMLElement *text = nil;
+    TBXMLElement *text = nil, *title = nil;
     while (currentArticle != nil) {
         if (currentIndex == index) {
             text = [TBXML childElementNamed:@"articleText"
                                              parentElement:currentArticle];
+            title = [TBXML childElementNamed:@"articleTitle"
+                               parentElement:currentArticle];
         }
-        currentArticle = [TBXML nextSiblingNamed:@"Article"
+        currentArticle = [TBXML nextSiblingNamed:@"article"
                                searchFromElement:currentArticle];
         ++currentIndex;
     }
-    return [TBXML textForElement:text];
+    [article setValue:[TBXML textForElement:text] forKey:@"text"];
+    [article setValue:[TBXML textForElement:title] forKey:@"title"];
+    return [[NSDictionary alloc] initWithDictionary:article];
 }
+
+#pragma mark - Subfeed URL handling
 
 - (NSArray*)getSubFeedURLs {
     NSMutableArray *subFeedURLs = [[NSMutableArray alloc] init];
@@ -215,67 +298,8 @@
     if (nil == result) {
         result = @"";
     }
-    return [FileHandling getFilePathWithComponent:result];
-}
-
-- (NSArray*)getRootPractices {
-    NSMutableArray *rootPractices = [[NSMutableArray alloc] init];
-    TBXMLElement *root = xml.rootXMLElement;
-    TBXMLElement *practices = [TBXML childElementNamed:@"practices" parentElement:root];
-    TBXMLElement *currentPractice =
-        [TBXML childElementNamed:@"Practice" parentElement:practices];
-    TBXMLElement *name, *feed, *designPack;
-    NSString *location;
-    NSMutableDictionary *practice;
-    while (currentPractice != nil) {
-        name = [TBXML childElementNamed:@"PracticeName"
-                              parentElement:currentPractice];
-        // @TODO: for this, an additional method is necessary.
-        location = [self getRootPracticesLocation:currentPractice];
-        feed = [TBXML childElementNamed:@"PracticeFeed"
-                          parentElement:currentPractice];
-        designPack = [TBXML childElementNamed:@"PracticeDesignPack"
-                          parentElement:currentPractice];
-        practice = [[NSMutableDictionary alloc] init];
-        [practice setObject:[TBXML textForElement:name]
-                    forKey:@"name"];
-        [practice setObject:location forKey:@"location"];
-        [practice setObject:[TBXML textForElement:feed]
-                     forKey:@"feed"];
-        [practice setObject:[TBXML textForElement:designPack]
-                     forKey:@"designPack"];
-        [rootPractices addObject:practice];
-        
-        currentPractice = [TBXML nextSiblingNamed:@"Practice"
-                               searchFromElement:currentPractice];
-    }
-    return [[NSArray alloc] initWithArray:rootPractices];
-}
-
-- (NSString*)getRootPracticesLocation:(TBXMLElement *)practiceElement {
-    NSString *locations = @"";
-    NSString *location = @"";
-    TBXMLElement *practiceLocations = [TBXML childElementNamed:@"PracticeLocations"
-                                                 parentElement:practiceElement];
-    if (practiceElement->firstChild) {
-        TBXMLElement *currentLocation = [TBXML childElementNamed:@"practicelocation"
-                                               parentElement:practiceLocations];
-        while (currentLocation != nil) {
-            location =
-                [NSString stringWithFormat:@"%@, %@",
-                    [TBXML textForElement:[TBXML childElementNamed:@"city" parentElement:currentLocation]],
-                    [TBXML textForElement:[TBXML childElementNamed:@"state" parentElement:currentLocation]]];
-            if ([locations  isEqual: @""]) {
-                locations = [[NSString alloc] initWithString:location];
-            }
-            else {
-                locations = [NSString stringWithFormat:@"%@ | %@", locations, location];
-            }
-            currentLocation =
-                [TBXML nextSiblingNamed:@"practicelocation" searchFromElement:currentLocation];
-        }
-    }
-    return locations;
+    NSString *resultPath = [FileHandling getFilePathWithComponent:result];
+    return resultPath;
 }
 
 @end

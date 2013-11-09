@@ -6,25 +6,15 @@
 //  Copyright (c) 2013 NewPush LLC. All rights reserved.
 //
 
-#import "GPAppDelegate.h"
+#import "YourPracticeAppDelegate.h"
+#import "TestFlight.h"
 
-#import "GPRootViewController.h"
-#import "GPDownloadViewController.h"
-
-@implementation GPAppDelegate
-
-@synthesize navigationController;
+@implementation YourPracticeAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *rootController = [[GPRootViewController alloc] initWithNibName:@"GPRootViewController" bundle:nil];
-    navigationController = [[UINavigationController alloc] init];
-    self.window.rootViewController = navigationController;
-    [self.window makeKeyAndVisible];
-    [navigationController setNavigationBarHidden:TRUE animated:FALSE];
-    [navigationController pushViewController:rootController animated:FALSE];*/
+    [TestFlight takeOff:@"f27b210c-efa9-46ab-b834-bf4643a04add"];
     return YES;
 }
 

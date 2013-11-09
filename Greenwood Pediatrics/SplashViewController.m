@@ -7,6 +7,7 @@
 //
 
 #import "SplashViewController.h"
+#import "Logic.h"
 
 @interface SplashViewController ()
 
@@ -14,6 +15,11 @@
 
 @implementation SplashViewController
 NSTimer *timer;
+Logic *logic;
+
+-(void)viewDidLoad {
+    logic = [Logic sharedLogic];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -25,8 +31,7 @@ NSTimer *timer;
                                             withAnimation:UIStatusBarAnimationFade];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     timer = [NSTimer scheduledTimerWithTimeInterval:3.0
                                             target:self
                                             selector:@selector(startSegue)
@@ -34,10 +39,10 @@ NSTimer *timer;
                                             repeats:NO];
 }
 
-- (void)startSegue
-{
+- (void)startSegue {
     [timer invalidate];
-    [self performSegueWithIdentifier: @"ToMenu" sender:self];
+    [logic setDownloadStartDelegate:self];
+    [logic ifDataAvailableAdvanceToMain];
 }
 
 @end

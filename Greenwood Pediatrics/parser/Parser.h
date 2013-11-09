@@ -9,20 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "TBXML.h"
 
-@interface mainParser : NSObject
+@interface Parser : NSObject
+
 - (id)initWithXML:(NSString *)path;
 - (Boolean)isRoot;
 - (Boolean)isPage;
 - (Boolean)isMenu;
 - (Boolean)isArticleSet;
+- (NSArray*)getRootPractices;
 - (NSDictionary*)getPage;
 - (NSArray*)getMenu;
 - (NSArray*)getArticleSet;
 - (NSArray*)getArticleSetTitles;
-- (NSString*)getArticleFromSet:(NSUInteger)index;
+- (NSDictionary*)getArticleFromSet:(NSUInteger)index;
 - (NSArray*)getSubFeedURLs;
 + (NSString*)subFeedURLToLocal:(NSString*)subFeedURL withFeedRoot:(NSString*)feedRoot;
-- (NSArray*)getRootPractices;
 
-+ (NSString*)stringForElement:(TBXMLElement *)element;
 @end

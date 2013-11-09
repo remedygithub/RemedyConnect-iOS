@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface FileHandling : NSObject
-+ (NSString *)getFilePathWithComponent:(NSString *)pathComponent;
+
+#pragma mark - Methods for interacting with the file system
++(NSString *)getDocumentsPath;
++(NSString *)getFilePathWithComponent:(NSString *)pathComponent;
++(Boolean)doesIndexExists;
++(void)prepareSkinDirectory;
+
 @end

@@ -8,14 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class GPRootViewController;
-
-@interface GPAppDelegate : UIResponder <UIApplicationDelegate>
+@interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) GPRootViewController *viewController;
 
 @end

@@ -7,19 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
-#import "Downloader.h"
+#import "Logic.h"
 
-@interface MainMenuViewController : UIViewController <MBProgressHUDDelegate, DownloaderDelegate>
-{
-    MBProgressHUD *statusHUD;
-}
+@interface MainMenuViewController : UIViewController <MainMenuDelegate>
 
-#pragma mark DownloaderDelegate
-- (void)hasStartedDownloadingFirst;
-- (void)hasStartedDownloadingNext;
-- (void)didReceiveResponseForAFile;
-- (void)didReceiveDataForAFile;
-- (void)didFinishForAFile;
-- (void)hasFailedToDownloadAFile;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *mainMenuButtons;
+
+- (IBAction)buttonPressed:(id)sender;
+
 @end

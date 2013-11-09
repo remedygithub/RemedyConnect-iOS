@@ -10,5 +10,4 @@
 
 @interface PageViewController : UIViewController<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *pageWebView;
-
 @end

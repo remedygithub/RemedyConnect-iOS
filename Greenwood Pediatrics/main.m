@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "GPAppDelegate.h"
+#import "YourPracticeAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([GPAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([YourPracticeAppDelegate class]));
     }
 }
