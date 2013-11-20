@@ -12,6 +12,7 @@
 @interface MainMenuViewController : UIViewController <MainMenuDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *mainMenuButtons;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 - (IBAction)buttonPressed:(id)sender;
 

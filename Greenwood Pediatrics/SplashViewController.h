@@ -11,4 +11,6 @@
 
 @interface SplashViewController : UIViewController <ShouldDownloadStartDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *splashImageView;
+
 @end

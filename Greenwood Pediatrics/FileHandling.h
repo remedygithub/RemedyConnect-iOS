@@ -15,5 +15,8 @@
 +(NSString *)getFilePathWithComponent:(NSString *)pathComponent;
 +(Boolean)doesIndexExists;
 +(void)prepareSkinDirectory;
++(NSString *)getEffectiveSkinDirectory;
++(NSString *)getSkinFilePathWithComponent:(NSString *)pathComponent;
++(void)unzipFileInPlace:(NSString *)zipPath;
 
 @end

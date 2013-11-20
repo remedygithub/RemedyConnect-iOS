@@ -8,6 +8,7 @@
 
 #import "MainMenuViewController.h"
 #import "Logic.h"
+#import "Skin.h"
 
 @interface MainMenuViewController ()
 
@@ -19,12 +20,14 @@ Logic *logic;
 
 - (void)viewDidLoad {
     logic = [Logic sharedLogic];
+    [Skin applyMainMenuBGOnImageView:_backgroundImage];
     NSArray *menu = [logic getDataToDisplayForMainMenu];
     for (int i = 0; i < [_mainMenuButtons count]; ++i) {
         UIButton *button = [_mainMenuButtons objectAtIndex:i];
         NSString *title = [[menu objectAtIndex:i] objectForKey:@"name"]; //feed, externalLink
         [button setTitle:title forState:UIControlStateNormal];
         [button setTag:i];
+        [Skin applyBackgroundOnButton:button];
     }
 }
 

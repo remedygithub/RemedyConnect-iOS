@@ -155,7 +155,10 @@ int itemFromArticleSet = -1;
         NSString *filePath = [[files objectAtIndex:fileIndex] objectForKey:@"path"];
         Parser *parser = [[Parser alloc]
                           initWithXML:filePath];
-        if ([parser isMenu]) {
+        if ([filePath isEqualToString:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip"]]) {
+            [FileHandling unzipFileInPlace:@"skin/DesignPack.zip"];
+        }
+        else if ([parser isMenu]) {
             NSArray *subFeedURLs = [parser getSubFeedURLs];
             for (NSString *URL in subFeedURLs) {
                 // Have to do the following check, this might be empty because of externalLinks...

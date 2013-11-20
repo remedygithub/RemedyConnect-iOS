@@ -49,6 +49,10 @@
 		5FC30851170EAC79002883A6 /* DownloadStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC30850170EAC79002883A6 /* DownloadStatus.m */; };
 		5FDC67F01786CC8E00671F79 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC67EF1786CC8E00671F79 /* Parser.m */; };
 		5FDC67F41786F15900671F79 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC67F31786F15900671F79 /* Data.m */; };
+		5FE3A8B2183CFA6C00E881B2 /* libzipzap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE3A8B1183CFA6C00E881B2 /* libzipzap.a */; };
+		5FE3A8B4183CFDAD00E881B2 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE3A8B3183CFDAD00E881B2 /* libc++.dylib */; };
+		5FE3A8B6183CFDB500E881B2 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE3A8B5183CFDB500E881B2 /* ImageIO.framework */; };
+		5FE3A8BA183D2A6F00E881B2 /* Skin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3A8B9183D2A6F00E881B2 /* Skin.m */; };
 		5FEED16B1827BFEB00A21A32 /* PracticeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEED16A1827BFEB00A21A32 /* PracticeSearchViewController.m */; };
 		5FFA0232170D8C22007CD360 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFA0231170D8C22007CD360 /* Downloader.m */; };
 		5FFF28CF1717F9A10000B80B /* JJGWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF28C81717F9A10000B80B /* JJGWebView.m */; };
@@ -130,6 +134,12 @@
 		5FDC67EF1786CC8E00671F79 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parser.m; path = parser/Parser.m; sourceTree = "<group>"; };
 		5FDC67F21786F15900671F79 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		5FDC67F31786F15900671F79 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
+		5FE3A8A5183CFA0F00E881B2 /* zipzap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = zipzap.xcodeproj; path = ../MyPractice/zipzap/zipzap.xcodeproj; sourceTree = "<group>"; };
+		5FE3A8B1183CFA6C00E881B2 /* libzipzap.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libzipzap.a; path = "MyPractice/zipzap/build/Debug-iphoneos/libzipzap.a"; sourceTree = "<group>"; };
+		5FE3A8B3183CFDAD00E881B2 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		5FE3A8B5183CFDB500E881B2 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		5FE3A8B8183D2A6F00E881B2 /* Skin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skin.h; sourceTree = "<group>"; };
+		5FE3A8B9183D2A6F00E881B2 /* Skin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Skin.m; sourceTree = "<group>"; };
 		5FEED1691827BFEB00A21A32 /* PracticeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PracticeSearchViewController.h; sourceTree = "<group>"; };
 		5FEED16A1827BFEB00A21A32 /* PracticeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PracticeSearchViewController.m; sourceTree = "<group>"; };
 		5FFA0230170D8C22007CD360 /* Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
@@ -156,6 +166,9 @@
 				5F82A89B170B3D8E00FE72B8 /* CoreGraphics.framework in Frameworks */,
 				5F1EF761182E76B30078F89B /* libz.dylib in Frameworks */,
 				5F1EF75D182E76890078F89B /* libTestFlight.a in Frameworks */,
+				5FE3A8B4183CFDAD00E881B2 /* libc++.dylib in Frameworks */,
+				5FE3A8B6183CFDB500E881B2 /* ImageIO.framework in Frameworks */,
+				5FE3A8B2183CFA6C00E881B2 /* libzipzap.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +242,9 @@
 		5F82A895170B3D8E00FE72B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FE3A8B5183CFDB500E881B2 /* ImageIO.framework */,
+				5FE3A8B3183CFDAD00E881B2 /* libc++.dylib */,
+				5FE3A8B1183CFA6C00E881B2 /* libzipzap.a */,
 				5F1EF760182E76B30078F89B /* libz.dylib */,
 				5FFF2ACA1717FD1C0000B80B /* MessageUI.framework */,
 				5FFF2AC81717FD110000B80B /* Security.framework */,
@@ -266,6 +282,7 @@
 		5F942D09182BA92400EF0532 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5FE3A8B7183D2A4600E881B2 /* Skin */,
 				5F942D0E182BA9E900EF0532 /* Table cell prototypes */,
 				5F8EC156180EA8790080A62E /* SplashViewController.h */,
 				5F8EC157180EA8790080A62E /* SplashViewController.m */,
@@ -329,6 +346,15 @@
 			name = TBXML;
 			sourceTree = "<group>";
 		};
+		5FE3A8B7183D2A4600E881B2 /* Skin */ = {
+			isa = PBXGroup;
+			children = (
+				5FE3A8B8183D2A6F00E881B2 /* Skin.h */,
+				5FE3A8B9183D2A6F00E881B2 /* Skin.m */,
+			);
+			name = Skin;
+			sourceTree = "<group>";
+		};
 		5FFA022E170D8BC7007CD360 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +367,7 @@
 		5FFA022F170D8BD5007CD360 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				5FE3A8A5183CFA0F00E881B2 /* zipzap.xcodeproj */,
 				5F1EF756182E76890078F89B /* TestFlightSDK */,
 				5F942D16182D4F0300EF0532 /* TPKeyboardAvoiding */,
 				5FFF28C51717F9A10000B80B /* JJGWebView */,
@@ -486,6 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FE3A8BA183D2A6F00E881B2 /* Skin.m in Sources */,
 				5F91353818115E8F00CB60E4 /* SelectYourPracticeTableCell.m in Sources */,
 				5F82A8A3170B3D8E00FE72B8 /* main.m in Sources */,
 				5F82A8A7170B3D8E00FE72B8 /* YourPracticeAppDelegate.m in Sources */,
@@ -593,11 +621,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Greenwood Pediatrics/Your Practice-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Greenwood Pediatrics/Your Practice-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/zadamek/Documents/NewPush/Greenwood\\ Pediatrics/Greenwood\\ Pediatrics/Greenwood\\ Pediatrics/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = "Your Practice";
+				PROVISIONING_PROFILE = "D442812F-553F-4AEE-8AA7-77EFBEDDF4B8";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/Greenwood Pediatrics/Greenwood Pediatrics/MyPractice/zipzap/zipzap";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -611,11 +643,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Greenwood Pediatrics/Your Practice-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Greenwood Pediatrics/Your Practice-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/zadamek/Documents/NewPush/Greenwood\\ Pediatrics/Greenwood\\ Pediatrics/Greenwood\\ Pediatrics/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = "Your Practice";
+				PROVISIONING_PROFILE = "ACECD4E1-E5F3-48CC-ACF9-E0FDF1DB1B49";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/Greenwood Pediatrics/Greenwood Pediatrics/MyPractice/zipzap/zipzap";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -8,6 +8,7 @@
 
 #import "SplashViewController.h"
 #import "Logic.h"
+#import "Skin.h"
 
 @interface SplashViewController ()
 
@@ -19,6 +20,7 @@ Logic *logic;
 
 -(void)viewDidLoad {
     logic = [Logic sharedLogic];
+    [Skin applySplashOnImageView:_splashImageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
