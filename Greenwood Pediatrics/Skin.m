@@ -27,11 +27,38 @@
     [self applyFile:@"background.png" onImageView:imageView];
 }
 
++(void)applyLogoOnImageView:(UIImageView *)imageView {
+    [self applyFile:@"logo.png" onImageView:imageView];
+}
+
 +(void)applyBackgroundOnButton:(UIButton *)button {
     NSString *buttonPath = [FileHandling getSkinFilePathWithComponent:@"button.9.png"];
     if (nil != buttonPath) {
         UIImage *image = [UIImage imageWithContentsOfFile:buttonPath];
         [button setBackgroundImage:image forState:UIControlStateNormal];
+    }
+}
+
++(void)applySubMenuBGOnView:(UITableView *)view {
+    NSString *bgPath = [FileHandling getSkinFilePathWithComponent:@"background_main.png"];
+    if (nil != bgPath) {
+        UIImage *image = [UIImage imageWithContentsOfFile:bgPath];
+        UIImageView *bg = [[UIImageView alloc] initWithImage:image];
+        bg.contentMode = UIViewContentModeScaleAspectFill;
+        [view setBackgroundView:bg];
+    }
+}
+
++(void)applyPageBGOnWebView:(UIWebView *)webView inViewController:(UIViewController *)viewController {
+    NSString *bgPath = [FileHandling getSkinFilePathWithComponent:@"background_main.png"];
+    if (nil != bgPath) {
+        UIImage *image = [UIImage imageWithContentsOfFile:bgPath];
+        UIImageView *bg = [[UIImageView alloc] initWithImage:image];
+        [viewController.view insertSubview:bg belowSubview:webView];
+        bg.contentMode = UIViewContentModeScaleAspectFill;
+        bg.frame = viewController.view.bounds;
+        [webView setBackgroundColor:[UIColor clearColor]];
+        [webView setOpaque:NO];
     }
 }
 

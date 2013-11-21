@@ -8,6 +8,7 @@
 
 #import "PageViewController.h"
 #import "Logic.h"
+#import "Skin.h"
 
 @interface PageViewController ()
 
@@ -19,6 +20,8 @@ Logic *logic;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [Skin applyPageBGOnWebView:_pageWebView inViewController:self];
+    
     logic = [Logic sharedLogic];
     
     NSDictionary *page = [logic getDataToDisplayForPage];

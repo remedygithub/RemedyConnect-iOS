@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *mainMenuButtons;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 - (IBAction)buttonPressed:(id)sender;
 

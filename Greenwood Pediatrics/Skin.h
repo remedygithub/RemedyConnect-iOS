@@ -12,6 +12,8 @@
 
 +(void)applySplashOnImageView:(UIImageView *)imageView;
 +(void)applyMainMenuBGOnImageView:(UIImageView *)imageView;
++(void)applyLogoOnImageView:(UIImageView *)imageView;
 +(void)applyBackgroundOnButton:(UIButton *)button;
-
++(void)applySubMenuBGOnView:(UITableView *)view;
++(void)applyPageBGOnWebView:(UIWebView *)webView inViewController:(UIViewController *)viewController;
 @end

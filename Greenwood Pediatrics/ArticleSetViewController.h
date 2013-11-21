@@ -11,4 +11,6 @@
 
 @interface ArticleSetViewController : UITableViewController <ArticleSetDelegate>
 
+@property (strong, nonatomic) IBOutlet UITableView *menuTableView;
+
 @end

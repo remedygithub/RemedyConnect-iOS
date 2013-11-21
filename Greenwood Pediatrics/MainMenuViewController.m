@@ -21,10 +21,11 @@ Logic *logic;
 - (void)viewDidLoad {
     logic = [Logic sharedLogic];
     [Skin applyMainMenuBGOnImageView:_backgroundImage];
+    [Skin applyLogoOnImageView:_logoImageView];
     NSArray *menu = [logic getDataToDisplayForMainMenu];
     for (int i = 0; i < [_mainMenuButtons count]; ++i) {
         UIButton *button = [_mainMenuButtons objectAtIndex:i];
-        NSString *title = [[menu objectAtIndex:i] objectForKey:@"name"]; //feed, externalLink
+        NSString *title = [[menu objectAtIndex:i] objectForKey:@"name"];
         [button setTitle:title forState:UIControlStateNormal];
         [button setTag:i];
         [Skin applyBackgroundOnButton:button];

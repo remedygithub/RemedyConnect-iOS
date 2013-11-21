@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "Logic.h"
+#import "Skin.h"
 
 @interface MenuViewController ()
 
@@ -21,6 +22,7 @@ NSArray *menuItems;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [Skin applySubMenuBGOnView:_menuTableView];
     logic = [Logic sharedLogic];
     menuItems = [logic getDataToDisplayForSubMenu];
     [self setTitle:logic.title];

@@ -8,6 +8,7 @@
 
 #import "ArticleSetViewController.h"
 #import "Logic.h"
+#import "Skin.h"
 
 @interface ArticleSetViewController ()
 
@@ -21,6 +22,7 @@ NSArray *articleSetItems;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [Skin applySubMenuBGOnView:_menuTableView];
     logic = [Logic sharedLogic];
     [self setTitle:logic.title];
     articleSetItems = [logic getDataToDisplayForArticleSet:TRUE];

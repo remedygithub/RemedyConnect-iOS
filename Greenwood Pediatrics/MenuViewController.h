@@ -10,4 +10,7 @@
 #import "Logic.h"
 
 @interface MenuViewController : UITableViewController <SubMenuDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *menuTableView;
+
 @end

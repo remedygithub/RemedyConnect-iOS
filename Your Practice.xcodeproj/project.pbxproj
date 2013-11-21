@@ -63,6 +63,30 @@
 		5FFF28D41717F9A10000B80B /* JJGWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF28CE1717F9A10000B80B /* JJGWebView.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5F916632183DEF2A00E74748 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FE3A8A5183CFA0F00E881B2 /* zipzap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D899CF82162C5EC100112F49;
+			remoteInfo = "zipzap (OS X)";
+		};
+		5F916634183DEF2A00E74748 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FE3A8A5183CFA0F00E881B2 /* zipzap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D899CFB0162C5EEB00112F49;
+			remoteInfo = "zipzap (iOS)";
+		};
+		5F916636183DEF2A00E74748 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FE3A8A5183CFA0F00E881B2 /* zipzap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D899CF96162C5EC100112F49;
+			remoteInfo = zipzapTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5F1EF753182D9F790078F89B /* ArticleSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleSetViewController.h; sourceTree = "<group>"; };
 		5F1EF754182D9F790078F89B /* ArticleSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleSetViewController.m; sourceTree = "<group>"; };
@@ -135,7 +159,7 @@
 		5FDC67F21786F15900671F79 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		5FDC67F31786F15900671F79 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 		5FE3A8A5183CFA0F00E881B2 /* zipzap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = zipzap.xcodeproj; path = ../MyPractice/zipzap/zipzap.xcodeproj; sourceTree = "<group>"; };
-		5FE3A8B1183CFA6C00E881B2 /* libzipzap.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libzipzap.a; path = "MyPractice/zipzap/build/Debug-iphoneos/libzipzap.a"; sourceTree = "<group>"; };
+		5FE3A8B1183CFA6C00E881B2 /* libzipzap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzipzap.a; path = "MyPractice/zipzap/build/Debug-iphoneos/libzipzap.a"; sourceTree = "<group>"; };
 		5FE3A8B3183CFDAD00E881B2 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		5FE3A8B5183CFDB500E881B2 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		5FE3A8B8183D2A6F00E881B2 /* Skin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skin.h; sourceTree = "<group>"; };
@@ -277,6 +301,16 @@
 				5F82A8A2170B3D8E00FE72B8 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F91662D183DEF2A00E74748 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F916633183DEF2A00E74748 /* libzipzap.a */,
+				5F916635183DEF2A00E74748 /* libzipzap.a */,
+				5F916637183DEF2A00E74748 /* zipzapTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		5F942D09182BA92400EF0532 /* View controllers */ = {
@@ -471,12 +505,42 @@
 			mainGroup = 5F82A88A170B3D8E00FE72B8;
 			productRefGroup = 5F82A894170B3D8E00FE72B8 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5F91662D183DEF2A00E74748 /* Products */;
+					ProjectRef = 5FE3A8A5183CFA0F00E881B2 /* zipzap.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5F82A892170B3D8E00FE72B8 /* Your Practice */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5F916633183DEF2A00E74748 /* libzipzap.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libzipzap.a;
+			remoteRef = 5F916632183DEF2A00E74748 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F916635183DEF2A00E74748 /* libzipzap.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libzipzap.a;
+			remoteRef = 5F916634183DEF2A00E74748 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5F916637183DEF2A00E74748 /* zipzapTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = zipzapTests.xctest;
+			remoteRef = 5F916636183DEF2A00E74748 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5F82A891170B3D8E00FE72B8 /* Resources */ = {
