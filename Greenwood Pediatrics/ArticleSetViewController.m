@@ -23,6 +23,7 @@ NSArray *articleSetItems;
 {
     [super viewDidLoad];
     [Skin applySubMenuBGOnView:_menuTableView];
+    [Skin applySubLogoOnImageView:_headerImageView];
     logic = [Logic sharedLogic];
     [self setTitle:logic.title];
     articleSetItems = [logic getDataToDisplayForArticleSet:TRUE];

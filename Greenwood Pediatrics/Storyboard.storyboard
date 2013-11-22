@@ -335,9 +335,13 @@ To select your practice, type and search. If you would like to search for the ne
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4Yf-wx-8HF" userLabel="Header image">
+                            <rect key="frame" x="0.0" y="44" width="320" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Z3s-Ig-osq" style="IBUITableViewCellStyleDefault" id="3CF-ya-Uzw">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="166" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3CF-ya-Uzw" id="GyJ-Ak-rKB">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -363,6 +367,7 @@ To select your practice, type and search. If you would like to search for the ne
                     <navigationItem key="navigationItem" title="ArticleSet" id="uIq-FL-BbY"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="headerImageView" destination="4Yf-wx-8HF" id="Koc-Fd-zHH"/>
                         <outlet property="menuTableView" destination="iLn-zB-UT2" id="9q8-no-bkP"/>
                         <segue destination="zZM-14-GSB" kind="push" identifier="ToPage" id="Iww-Ui-22a"/>
                     </connections>
@@ -378,9 +383,13 @@ To select your practice, type and search. If you would like to search for the ne
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uwM-BZ-zZu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="QRx-WO-4LP" userLabel="Header image">
+                            <rect key="frame" x="0.0" y="44" width="320" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="60S-Aa-PGN" style="IBUITableViewCellStyleDefault" id="o6c-pA-rgg">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="166" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o6c-pA-rgg" id="nBn-QK-ktP">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -406,6 +415,7 @@ To select your practice, type and search. If you would like to search for the ne
                     <navigationItem key="navigationItem" title="Menu" id="7Hi-mG-tSx"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="menuHeaderImageView" destination="QRx-WO-4LP" id="JZp-9I-jnq"/>
                         <outlet property="menuTableView" destination="uwM-BZ-zZu" id="eCl-XD-18Y"/>
                         <segue destination="zZM-14-GSB" kind="push" identifier="ToPage" id="bp8-LV-DSM"/>
                         <segue destination="LKm-YM-Tz0" kind="push" identifier="ToArticleSet" id="sPk-7L-KYB"/>
@@ -498,7 +508,7 @@ To select your practice, type and search. If you would like to search for the ne
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="eF5-Dc-4Os"/>
-        <segue reference="cSc-5f-5Z6"/>
-        <segue reference="LV1-wv-wCh"/>
+        <segue reference="sPk-7L-KYB"/>
+        <segue reference="bp8-LV-DSM"/>
     </inferredMetricsTieBreakers>
 </document>

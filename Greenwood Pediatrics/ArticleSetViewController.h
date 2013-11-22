@@ -12,5 +12,6 @@
 @interface ArticleSetViewController : UITableViewController <ArticleSetDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *menuTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 
 @end

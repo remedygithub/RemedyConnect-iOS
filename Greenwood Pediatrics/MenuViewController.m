@@ -23,6 +23,7 @@ NSArray *menuItems;
 {
     [super viewDidLoad];
     [Skin applySubMenuBGOnView:_menuTableView];
+    [Skin applySubLogoOnImageView:_menuHeaderImageView];
     logic = [Logic sharedLogic];
     menuItems = [logic getDataToDisplayForSubMenu];
     [self setTitle:logic.title];

@@ -21,7 +21,7 @@ Logic *logic;
 - (void)viewDidLoad {
     logic = [Logic sharedLogic];
     [Skin applyMainMenuBGOnImageView:_backgroundImage];
-    [Skin applyLogoOnImageView:_logoImageView];
+    [Skin applyMainLogoOnImageView:_logoImageView];
     NSArray *menu = [logic getDataToDisplayForMainMenu];
     for (int i = 0; i < [_mainMenuButtons count]; ++i) {
         UIButton *button = [_mainMenuButtons objectAtIndex:i];

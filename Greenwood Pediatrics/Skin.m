@@ -27,7 +27,11 @@
     [self applyFile:@"background.png" onImageView:imageView];
 }
 
-+(void)applyLogoOnImageView:(UIImageView *)imageView {
++(void)applyMainLogoOnImageView:(UIImageView *)imageView {
+    [self applyFile:@"menulogo.png" onImageView:imageView];
+}
+
++(void)applySubLogoOnImageView:(UIImageView *)imageView {
     [self applyFile:@"logo.png" onImageView:imageView];
 }
 
