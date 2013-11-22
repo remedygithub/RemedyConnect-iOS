@@ -1,0 +1,17 @@
+body {
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-size: 16px;
+    color: #000;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans Condensed';
+    font-weight: bold;
+}
+
+.headerLogo {
+    margin: 0;
+    width: 100%;
+}

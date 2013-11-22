@@ -36,6 +36,12 @@
 		5F91352F180FE7EC00CB60E4 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91352E180FE7EC00CB60E4 /* PageViewController.m */; };
 		5F913535181159B500CB60E4 /* SelectPracticeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F913534181159B500CB60E4 /* SelectPracticeTableViewController.m */; };
 		5F91353818115E8F00CB60E4 /* SelectYourPracticeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91353718115E8F00CB60E4 /* SelectYourPracticeTableCell.m */; };
+		5F916639183F88DB00E74748 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 5F916638183F88DB00E74748 /* style.css */; };
+		5F916648183F926A00E74748 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F91663B183F926A00E74748 /* OpenSans-Bold.ttf */; };
+		5F916649183F926A00E74748 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F91663C183F926A00E74748 /* OpenSans-BoldItalic.ttf */; };
+		5F91664A183F926A00E74748 /* OpenSans-CondBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F91663D183F926A00E74748 /* OpenSans-CondBold.ttf */; };
+		5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F916642183F926A00E74748 /* OpenSans-Italic.ttf */; };
+		5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F916645183F926A00E74748 /* OpenSans-Regular.ttf */; };
 		5F942D08182B994D00EF0532 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F942D07182B994D00EF0532 /* MenuViewController.m */; };
 		5F942D0D182BA9AB00EF0532 /* Logic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F942D0C182BA9AB00EF0532 /* Logic.m */; };
 		5F942D11182D0B6200EF0532 /* DefaultPracticeHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F942D10182D0B6200EF0532 /* DefaultPracticeHandling.m */; };
@@ -131,6 +137,12 @@
 		5F913534181159B500CB60E4 /* SelectPracticeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPracticeTableViewController.m; sourceTree = "<group>"; };
 		5F91353618115E8F00CB60E4 /* SelectYourPracticeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectYourPracticeTableCell.h; sourceTree = "<group>"; };
 		5F91353718115E8F00CB60E4 /* SelectYourPracticeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectYourPracticeTableCell.m; sourceTree = "<group>"; };
+		5F916638183F88DB00E74748 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		5F91663B183F926A00E74748 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		5F91663C183F926A00E74748 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		5F91663D183F926A00E74748 /* OpenSans-CondBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondBold.ttf"; sourceTree = "<group>"; };
+		5F916642183F926A00E74748 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		5F916645183F926A00E74748 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		5F942D06182B994D00EF0532 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		5F942D07182B994D00EF0532 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		5F942D0B182BA9AB00EF0532 /* Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logic.h; sourceTree = "<group>"; };
@@ -313,6 +325,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5F91663A183F926A00E74748 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5F91663B183F926A00E74748 /* OpenSans-Bold.ttf */,
+				5F91663C183F926A00E74748 /* OpenSans-BoldItalic.ttf */,
+				5F91663D183F926A00E74748 /* OpenSans-CondBold.ttf */,
+				5F916642183F926A00E74748 /* OpenSans-Italic.ttf */,
+				5F916645183F926A00E74748 /* OpenSans-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		5F942D09182BA92400EF0532 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +468,7 @@
 		5FFF2AE0171824A70000B80B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5F91663A183F926A00E74748 /* fonts */,
 				5F8EC154180EA42B0080A62E /* Images.xcassets */,
 				5F82A8A8170B3D8E00FE72B8 /* Default.png */,
 				5F82A8AA170B3D8E00FE72B8 /* Default@2x.png */,
@@ -455,6 +480,7 @@
 				5F8EC143180EA2620080A62E /* button.9.png */,
 				5F8EC146180EA2620080A62E /* logo.png */,
 				5F8EC147180EA2620080A62E /* splashscreen.png */,
+				5F916638183F88DB00E74748 /* style.css */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -567,6 +593,12 @@
 				5F8EC14C180EA2620080A62E /* logo.png in Resources */,
 				5F8EC14D180EA2620080A62E /* splashscreen.png in Resources */,
 				5F8EC151180EA4010080A62E /* icon_spotlight.png in Resources */,
+				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
+				5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */,
+				5F916648183F926A00E74748 /* OpenSans-Bold.ttf in Resources */,
+				5F916649183F926A00E74748 /* OpenSans-BoldItalic.ttf in Resources */,
+				5F91664A183F926A00E74748 /* OpenSans-CondBold.ttf in Resources */,
+				5F916639183F88DB00E74748 /* style.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

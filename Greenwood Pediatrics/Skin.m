@@ -53,6 +53,11 @@
     }
 }
 
++(NSString *)logoContentsForWebView {
+    NSString *logoPath = [FileHandling getSkinFilePathWithComponent:@"logo.png"];
+    return [NSString stringWithFormat:@"<img src='file://%@' class='headerlogo' />", logoPath];
+}
+
 +(void)applyPageBGOnWebView:(UIWebView *)webView inViewController:(UIViewController *)viewController {
     NSString *bgPath = [FileHandling getSkinFilePathWithComponent:@"background_main.png"];
     if (nil != bgPath) {
@@ -64,6 +69,14 @@
         [webView setBackgroundColor:[UIColor clearColor]];
         [webView setOpaque:NO];
     }
+}
+
++(NSString *)wrapHTMLBodyWithStyle:(NSString *)bodyText {
+    NSURL *bundleURL = [[NSBundle mainBundle] resourceURL];
+    NSString *cssLink = @"<link rel='stylesheet' href='style.css' type='text/css'/>";
+    NSString *format = @"<html><head><base href='%@'/>%@</head><body>%@</body>";
+    NSString *result = [[NSString alloc] initWithFormat: format, bundleURL, cssLink, bodyText];
+    return result;
 }
 
 @end

@@ -26,13 +26,16 @@ Logic *logic;
     
     NSDictionary *page = [logic getDataToDisplayForPage];
     NSString *title = [page objectForKey:@"title"];
-    NSString *text = [page objectForKey:@"text"];
+    NSString *text = [NSString stringWithFormat:@"%@ %@",
+                      [Skin logoContentsForWebView],
+                      [page objectForKey:@"text"]];
     [self setTitle:title];
     
     [_pageWebView setDelegate:self];
     
     if (nil != text) {
         NSURL *baseURL = [NSURL URLWithString:@""];
+        text = [Skin wrapHTMLBodyWithStyle:text];
         [_pageWebView loadHTMLString:text baseURL:baseURL];
     }
 }
@@ -41,11 +44,6 @@ Logic *logic;
     if (nil == parent) {
         [logic unwindBackStack];
     }
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    //NSString *title = [_pageWebView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    //[self setTitle:title];
 }
 
 @end

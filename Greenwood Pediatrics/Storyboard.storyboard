@@ -335,7 +335,7 @@ To select your practice, type and search. If you would like to search for the ne
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4Yf-wx-8HF" userLabel="Header image">
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4Yf-wx-8HF" userLabel="Header image">
                             <rect key="frame" x="0.0" y="44" width="320" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -509,6 +509,6 @@ To select your practice, type and search. If you would like to search for the ne
     <inferredMetricsTieBreakers>
         <segue reference="eF5-Dc-4Os"/>
         <segue reference="sPk-7L-KYB"/>
-        <segue reference="bp8-LV-DSM"/>
+        <segue reference="Iww-Ui-22a"/>
     </inferredMetricsTieBreakers>
 </document>
