@@ -66,6 +66,12 @@ int itemFromArticleSet = -1;
     }
 }
 
+-(void)resetBackStack {
+    NSMutableArray* newStack = [[NSMutableArray alloc] initWithCapacity:10];
+    [newStack addObject:[feedStack objectAtIndex:0]];
+    feedStack = newStack;
+}
+
 #pragma mark - Download-related methods
 
 +(NSString *)getFeedRoot {
@@ -349,6 +355,12 @@ int itemFromArticleSet = -1;
 
 -(void)advanceToPage {
     [[self getSeguePerformer] performSegueWithIdentifier:@"ToPage" sender:self];
+    [self resetAllDelegates];
+}
+
+-(void)moveBackToMain {
+    [[self getSeguePerformer].navigationController popToRootViewControllerAnimated:YES];
+    [self resetBackStack];
     [self resetAllDelegates];
 }
 

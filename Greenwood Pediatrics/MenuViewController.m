@@ -58,4 +58,9 @@ NSArray *menuItems;
     [logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
 }
 
+- (IBAction)goHome:(id)sender {
+    [logic setSubMenuDelegate:self];
+    [logic moveBackToMain];
+}
+
 @end

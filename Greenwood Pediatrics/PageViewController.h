@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Logic.h"
 
-@interface PageViewController : UIViewController<UIWebViewDelegate>
+@interface PageViewController : UIViewController<UIWebViewDelegate, PageDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *pageWebView;
+- (IBAction)goHome:(id)sender;
 @end

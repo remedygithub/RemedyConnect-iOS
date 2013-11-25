@@ -57,6 +57,7 @@
 + (id)sharedLogic;
 
 -(void)unwindBackStack;
+-(void)resetBackStack;
 
 #pragma mark - Download-related methods
 -(void)ifDataAvailableAdvanceToMain;
@@ -82,6 +83,7 @@
 -(void)advanceToSubMenu;
 -(void)advanceToArticleSet;
 -(void)advanceToPage;
+-(void)moveBackToMain;
 
 #pragma mark - Fetching data for the scenes
 -(NSArray *)getDataToDisplayForMainMenu;
