@@ -12,6 +12,9 @@
 		5F1EF75E182E76890078F89B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F1EF758182E76890078F89B /* README.md */; };
 		5F1EF75F182E76890078F89B /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F1EF759182E76890078F89B /* release_notes.md */; };
 		5F1EF761182E76B30078F89B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EF760182E76B30078F89B /* libz.dylib */; };
+		5F55F55918438F7B007FAE9E /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F55F55618438F7B007FAE9E /* PopoverView.m */; };
+		5F55F55E18438FB4007FAE9E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F55F55D18438FB4007FAE9E /* QuartzCore.framework */; };
+		5F6B47B7184397350083568C /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F6B47B6184397350083568C /* menu.png */; };
 		5F82A897170B3D8E00FE72B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F82A896170B3D8E00FE72B8 /* UIKit.framework */; };
 		5F82A899170B3D8E00FE72B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F82A898170B3D8E00FE72B8 /* Foundation.framework */; };
 		5F82A89B170B3D8E00FE72B8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F82A89A170B3D8E00FE72B8 /* CoreGraphics.framework */; };
@@ -103,6 +106,12 @@
 		5F1EF75B182E76890078F89B /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		5F1EF75C182E76890078F89B /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		5F1EF760182E76B30078F89B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5F55F55518438F7B007FAE9E /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
+		5F55F55618438F7B007FAE9E /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		5F55F55718438F7B007FAE9E /* PopoverView_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView_Configuration.h; sourceTree = "<group>"; };
+		5F55F55818438F7B007FAE9E /* PopoverViewCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewCompatibility.h; sourceTree = "<group>"; };
+		5F55F55D18438FB4007FAE9E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5F6B47B6184397350083568C /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		5F82A893170B3D8E00FE72B8 /* Your Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Your Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F82A896170B3D8E00FE72B8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5F82A898170B3D8E00FE72B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -205,6 +214,7 @@
 				5FE3A8B4183CFDAD00E881B2 /* libc++.dylib in Frameworks */,
 				5FE3A8B6183CFDB500E881B2 /* ImageIO.framework in Frameworks */,
 				5FE3A8B2183CFA6C00E881B2 /* libzipzap.a in Frameworks */,
+				5F55F55E18438FB4007FAE9E /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +233,17 @@
 			);
 			name = TestFlightSDK;
 			path = TestFlightSDK2.0.2;
+			sourceTree = "<group>";
+		};
+		5F55F55418438F7B007FAE9E /* PopoverView */ = {
+			isa = PBXGroup;
+			children = (
+				5F55F55518438F7B007FAE9E /* PopoverView.h */,
+				5F55F55618438F7B007FAE9E /* PopoverView.m */,
+				5F55F55718438F7B007FAE9E /* PopoverView_Configuration.h */,
+				5F55F55818438F7B007FAE9E /* PopoverViewCompatibility.h */,
+			);
+			path = PopoverView;
 			sourceTree = "<group>";
 		};
 		5F73240518211BE500EB757B /* Actual code */ = {
@@ -278,6 +299,7 @@
 		5F82A895170B3D8E00FE72B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F55F55D18438FB4007FAE9E /* QuartzCore.framework */,
 				5FE3A8B5183CFDB500E881B2 /* ImageIO.framework */,
 				5FE3A8B3183CFDAD00E881B2 /* libc++.dylib */,
 				5FE3A8B1183CFA6C00E881B2 /* libzipzap.a */,
@@ -430,6 +452,7 @@
 				5F942D16182D4F0300EF0532 /* TPKeyboardAvoiding */,
 				5FFF28C51717F9A10000B80B /* JJGWebView */,
 				5FAA8983170C39A400FE4200 /* TBXML */,
+				5F55F55418438F7B007FAE9E /* PopoverView */,
 				5FFA022E170D8BC7007CD360 /* MBProgressHUD */,
 			);
 			name = Libs;
@@ -470,6 +493,7 @@
 			children = (
 				5F91663A183F926A00E74748 /* fonts */,
 				5F8EC154180EA42B0080A62E /* Images.xcassets */,
+				5F6B47B6184397350083568C /* menu.png */,
 				5F82A8A8170B3D8E00FE72B8 /* Default.png */,
 				5F82A8AA170B3D8E00FE72B8 /* Default@2x.png */,
 				5F82A8AC170B3D8E00FE72B8 /* Default-568h@2x.png */,
@@ -594,6 +618,7 @@
 				5F8EC14D180EA2620080A62E /* splashscreen.png in Resources */,
 				5F8EC151180EA4010080A62E /* icon_spotlight.png in Resources */,
 				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
+				5F6B47B7184397350083568C /* menu.png in Resources */,
 				5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */,
 				5F916648183F926A00E74748 /* OpenSans-Bold.ttf in Resources */,
 				5F916649183F926A00E74748 /* OpenSans-BoldItalic.ttf in Resources */,
@@ -625,6 +650,7 @@
 				5FAA898F170C3FEB00FE4200 /* FileHandling.m in Sources */,
 				5FFA0232170D8C22007CD360 /* Downloader.m in Sources */,
 				5FC30851170EAC79002883A6 /* DownloadStatus.m in Sources */,
+				5F55F55918438F7B007FAE9E /* PopoverView.m in Sources */,
 				5FFF28CF1717F9A10000B80B /* JJGWebView.m in Sources */,
 				5F942D11182D0B6200EF0532 /* DefaultPracticeHandling.m in Sources */,
 				5F942D21182D4F0300EF0532 /* TPKeyboardAvoidingTableView.m in Sources */,

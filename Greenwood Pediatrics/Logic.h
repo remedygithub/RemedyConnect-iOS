@@ -44,10 +44,14 @@
 @protocol MainDownloadStarterDelegate <DownloaderUIDelegate>
 @end
 
+@protocol UpdateDownloadStarterDelegate <DownloaderUIDelegate>
+@end
+
 @interface Logic : NSObject <DownloaderDelegate>
 @property (nonatomic, strong) UIViewController <ShouldDownloadStartDelegate> *downloadStartDelegate;
 @property (nonatomic, strong) UIViewController <PracticeListDownloadStarterDelegate> *practiceListDownloadStarterDelegate;
 @property (nonatomic, strong) UIViewController <MainDownloadStarterDelegate> *mainDownloadStarterDelegate;
+@property (nonatomic, strong) UIViewController <UpdateDownloadStarterDelegate> *updateDownloadStarterDelegate;
 @property (nonatomic, strong) UIViewController <MainMenuDelegate> *mainMenuDelegate;
 @property (nonatomic, strong) UIViewController <SubMenuDelegate> *subMenuDelegate;
 @property (nonatomic, strong) UIViewController <ArticleSetDelegate> *articleSetDelegate;
@@ -63,6 +67,7 @@
 -(void)ifDataAvailableAdvanceToMain;
 -(void)startDownloadingRootForPracticeSelectionByName:(NSString *)practiceName;
 -(void)startDownloadingRootForPracticeSelectionByLocation;
+-(void)resetAfterUpdate;
 
 #pragma mark - Practice list
 -(NSArray *)getPracticeList;

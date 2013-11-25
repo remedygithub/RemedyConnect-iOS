@@ -58,6 +58,7 @@ Logic *logic;
     [logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
 }
 
+#pragma mark - HUD handling
 - (void)hudWasHidden:(MBProgressHUD *)hud {
 	[statusHUD removeFromSuperview];
 	statusHUD = nil;

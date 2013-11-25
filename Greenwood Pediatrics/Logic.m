@@ -108,6 +108,11 @@ int itemFromArticleSet = -1;
     
 }
 
+-(void)resetAfterUpdate {
+    [self resetAllDelegates];
+    [self resetBackStack];
+}
+
 #pragma mark - Practice list
 -(NSArray *)getPracticeList {
     Parser *parser = [[Parser alloc] initWithXML:[FileHandling getFilePathWithComponent:@"root.xml"]];
@@ -125,6 +130,9 @@ int itemFromArticleSet = -1;
     if (nil != [self mainDownloadStarterDelegate]) {
         [[self mainDownloadStarterDelegate] hasStartedDownloading];
     }
+    if (nil != [self updateDownloadStarterDelegate]) {
+        [[self updateDownloadStarterDelegate] hasStartedDownloading];
+    }
 }
 
 - (void)hasStartedDownloadingNext {
@@ -133,6 +141,9 @@ int itemFromArticleSet = -1;
     }
     if (nil != [self mainDownloadStarterDelegate]) {
         [[self mainDownloadStarterDelegate] switchToIndeterminate];
+    }
+    if (nil != [self updateDownloadStarterDelegate]) {
+        [[self updateDownloadStarterDelegate] switchToIndeterminate];
     }
 }
 
@@ -143,6 +154,9 @@ int itemFromArticleSet = -1;
     if (nil != [self mainDownloadStarterDelegate]) {
         [[self mainDownloadStarterDelegate] didReceiveResponseForAFileSwitchToDeterminate:[downloader status]];
     }
+    if (nil != [self updateDownloadStarterDelegate]) {
+        [[self updateDownloadStarterDelegate] didReceiveResponseForAFileSwitchToDeterminate:[downloader status]];
+    }
 }
 
 - (void)didReceiveDataForAFile {
@@ -152,10 +166,14 @@ int itemFromArticleSet = -1;
     if (nil != [self mainDownloadStarterDelegate]) {
         [[self mainDownloadStarterDelegate] updateProgress:[downloader status]];
     }
+    if (nil != [self updateDownloadStarterDelegate]) {
+        [[self updateDownloadStarterDelegate] updateProgress:[downloader status]];
+    }
 }
 
 - (void)didFinishForAFile {
-    if (nil != [self mainDownloadStarterDelegate]) {
+    if (nil != [self mainDownloadStarterDelegate] ||
+            nil != [self updateDownloadStarterDelegate]) {
         NSArray *files = [downloader filesToDownload];
         NSUInteger fileIndex = [[downloader status] currentFileIndex];
         NSString *filePath = [[files objectAtIndex:fileIndex] objectForKey:@"path"];
@@ -181,7 +199,6 @@ int itemFromArticleSet = -1;
         [downloader startNextDownload];
     }
     else {
-        
         if (nil != [self practiceListDownloadStarterDelegate]) {
             [[self practiceListDownloadStarterDelegate] didFinish];
             [self advanceToPracticeSelection];
@@ -189,6 +206,9 @@ int itemFromArticleSet = -1;
         if (nil != [self mainDownloadStarterDelegate]) {
             [[self mainDownloadStarterDelegate] didFinish];
             [self advanceToMainMenu];
+        }
+        if (nil != [self updateDownloadStarterDelegate]) {
+            [[self updateDownloadStarterDelegate] didFinish];
         }
     }
 }
@@ -200,6 +220,9 @@ int itemFromArticleSet = -1;
     if (nil != [self mainDownloadStarterDelegate]) {
         [[self mainDownloadStarterDelegate] hasFailed];
     }
+    if (nil != [self updateDownloadStarterDelegate]) {
+        [[self updateDownloadStarterDelegate] hasFailed];
+    }
 }
 
 #pragma mark - Menu choices handling
@@ -207,6 +230,9 @@ int itemFromArticleSet = -1;
     NSArray *menuItems;
     if (nil != _mainDownloadStarterDelegate) {
         [self startMainDownloadWithIndex:tag];
+    }
+    if (nil != _updateDownloadStarterDelegate) {
+        [self startUpdateDownload];
     }
     if (nil != _mainMenuDelegate) {
         menuItems = [self getDataToDisplayForMainMenu];
@@ -250,6 +276,20 @@ int itemFromArticleSet = -1;
     [FileHandling prepareSkinDirectory];
     [DefaultPracticeHandling setFeedRoot:feedURL];
     [DefaultPracticeHandling setDesignPackURL:designPackURL];
+    downloader = [[Downloader alloc] init];
+    [downloader setDelegate:self];
+    [downloader addURLToDownload:feedURL
+                          saveAs:[FileHandling getFilePathWithComponent:@"index.xml"]];
+    [downloader addURLToDownload:designPackURL
+                          saveAs:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip"]];
+    [downloader startDownload];
+}
+
+-(void)startUpdateDownload {
+    NSString *feedURL = [DefaultPracticeHandling feedRoot];
+    NSString *designPackURL = [DefaultPracticeHandling designPackURL];
+    [FileHandling emptySandbox];
+    [FileHandling prepareSkinDirectory];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     [downloader addURLToDownload:feedURL
@@ -307,6 +347,7 @@ int itemFromArticleSet = -1;
     _downloadStartDelegate = nil;
     _practiceListDownloadStarterDelegate = nil;
     _mainDownloadStarterDelegate = nil;
+    _updateDownloadStarterDelegate = nil;
     _mainMenuDelegate = nil;
     _subMenuDelegate = nil;
     _articleSetDelegate = nil;
@@ -317,6 +358,7 @@ int itemFromArticleSet = -1;
     if (nil != _downloadStartDelegate) return _downloadStartDelegate;
     if (nil != _practiceListDownloadStarterDelegate) return _practiceListDownloadStarterDelegate;
     if (nil != _mainDownloadStarterDelegate) return _mainDownloadStarterDelegate;
+    if (nil != _updateDownloadStarterDelegate) return _updateDownloadStarterDelegate;
     if (nil != _mainMenuDelegate) return _mainMenuDelegate;
     if (nil != _subMenuDelegate) return _subMenuDelegate;
     if (nil != _articleSetDelegate) return _articleSetDelegate;

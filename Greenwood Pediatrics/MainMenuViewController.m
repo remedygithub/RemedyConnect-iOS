@@ -9,6 +9,7 @@
 #import "MainMenuViewController.h"
 #import "Logic.h"
 #import "Skin.h"
+#import "PopoverView/PopoverView.h"
 
 @interface MainMenuViewController ()
 
@@ -41,6 +42,24 @@ Logic *logic;
     }
 }
 
+- (IBAction)menuButtonPressed:(id)sender {
+    CGPoint point = CGPointMake(_menuButton.frame.origin.x + _menuButton.frame.size.width / 2,
+                                _menuButton.frame.origin.y + _menuButton.frame.size.height);
+    [PopoverView showPopoverAtPoint:point
+                             inView:self.view
+                    withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
+                                     @"Choose Your Practice", @"Terms and Conditions", @"About", nil]
+                           delegate:self];
+}
+
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
+    if (index == 0) {
+        [logic setUpdateDownloadStarterDelegate:self];
+        [logic handleActionWithTag:0 shouldProceedToPage:FALSE];
+    }
+    [popoverView dismiss:TRUE];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self navigationController] setNavigationBarHidden:TRUE];
@@ -52,5 +71,52 @@ Logic *logic;
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:TRUE];
 }
+
+#pragma mark - HUD handling
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+	[statusHUD removeFromSuperview];
+	statusHUD = nil;
+}
+
+#pragma mark - DownloaderUIDelegate
+- (void)hasStartedDownloading {
+    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    [statusHUD setDelegate:self];
+    [statusHUD setDimBackground:TRUE];
+    [statusHUD setLabelText:@"Starting download..."];
+}
+
+- (void)switchToIndeterminate {
+    [statusHUD setMode:MBProgressHUDModeIndeterminate];
+}
+
+- (void)didReceiveResponseForAFileSwitchToDeterminate:(DownloadStatus *)status {
+    [statusHUD setMode:MBProgressHUDModeDeterminate];
+    [statusHUD setLabelText:
+     [[NSString alloc] initWithFormat:@"Downloading %d/%d...",
+      [status currentFileIndex] + 1,
+      [status numberOfFilesToDownload]]];
+}
+
+- (void)updateProgress:(DownloadStatus *)status {
+    if ([status expectedLength] > 0) {
+        statusHUD.progress = [status currentLength] / (float)[status expectedLength];
+    }
+}
+
+- (void)didFinish {
+    [statusHUD setMode:MBProgressHUDModeText];
+    [statusHUD setLabelText:@"Finished!"];
+    [statusHUD hide:YES afterDelay:2];
+    // We have to reload the data:
+    [logic resetAfterUpdate];
+    [self viewDidLoad];
+}
+
+- (void)hasFailed {
+    [statusHUD setLabelText:@"Failed to download files.\nPlease try again later."];
+    [statusHUD hide:YES afterDelay:2];
+}
+
 
 @end

@@ -17,6 +17,7 @@
 +(void)prepareSkinDirectory;
 +(NSString *)getEffectiveSkinDirectory;
 +(NSString *)getSkinFilePathWithComponent:(NSString *)pathComponent;
++(void)emptySandbox;
 +(void)unzipFileInPlace:(NSString *)zipPath;
 
 @end

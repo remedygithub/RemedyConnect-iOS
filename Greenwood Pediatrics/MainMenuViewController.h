@@ -8,13 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import "Logic.h"
+#import "PopoverView/PopoverView.h"
+#import "MBProgressHUD.h"
 
-@interface MainMenuViewController : UIViewController <MainMenuDelegate>
+@interface MainMenuViewController : UIViewController <MainMenuDelegate, PopoverViewDelegate, MBProgressHUDDelegate, UpdateDownloadStarterDelegate>
+{
+    MBProgressHUD *statusHUD;
+}
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *mainMenuButtons;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 - (IBAction)buttonPressed:(id)sender;
+- (IBAction)menuButtonPressed:(id)sender;
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index;
+
+#pragma mark - DownloaderUIDelegate
+- (void)hasStartedDownloading;
+- (void)switchToIndeterminate;
+- (void)didReceiveResponseForAFileSwitchToDeterminate:(DownloadStatus *)status;
+- (void)updateProgress:(DownloadStatus *)status;
+- (void)didFinish;
+- (void)hasFailed;
 
 @end
