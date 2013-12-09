@@ -10,15 +10,16 @@
 #import "MBProgressHUD.h"
 #import "Logic.h"
 #import "Downloader.h"
+#import <CoreLocation/CoreLocation.h>
 
-
-@interface PracticeSearchViewController : UIViewController <MBProgressHUDDelegate, PracticeListDownloadStarterDelegate>
+@interface PracticeSearchViewController : UIViewController <MBProgressHUDDelegate, PracticeListDownloadStarterDelegate, CLLocationManagerDelegate>
 {
     MBProgressHUD *statusHUD;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *practiceNameField;
 - (IBAction)startDownloading:(id)sender;
+- (IBAction)startLocationSearch:(id)sender;
 
 #pragma mark - DownloaderUIDelegate
 - (void)hasStartedDownloading;
@@ -27,5 +28,10 @@
 - (void)updateProgress:(DownloadStatus *)status;
 - (void)didFinish;
 - (void)hasFailed;
+
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
+
 @end
 

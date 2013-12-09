@@ -41,6 +41,7 @@
 		5F8138EE1855D28400EF3E20 /* ArticleSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1EF754182D9F790078F89B /* ArticleSetViewController.m */; };
 		5F8138EF1855D28400EF3E20 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F91352E180FE7EC00CB60E4 /* PageViewController.m */; };
 		5F8138F01855D28400EF3E20 /* YourPracticeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F82A8A6170B3D8E00FE72B8 /* YourPracticeAppDelegate.m */; };
+		5F8138F21855DC6700EF3E20 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8138F11855DC6700EF3E20 /* CoreLocation.framework */; };
 		5F82A897170B3D8E00FE72B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F82A896170B3D8E00FE72B8 /* UIKit.framework */; };
 		5F82A899170B3D8E00FE72B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F82A898170B3D8E00FE72B8 /* Foundation.framework */; };
 		5F82A89B170B3D8E00FE72B8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F82A89A170B3D8E00FE72B8 /* CoreGraphics.framework */; };
@@ -112,6 +113,7 @@
 		5F55F55818438F7B007FAE9E /* PopoverViewCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewCompatibility.h; sourceTree = "<group>"; };
 		5F55F55D18438FB4007FAE9E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5F6B47B6184397350083568C /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		5F8138F11855DC6700EF3E20 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5F82A893170B3D8E00FE72B8 /* Your Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Your Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F82A896170B3D8E00FE72B8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5F82A898170B3D8E00FE72B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -206,6 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F8138F21855DC6700EF3E20 /* CoreLocation.framework in Frameworks */,
 				5F47012B1855CF4000506CD2 /* libzipzap.a in Frameworks */,
 				5F82A897170B3D8E00FE72B8 /* UIKit.framework in Frameworks */,
 				5F82A899170B3D8E00FE72B8 /* Foundation.framework in Frameworks */,
@@ -311,6 +314,7 @@
 		5F82A895170B3D8E00FE72B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F8138F11855DC6700EF3E20 /* CoreLocation.framework */,
 				5F55F55D18438FB4007FAE9E /* QuartzCore.framework */,
 				5FE3A8B5183CFDB500E881B2 /* ImageIO.framework */,
 				5FE3A8B3183CFDAD00E881B2 /* libc++.dylib */,

@@ -12,6 +12,7 @@
 #import "FileHandling.h"
 #import "Data.h"
 #import "Parser.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface PracticeSearchViewController ()
 
@@ -21,6 +22,7 @@
 Logic *logic;
 UIGestureRecognizer *tapper;
 UITextField *activeField;
+CLLocationManager *locationManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +40,20 @@ UITextField *activeField;
     logic = [Logic sharedLogic];
     [logic setPracticeListDownloadStarterDelegate:self];
     [logic startDownloadingRootForPracticeSelectionByName:_practiceNameField.text];
+}
+
+- (IBAction)startLocationSearch:(id)sender {
+    if (nil == locationManager) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+        locationManager.distanceFilter = 500;
+        [locationManager startUpdatingLocation];
+        statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+        [statusHUD setDelegate:self];
+        [statusHUD setDimBackground:TRUE];
+        [statusHUD setLabelText:@"Waiting for location..."];
+    }
 }
 
 - (void)viewDidLoad {
@@ -92,6 +108,17 @@ UITextField *activeField;
 
 - (void)hasFailed {
     [statusHUD setLabelText:@"Failed to download files.\nPlease try again later."];
+    [statusHUD hide:YES afterDelay:2];
+}
+
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [statusHUD setLabelText:@"Found location."];
+    [statusHUD hide:YES afterDelay:2];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    [statusHUD setLabelText:@"Couldn't find location. Please search by name."];
     [statusHUD hide:YES afterDelay:2];
 }
 
