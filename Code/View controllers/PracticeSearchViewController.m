@@ -73,6 +73,9 @@ CLLocationManager *locationManager;
 #pragma mark - DownloaderUIDelegate
 
 - (void)hasStartedDownloading {
+    if (nil != statusHUD) {
+        [statusHUD hide:TRUE];
+    }
     statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
     [statusHUD setDelegate:self];
     [statusHUD setDimBackground:TRUE];
