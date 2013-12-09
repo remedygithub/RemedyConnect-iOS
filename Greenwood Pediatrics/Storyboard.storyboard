@@ -37,7 +37,7 @@
         <!--Search Practice View Controller-->
         <scene sceneID="ffN-d5-ULp">
             <objects>
-                <viewController title="Your Practice" id="TGd-Uv-wp4" userLabel="Search Practice View Controller" customClass="PracticeSearchViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchPractice" title="Your Practice" id="TGd-Uv-wp4" userLabel="Search Practice View Controller" customClass="PracticeSearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WQS-mI-xxS"/>
                         <viewControllerLayoutGuide type="bottom" id="XdF-gb-SMk"/>
@@ -295,6 +295,7 @@ To select your practice, type and search. If you would like to search for the ne
                         <segue destination="nIb-85-7tT" kind="push" identifier="ToSubMenu" id="YVT-oD-Pkl"/>
                         <segue destination="zZM-14-GSB" kind="push" identifier="ToPage" id="cSc-5f-5Z6"/>
                         <segue destination="LKm-YM-Tz0" kind="push" identifier="ToArticleSet" id="LV1-wv-wCh"/>
+                        <segue destination="5WQ-Sd-arl" kind="modal" identifier="BackToPracticeSearch" modalTransitionStyle="coverVertical" id="VT2-W5-8X0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJC-K9-cwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -542,6 +543,7 @@ To select your practice, type and search. If you would like to search for the ne
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="VT2-W5-8X0"/>
         <segue reference="eF5-Dc-4Os"/>
         <segue reference="LV1-wv-wCh"/>
         <segue reference="cSc-5f-5Z6"/>

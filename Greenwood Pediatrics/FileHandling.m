@@ -65,6 +65,9 @@
                 return [url path];
             }
         }
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[dataPath stringByAppendingPathComponent:@"logo.png"]]) {
+            return dataPath;
+        }
     }
     return @"";
 }

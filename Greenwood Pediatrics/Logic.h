@@ -68,6 +68,7 @@
 -(void)startDownloadingRootForPracticeSelectionByName:(NSString *)practiceName;
 -(void)startDownloadingRootForPracticeSelectionByLocation;
 -(void)resetAfterUpdate;
+-(void)resetBeforeSelection;
 
 #pragma mark - Practice list
 -(NSArray *)getPracticeList;

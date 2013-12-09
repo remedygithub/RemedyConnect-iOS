@@ -113,6 +113,11 @@ int itemFromArticleSet = -1;
     [self resetBackStack];
 }
 
+-(void)resetBeforeSelection {
+    [self resetAllDelegates];
+    feedStack = [[NSMutableArray alloc] initWithCapacity:10];
+}
+
 #pragma mark - Practice list
 -(NSArray *)getPracticeList {
     Parser *parser = [[Parser alloc] initWithXML:[FileHandling getFilePathWithComponent:@"root.xml"]];
@@ -273,6 +278,7 @@ int itemFromArticleSet = -1;
 -(void)startMainDownloadWithIndex:(NSInteger)index {
     NSString *feedURL = [[practiceList objectAtIndex:index] objectForKey:@"feed"];
     NSString *designPackURL = [[practiceList objectAtIndex:index] objectForKey:@"designPack"];
+    [FileHandling emptySandbox];
     [FileHandling prepareSkinDirectory];
     [DefaultPracticeHandling setFeedRoot:feedURL];
     [DefaultPracticeHandling setDesignPackURL:designPackURL];

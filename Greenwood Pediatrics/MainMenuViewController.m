@@ -10,6 +10,7 @@
 #import "Logic.h"
 #import "Skin.h"
 #import "PopoverView/PopoverView.h"
+#import "PracticeSearchViewController.h"
 
 @interface MainMenuViewController ()
 
@@ -26,10 +27,15 @@ Logic *logic;
     NSArray *menu = [logic getDataToDisplayForMainMenu];
     for (int i = 0; i < [_mainMenuButtons count]; ++i) {
         UIButton *button = [_mainMenuButtons objectAtIndex:i];
-        NSString *title = [[menu objectAtIndex:i] objectForKey:@"name"];
-        [button setTitle:title forState:UIControlStateNormal];
-        [button setTag:i];
-        [Skin applyBackgroundOnButton:button];
+        if (i < [menu count]) {
+            NSString *title = [[menu objectAtIndex:i] objectForKey:@"name"];
+            [button setTitle:title forState:UIControlStateNormal];
+            [button setTag:i];
+            [Skin applyBackgroundOnButton:button];
+        }
+        else {
+            [button setHidden:YES];
+        }
     }
 }
 
@@ -56,6 +62,10 @@ Logic *logic;
     if (index == 0) {
         [logic setUpdateDownloadStarterDelegate:self];
         [logic handleActionWithTag:0 shouldProceedToPage:FALSE];
+    }
+    if (index == 1) {
+        [logic resetBeforeSelection];
+        [self performSegueWithIdentifier:@"BackToPracticeSearch" sender:self];
     }
     [popoverView dismiss:TRUE];
 }
