@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Downloader.h"
 #import "DownloadStatus.h"
+#import <CoreLocation/CoreLocation.h>
 
 /*
  Logic is the central singleton for the application logic.
@@ -66,7 +67,7 @@
 #pragma mark - Download-related methods
 -(void)ifDataAvailableAdvanceToMain;
 -(void)startDownloadingRootForPracticeSelectionByName:(NSString *)practiceName;
--(void)startDownloadingRootForPracticeSelectionByLocation;
+-(void)startDownloadingRootForPracticeSelectionByLocation:(CLLocation *)location;
 -(void)resetAfterUpdate;
 -(void)resetBeforeSelection;
 

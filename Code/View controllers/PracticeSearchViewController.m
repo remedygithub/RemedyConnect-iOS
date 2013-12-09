@@ -43,17 +43,15 @@ CLLocationManager *locationManager;
 }
 
 - (IBAction)startLocationSearch:(id)sender {
-    if (nil == locationManager) {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-        locationManager.distanceFilter = 500;
-        [locationManager startUpdatingLocation];
-        statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-        [statusHUD setDelegate:self];
-        [statusHUD setDimBackground:TRUE];
-        [statusHUD setLabelText:@"Waiting for location..."];
-    }
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    locationManager.distanceFilter = 500;
+    [locationManager startUpdatingLocation];
+    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    [statusHUD setDelegate:self];
+    [statusHUD setDimBackground:TRUE];
+    [statusHUD setLabelText:@"Waiting for location..."];
 }
 
 - (void)viewDidLoad {
@@ -115,6 +113,11 @@ CLLocationManager *locationManager;
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [statusHUD setLabelText:@"Found location."];
     [statusHUD hide:YES afterDelay:2];
+    CLLocation *location = [locations lastObject];
+    logic = [Logic sharedLogic];
+    [logic setPracticeListDownloadStarterDelegate:self];
+    [logic startDownloadingRootForPracticeSelectionByLocation:location];
+    [manager stopUpdatingHeading];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

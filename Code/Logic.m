@@ -104,8 +104,14 @@ int itemFromArticleSet = -1;
     [downloader startDownload];
 }
 
--(void)startDownloadingRootForPracticeSelectionByLocation {
-    
+-(void)startDownloadingRootForPracticeSelectionByLocation:(CLLocation *)location; {
+    downloader = [[Downloader alloc] init];
+    [downloader setDelegate:self];
+    NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
+                                              withFeedRoot:[Logic getFeedRoot]];
+    [downloader addURLToDownload:URL
+                          saveAs:[FileHandling getFilePathWithComponent:@"root.xml"]];
+    [downloader startDownload];
 }
 
 -(void)resetAfterUpdate {

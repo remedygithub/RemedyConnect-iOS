@@ -12,6 +12,6 @@
 
 #pragma mark - URL transformation routines for searching
 +(NSString *)getSearchURLByName:(NSString *)practiceName withFeedRoot:(NSString *)feedRoot;
-//+(NSString *)getSearchURLByLocation;
++(NSString *)getSearchURLWithLatitude: (double)latitude withLongitude:(double)longitude withFeedRoot:(NSString *)feedRoot;
 
 @end

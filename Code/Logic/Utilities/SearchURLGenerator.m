@@ -14,4 +14,7 @@
     return [NSString stringWithFormat:@"%@?search=%@", feedRoot, practiceName];
 }
 
++(NSString *)getSearchURLWithLatitude: (double)latitude withLongitude:(double)longitude withFeedRoot:(NSString *)feedRoot {
+    return [NSString stringWithFormat:@"%@?lat=%f&lon=%f", feedRoot, latitude, longitude];
+}
 @end
