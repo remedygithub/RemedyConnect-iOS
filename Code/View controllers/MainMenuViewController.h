@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Logic.h"
-#import "PopoverView/PopoverView.h"
+#import "PopoverView.h"
 #import "MBProgressHUD.h"
 
 @interface MainMenuViewController : UIViewController <MainMenuDelegate, PopoverViewDelegate, MBProgressHUDDelegate, UpdateDownloadStarterDelegate>

@@ -9,7 +9,7 @@
 #import "MainMenuViewController.h"
 #import "Logic.h"
 #import "Skin.h"
-#import "PopoverView/PopoverView.h"
+#import "PopoverView.h"
 #import "PracticeSearchViewController.h"
 
 @interface MainMenuViewController ()
