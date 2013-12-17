@@ -13,11 +13,11 @@
                         <viewControllerLayoutGuide type="bottom" id="FWL-zt-SGE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="B3G-yC-GCg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="2SJ-fu-n8P" userLabel="Splashscreen image view">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="534"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="622"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
@@ -43,7 +43,7 @@
                         <viewControllerLayoutGuide type="bottom" id="XdF-gb-SMk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NDO-1e-ZDN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ztg-Ke-LIB" customClass="TPKeyboardAvoidingScrollView">
@@ -129,18 +129,19 @@ To select your practice, type and search. If you would like to search for the ne
                         <viewControllerLayoutGuide type="bottom" id="8G6-km-2p8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2fl-Ys-H4x" userLabel="Main menu controller">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-cF-eY5" userLabel="Main menu background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="578"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="666"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgM-eP-ocH" userLabel="Menu button 1">
-                                <rect key="frame" x="8" y="300" width="148" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgM-eP-ocH" userLabel="Menu button 1">
+                                <rect key="frame" x="8" y="431" width="148" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="MSK-dl-z37"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="SSc-Dt-hxf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
@@ -152,12 +153,9 @@ To select your practice, type and search. If you would like to search for the ne
                                     <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="XzF-B7-ZYy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vw6-sm-kzp" userLabel="Menu button 2">
-                                <rect key="frame" x="164" y="300" width="148" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vw6-sm-kzp" userLabel="Menu button 2">
+                                <rect key="frame" x="164" y="430" width="148" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="vvs-s7-Nvf"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="[placeholder]">
@@ -168,12 +166,9 @@ To select your practice, type and search. If you would like to search for the ne
                                     <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="bfE-8h-zKl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIJ-DL-ilh" userLabel="Menu button 3">
-                                <rect key="frame" x="8" y="360" width="148" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIJ-DL-ilh" userLabel="Menu button 3">
+                                <rect key="frame" x="8" y="476" width="148" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="aIT-uo-Lxu"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="[placeholder]">
@@ -184,12 +179,9 @@ To select your practice, type and search. If you would like to search for the ne
                                     <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="0aA-Nu-bcY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8h-md-RrF" userLabel="Menu button 4">
-                                <rect key="frame" x="164" y="360" width="148" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8h-md-RrF" userLabel="Menu button 4">
+                                <rect key="frame" x="164" y="476" width="148" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="WiG-Cw-fiJ"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="[placeholder]">
@@ -200,12 +192,9 @@ To select your practice, type and search. If you would like to search for the ne
                                     <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="cAx-oK-WdW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3J2-6g-hl8" userLabel="Menu button 5">
-                                <rect key="frame" x="8" y="420" width="148" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3J2-6g-hl8" userLabel="Menu button 5">
+                                <rect key="frame" x="8" y="522" width="148" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="GaD-pN-QQS"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="[placeholder]">
@@ -216,12 +205,9 @@ To select your practice, type and search. If you would like to search for the ne
                                     <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="cJ7-Jb-y6I"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROm-iv-LS0" userLabel="Menu button 6">
-                                <rect key="frame" x="164" y="420" width="148" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROm-iv-LS0" userLabel="Menu button 6">
+                                <rect key="frame" x="164" y="522" width="148" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="QLX-5T-foR"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="[placeholder]">
@@ -239,8 +225,8 @@ To select your practice, type and search. If you would like to search for the ne
                                     <constraint firstAttribute="height" constant="100" id="6LI-aP-Tu1"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-eW-lu4">
-                                <rect key="frame" x="264" y="20" width="48" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-eW-lu4">
+                                <rect key="frame" x="264" y="20" width="48" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="menu.png">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -253,20 +239,19 @@ To select your practice, type and search. If you would like to search for the ne
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="top" secondItem="CFQ-my-Up5" secondAttribute="bottom" constant="300" id="5mo-mm-Nrb"/>
                             <constraint firstAttribute="trailing" secondItem="ROm-iv-LS0" secondAttribute="trailing" constant="8" id="9kt-aM-7FR"/>
                             <constraint firstItem="BgM-eP-ocH" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" constant="8" id="B3G-R9-Myo"/>
                             <constraint firstItem="RIJ-DL-ilh" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" constant="8" id="CHn-wl-qWE"/>
                             <constraint firstAttribute="trailing" secondItem="vw6-sm-kzp" secondAttribute="trailing" constant="8" id="Fk1-SQ-7AD"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="3J2-6g-hl8" secondAttribute="height" id="FyQ-1J-RF6"/>
+                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="3J2-6g-hl8" secondAttribute="height" constant="-1" id="FyQ-1J-RF6"/>
                             <constraint firstItem="BgM-eP-ocH" firstAttribute="width" secondItem="T8h-md-RrF" secondAttribute="width" id="HeO-vl-4ou"/>
                             <constraint firstItem="ROm-iv-LS0" firstAttribute="leading" secondItem="3J2-6g-hl8" secondAttribute="trailing" constant="8" id="JVc-s0-eYE"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="T8h-md-RrF" secondAttribute="height" id="Ksd-cL-KSG"/>
+                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="T8h-md-RrF" secondAttribute="height" constant="-1" id="Ksd-cL-KSG"/>
                             <constraint firstItem="8G6-km-2p8" firstAttribute="top" secondItem="ROm-iv-LS0" secondAttribute="bottom" constant="8" id="Ng8-co-B0I"/>
                             <constraint firstItem="T8h-md-RrF" firstAttribute="leading" secondItem="RIJ-DL-ilh" secondAttribute="trailing" constant="8" id="Q6R-w8-GIy"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="ROm-iv-LS0" secondAttribute="height" id="Qj1-MA-mP2"/>
+                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="ROm-iv-LS0" secondAttribute="height" constant="-1" id="Qj1-MA-mP2"/>
                             <constraint firstItem="RIJ-DL-ilh" firstAttribute="top" secondItem="BgM-eP-ocH" secondAttribute="bottom" constant="8" id="Sya-eQ-n2h"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="RIJ-DL-ilh" secondAttribute="height" id="Xgw-lA-hr8"/>
+                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="RIJ-DL-ilh" secondAttribute="height" constant="-1" id="Xgw-lA-hr8"/>
                             <constraint firstItem="Oot-9W-Nq8" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" constant="20" id="YBJ-Ur-vOz"/>
                             <constraint firstItem="ROm-iv-LS0" firstAttribute="top" secondItem="T8h-md-RrF" secondAttribute="bottom" constant="8" id="b6Y-eF-cZ7"/>
                             <constraint firstItem="8G6-km-2p8" firstAttribute="top" secondItem="3J2-6g-hl8" secondAttribute="bottom" constant="8" id="bEF-Yl-M8D"/>
@@ -274,14 +259,12 @@ To select your practice, type and search. If you would like to search for the ne
                             <constraint firstAttribute="trailing" secondItem="Oot-9W-Nq8" secondAttribute="trailing" constant="20" id="d4s-Rc-2mb"/>
                             <constraint firstItem="3J2-6g-hl8" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" constant="8" id="j0L-9g-kMv"/>
                             <constraint firstItem="BgM-eP-ocH" firstAttribute="width" secondItem="vw6-sm-kzp" secondAttribute="width" id="jKr-nF-8a5"/>
-                            <constraint firstItem="vw6-sm-kzp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Oot-9W-Nq8" secondAttribute="bottom" constant="20" id="jfk-OL-4Jd"/>
                             <constraint firstItem="T8h-md-RrF" firstAttribute="top" secondItem="vw6-sm-kzp" secondAttribute="bottom" constant="8" id="kMj-gq-sMF"/>
                             <constraint firstAttribute="trailing" secondItem="T8h-md-RrF" secondAttribute="trailing" constant="8" id="m3w-tB-Sh2"/>
                             <constraint firstItem="vw6-sm-kzp" firstAttribute="leading" secondItem="BgM-eP-ocH" secondAttribute="trailing" constant="8" id="oB0-Kk-AX3"/>
-                            <constraint firstItem="vw6-sm-kzp" firstAttribute="top" secondItem="CFQ-my-Up5" secondAttribute="bottom" constant="300" id="owQ-Oa-Chz"/>
                             <constraint firstItem="3J2-6g-hl8" firstAttribute="top" secondItem="RIJ-DL-ilh" secondAttribute="bottom" constant="8" id="pWq-B7-siU"/>
                             <constraint firstItem="BgM-eP-ocH" firstAttribute="width" secondItem="ROm-iv-LS0" secondAttribute="width" id="ppR-X4-uYS"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="vw6-sm-kzp" secondAttribute="height" id="rE1-Jc-UCO"/>
+                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="vw6-sm-kzp" secondAttribute="height" constant="-1" id="rE1-Jc-UCO"/>
                             <constraint firstItem="BgM-eP-ocH" firstAttribute="width" secondItem="RIJ-DL-ilh" secondAttribute="width" id="rU2-7l-llB"/>
                             <constraint firstItem="Oot-9W-Nq8" firstAttribute="top" secondItem="CFQ-my-Up5" secondAttribute="bottom" constant="40" id="zHj-tu-4hz"/>
                         </constraints>
@@ -321,11 +304,11 @@ To select your practice, type and search. If you would like to search for the ne
                         <viewControllerLayoutGuide type="bottom" id="8QW-5P-TbN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YcX-dX-6cV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3k6-WW-4Z6">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
@@ -362,7 +345,7 @@ To select your practice, type and search. If you would like to search for the ne
             <objects>
                 <tableViewController storyboardIdentifier="ArticleSetViewController" id="LKm-YM-Tz0" userLabel="Article Set Table View Controller" customClass="ArticleSetViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iLn-zB-UT2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4Yf-wx-8HF" userLabel="Header image">
@@ -418,7 +401,7 @@ To select your practice, type and search. If you would like to search for the ne
             <objects>
                 <tableViewController storyboardIdentifier="SubMenuViewController" title="Menu" id="nIb-85-7tT" userLabel="Menu Table View Controller" customClass="MenuViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uwM-BZ-zZu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="QRx-WO-4LP" userLabel="Header image">
                             <rect key="frame" x="0.0" y="44" width="320" height="100"/>
@@ -475,7 +458,7 @@ To select your practice, type and search. If you would like to search for the ne
             <objects>
                 <tableViewController id="noF-Ua-Ko6" userLabel="Select Your Practice Table View Controller" customClass="SelectPracticeTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="q21-lD-Z99">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -550,7 +533,7 @@ To select your practice, type and search. If you would like to search for the ne
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="VT2-W5-8X0"/>

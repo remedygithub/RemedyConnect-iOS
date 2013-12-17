@@ -28,3 +28,4 @@
 @property (nonatomic,strong) UIBarButtonItem *forwardButton;
 
 @end
+	
