@@ -56,11 +56,11 @@
 		5F82A8A9170B3D8E00FE72B8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F82A8A8170B3D8E00FE72B8 /* Default.png */; };
 		5F82A8AB170B3D8E00FE72B8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F82A8AA170B3D8E00FE72B8 /* Default@2x.png */; };
 		5F82A8AD170B3D8E00FE72B8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F82A8AC170B3D8E00FE72B8 /* Default-568h@2x.png */; };
+		5F82D6751862EE1F00430B91 /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F82D6741862EE1F00430B91 /* splashscreen.png */; };
 		5F8EC141180E99060080A62E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC140180E99060080A62E /* Storyboard.storyboard */; };
 		5F8EC148180EA2620080A62E /* background_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC142180EA2620080A62E /* background_texture.png */; };
 		5F8EC149180EA2620080A62E /* button.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC143180EA2620080A62E /* button.9.png */; };
 		5F8EC14C180EA2620080A62E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC146180EA2620080A62E /* logo.png */; };
-		5F8EC14D180EA2620080A62E /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC147180EA2620080A62E /* splashscreen.png */; };
 		5F8EC155180EA42B0080A62E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F8EC154180EA42B0080A62E /* Images.xcassets */; };
 		5F916639183F88DB00E74748 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 5F916638183F88DB00E74748 /* style.css */; };
 		5F916648183F926A00E74748 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F91663B183F926A00E74748 /* OpenSans-Bold.ttf */; };
@@ -126,14 +126,14 @@
 		5F8139071855EBB400EF3E20 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
 		5F8139081855EBB400EF3E20 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-144.png"; sourceTree = "<group>"; };
 		5F8139091855EBB400EF3E20 /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-152.png"; sourceTree = "<group>"; };
-		5F82A893170B3D8E00FE72B8 /* Your Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Your Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F82A893170B3D8E00FE72B8 /* YourPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F82A896170B3D8E00FE72B8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5F82A898170B3D8E00FE72B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5F82A89A170B3D8E00FE72B8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5F82A89E170B3D8E00FE72B8 /* Your Practice-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Your Practice-Info.plist"; path = "Supporting Files/Your Practice-Info.plist"; sourceTree = "<group>"; };
+		5F82A89E170B3D8E00FE72B8 /* YourPractice-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "YourPractice-Info.plist"; path = "Supporting Files/YourPractice-Info.plist"; sourceTree = "<group>"; };
 		5F82A8A0170B3D8E00FE72B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5F82A8A2170B3D8E00FE72B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
-		5F82A8A4170B3D8E00FE72B8 /* Your Practice-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Your Practice-Prefix.pch"; path = "Supporting Files/Your Practice-Prefix.pch"; sourceTree = "<group>"; };
+		5F82A8A4170B3D8E00FE72B8 /* YourPractice-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "YourPractice-Prefix.pch"; path = "Supporting Files/YourPractice-Prefix.pch"; sourceTree = "<group>"; };
 		5F82A8A5170B3D8E00FE72B8 /* YourPracticeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YourPracticeAppDelegate.h; sourceTree = "<group>"; };
 		5F82A8A6170B3D8E00FE72B8 /* YourPracticeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YourPracticeAppDelegate.m; sourceTree = "<group>"; };
 		5F82A8A8170B3D8E00FE72B8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -141,11 +141,11 @@
 		5F82A8AC170B3D8E00FE72B8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5F82A8B9170B403D00FE72B8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		5F82A8BA170B403D00FE72B8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		5F82D6741862EE1F00430B91 /* splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscreen.png; sourceTree = "<group>"; };
 		5F8EC140180E99060080A62E /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		5F8EC142180EA2620080A62E /* background_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_texture.png; sourceTree = "<group>"; };
 		5F8EC143180EA2620080A62E /* button.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.9.png; sourceTree = "<group>"; };
 		5F8EC146180EA2620080A62E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		5F8EC147180EA2620080A62E /* splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscreen.png; sourceTree = "<group>"; };
 		5F8EC154180EA42B0080A62E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		5F8EC156180EA8790080A62E /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		5F8EC157180EA8790080A62E /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
@@ -316,7 +316,7 @@
 		5F82A894170B3D8E00FE72B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F82A893170B3D8E00FE72B8 /* Your Practice.app */,
+				5F82A893170B3D8E00FE72B8 /* YourPractice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,8 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				5F82A89F170B3D8E00FE72B8 /* InfoPlist.strings */,
-				5F82A89E170B3D8E00FE72B8 /* Your Practice-Info.plist */,
-				5F82A8A4170B3D8E00FE72B8 /* Your Practice-Prefix.pch */,
+				5F82A89E170B3D8E00FE72B8 /* YourPractice-Info.plist */,
+				5F82A8A4170B3D8E00FE72B8 /* YourPractice-Prefix.pch */,
 				5F82A8A2170B3D8E00FE72B8 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -510,6 +510,7 @@
 		5FFF2AE0171824A70000B80B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5F82D6741862EE1F00430B91 /* splashscreen.png */,
 				5F91663A183F926A00E74748 /* fonts */,
 				5F8EC154180EA42B0080A62E /* Images.xcassets */,
 				5F8139031855EBB400EF3E20 /* icon-57.png */,
@@ -526,7 +527,6 @@
 				5F8EC142180EA2620080A62E /* background_texture.png */,
 				5F8EC143180EA2620080A62E /* button.9.png */,
 				5F8EC146180EA2620080A62E /* logo.png */,
-				5F8EC147180EA2620080A62E /* splashscreen.png */,
 				5F916638183F88DB00E74748 /* style.css */,
 				5F9D77BB1860915E00808660 /* testbutton.png */,
 			);
@@ -536,9 +536,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5F82A892170B3D8E00FE72B8 /* Your Practice */ = {
+		5F82A892170B3D8E00FE72B8 /* YourPractice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F82A8B6170B3D8E00FE72B8 /* Build configuration list for PBXNativeTarget "Your Practice" */;
+			buildConfigurationList = 5F82A8B6170B3D8E00FE72B8 /* Build configuration list for PBXNativeTarget "YourPractice" */;
 			buildPhases = (
 				5F82A88F170B3D8E00FE72B8 /* Sources */,
 				5F82A890170B3D8E00FE72B8 /* Frameworks */,
@@ -548,9 +548,9 @@
 			);
 			dependencies = (
 			);
-			name = "Your Practice";
+			name = YourPractice;
 			productName = "Greenwood Pediatrics";
-			productReference = 5F82A893170B3D8E00FE72B8 /* Your Practice.app */;
+			productReference = 5F82A893170B3D8E00FE72B8 /* YourPractice.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -568,7 +568,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5F82A88E170B3D8E00FE72B8 /* Build configuration list for PBXProject "Your Practice" */;
+			buildConfigurationList = 5F82A88E170B3D8E00FE72B8 /* Build configuration list for PBXProject "YourPractice" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -587,7 +587,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				5F82A892170B3D8E00FE72B8 /* Your Practice */,
+				5F82A892170B3D8E00FE72B8 /* YourPractice */,
 			);
 		};
 /* End PBXProject section */
@@ -633,6 +633,7 @@
 				5F81390C1855EBB400EF3E20 /* icon-76.png in Resources */,
 				5F82A8AD170B3D8E00FE72B8 /* Default-568h@2x.png in Resources */,
 				5F8EC149180EA2620080A62E /* button.9.png in Resources */,
+				5F82D6751862EE1F00430B91 /* splashscreen.png in Resources */,
 				5F8EC148180EA2620080A62E /* background_texture.png in Resources */,
 				5FFF28D01717F9A10000B80B /* back-arrow.png in Resources */,
 				5FFF28D11717F9A10000B80B /* back-arrow@2x.png in Resources */,
@@ -641,7 +642,6 @@
 				5FFF28D31717F9A10000B80B /* forward-arrow@2x.png in Resources */,
 				5FFF28D41717F9A10000B80B /* JJGWebView.xib in Resources */,
 				5F8EC14C180EA2620080A62E /* logo.png in Resources */,
-				5F8EC14D180EA2620080A62E /* splashscreen.png in Resources */,
 				5F81390D1855EBB400EF3E20 /* icon-114.png in Resources */,
 				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
 				5F81390E1855EBB400EF3E20 /* icon-120.png in Resources */,
@@ -772,14 +772,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Supporting Files/Your Practice-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Your Practice-Info.plist";
+				GCC_PREFIX_HEADER = "Supporting Files/YourPractice-Prefix.pch";
+				INFOPLIST_FILE = "Supporting Files/YourPractice-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/TestFlightSDK2.0.2",
 				);
-				PRODUCT_NAME = "Your Practice";
+				PRODUCT_NAME = YourPractice;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/zipzap/zipzap";
@@ -795,14 +795,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Supporting Files/Your Practice-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Your Practice-Info.plist";
+				GCC_PREFIX_HEADER = "Supporting Files/YourPractice-Prefix.pch";
+				INFOPLIST_FILE = "Supporting Files/YourPractice-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/TestFlightSDK2.0.2",
 				);
-				PRODUCT_NAME = "Your Practice";
+				PRODUCT_NAME = YourPractice;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/zipzap/zipzap";
@@ -813,7 +813,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5F82A88E170B3D8E00FE72B8 /* Build configuration list for PBXProject "Your Practice" */ = {
+		5F82A88E170B3D8E00FE72B8 /* Build configuration list for PBXProject "YourPractice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F82A8B4170B3D8E00FE72B8 /* Debug */,
@@ -822,7 +822,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F82A8B6170B3D8E00FE72B8 /* Build configuration list for PBXNativeTarget "Your Practice" */ = {
+		5F82A8B6170B3D8E00FE72B8 /* Build configuration list for PBXNativeTarget "YourPractice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F82A8B7170B3D8E00FE72B8 /* Debug */,

@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="2SJ-fu-n8P" userLabel="Splashscreen image view">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="2SJ-fu-n8P" userLabel="Splashscreen image view">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="622"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -132,7 +132,7 @@ To select your practice, type and search. If you would like to search for the ne
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-cF-eY5" userLabel="Main menu background">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-cF-eY5" userLabel="Main menu background">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="666"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -528,7 +528,7 @@ To select your practice, type and search. If you would like to search for the ne
     </scenes>
     <resources>
         <image name="menu.png" width="64" height="64"/>
-        <image name="splashscreen.png" width="640" height="1136"/>
+        <image name="splashscreen.png" width="1080" height="1920"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -536,9 +536,9 @@ To select your practice, type and search. If you would like to search for the ne
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VT2-W5-8X0"/>
-        <segue reference="eF5-Dc-4Os"/>
-        <segue reference="LV1-wv-wCh"/>
         <segue reference="cSc-5f-5Z6"/>
+        <segue reference="eF5-Dc-4Os"/>
+        <segue reference="CyI-S8-g7j"/>
+        <segue reference="LV1-wv-wCh"/>
     </inferredMetricsTieBreakers>
 </document>

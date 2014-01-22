@@ -16,6 +16,7 @@
     if (nil != splashPath) {
         UIImage *image = [UIImage imageWithContentsOfFile:splashPath];
         [imageView setImage:image];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
 }
 
