@@ -480,4 +480,17 @@ int itemFromArticleSet = -1;
     return page;
 }
 
+#pragma mark - About and Terms loading
+-(NSString *)getAboutHTML {
+    NSError* error = nil;
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"about" ofType: @"htm"];
+    return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+}
+
+-(NSString *)getTermsHTML {
+    NSError* error = nil;
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"terms_and_conditions" ofType: @"htm"];
+    return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+}
+
 @end

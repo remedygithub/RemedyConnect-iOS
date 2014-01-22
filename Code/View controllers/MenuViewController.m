@@ -24,6 +24,7 @@ NSArray *menuItems;
     [super viewDidLoad];
     [Skin applySubMenuBGOnView:_menuTableView];
     [Skin applySubLogoOnImageView:_menuHeaderImageView];
+    [_menuHeaderImageView setContentMode:UIViewContentModeScaleAspectFit];
     logic = [Logic sharedLogic];
     menuItems = [logic getDataToDisplayForSubMenu];
     [self setTitle:logic.title];

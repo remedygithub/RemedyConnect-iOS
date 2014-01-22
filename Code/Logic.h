@@ -98,4 +98,8 @@
 -(NSArray *)getDataToDisplayForArticleSet:(Boolean)titlesOnly;
 -(NSDictionary *)getDataToDisplayForPage;
 
+#pragma mark - About and Terms loading
+-(NSString *)getAboutHTML;
+-(NSString *)getTermsHTML;
+
 @end

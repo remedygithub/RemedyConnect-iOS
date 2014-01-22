@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Srv-3T-ZyC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Srv-3T-ZyC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -16,12 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="2SJ-fu-n8P" userLabel="Splashscreen image view">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="622"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="2SJ-fu-n8P" userLabel="Splashscreen image view">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2SJ-fu-n8P" firstAttribute="top" secondItem="iXt-ar-evq" secondAttribute="bottom" id="4Na-Wk-vFE"/>
+                            <constraint firstItem="2SJ-fu-n8P" firstAttribute="leading" secondItem="B3G-yC-GCg" secondAttribute="leading" id="7yJ-TD-jt3"/>
+                            <constraint firstAttribute="trailing" secondItem="2SJ-fu-n8P" secondAttribute="trailing" id="RcO-9U-OZm"/>
+                            <constraint firstItem="FWL-zt-SGE" firstAttribute="top" secondItem="2SJ-fu-n8P" secondAttribute="bottom" id="imV-D0-SSx"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -120,10 +126,10 @@ To select your practice, type and search. If you would like to search for the ne
             </objects>
             <point key="canvasLocation" x="-809" y="-1082"/>
         </scene>
-        <!--Main Menu View Controller - Main menu-->
+        <!--Main Menu Portrait View Controller - Main menu-->
         <scene sceneID="Fcc-Tz-cWL">
             <objects>
-                <viewController id="wEe-i3-QoI" customClass="MainMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainMenuPortrait" id="wEe-i3-QoI" customClass="MainMenuPortraitViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CFQ-my-Up5"/>
                         <viewControllerLayoutGuide type="bottom" id="8G6-km-2p8"/>
@@ -289,6 +295,8 @@ To select your practice, type and search. If you would like to search for the ne
                         <segue destination="zZM-14-GSB" kind="push" identifier="ToPage" id="cSc-5f-5Z6"/>
                         <segue destination="LKm-YM-Tz0" kind="push" identifier="ToArticleSet" id="LV1-wv-wCh"/>
                         <segue destination="5WQ-Sd-arl" kind="modal" identifier="BackToPracticeSearch" modalTransitionStyle="coverVertical" id="VT2-W5-8X0"/>
+                        <segue destination="8Nl-BB-PWq" kind="push" identifier="toAbout" id="qsH-Hu-HYl"/>
+                        <segue destination="8Nl-BB-PWq" kind="push" identifier="toTerms" id="37U-eo-w9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJC-K9-cwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,13 +340,14 @@ To select your practice, type and search. If you would like to search for the ne
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="pageWebView" destination="3k6-WW-4Z6" id="psS-Po-Yxs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VjK-aI-2Ya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1379" y="-71"/>
+            <point key="canvasLocation" x="1367" y="31"/>
         </scene>
         <!--Article Set Table View Controller-->
         <scene sceneID="Zin-5c-F9t">
@@ -386,6 +395,7 @@ To select your practice, type and search. If you would like to search for the ne
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="headerImageView" destination="4Yf-wx-8HF" id="Koc-Fd-zHH"/>
                         <outlet property="menuTableView" destination="iLn-zB-UT2" id="9q8-no-bkP"/>
@@ -403,7 +413,7 @@ To select your practice, type and search. If you would like to search for the ne
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uwM-BZ-zZu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="QRx-WO-4LP" userLabel="Header image">
+                        <imageView key="tableHeaderView" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="QRx-WO-4LP" userLabel="Header image">
                             <rect key="frame" x="0.0" y="44" width="320" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -442,6 +452,7 @@ To select your practice, type and search. If you would like to search for the ne
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="menuHeaderImageView" destination="QRx-WO-4LP" id="JZp-9I-jnq"/>
                         <outlet property="menuTableView" destination="uwM-BZ-zZu" id="eCl-XD-18Y"/>
@@ -525,6 +536,231 @@ To select your practice, type and search. If you would like to search for the ne
             </objects>
             <point key="canvasLocation" x="-809" y="31"/>
         </scene>
+        <!--About / Terms View Controller-->
+        <scene sceneID="wI5-J7-evG">
+            <objects>
+                <viewController storyboardIdentifier="AboutTermsViewController" id="8Nl-BB-PWq" userLabel="About / Terms View Controller" customClass="AboutTermsController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sG0-fx-7vv"/>
+                        <viewControllerLayoutGuide type="bottom" id="JEt-ey-VbA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BXV-hC-X3c">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyG-Cr-CCT">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="IyG-Cr-CCT" secondAttribute="trailing" id="hpI-zx-Qf4"/>
+                            <constraint firstItem="IyG-Cr-CCT" firstAttribute="top" secondItem="BXV-hC-X3c" secondAttribute="top" constant="64" id="mz9-3L-aXT"/>
+                            <constraint firstAttribute="bottom" secondItem="IyG-Cr-CCT" secondAttribute="bottom" id="uwj-Di-0my"/>
+                            <constraint firstItem="IyG-Cr-CCT" firstAttribute="leading" secondItem="BXV-hC-X3c" secondAttribute="leading" id="yeK-x1-fPz"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="About / Terms" id="Geq-2D-8FN"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="pageWebView" destination="IyG-Cr-CCT" id="aXi-Og-b9X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vRh-Nr-HDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="189" y="1201"/>
+        </scene>
+        <!--Main Menu Landscape View Controller - Main menu-->
+        <scene sceneID="V0Y-wD-Thj">
+            <objects>
+                <viewController storyboardIdentifier="MainMenuLandscape" id="EJf-U6-YkS" customClass="MainMenuLandscapeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Wb-gA-BaV"/>
+                        <viewControllerLayoutGuide type="bottom" id="88w-1i-JPl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FrK-Q8-EQ8" userLabel="Main menu controller">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oAl-pv-UnO" userLabel="Main menu background">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47V-wu-GPR" userLabel="Menu button 1">
+                                <rect key="frame" x="20" y="195" width="97" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="[placeholder]">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="sQw-9t-5MT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvv-JJ-IhU" userLabel="Menu button 2">
+                                <rect key="frame" x="236" y="195" width="97" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="[placeholder]">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="QkC-6C-hTT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjM-oh-8st" userLabel="Menu button 3">
+                                <rect key="frame" x="451" y="195" width="97" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="[placeholder]">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="7mW-Go-a9h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLh-G2-Omy" userLabel="Menu button 4">
+                                <rect key="frame" x="20" y="263" width="97" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="[placeholder]">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="4dp-IN-ynl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRU-2w-fUz" userLabel="Menu button 5">
+                                <rect key="frame" x="236" y="263" width="97" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="[placeholder]">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="wIe-7o-Igi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZE4-Jk-Fr2" userLabel="Menu button 6">
+                                <rect key="frame" x="451" y="263" width="97" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="[placeholder]">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="TbP-AH-knD"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C2K-qF-uaw" userLabel="Logo image">
+                                <rect key="frame" x="94" y="41" width="380" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIE-Lz-DGe">
+                                <rect key="frame" x="484" y="20" width="64" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="D8W-sR-ayg"/>
+                                </constraints>
+                                <state key="normal" image="menu.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuButtonPressed:" destination="EJf-U6-YkS" eventType="touchUpInside" id="kux-zh-KdF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="88w-1i-JPl" firstAttribute="top" secondItem="FRU-2w-fUz" secondAttribute="bottom" constant="20" id="28a-9r-0zi"/>
+                            <constraint firstItem="kjM-oh-8st" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bvv-JJ-IhU" secondAttribute="trailing" constant="20" id="2ee-My-CcD"/>
+                            <constraint firstItem="kjM-oh-8st" firstAttribute="trailing" secondItem="ZE4-Jk-Fr2" secondAttribute="trailing" id="5Ic-Q4-Oz6"/>
+                            <constraint firstItem="47V-wu-GPR" firstAttribute="top" secondItem="C2K-qF-uaw" secondAttribute="bottom" constant="70" id="7GX-bK-nJa"/>
+                            <constraint firstItem="oAl-pv-UnO" firstAttribute="centerX" secondItem="C2K-qF-uaw" secondAttribute="centerX" id="9HY-xG-UDJ"/>
+                            <constraint firstItem="47V-wu-GPR" firstAttribute="leading" secondItem="yLh-G2-Omy" secondAttribute="leading" id="AMM-mh-eSP"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="yLh-G2-Omy" secondAttribute="height" id="Bs1-1Q-tBf"/>
+                            <constraint firstAttribute="trailing" secondItem="xIE-Lz-DGe" secondAttribute="trailing" constant="20" symbolic="YES" id="HvM-0n-13c"/>
+                            <constraint firstItem="88w-1i-JPl" firstAttribute="top" secondItem="yLh-G2-Omy" secondAttribute="bottom" constant="20" id="LGe-5g-H1K"/>
+                            <constraint firstAttribute="trailing" secondItem="kjM-oh-8st" secondAttribute="trailing" constant="20" id="MUi-DN-DZe"/>
+                            <constraint firstItem="kjM-oh-8st" firstAttribute="top" secondItem="bvv-JJ-IhU" secondAttribute="top" id="N4I-ga-fQ5"/>
+                            <constraint firstItem="yLh-G2-Omy" firstAttribute="top" secondItem="47V-wu-GPR" secondAttribute="bottom" constant="30" id="P3A-A3-Z83"/>
+                            <constraint firstItem="kjM-oh-8st" firstAttribute="top" secondItem="47V-wu-GPR" secondAttribute="top" id="Qce-Hs-Ra0"/>
+                            <constraint firstAttribute="bottom" secondItem="oAl-pv-UnO" secondAttribute="bottom" id="R2M-sB-PuM"/>
+                            <constraint firstItem="47V-wu-GPR" firstAttribute="leading" secondItem="FrK-Q8-EQ8" secondAttribute="leading" constant="20" id="Rrm-YO-hO0"/>
+                            <constraint firstItem="xIE-Lz-DGe" firstAttribute="leading" secondItem="C2K-qF-uaw" secondAttribute="trailing" constant="10" id="U1T-Vd-Las"/>
+                            <constraint firstItem="bvv-JJ-IhU" firstAttribute="centerX" secondItem="FRU-2w-fUz" secondAttribute="centerX" id="Ynh-hj-tq4"/>
+                            <constraint firstItem="xIE-Lz-DGe" firstAttribute="top" secondItem="FrK-Q8-EQ8" secondAttribute="top" constant="20" symbolic="YES" id="ZqS-fi-WHw"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="kjM-oh-8st" secondAttribute="width" id="bel-3Q-AEE"/>
+                            <constraint firstItem="88w-1i-JPl" firstAttribute="top" secondItem="C2K-qF-uaw" secondAttribute="bottom" constant="195" id="e5n-nm-eix"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="bvv-JJ-IhU" secondAttribute="height" id="f54-he-FWc"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="yLh-G2-Omy" secondAttribute="width" id="gDw-0g-aHl"/>
+                            <constraint firstItem="oAl-pv-UnO" firstAttribute="centerX" secondItem="bvv-JJ-IhU" secondAttribute="centerX" id="gVD-K1-nMX"/>
+                            <constraint firstItem="FRU-2w-fUz" firstAttribute="top" secondItem="bvv-JJ-IhU" secondAttribute="bottom" constant="30" id="gY1-JO-O71"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="kjM-oh-8st" secondAttribute="height" id="gq3-6p-Dyc"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="FRU-2w-fUz" secondAttribute="height" id="h2I-gi-luA"/>
+                            <constraint firstItem="bvv-JJ-IhU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="47V-wu-GPR" secondAttribute="trailing" constant="20" id="iIq-MU-5p3"/>
+                            <constraint firstItem="oAl-pv-UnO" firstAttribute="centerX" secondItem="C2K-qF-uaw" secondAttribute="centerX" id="jAK-vp-W0P"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="FRU-2w-fUz" secondAttribute="width" id="kJt-zJ-t29"/>
+                            <constraint firstAttribute="trailing" secondItem="oAl-pv-UnO" secondAttribute="trailing" id="kjE-SZ-AWp"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="47V-wu-GPR" secondAttribute="width" id="m7K-mK-bgV"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="47V-wu-GPR" secondAttribute="height" id="ndN-XH-UQ6"/>
+                            <constraint firstItem="C2K-qF-uaw" firstAttribute="top" secondItem="5Wb-gA-BaV" secondAttribute="bottom" constant="41" id="oN4-q3-wGA"/>
+                            <constraint firstItem="oAl-pv-UnO" firstAttribute="leading" secondItem="FrK-Q8-EQ8" secondAttribute="leading" id="p0j-tC-1kV"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="bvv-JJ-IhU" secondAttribute="width" id="q9t-OP-I8Z"/>
+                            <constraint firstItem="88w-1i-JPl" firstAttribute="top" secondItem="ZE4-Jk-Fr2" secondAttribute="bottom" constant="20" id="qMS-1d-j0S"/>
+                            <constraint firstAttribute="trailing" secondItem="kjM-oh-8st" secondAttribute="trailing" constant="20" id="vdN-kf-vAf"/>
+                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="top" secondItem="kjM-oh-8st" secondAttribute="bottom" constant="30" id="ws1-NK-kgC"/>
+                            <constraint firstItem="oAl-pv-UnO" firstAttribute="top" secondItem="FrK-Q8-EQ8" secondAttribute="top" id="zC6-bg-RcH"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Main menu" id="PKV-B6-yVn">
+                        <barButtonItem key="backBarButtonItem" title="Main" id="NZ4-1l-nN5"/>
+                    </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="oAl-pv-UnO" id="Enm-aw-b0R"/>
+                        <outlet property="logoImageView" destination="C2K-qF-uaw" id="dFa-SR-6PE"/>
+                        <outlet property="menuButton" destination="xIE-Lz-DGe" id="Cdu-df-jSe"/>
+                        <outletCollection property="mainMenuButtons" destination="47V-wu-GPR" id="fxU-9Y-Vz6"/>
+                        <outletCollection property="mainMenuButtons" destination="bvv-JJ-IhU" id="tKi-1j-Skx"/>
+                        <outletCollection property="mainMenuButtons" destination="kjM-oh-8st" id="LFx-kW-Uja"/>
+                        <outletCollection property="mainMenuButtons" destination="yLh-G2-Omy" id="hso-tM-qFM"/>
+                        <outletCollection property="mainMenuButtons" destination="FRU-2w-fUz" id="Cgc-5t-1JA"/>
+                        <outletCollection property="mainMenuButtons" destination="ZE4-Jk-Fr2" id="U5x-0c-f3i"/>
+                        <segue destination="8Nl-BB-PWq" kind="push" identifier="toTerms" id="nZS-4K-DcO"/>
+                        <segue destination="8Nl-BB-PWq" kind="push" identifier="toAbout" id="vYu-eF-C0g"/>
+                        <segue destination="nIb-85-7tT" kind="push" identifier="ToSubMenu" id="9OT-38-8Gh"/>
+                        <segue destination="zZM-14-GSB" kind="push" identifier="ToPage" id="rRC-ut-pYG"/>
+                        <segue destination="LKm-YM-Tz0" kind="push" identifier="ToArticleSet" id="ACW-CL-Xrw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="otA-Wk-mV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-713" y="797"/>
+        </scene>
     </scenes>
     <resources>
         <image name="menu.png" width="64" height="64"/>
@@ -536,9 +772,11 @@ To select your practice, type and search. If you would like to search for the ne
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cSc-5f-5Z6"/>
-        <segue reference="eF5-Dc-4Os"/>
+        <segue reference="9OT-38-8Gh"/>
+        <segue reference="vYu-eF-C0g"/>
+        <segue reference="bp8-LV-DSM"/>
+        <segue reference="sPk-7L-KYB"/>
         <segue reference="CyI-S8-g7j"/>
-        <segue reference="LV1-wv-wCh"/>
+        <segue reference="eF5-Dc-4Os"/>
     </inferredMetricsTieBreakers>
 </document>

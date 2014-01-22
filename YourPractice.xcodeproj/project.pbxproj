@@ -18,7 +18,6 @@
 		5F8138D71855D28400EF3E20 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F942D1A182D4F0300EF0532 /* TPKeyboardAvoidingScrollView.m */; };
 		5F8138D81855D28400EF3E20 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F942D1C182D4F0300EF0532 /* TPKeyboardAvoidingTableView.m */; };
 		5F8138D91855D28400EF3E20 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F942D1E182D4F0300EF0532 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
-		5F8138DA1855D28400EF3E20 /* JJGWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFF28C81717F9A10000B80B /* JJGWebView.m */; };
 		5F8138DB1855D28400EF3E20 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA8985170C3B5B00FE4200 /* TBXML.m */; };
 		5F8138DC1855D28400EF3E20 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F55F55618438F7B007FAE9E /* PopoverView.m */; };
 		5F8138DD1855D28400EF3E20 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F82A8BA170B403D00FE72B8 /* MBProgressHUD.m */; };
@@ -68,14 +67,14 @@
 		5F91664A183F926A00E74748 /* OpenSans-CondBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F91663D183F926A00E74748 /* OpenSans-CondBold.ttf */; };
 		5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F916642183F926A00E74748 /* OpenSans-Italic.ttf */; };
 		5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F916645183F926A00E74748 /* OpenSans-Regular.ttf */; };
+		5F940303188FBE3E00DBFD1A /* AboutTermsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F940302188FBE3E00DBFD1A /* AboutTermsController.m */; };
+		5F940305188FC4FE00DBFD1A /* about.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940304188FC4FE00DBFD1A /* about.htm */; };
+		5F940307188FC50D00DBFD1A /* terms_and_conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */; };
+		5F94030A188FD85700DBFD1A /* MainMenuPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F940309188FD85700DBFD1A /* MainMenuPortraitViewController.m */; };
+		5F94030D188FD86700DBFD1A /* MainMenuLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F94030C188FD86700DBFD1A /* MainMenuLandscapeViewController.m */; };
 		5F9D77BC1860915E00808660 /* testbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D77BB1860915E00808660 /* testbutton.png */; };
 		5FE3A8B4183CFDAD00E881B2 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE3A8B3183CFDAD00E881B2 /* libc++.dylib */; };
 		5FE3A8B6183CFDB500E881B2 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE3A8B5183CFDB500E881B2 /* ImageIO.framework */; };
-		5FFF28D01717F9A10000B80B /* back-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF28CA1717F9A10000B80B /* back-arrow.png */; };
-		5FFF28D11717F9A10000B80B /* back-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF28CB1717F9A10000B80B /* back-arrow@2x.png */; };
-		5FFF28D21717F9A10000B80B /* forward-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF28CC1717F9A10000B80B /* forward-arrow.png */; };
-		5FFF28D31717F9A10000B80B /* forward-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF28CD1717F9A10000B80B /* forward-arrow@2x.png */; };
-		5FFF28D41717F9A10000B80B /* JJGWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FFF28CE1717F9A10000B80B /* JJGWebView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +162,14 @@
 		5F91663D183F926A00E74748 /* OpenSans-CondBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondBold.ttf"; sourceTree = "<group>"; };
 		5F916642183F926A00E74748 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		5F916645183F926A00E74748 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		5F940301188FBE3E00DBFD1A /* AboutTermsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTermsController.h; sourceTree = "<group>"; };
+		5F940302188FBE3E00DBFD1A /* AboutTermsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTermsController.m; sourceTree = "<group>"; };
+		5F940304188FC4FE00DBFD1A /* about.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.htm; sourceTree = "<group>"; };
+		5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms_and_conditions.htm; sourceTree = "<group>"; };
+		5F940308188FD85700DBFD1A /* MainMenuPortraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuPortraitViewController.h; sourceTree = "<group>"; };
+		5F940309188FD85700DBFD1A /* MainMenuPortraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuPortraitViewController.m; sourceTree = "<group>"; };
+		5F94030B188FD86700DBFD1A /* MainMenuLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLandscapeViewController.h; sourceTree = "<group>"; };
+		5F94030C188FD86700DBFD1A /* MainMenuLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLandscapeViewController.m; sourceTree = "<group>"; };
 		5F942D06182B994D00EF0532 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		5F942D07182B994D00EF0532 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		5F942D0B182BA9AB00EF0532 /* Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logic.h; sourceTree = "<group>"; };
@@ -201,13 +208,6 @@
 		5FEED16A1827BFEB00A21A32 /* PracticeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PracticeSearchViewController.m; sourceTree = "<group>"; };
 		5FFA0230170D8C22007CD360 /* Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
 		5FFA0231170D8C22007CD360 /* Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
-		5FFF28C71717F9A10000B80B /* JJGWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJGWebView.h; sourceTree = "<group>"; };
-		5FFF28C81717F9A10000B80B /* JJGWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJGWebView.m; sourceTree = "<group>"; };
-		5FFF28CA1717F9A10000B80B /* back-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow.png"; sourceTree = "<group>"; };
-		5FFF28CB1717F9A10000B80B /* back-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow@2x.png"; sourceTree = "<group>"; };
-		5FFF28CC1717F9A10000B80B /* forward-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-arrow.png"; sourceTree = "<group>"; };
-		5FFF28CD1717F9A10000B80B /* forward-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward-arrow@2x.png"; sourceTree = "<group>"; };
-		5FFF28CE1717F9A10000B80B /* JJGWebView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JJGWebView.xib; sourceTree = "<group>"; };
 		5FFF2AC61717FD020000B80B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5FFF2AC81717FD110000B80B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5FFF2ACA1717FD1C0000B80B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -393,6 +393,12 @@
 				5F1EF754182D9F790078F89B /* ArticleSetViewController.m */,
 				5F91352D180FE7EC00CB60E4 /* PageViewController.h */,
 				5F91352E180FE7EC00CB60E4 /* PageViewController.m */,
+				5F940301188FBE3E00DBFD1A /* AboutTermsController.h */,
+				5F940302188FBE3E00DBFD1A /* AboutTermsController.m */,
+				5F940308188FD85700DBFD1A /* MainMenuPortraitViewController.h */,
+				5F940309188FD85700DBFD1A /* MainMenuPortraitViewController.m */,
+				5F94030B188FD86700DBFD1A /* MainMenuLandscapeViewController.h */,
+				5F94030C188FD86700DBFD1A /* MainMenuLandscapeViewController.m */,
 			);
 			path = "View controllers";
 			sourceTree = "<group>";
@@ -468,43 +474,11 @@
 				5FE3A8A5183CFA0F00E881B2 /* zipzap.xcodeproj */,
 				5F1EF756182E76890078F89B /* TestFlightSDK */,
 				5F942D16182D4F0300EF0532 /* TPKeyboardAvoiding */,
-				5FFF28C51717F9A10000B80B /* JJGWebView */,
 				5FAA8983170C39A400FE4200 /* TBXML */,
 				5F55F55418438F7B007FAE9E /* PopoverView */,
 				5FFA022E170D8BC7007CD360 /* MBProgressHUD */,
 			);
 			name = Libs;
-			sourceTree = "<group>";
-		};
-		5FFF28C51717F9A10000B80B /* JJGWebView */ = {
-			isa = PBXGroup;
-			children = (
-				5FFF28C61717F9A10000B80B /* Classes */,
-				5FFF28C91717F9A10000B80B /* Resources */,
-			);
-			name = JJGWebView;
-			path = Libs/JJGWebView;
-			sourceTree = "<group>";
-		};
-		5FFF28C61717F9A10000B80B /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				5FFF28C71717F9A10000B80B /* JJGWebView.h */,
-				5FFF28C81717F9A10000B80B /* JJGWebView.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		5FFF28C91717F9A10000B80B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5FFF28CA1717F9A10000B80B /* back-arrow.png */,
-				5FFF28CB1717F9A10000B80B /* back-arrow@2x.png */,
-				5FFF28CC1717F9A10000B80B /* forward-arrow.png */,
-				5FFF28CD1717F9A10000B80B /* forward-arrow@2x.png */,
-				5FFF28CE1717F9A10000B80B /* JJGWebView.xib */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		5FFF2AE0171824A70000B80B /* Resources */ = {
@@ -529,6 +503,8 @@
 				5F8EC146180EA2620080A62E /* logo.png */,
 				5F916638183F88DB00E74748 /* style.css */,
 				5F9D77BB1860915E00808660 /* testbutton.png */,
+				5F940304188FC4FE00DBFD1A /* about.htm */,
+				5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -626,6 +602,7 @@
 				5F8139101855EBB400EF3E20 /* icon-152.png in Resources */,
 				5F8EC155180EA42B0080A62E /* Images.xcassets in Resources */,
 				5F82A8A9170B3D8E00FE72B8 /* Default.png in Resources */,
+				5F940305188FC4FE00DBFD1A /* about.htm in Resources */,
 				5F82A8AB170B3D8E00FE72B8 /* Default@2x.png in Resources */,
 				5F1EF75E182E76890078F89B /* README.md in Resources */,
 				5F8EC141180E99060080A62E /* Storyboard.storyboard in Resources */,
@@ -635,12 +612,7 @@
 				5F8EC149180EA2620080A62E /* button.9.png in Resources */,
 				5F82D6751862EE1F00430B91 /* splashscreen.png in Resources */,
 				5F8EC148180EA2620080A62E /* background_texture.png in Resources */,
-				5FFF28D01717F9A10000B80B /* back-arrow.png in Resources */,
-				5FFF28D11717F9A10000B80B /* back-arrow@2x.png in Resources */,
 				5F81390F1855EBB400EF3E20 /* icon-144.png in Resources */,
-				5FFF28D21717F9A10000B80B /* forward-arrow.png in Resources */,
-				5FFF28D31717F9A10000B80B /* forward-arrow@2x.png in Resources */,
-				5FFF28D41717F9A10000B80B /* JJGWebView.xib in Resources */,
 				5F8EC14C180EA2620080A62E /* logo.png in Resources */,
 				5F81390D1855EBB400EF3E20 /* icon-114.png in Resources */,
 				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
@@ -651,6 +623,7 @@
 				5F916649183F926A00E74748 /* OpenSans-BoldItalic.ttf in Resources */,
 				5F91664A183F926A00E74748 /* OpenSans-CondBold.ttf in Resources */,
 				5F9D77BC1860915E00808660 /* testbutton.png in Resources */,
+				5F940307188FC50D00DBFD1A /* terms_and_conditions.htm in Resources */,
 				5F916639183F88DB00E74748 /* style.css in Resources */,
 				5F81390A1855EBB400EF3E20 /* icon-57.png in Resources */,
 			);
@@ -665,10 +638,12 @@
 			files = (
 				5F8138D61855D28400EF3E20 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				5F8138D71855D28400EF3E20 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				5F94030A188FD85700DBFD1A /* MainMenuPortraitViewController.m in Sources */,
 				5F8138D81855D28400EF3E20 /* TPKeyboardAvoidingTableView.m in Sources */,
+				5F940303188FBE3E00DBFD1A /* AboutTermsController.m in Sources */,
 				5F8138D91855D28400EF3E20 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
-				5F8138DA1855D28400EF3E20 /* JJGWebView.m in Sources */,
 				5F8138DB1855D28400EF3E20 /* TBXML.m in Sources */,
+				5F94030D188FD86700DBFD1A /* MainMenuLandscapeViewController.m in Sources */,
 				5F8138DC1855D28400EF3E20 /* PopoverView.m in Sources */,
 				5F8138DD1855D28400EF3E20 /* MBProgressHUD.m in Sources */,
 				5F8138DE1855D28400EF3E20 /* main.m in Sources */,

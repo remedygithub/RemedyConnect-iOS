@@ -34,6 +34,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "+[Skin reorientBGFrameInViewController:]:Skin.m">
+      </ContextState>
+      <ContextState
          contextName = "-[Logic handleActionWithTag:]:Logic.m">
       </ContextState>
       <ContextState

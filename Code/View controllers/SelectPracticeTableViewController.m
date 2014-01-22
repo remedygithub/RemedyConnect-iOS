@@ -77,11 +77,7 @@ Logic *logic;
 }
 
 - (void)didReceiveResponseForAFileSwitchToDeterminate:(DownloadStatus *)status {
-    [statusHUD setMode:MBProgressHUDModeDeterminate];
-    [statusHUD setLabelText:
-     [[NSString alloc] initWithFormat:@"Downloading %d/%d...",
-      [status currentFileIndex] + 1,
-      [status numberOfFilesToDownload]]];
+    [statusHUD setLabelText:@"Downloading..."];
 }
 
 - (void)updateProgress:(DownloadStatus *)status {

@@ -11,6 +11,7 @@
 #import "Skin.h"
 #import "PopoverView.h"
 #import "PracticeSearchViewController.h"
+#import "AboutTermsController.h"
 
 @interface MainMenuViewController ()
 
@@ -58,17 +59,41 @@ Logic *logic;
                            delegate:self];
 }
 
-- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
-    if (index == 0) {
-        [logic setUpdateDownloadStarterDelegate:self];
-        [logic handleActionWithTag:0 shouldProceedToPage:FALSE];
-    }
-    if (index == 1) {
-        [logic resetBeforeSelection];
-        [self performSegueWithIdentifier:@"BackToPracticeSearch" sender:self];
+- (void)
+popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            [logic setUpdateDownloadStarterDelegate:self];
+            [logic handleActionWithTag:0 shouldProceedToPage:FALSE];
+            break;
+        case 1:
+            [logic resetBeforeSelection];
+            [self performSegueWithIdentifier:@"BackToPracticeSearch" sender:self];
+            break;
+        case 2:
+            [self performSegueWithIdentifier:@"toTerms" sender:self];
+            break;
+        case 3:
+            [self performSegueWithIdentifier:@"toAbout" sender:self];
+            break;
     }
     [popoverView dismiss:TRUE];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toAbout"]) {
+        AboutTermsController *aboutController = segue.destinationViewController;
+        aboutController.webTitle = @"About";
+        aboutController.webText = [logic getAboutHTML];
+        
+    }
+    if ([segue.identifier isEqualToString:@"toTerms"]) {
+        AboutTermsController *termsController = segue.destinationViewController;
+        termsController.webTitle = @"Terms and Conditions";
+        termsController.webText = [logic getTermsHTML];
+    }
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -101,11 +126,7 @@ Logic *logic;
 }
 
 - (void)didReceiveResponseForAFileSwitchToDeterminate:(DownloadStatus *)status {
-    [statusHUD setMode:MBProgressHUDModeDeterminate];
-    [statusHUD setLabelText:
-     [[NSString alloc] initWithFormat:@"Downloading %d/%d...",
-      [status currentFileIndex] + 1,
-      [status numberOfFilesToDownload]]];
+    [statusHUD setLabelText:@"Downloading..."];
 }
 
 - (void)updateProgress:(DownloadStatus *)status {

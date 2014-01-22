@@ -16,6 +16,7 @@
 +(void)applySubLogoOnImageView:(UIImageView *)imageView;
 +(void)applyBackgroundOnButton:(UIButton *)button;
 +(void)applySubMenuBGOnView:(UITableView *)view;
++(void)reorientBGFrameInViewController:(UIViewController *)viewController;
 +(NSString *)logoContentsForWebView;
 +(void)applyPageBGOnWebView:(UIWebView *)webView inViewController:(UIViewController *)viewController;
 +(NSString *)wrapHTMLBodyWithStyle:(NSString *)bodyText;

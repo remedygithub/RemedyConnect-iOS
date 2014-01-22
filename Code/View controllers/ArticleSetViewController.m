@@ -24,6 +24,7 @@ NSArray *articleSetItems;
     [super viewDidLoad];
     [Skin applySubMenuBGOnView:_menuTableView];
     [Skin applySubLogoOnImageView:_headerImageView];
+    [_headerImageView setContentMode:UIViewContentModeScaleAspectFit];
     logic = [Logic sharedLogic];
     [self setTitle:logic.title];
     articleSetItems = [logic getDataToDisplayForArticleSet:TRUE];

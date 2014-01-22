@@ -73,6 +73,16 @@
     }
 }
 
++(void)reorientBGFrameInViewController:(UIViewController *)viewController {
+    for (UIView *subview in [viewController.view subviews]) {
+        if ([subview isKindOfClass:[UIImageView class]]) {
+            UIImageView *bg = (UIImageView*)subview;
+            bg.contentMode = UIViewContentModeScaleAspectFill;
+            bg.frame = viewController.view.bounds;
+        }
+    }
+}
+
 +(NSString *)wrapHTMLBodyWithStyle:(NSString *)bodyText {
     NSURL *bundleURL = [[NSBundle mainBundle] resourceURL];
     NSString *cssLink = @"<link rel='stylesheet' href='style.css' type='text/css'/>";
