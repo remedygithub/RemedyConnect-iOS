@@ -18,26 +18,33 @@
 
 @synthesize landscapeController;
 
-- (void)awakeFromNib {
+/*- (void)awakeFromNib {
+    self.navigationController.delegate = self;
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(orientationChanged:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
-    self.navigationController.delegate = self;
+}*/
+
+-(BOOL)shouldAutorotate {
+    return NO;
 }
 
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+/*
 // Method to handle orientation changes.
-- (void)orientationChanged:(NSNotification *)notification
-{
+- (void)orientationChanged:(NSNotification *)notification {
     [self swapControllersIfNeeded];
 }
 
 // Called when a new view is shown.
 - (void)navigationController:(UINavigationController *)navigationController
        didShowViewController:(UIViewController *)viewController
-                    animated:(BOOL)animated
-{
+                    animated:(BOOL)animated {
     // May be coming back from another controller to find we're
     // showing the wrong controller for the orientation.
     [self swapControllersIfNeeded];
@@ -64,7 +71,7 @@
         [self.navigationController pushViewController:self.landscapeController
                                              animated:NO];
     }
-    else if (UIDeviceOrientationPortrait == deviceOrientation &&
+    else if (UIDeviceOrientationIsPortrait(deviceOrientation) &&
              self.navigationController.visibleViewController == self.landscapeController)
     {
         // Orientation is portrait but the visible controller is
@@ -72,6 +79,6 @@
         // know the portrait controller, self, is the next one down.
         [self.navigationController popViewControllerAnimated:NO];
     }
-}
+}*/
 
 @end

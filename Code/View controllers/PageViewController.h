@@ -11,5 +11,4 @@
 
 @interface PageViewController : UIViewController<UIWebViewDelegate, PageDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *pageWebView;
-- (IBAction)goHome:(id)sender;
 @end

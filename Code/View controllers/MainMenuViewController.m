@@ -149,5 +149,8 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
     [statusHUD hide:YES afterDelay:2];
 }
 
+- (IBAction)resetToHere:(UIStoryboardSegue *)segue {
+    [logic unwind];
+}
 
 @end

@@ -63,6 +63,7 @@
 
 -(void)unwindBackStack;
 -(void)resetBackStack;
+-(void)unwind;
 
 #pragma mark - Download-related methods
 -(void)ifDataAvailableAdvanceToMain;

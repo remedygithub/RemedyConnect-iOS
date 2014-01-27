@@ -76,9 +76,4 @@ Logic *logic;
     }
 }
 
-- (IBAction)goHome:(id)sender {
-    [logic setPageDelegate:self];
-    [logic moveBackToMain];
-}
-
 @end

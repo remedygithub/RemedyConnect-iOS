@@ -62,9 +62,4 @@ NSArray *articleSetItems;
     [logic handleActionWithTag:indexPath.row shouldProceedToPage:TRUE];
 }
 
-- (IBAction)goHome:(id)sender {
-    [logic setArticleSetDelegate:self];
-    [logic moveBackToMain];
-}
-
 @end

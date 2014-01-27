@@ -13,6 +13,5 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *menuTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *menuHeaderImageView;
-- (IBAction)goHome:(id)sender;
 
 @end

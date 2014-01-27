@@ -412,6 +412,11 @@ int itemFromArticleSet = -1;
     [self resetAllDelegates];
 }
 
+-(void)unwind {
+    [self resetBackStack];
+    [self resetAllDelegates];
+}
+
 -(void)moveBackToMain {
     [[self getSeguePerformer].navigationController popToRootViewControllerAnimated:YES];
     [self resetBackStack];

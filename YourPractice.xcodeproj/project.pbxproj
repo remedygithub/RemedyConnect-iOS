@@ -12,6 +12,7 @@
 		5F1EF75F182E76890078F89B /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F1EF759182E76890078F89B /* release_notes.md */; };
 		5F1EF761182E76B30078F89B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EF760182E76B30078F89B /* libz.dylib */; };
 		5F47012B1855CF4000506CD2 /* libzipzap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4701281855CE1900506CD2 /* libzipzap.a */; };
+		5F50B9111896B4A500AA9006 /* UINavigationController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50B9101896B4A500AA9006 /* UINavigationController+Orientation.m */; };
 		5F55F55E18438FB4007FAE9E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F55F55D18438FB4007FAE9E /* QuartzCore.framework */; };
 		5F6B47B7184397350083568C /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F6B47B6184397350083568C /* menu.png */; };
 		5F8138D61855D28400EF3E20 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F942D18182D4F0300EF0532 /* TPKeyboardAvoidingCollectionView.m */; };
@@ -111,6 +112,8 @@
 		5F1EF75B182E76890078F89B /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		5F1EF75C182E76890078F89B /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		5F1EF760182E76B30078F89B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5F50B90F1896B4A500AA9006 /* UINavigationController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Orientation.h"; sourceTree = "<group>"; };
+		5F50B9101896B4A500AA9006 /* UINavigationController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Orientation.m"; sourceTree = "<group>"; };
 		5F55F55518438F7B007FAE9E /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		5F55F55618438F7B007FAE9E /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
 		5F55F55718438F7B007FAE9E /* PopoverView_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView_Configuration.h; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 				5F940309188FD85700DBFD1A /* MainMenuPortraitViewController.m */,
 				5F94030B188FD86700DBFD1A /* MainMenuLandscapeViewController.h */,
 				5F94030C188FD86700DBFD1A /* MainMenuLandscapeViewController.m */,
+				5F50B90F1896B4A500AA9006 /* UINavigationController+Orientation.h */,
+				5F50B9101896B4A500AA9006 /* UINavigationController+Orientation.m */,
 			);
 			path = "View controllers";
 			sourceTree = "<group>";
@@ -664,6 +669,7 @@
 				5F8138ED1855D28400EF3E20 /* MenuViewController.m in Sources */,
 				5F8138EE1855D28400EF3E20 /* ArticleSetViewController.m in Sources */,
 				5F8138EF1855D28400EF3E20 /* PageViewController.m in Sources */,
+				5F50B9111896B4A500AA9006 /* UINavigationController+Orientation.m in Sources */,
 				5F8138F01855D28400EF3E20 /* YourPracticeAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
