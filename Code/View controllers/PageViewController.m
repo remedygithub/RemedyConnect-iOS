@@ -9,6 +9,7 @@
 #import "PageViewController.h"
 #import "Logic.h"
 #import "Skin.h"
+#import "TestFlight.h"
 
 @interface PageViewController ()
 
@@ -56,11 +57,11 @@ Logic *logic;
     
     NSDictionary *page = [logic getDataToDisplayForPage];
     NSString *title = [page objectForKey:@"title"];
+    
     NSString *text = [NSString stringWithFormat:@"%@ %@",
                       [Skin logoContentsForWebView],
                       [page objectForKey:@"text"]];
     [self setTitle:title];
-    
     [_pageWebView setDelegate:self];
     
     if (nil != text) {

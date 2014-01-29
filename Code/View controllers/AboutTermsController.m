@@ -8,6 +8,7 @@
 
 #import "AboutTermsController.h"
 #import "Skin.h"
+#import "TestFlight.h"
 
 @implementation AboutTermsController
 
@@ -49,7 +50,6 @@
     [Skin applyPageBGOnWebView:_pageWebView inViewController:self];
  
     [self setTitle:webTitle];
-    
     [_pageWebView setDelegate:self];
     
     if (nil != webText) {

@@ -12,6 +12,7 @@
 #import "DefaultPracticeHandling.h"
 #import "Downloader.h"
 #import "Parser.h"
+#import "TestFlight.h"
 
 @implementation Logic
 
@@ -489,13 +490,15 @@ int itemFromArticleSet = -1;
 -(NSString *)getAboutHTML {
     NSError* error = nil;
     NSString *path = [[NSBundle mainBundle] pathForResource: @"about" ofType: @"htm"];
-    return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    return content;
 }
 
 -(NSString *)getTermsHTML {
     NSError* error = nil;
     NSString *path = [[NSBundle mainBundle] pathForResource: @"terms_and_conditions" ofType: @"htm"];
-    return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    return content;
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "PracticeSearchViewController.h"
 #import "AboutTermsController.h"
 #import "MainMenuButtonCell.h"
+#import "TestFlight.h"
 
 @interface MainMenuViewController ()
 
@@ -134,15 +135,14 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"toAbout"]) {
-        AboutTermsController *aboutController = segue.destinationViewController;
-        aboutController.webTitle = @"About";
-        aboutController.webText = [logic getAboutHTML];
-        
+        AboutTermsController *aboutController = [segue destinationViewController];
+        [aboutController setWebTitle: @"About"];
+        [aboutController setWebText: [logic getAboutHTML]];
     }
     if ([segue.identifier isEqualToString:@"toTerms"]) {
-        AboutTermsController *termsController = segue.destinationViewController;
-        termsController.webTitle = @"Terms and Conditions";
-        termsController.webText = [logic getTermsHTML];
+        AboutTermsController *termsController = [segue destinationViewController];
+        [termsController setWebTitle: @"Terms and Conditions"];
+        [termsController setWebText: [logic getTermsHTML]];
     }
 }
 

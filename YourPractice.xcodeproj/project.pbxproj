@@ -11,6 +11,8 @@
 		5F1EF75E182E76890078F89B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F1EF758182E76890078F89B /* README.md */; };
 		5F1EF75F182E76890078F89B /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F1EF759182E76890078F89B /* release_notes.md */; };
 		5F1EF761182E76B30078F89B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EF760182E76B30078F89B /* libz.dylib */; };
+		5F3226751899433E00B01D06 /* about.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940304188FC4FE00DBFD1A /* about.htm */; };
+		5F3226761899433E00B01D06 /* terms_and_conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */; };
 		5F47012B1855CF4000506CD2 /* libzipzap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4701281855CE1900506CD2 /* libzipzap.a */; };
 		5F50B9111896B4A500AA9006 /* UINavigationController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F50B9101896B4A500AA9006 /* UINavigationController+Orientation.m */; };
 		5F55F55E18438FB4007FAE9E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F55F55D18438FB4007FAE9E /* QuartzCore.framework */; };
@@ -69,8 +71,6 @@
 		5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F916642183F926A00E74748 /* OpenSans-Italic.ttf */; };
 		5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F916645183F926A00E74748 /* OpenSans-Regular.ttf */; };
 		5F940303188FBE3E00DBFD1A /* AboutTermsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F940302188FBE3E00DBFD1A /* AboutTermsController.m */; };
-		5F940305188FC4FE00DBFD1A /* about.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940304188FC4FE00DBFD1A /* about.htm */; };
-		5F940307188FC50D00DBFD1A /* terms_and_conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */; };
 		5F96F1A9189928DD0015F065 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F96F1A8189928DD0015F065 /* Storyboard-iPad.storyboard */; };
 		5F9D77BC1860915E00808660 /* testbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D77BB1860915E00808660 /* testbutton.png */; };
 		5FB5FA70189821AA00156897 /* MainMenuButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB5FA6F189821AA00156897 /* MainMenuButtonCell.m */; };
@@ -167,8 +167,8 @@
 		5F916645183F926A00E74748 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		5F940301188FBE3E00DBFD1A /* AboutTermsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTermsController.h; sourceTree = "<group>"; };
 		5F940302188FBE3E00DBFD1A /* AboutTermsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTermsController.m; sourceTree = "<group>"; };
-		5F940304188FC4FE00DBFD1A /* about.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.htm; sourceTree = "<group>"; };
-		5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms_and_conditions.htm; sourceTree = "<group>"; };
+		5F940304188FC4FE00DBFD1A /* about.htm */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = about.htm; sourceTree = "<group>"; };
+		5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = terms_and_conditions.htm; sourceTree = "<group>"; };
 		5F942D06182B994D00EF0532 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		5F942D07182B994D00EF0532 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		5F942D0B182BA9AB00EF0532 /* Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logic.h; sourceTree = "<group>"; };
@@ -628,8 +628,8 @@
 				5F9D77BC1860915E00808660 /* testbutton.png in Resources */,
 				5F81390A1855EBB400EF3E20 /* icon-57.png in Resources */,
 				5F916639183F88DB00E74748 /* style.css in Resources */,
-				5F940305188FC4FE00DBFD1A /* about.htm in Resources */,
-				5F940307188FC50D00DBFD1A /* terms_and_conditions.htm in Resources */,
+				5F3226751899433E00B01D06 /* about.htm in Resources */,
+				5F3226761899433E00B01D06 /* terms_and_conditions.htm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

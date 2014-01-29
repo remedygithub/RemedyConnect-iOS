@@ -11,6 +11,6 @@
 
 @interface AboutTermsController : UIViewController<UIWebViewDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *pageWebView;
-@property (weak, nonatomic) NSString *webTitle;
-@property (weak, nonatomic) NSString *webText;
+@property (strong, nonatomic) NSString *webTitle;
+@property (strong, nonatomic) NSString *webText;
 @end
