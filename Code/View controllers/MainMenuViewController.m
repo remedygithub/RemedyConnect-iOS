@@ -12,6 +12,7 @@
 #import "PopoverView.h"
 #import "PracticeSearchViewController.h"
 #import "AboutTermsController.h"
+#import "MainMenuButtonCell.h"
 
 @interface MainMenuViewController ()
 
@@ -20,33 +21,84 @@
 @implementation MainMenuViewController
 
 Logic *logic;
+NSArray *menu;
 
 - (void)viewDidLoad {
+    [self menuHeightConstraint].constant = self.view.frame.size.height / 2;
     logic = [Logic sharedLogic];
     [Skin applyMainMenuBGOnImageView:_backgroundImage];
     [Skin applyMainLogoOnImageView:_logoImageView];
-    NSArray *menu = [logic getDataToDisplayForMainMenu];
-    for (int i = 0; i < [_mainMenuButtons count]; ++i) {
-        UIButton *button = [_mainMenuButtons objectAtIndex:i];
-        if (i < [menu count]) {
-            NSString *title = [[menu objectAtIndex:i] objectForKey:@"name"];
-            [button setTitle:title forState:UIControlStateNormal];
-            [button setTag:i];
-            [Skin applyBackgroundOnButton:button];
-        }
-        else {
-            [button setHidden:YES];
-        }
+    menu = [logic getDataToDisplayForMainMenu];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    if ((UIInterfaceOrientationIsLandscape(currentOrientation) &&
+                UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) ||
+                (UIInterfaceOrientationIsPortrait(currentOrientation) &&
+                 UIInterfaceOrientationIsLandscape(toInterfaceOrientation))) {
+                    
+        [self menuHeightConstraint].constant = self.view.frame.size.width / 2;
     }
 }
 
-- (IBAction)buttonPressed:(id)sender {
+
+#pragma mark - UICollectionView Datasource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [menu count];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    MainMenuButtonCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MenuButtonCell" forIndexPath:indexPath];
+    [cell.button setTitle:[[menu objectAtIndex:indexPath.row] objectForKey:@"name"] forState:UIControlStateNormal];
+    [[cell button] addTarget:self action:@selector(menuClick:event:) forControlEvents:UIControlEventTouchUpInside];
+    [Skin applyBackgroundOnButton:cell.button];
+    return cell;
+}
+
+- (IBAction)menuClick:(id)sender event:(id)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint currentTouchPos = [touch locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:currentTouchPos];
     [logic setMainMenuDelegate:self];
-    for (UIButton *button in _mainMenuButtons) {
-        if (sender == button) {
-            [logic handleActionWithTag:[button tag] shouldProceedToPage:FALSE];
-        }
+    [logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
+}
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {}
+
+#pragma mark – UICollectionViewDelegateFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGRect wrapperFrame = collectionView.frame;
+    if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        wrapperFrame.size.width /= 3;
+        wrapperFrame.size.height /= 2;
     }
+    else {
+        wrapperFrame.size.width /= 2;
+        wrapperFrame.size.height /= 3;
+    }
+    wrapperFrame.size.width -= 20;
+    wrapperFrame.size.height -= 20;
+    CGSize retval = wrapperFrame.size;
+    return retval;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self.collectionView performBatchUpdates:nil completion:nil];
+}
+
+- (UIEdgeInsets)collectionView:
+(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 - (IBAction)menuButtonPressed:(id)sender {
@@ -99,6 +151,11 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
     [super viewWillAppear:animated];
     [[self navigationController] setNavigationBarHidden:TRUE];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self menuHeightConstraint].constant = self.view.frame.size.height / 2;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.collectionView performBatchUpdates:nil completion:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

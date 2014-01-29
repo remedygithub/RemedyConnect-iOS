@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-@interface AboutTermsController : UIViewController<UIWebViewDelegate>
+@interface AboutTermsController : UIViewController<UIWebViewDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *pageWebView;
 @property (weak, nonatomic) NSString *webTitle;
 @property (weak, nonatomic) NSString *webText;

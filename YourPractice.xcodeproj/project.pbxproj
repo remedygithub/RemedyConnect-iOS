@@ -71,9 +71,9 @@
 		5F940303188FBE3E00DBFD1A /* AboutTermsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F940302188FBE3E00DBFD1A /* AboutTermsController.m */; };
 		5F940305188FC4FE00DBFD1A /* about.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940304188FC4FE00DBFD1A /* about.htm */; };
 		5F940307188FC50D00DBFD1A /* terms_and_conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */; };
-		5F94030A188FD85700DBFD1A /* MainMenuPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F940309188FD85700DBFD1A /* MainMenuPortraitViewController.m */; };
-		5F94030D188FD86700DBFD1A /* MainMenuLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F94030C188FD86700DBFD1A /* MainMenuLandscapeViewController.m */; };
+		5F96F1A9189928DD0015F065 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F96F1A8189928DD0015F065 /* Storyboard-iPad.storyboard */; };
 		5F9D77BC1860915E00808660 /* testbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D77BB1860915E00808660 /* testbutton.png */; };
+		5FB5FA70189821AA00156897 /* MainMenuButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB5FA6F189821AA00156897 /* MainMenuButtonCell.m */; };
 		5FE3A8B4183CFDAD00E881B2 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE3A8B3183CFDAD00E881B2 /* libc++.dylib */; };
 		5FE3A8B6183CFDB500E881B2 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE3A8B5183CFDB500E881B2 /* ImageIO.framework */; };
 /* End PBXBuildFile section */
@@ -169,10 +169,6 @@
 		5F940302188FBE3E00DBFD1A /* AboutTermsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTermsController.m; sourceTree = "<group>"; };
 		5F940304188FC4FE00DBFD1A /* about.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.htm; sourceTree = "<group>"; };
 		5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms_and_conditions.htm; sourceTree = "<group>"; };
-		5F940308188FD85700DBFD1A /* MainMenuPortraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuPortraitViewController.h; sourceTree = "<group>"; };
-		5F940309188FD85700DBFD1A /* MainMenuPortraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuPortraitViewController.m; sourceTree = "<group>"; };
-		5F94030B188FD86700DBFD1A /* MainMenuLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLandscapeViewController.h; sourceTree = "<group>"; };
-		5F94030C188FD86700DBFD1A /* MainMenuLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLandscapeViewController.m; sourceTree = "<group>"; };
 		5F942D06182B994D00EF0532 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		5F942D07182B994D00EF0532 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		5F942D0B182BA9AB00EF0532 /* Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logic.h; sourceTree = "<group>"; };
@@ -189,12 +185,15 @@
 		5F942D1C182D4F0300EF0532 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		5F942D1D182D4F0300EF0532 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		5F942D1E182D4F0300EF0532 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		5F96F1A8189928DD0015F065 /* Storyboard-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Storyboard-iPad.storyboard"; path = "Logic/Storyboard-iPad.storyboard"; sourceTree = "<group>"; };
 		5F9D77BB1860915E00808660 /* testbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testbutton.png; sourceTree = "<group>"; };
 		5FAA8984170C3B3400FE4200 /* TBXML-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		5FAA8985170C3B5B00FE4200 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 		5FAA8987170C3B6E00FE4200 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
 		5FAA898D170C3FEB00FE4200 /* FileHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHandling.h; sourceTree = "<group>"; };
 		5FAA898E170C3FEB00FE4200 /* FileHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHandling.m; sourceTree = "<group>"; };
+		5FB5FA6E189821AA00156897 /* MainMenuButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuButtonCell.h; sourceTree = "<group>"; };
+		5FB5FA6F189821AA00156897 /* MainMenuButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuButtonCell.m; sourceTree = "<group>"; };
 		5FC3084F170EAC79002883A6 /* DownloadStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadStatus.h; sourceTree = "<group>"; };
 		5FC30850170EAC79002883A6 /* DownloadStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadStatus.m; sourceTree = "<group>"; };
 		5FDC67EE1786CC8E00671F79 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
@@ -276,9 +275,10 @@
 		5F73240518211BE500EB757B /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				5F8EC140180E99060080A62E /* Storyboard.storyboard */,
+				5F96F1A8189928DD0015F065 /* Storyboard-iPad.storyboard */,
 				5F942D0A182BA94200EF0532 /* Logic */,
 				5F942D09182BA92400EF0532 /* View controllers */,
-				5F8EC140180E99060080A62E /* Storyboard.storyboard */,
 				5F82A8A5170B3D8E00FE72B8 /* YourPracticeAppDelegate.h */,
 				5F82A8A6170B3D8E00FE72B8 /* YourPracticeAppDelegate.m */,
 			);
@@ -310,6 +310,7 @@
 		5F82A88A170B3D8E00FE72B8 = {
 			isa = PBXGroup;
 			children = (
+				5FB5FA6B1897F01E00156897 /* iPad */,
 				5F82A89C170B3D8E00FE72B8 /* Your Practice */,
 				5F82A895170B3D8E00FE72B8 /* Frameworks */,
 				5F82A894170B3D8E00FE72B8 /* Products */,
@@ -398,12 +399,10 @@
 				5F91352E180FE7EC00CB60E4 /* PageViewController.m */,
 				5F940301188FBE3E00DBFD1A /* AboutTermsController.h */,
 				5F940302188FBE3E00DBFD1A /* AboutTermsController.m */,
-				5F940308188FD85700DBFD1A /* MainMenuPortraitViewController.h */,
-				5F940309188FD85700DBFD1A /* MainMenuPortraitViewController.m */,
-				5F94030B188FD86700DBFD1A /* MainMenuLandscapeViewController.h */,
-				5F94030C188FD86700DBFD1A /* MainMenuLandscapeViewController.m */,
 				5F50B90F1896B4A500AA9006 /* UINavigationController+Orientation.h */,
 				5F50B9101896B4A500AA9006 /* UINavigationController+Orientation.m */,
+				5FB5FA6E189821AA00156897 /* MainMenuButtonCell.h */,
+				5FB5FA6F189821AA00156897 /* MainMenuButtonCell.m */,
 			);
 			path = "View controllers";
 			sourceTree = "<group>";
@@ -452,6 +451,13 @@
 			);
 			name = TBXML;
 			path = Libs/TBXML;
+			sourceTree = "<group>";
+		};
+		5FB5FA6B1897F01E00156897 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		5FE3A8B7183D2A4600E881B2 /* Skin */ = {
@@ -605,6 +611,7 @@
 				5F1EF75F182E76890078F89B /* release_notes.md in Resources */,
 				5F82A8A1170B3D8E00FE72B8 /* InfoPlist.strings in Resources */,
 				5F8139101855EBB400EF3E20 /* icon-152.png in Resources */,
+				5F96F1A9189928DD0015F065 /* Storyboard-iPad.storyboard in Resources */,
 				5F8EC155180EA42B0080A62E /* Images.xcassets in Resources */,
 				5F82A8A9170B3D8E00FE72B8 /* Default.png in Resources */,
 				5F940305188FC4FE00DBFD1A /* about.htm in Resources */,
@@ -643,12 +650,10 @@
 			files = (
 				5F8138D61855D28400EF3E20 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				5F8138D71855D28400EF3E20 /* TPKeyboardAvoidingScrollView.m in Sources */,
-				5F94030A188FD85700DBFD1A /* MainMenuPortraitViewController.m in Sources */,
 				5F8138D81855D28400EF3E20 /* TPKeyboardAvoidingTableView.m in Sources */,
 				5F940303188FBE3E00DBFD1A /* AboutTermsController.m in Sources */,
 				5F8138D91855D28400EF3E20 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				5F8138DB1855D28400EF3E20 /* TBXML.m in Sources */,
-				5F94030D188FD86700DBFD1A /* MainMenuLandscapeViewController.m in Sources */,
 				5F8138DC1855D28400EF3E20 /* PopoverView.m in Sources */,
 				5F8138DD1855D28400EF3E20 /* MBProgressHUD.m in Sources */,
 				5F8138DE1855D28400EF3E20 /* main.m in Sources */,
@@ -666,6 +671,7 @@
 				5F8138EA1855D28400EF3E20 /* PracticeSearchViewController.m in Sources */,
 				5F8138EB1855D28400EF3E20 /* SelectPracticeTableViewController.m in Sources */,
 				5F8138EC1855D28400EF3E20 /* MainMenuViewController.m in Sources */,
+				5FB5FA70189821AA00156897 /* MainMenuButtonCell.m in Sources */,
 				5F8138ED1855D28400EF3E20 /* MenuViewController.m in Sources */,
 				5F8138EE1855D28400EF3E20 /* ArticleSetViewController.m in Sources */,
 				5F8138EF1855D28400EF3E20 /* PageViewController.m in Sources */,
@@ -762,7 +768,7 @@
 				);
 				PRODUCT_NAME = YourPractice;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/zipzap/zipzap";
 				WRAPPER_EXTENSION = app;
 			};
@@ -785,7 +791,7 @@
 				);
 				PRODUCT_NAME = YourPractice;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/zipzap/zipzap";
 				WRAPPER_EXTENSION = app;
 			};

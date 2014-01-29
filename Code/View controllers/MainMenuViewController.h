@@ -12,17 +12,19 @@
 #import "PopoverView.h"
 #import "MBProgressHUD.h"
 
-@interface MainMenuViewController : UIViewController <MainMenuDelegate, PopoverViewDelegate, MBProgressHUDDelegate, UpdateDownloadStarterDelegate>
+@interface MainMenuViewController : UIViewController <MainMenuDelegate, PopoverViewDelegate, MBProgressHUDDelegate, UpdateDownloadStarterDelegate, UINavigationControllerDelegate,
+UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
     MBProgressHUD *statusHUD;
 }
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *mainMenuButtons;
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoHeightConstraint;
 
-- (IBAction)buttonPressed:(id)sender;
 - (IBAction)menuButtonPressed:(id)sender;
 - (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index;
 

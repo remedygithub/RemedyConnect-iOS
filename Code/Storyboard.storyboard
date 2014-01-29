@@ -13,20 +13,20 @@
                         <viewControllerLayoutGuide type="bottom" id="FWL-zt-SGE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="B3G-yC-GCg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="2SJ-fu-n8P" userLabel="Splashscreen image view">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2SJ-fu-n8P" firstAttribute="top" secondItem="iXt-ar-evq" secondAttribute="bottom" id="4Na-Wk-vFE"/>
                             <constraint firstItem="2SJ-fu-n8P" firstAttribute="leading" secondItem="B3G-yC-GCg" secondAttribute="leading" id="7yJ-TD-jt3"/>
                             <constraint firstAttribute="trailing" secondItem="2SJ-fu-n8P" secondAttribute="trailing" id="RcO-9U-OZm"/>
-                            <constraint firstItem="FWL-zt-SGE" firstAttribute="top" secondItem="2SJ-fu-n8P" secondAttribute="bottom" id="imV-D0-SSx"/>
+                            <constraint firstAttribute="bottom" secondItem="2SJ-fu-n8P" secondAttribute="bottom" id="Wso-WW-8pZ"/>
+                            <constraint firstItem="2SJ-fu-n8P" firstAttribute="top" secondItem="B3G-yC-GCg" secondAttribute="top" id="fjB-Ha-CiZ"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -49,7 +49,7 @@
                         <viewControllerLayoutGuide type="bottom" id="XdF-gb-SMk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NDO-1e-ZDN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ztg-Ke-LIB" customClass="TPKeyboardAvoidingScrollView">
@@ -126,114 +126,37 @@ To select your practice, type and search. If you would like to search for the ne
             </objects>
             <point key="canvasLocation" x="-809" y="-1082"/>
         </scene>
-        <!--Main Menu Portrait View Controller - Main menu-->
+        <!--Main Menu View Controller - Main menu-->
         <scene sceneID="Fcc-Tz-cWL">
             <objects>
-                <viewController storyboardIdentifier="MainMenuPortrait" id="wEe-i3-QoI" customClass="MainMenuPortraitViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainMenu" id="wEe-i3-QoI" customClass="MainMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CFQ-my-Up5"/>
                         <viewControllerLayoutGuide type="bottom" id="8G6-km-2p8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2fl-Ys-H4x" userLabel="Main menu controller">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-cF-eY5" userLabel="Main menu background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="666"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-cF-eY5" userLabel="Main menu background">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgM-eP-ocH" userLabel="Menu button 1">
-                                <rect key="frame" x="8" y="431" width="148" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="MSK-dl-z37"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="SSc-Dt-hxf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="XzF-B7-ZYy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vw6-sm-kzp" userLabel="Menu button 2">
-                                <rect key="frame" x="164" y="430" width="148" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="bfE-8h-zKl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIJ-DL-ilh" userLabel="Menu button 3">
-                                <rect key="frame" x="8" y="476" width="148" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="0aA-Nu-bcY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8h-md-RrF" userLabel="Menu button 4">
-                                <rect key="frame" x="164" y="476" width="148" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="cAx-oK-WdW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3J2-6g-hl8" userLabel="Menu button 5">
-                                <rect key="frame" x="8" y="522" width="148" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="cJ7-Jb-y6I"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROm-iv-LS0" userLabel="Menu button 6">
-                                <rect key="frame" x="164" y="522" width="148" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="wEe-i3-QoI" eventType="touchDown" id="KEJ-Eq-6Te"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oot-9W-Nq8" userLabel="Logo image">
-                                <rect key="frame" x="20" y="40" width="280" height="100"/>
+                                <rect key="frame" x="20" y="45" width="280" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="6LI-aP-Tu1"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="u2U-Ng-Ed7"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-eW-lu4">
-                                <rect key="frame" x="264" y="20" width="48" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-eW-lu4">
+                                <rect key="frame" x="256" y="0.0" width="64" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="1DN-3D-nhK"/>
+                                    <constraint firstAttribute="height" constant="48" id="fHf-dq-Vwk"/>
+                                </constraints>
                                 <state key="normal" image="menu.png">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -242,37 +165,73 @@ To select your practice, type and search. If you would like to search for the ne
                                     <action selector="menuButtonPressed:" destination="wEe-i3-QoI" eventType="touchUpInside" id="U0J-5W-KKz"/>
                                 </connections>
                             </button>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cSO-h0-HGK">
+                                <rect key="frame" x="10" y="290" width="300" height="180"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="hJa-bC-lJ5"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2F5-Q7-cAs">
+                                    <size key="itemSize" width="130" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuButtonCell" id="qnS-u3-cDK" customClass="MainMenuButtonCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgM-eP-ocH" userLabel="Menu button">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
+                                                    <size key="titleShadowOffset" width="1" height="1"/>
+                                                    <state key="normal" title="[placeholder]">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="BgM-eP-ocH" firstAttribute="top" secondItem="qnS-u3-cDK" secondAttribute="top" id="XZ2-fO-91X"/>
+                                            <constraint firstAttribute="trailing" secondItem="BgM-eP-ocH" secondAttribute="trailing" id="bok-yB-AqY"/>
+                                            <constraint firstAttribute="bottom" secondItem="BgM-eP-ocH" secondAttribute="bottom" id="fAq-hZ-FJR"/>
+                                            <constraint firstItem="BgM-eP-ocH" firstAttribute="leading" secondItem="qnS-u3-cDK" secondAttribute="leading" id="yA8-la-B8b"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="button" destination="BgM-eP-ocH" id="skY-K1-Gp1"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="wEe-i3-QoI" id="Gqp-SU-YfD"/>
+                                    <outlet property="delegate" destination="wEe-i3-QoI" id="7QV-ng-ilM"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ROm-iv-LS0" secondAttribute="trailing" constant="8" id="9kt-aM-7FR"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" constant="8" id="B3G-R9-Myo"/>
-                            <constraint firstItem="RIJ-DL-ilh" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" constant="8" id="CHn-wl-qWE"/>
-                            <constraint firstAttribute="trailing" secondItem="vw6-sm-kzp" secondAttribute="trailing" constant="8" id="Fk1-SQ-7AD"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="3J2-6g-hl8" secondAttribute="height" constant="-1" id="FyQ-1J-RF6"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="width" secondItem="T8h-md-RrF" secondAttribute="width" id="HeO-vl-4ou"/>
-                            <constraint firstItem="ROm-iv-LS0" firstAttribute="leading" secondItem="3J2-6g-hl8" secondAttribute="trailing" constant="8" id="JVc-s0-eYE"/>
-                            <constraint firstItem="8G6-km-2p8" firstAttribute="top" secondItem="3J2-6g-hl8" secondAttribute="bottom" constant="8" id="Kgt-3w-VTG"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="T8h-md-RrF" secondAttribute="height" constant="-1" id="Ksd-cL-KSG"/>
-                            <constraint firstItem="T8h-md-RrF" firstAttribute="leading" secondItem="RIJ-DL-ilh" secondAttribute="trailing" constant="8" id="Q6R-w8-GIy"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="ROm-iv-LS0" secondAttribute="height" constant="-1" id="Qj1-MA-mP2"/>
-                            <constraint firstItem="RIJ-DL-ilh" firstAttribute="top" secondItem="BgM-eP-ocH" secondAttribute="bottom" constant="8" id="Sya-eQ-n2h"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="RIJ-DL-ilh" secondAttribute="height" constant="-1" id="Xgw-lA-hr8"/>
-                            <constraint firstItem="Oot-9W-Nq8" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" constant="20" id="YBJ-Ur-vOz"/>
-                            <constraint firstItem="ROm-iv-LS0" firstAttribute="top" secondItem="T8h-md-RrF" secondAttribute="bottom" constant="8" id="b6Y-eF-cZ7"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="width" secondItem="3J2-6g-hl8" secondAttribute="width" id="bhH-J0-swD"/>
-                            <constraint firstAttribute="trailing" secondItem="Oot-9W-Nq8" secondAttribute="trailing" constant="20" id="d4s-Rc-2mb"/>
-                            <constraint firstItem="3J2-6g-hl8" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" constant="8" id="j0L-9g-kMv"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="width" secondItem="vw6-sm-kzp" secondAttribute="width" id="jKr-nF-8a5"/>
-                            <constraint firstItem="T8h-md-RrF" firstAttribute="top" secondItem="vw6-sm-kzp" secondAttribute="bottom" constant="8" id="kMj-gq-sMF"/>
-                            <constraint firstAttribute="trailing" secondItem="T8h-md-RrF" secondAttribute="trailing" constant="8" id="m3w-tB-Sh2"/>
-                            <constraint firstItem="vw6-sm-kzp" firstAttribute="leading" secondItem="BgM-eP-ocH" secondAttribute="trailing" constant="8" id="oB0-Kk-AX3"/>
-                            <constraint firstItem="3J2-6g-hl8" firstAttribute="top" secondItem="RIJ-DL-ilh" secondAttribute="bottom" constant="8" id="pWq-B7-siU"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="width" secondItem="ROm-iv-LS0" secondAttribute="width" id="ppR-X4-uYS"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="height" secondItem="vw6-sm-kzp" secondAttribute="height" constant="-1" id="rE1-Jc-UCO"/>
-                            <constraint firstItem="BgM-eP-ocH" firstAttribute="width" secondItem="RIJ-DL-ilh" secondAttribute="width" id="rU2-7l-llB"/>
-                            <constraint firstItem="8G6-km-2p8" firstAttribute="top" secondItem="ROm-iv-LS0" secondAttribute="bottom" constant="8" id="uYP-z1-9nU"/>
-                            <constraint firstItem="Oot-9W-Nq8" firstAttribute="top" secondItem="CFQ-my-Up5" secondAttribute="bottom" constant="40" id="xHr-Zk-Wb9"/>
+                            <constraint firstItem="cSO-h0-HGK" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" constant="10" id="2kW-hg-rQZ"/>
+                            <constraint firstItem="Oot-9W-Nq8" firstAttribute="top" secondItem="2fl-Ys-H4x" secondAttribute="top" constant="45" id="2mV-RH-HY7"/>
+                            <constraint firstAttribute="trailing" secondItem="cSO-h0-HGK" secondAttribute="trailing" constant="10" id="9GF-PL-oVd"/>
+                            <constraint firstAttribute="bottom" secondItem="wXs-cF-eY5" secondAttribute="bottom" id="Ao4-5b-iSF"/>
+                            <constraint firstAttribute="trailing" secondItem="wXs-cF-eY5" secondAttribute="trailing" id="KKS-IG-OTY"/>
+                            <constraint firstItem="Oot-9W-Nq8" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" priority="950" constant="20" id="Ohi-pU-OCx"/>
+                            <constraint firstAttribute="trailing" secondItem="bCe-eW-lu4" secondAttribute="trailing" id="YQq-dY-dmJ"/>
+                            <constraint firstItem="cSO-h0-HGK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Oot-9W-Nq8" secondAttribute="bottom" priority="950" constant="10" id="eCT-BX-ppM"/>
+                            <constraint firstAttribute="bottom" secondItem="cSO-h0-HGK" secondAttribute="bottom" constant="10" id="ize-BP-oUg"/>
+                            <constraint firstItem="wXs-cF-eY5" firstAttribute="leading" secondItem="2fl-Ys-H4x" secondAttribute="leading" id="mEq-7N-8Xz"/>
+                            <constraint firstItem="wXs-cF-eY5" firstAttribute="top" secondItem="2fl-Ys-H4x" secondAttribute="top" id="p5c-oj-Yp8"/>
+                            <constraint firstAttribute="centerX" secondItem="Oot-9W-Nq8" secondAttribute="centerX" id="sDg-sq-xmU"/>
+                            <constraint firstItem="bCe-eW-lu4" firstAttribute="top" secondItem="CFQ-my-Up5" secondAttribute="bottom" id="tNR-LK-0lF"/>
+                            <constraint firstAttribute="trailing" secondItem="Oot-9W-Nq8" secondAttribute="trailing" priority="950" constant="20" id="tV4-D8-SVl"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -283,21 +242,17 @@ To select your practice, type and search. If you would like to search for the ne
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="backgroundImage" destination="wXs-cF-eY5" id="ZeR-GE-JcY"/>
+                        <outlet property="collectionView" destination="cSO-h0-HGK" id="2Jy-hl-qDq"/>
+                        <outlet property="logoHeightConstraint" destination="6LI-aP-Tu1" id="tY8-zf-FLF"/>
                         <outlet property="logoImageView" destination="Oot-9W-Nq8" id="BwF-4l-dSg"/>
                         <outlet property="menuButton" destination="bCe-eW-lu4" id="wrm-iK-9nK"/>
-                        <outletCollection property="mainMenuButtons" destination="BgM-eP-ocH" id="JVQ-CF-6iJ"/>
-                        <outletCollection property="mainMenuButtons" destination="vw6-sm-kzp" id="u3A-RF-92t"/>
-                        <outletCollection property="mainMenuButtons" destination="RIJ-DL-ilh" id="gSH-Ag-YAZ"/>
-                        <outletCollection property="mainMenuButtons" destination="T8h-md-RrF" id="cYh-2N-DUW"/>
-                        <outletCollection property="mainMenuButtons" destination="3J2-6g-hl8" id="f4U-sb-YQI"/>
-                        <outletCollection property="mainMenuButtons" destination="ROm-iv-LS0" id="1gh-84-9uc"/>
+                        <outlet property="menuHeightConstraint" destination="hJa-bC-lJ5" id="8dV-1p-5dA"/>
                         <segue destination="nIb-85-7tT" kind="push" identifier="ToSubMenu" id="YVT-oD-Pkl"/>
                         <segue destination="zZM-14-GSB" kind="push" identifier="ToPage" id="cSc-5f-5Z6"/>
                         <segue destination="LKm-YM-Tz0" kind="push" identifier="ToArticleSet" id="LV1-wv-wCh"/>
                         <segue destination="5WQ-Sd-arl" kind="modal" identifier="BackToPracticeSearch" modalTransitionStyle="coverVertical" id="VT2-W5-8X0"/>
                         <segue destination="8Nl-BB-PWq" kind="push" identifier="toAbout" id="qsH-Hu-HYl"/>
                         <segue destination="8Nl-BB-PWq" kind="push" identifier="toTerms" id="37U-eo-w9v"/>
-                        <segue destination="EJf-U6-YkS" kind="modal" identifier="toLandscape" animates="NO" id="Sh0-Ie-rrW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJC-K9-cwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,11 +268,11 @@ To select your practice, type and search. If you would like to search for the ne
                         <viewControllerLayoutGuide type="bottom" id="8QW-5P-TbN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YcX-dX-6cV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3k6-WW-4Z6">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
@@ -356,7 +311,7 @@ To select your practice, type and search. If you would like to search for the ne
             <objects>
                 <tableViewController storyboardIdentifier="ArticleSetViewController" id="LKm-YM-Tz0" userLabel="Article Set Table View Controller" customClass="ArticleSetViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iLn-zB-UT2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4Yf-wx-8HF" userLabel="Header image">
@@ -380,7 +335,7 @@ To select your practice, type and search. If you would like to search for the ne
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -414,7 +369,7 @@ To select your practice, type and search. If you would like to search for the ne
             <objects>
                 <tableViewController storyboardIdentifier="SubMenuViewController" title="Menu" id="nIb-85-7tT" userLabel="Menu Table View Controller" customClass="MenuViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uwM-BZ-zZu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <imageView key="tableHeaderView" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="QRx-WO-4LP" userLabel="Header image">
                             <rect key="frame" x="0.0" y="44" width="320" height="100"/>
@@ -437,7 +392,7 @@ To select your practice, type and search. If you would like to search for the ne
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -473,7 +428,7 @@ To select your practice, type and search. If you would like to search for the ne
             <objects>
                 <tableViewController id="noF-Ua-Ko6" userLabel="Select Your Practice Table View Controller" customClass="SelectPracticeTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="q21-lD-Z99">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -549,11 +504,11 @@ To select your practice, type and search. If you would like to search for the ne
                         <viewControllerLayoutGuide type="bottom" id="JEt-ey-VbA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BXV-hC-X3c">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyG-Cr-CCT">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
@@ -580,191 +535,6 @@ To select your practice, type and search. If you would like to search for the ne
             </objects>
             <point key="canvasLocation" x="189" y="1201"/>
         </scene>
-        <!--Main Menu Landscape View Controller - Main menu-->
-        <scene sceneID="V0Y-wD-Thj">
-            <objects>
-                <viewController storyboardIdentifier="MainMenuLandscape" id="EJf-U6-YkS" customClass="MainMenuLandscapeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5Wb-gA-BaV"/>
-                        <viewControllerLayoutGuide type="bottom" id="88w-1i-JPl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="FrK-Q8-EQ8" userLabel="Main menu controller">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oAl-pv-UnO" userLabel="Main menu background">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47V-wu-GPR" userLabel="Menu button 1">
-                                <rect key="frame" x="20" y="195" width="97" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="sQw-9t-5MT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvv-JJ-IhU" userLabel="Menu button 2">
-                                <rect key="frame" x="236" y="195" width="97" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="QkC-6C-hTT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjM-oh-8st" userLabel="Menu button 3">
-                                <rect key="frame" x="451" y="195" width="97" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="7mW-Go-a9h"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLh-G2-Omy" userLabel="Menu button 4">
-                                <rect key="frame" x="20" y="263" width="97" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="4dp-IN-ynl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRU-2w-fUz" userLabel="Menu button 5">
-                                <rect key="frame" x="236" y="263" width="97" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="wIe-7o-Igi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZE4-Jk-Fr2" userLabel="Menu button 6">
-                                <rect key="frame" x="451" y="263" width="97" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="18"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="[placeholder]">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="EJf-U6-YkS" eventType="touchDown" id="TbP-AH-knD"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C2K-qF-uaw" userLabel="Logo image">
-                                <rect key="frame" x="94" y="41" width="380" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIE-Lz-DGe">
-                                <rect key="frame" x="484" y="20" width="64" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="D8W-sR-ayg"/>
-                                </constraints>
-                                <state key="normal" image="menu.png">
-                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="menuButtonPressed:" destination="EJf-U6-YkS" eventType="touchUpInside" id="kux-zh-KdF"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="88w-1i-JPl" firstAttribute="top" secondItem="FRU-2w-fUz" secondAttribute="bottom" constant="20" id="28a-9r-0zi"/>
-                            <constraint firstItem="kjM-oh-8st" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bvv-JJ-IhU" secondAttribute="trailing" constant="20" id="2ee-My-CcD"/>
-                            <constraint firstItem="kjM-oh-8st" firstAttribute="trailing" secondItem="ZE4-Jk-Fr2" secondAttribute="trailing" id="5Ic-Q4-Oz6"/>
-                            <constraint firstItem="47V-wu-GPR" firstAttribute="top" secondItem="C2K-qF-uaw" secondAttribute="bottom" constant="70" id="7GX-bK-nJa"/>
-                            <constraint firstItem="oAl-pv-UnO" firstAttribute="centerX" secondItem="C2K-qF-uaw" secondAttribute="centerX" id="9HY-xG-UDJ"/>
-                            <constraint firstItem="47V-wu-GPR" firstAttribute="leading" secondItem="yLh-G2-Omy" secondAttribute="leading" id="AMM-mh-eSP"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="yLh-G2-Omy" secondAttribute="height" id="Bs1-1Q-tBf"/>
-                            <constraint firstAttribute="trailing" secondItem="xIE-Lz-DGe" secondAttribute="trailing" constant="20" symbolic="YES" id="HvM-0n-13c"/>
-                            <constraint firstItem="88w-1i-JPl" firstAttribute="top" secondItem="yLh-G2-Omy" secondAttribute="bottom" constant="20" id="LGe-5g-H1K"/>
-                            <constraint firstAttribute="trailing" secondItem="kjM-oh-8st" secondAttribute="trailing" constant="20" id="MUi-DN-DZe"/>
-                            <constraint firstItem="kjM-oh-8st" firstAttribute="top" secondItem="bvv-JJ-IhU" secondAttribute="top" id="N4I-ga-fQ5"/>
-                            <constraint firstItem="yLh-G2-Omy" firstAttribute="top" secondItem="47V-wu-GPR" secondAttribute="bottom" constant="30" id="P3A-A3-Z83"/>
-                            <constraint firstItem="kjM-oh-8st" firstAttribute="top" secondItem="47V-wu-GPR" secondAttribute="top" id="Qce-Hs-Ra0"/>
-                            <constraint firstAttribute="bottom" secondItem="oAl-pv-UnO" secondAttribute="bottom" id="R2M-sB-PuM"/>
-                            <constraint firstItem="47V-wu-GPR" firstAttribute="leading" secondItem="FrK-Q8-EQ8" secondAttribute="leading" constant="20" id="Rrm-YO-hO0"/>
-                            <constraint firstItem="xIE-Lz-DGe" firstAttribute="leading" secondItem="C2K-qF-uaw" secondAttribute="trailing" constant="10" id="U1T-Vd-Las"/>
-                            <constraint firstItem="bvv-JJ-IhU" firstAttribute="centerX" secondItem="FRU-2w-fUz" secondAttribute="centerX" id="Ynh-hj-tq4"/>
-                            <constraint firstItem="xIE-Lz-DGe" firstAttribute="top" secondItem="FrK-Q8-EQ8" secondAttribute="top" constant="20" symbolic="YES" id="ZqS-fi-WHw"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="kjM-oh-8st" secondAttribute="width" id="bel-3Q-AEE"/>
-                            <constraint firstItem="88w-1i-JPl" firstAttribute="top" secondItem="C2K-qF-uaw" secondAttribute="bottom" constant="195" id="e5n-nm-eix"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="bvv-JJ-IhU" secondAttribute="height" id="f54-he-FWc"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="yLh-G2-Omy" secondAttribute="width" id="gDw-0g-aHl"/>
-                            <constraint firstItem="oAl-pv-UnO" firstAttribute="centerX" secondItem="bvv-JJ-IhU" secondAttribute="centerX" id="gVD-K1-nMX"/>
-                            <constraint firstItem="FRU-2w-fUz" firstAttribute="top" secondItem="bvv-JJ-IhU" secondAttribute="bottom" constant="30" id="gY1-JO-O71"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="kjM-oh-8st" secondAttribute="height" id="gq3-6p-Dyc"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="FRU-2w-fUz" secondAttribute="height" id="h2I-gi-luA"/>
-                            <constraint firstItem="bvv-JJ-IhU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="47V-wu-GPR" secondAttribute="trailing" constant="20" id="iIq-MU-5p3"/>
-                            <constraint firstItem="oAl-pv-UnO" firstAttribute="centerX" secondItem="C2K-qF-uaw" secondAttribute="centerX" id="jAK-vp-W0P"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="FRU-2w-fUz" secondAttribute="width" id="kJt-zJ-t29"/>
-                            <constraint firstAttribute="trailing" secondItem="oAl-pv-UnO" secondAttribute="trailing" id="kjE-SZ-AWp"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="47V-wu-GPR" secondAttribute="width" id="m7K-mK-bgV"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="height" secondItem="47V-wu-GPR" secondAttribute="height" id="ndN-XH-UQ6"/>
-                            <constraint firstItem="C2K-qF-uaw" firstAttribute="top" secondItem="5Wb-gA-BaV" secondAttribute="bottom" constant="41" id="oN4-q3-wGA"/>
-                            <constraint firstItem="oAl-pv-UnO" firstAttribute="leading" secondItem="FrK-Q8-EQ8" secondAttribute="leading" id="p0j-tC-1kV"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="width" secondItem="bvv-JJ-IhU" secondAttribute="width" id="q9t-OP-I8Z"/>
-                            <constraint firstItem="88w-1i-JPl" firstAttribute="top" secondItem="ZE4-Jk-Fr2" secondAttribute="bottom" constant="20" id="qMS-1d-j0S"/>
-                            <constraint firstAttribute="trailing" secondItem="kjM-oh-8st" secondAttribute="trailing" constant="20" id="vdN-kf-vAf"/>
-                            <constraint firstItem="ZE4-Jk-Fr2" firstAttribute="top" secondItem="kjM-oh-8st" secondAttribute="bottom" constant="30" id="ws1-NK-kgC"/>
-                            <constraint firstItem="oAl-pv-UnO" firstAttribute="top" secondItem="FrK-Q8-EQ8" secondAttribute="top" id="zC6-bg-RcH"/>
-                        </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Main menu" id="PKV-B6-yVn">
-                        <barButtonItem key="backBarButtonItem" title="Main" id="NZ4-1l-nN5"/>
-                    </navigationItem>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="backgroundImage" destination="oAl-pv-UnO" id="Enm-aw-b0R"/>
-                        <outlet property="logoImageView" destination="C2K-qF-uaw" id="dFa-SR-6PE"/>
-                        <outlet property="menuButton" destination="xIE-Lz-DGe" id="Cdu-df-jSe"/>
-                        <outletCollection property="mainMenuButtons" destination="47V-wu-GPR" id="fxU-9Y-Vz6"/>
-                        <outletCollection property="mainMenuButtons" destination="bvv-JJ-IhU" id="tKi-1j-Skx"/>
-                        <outletCollection property="mainMenuButtons" destination="kjM-oh-8st" id="LFx-kW-Uja"/>
-                        <outletCollection property="mainMenuButtons" destination="yLh-G2-Omy" id="hso-tM-qFM"/>
-                        <outletCollection property="mainMenuButtons" destination="FRU-2w-fUz" id="Cgc-5t-1JA"/>
-                        <outletCollection property="mainMenuButtons" destination="ZE4-Jk-Fr2" id="U5x-0c-f3i"/>
-                        <segue destination="8Nl-BB-PWq" kind="push" identifier="toTerms" id="nZS-4K-DcO"/>
-                        <segue destination="8Nl-BB-PWq" kind="push" identifier="toAbout" id="vYu-eF-C0g"/>
-                        <segue destination="nIb-85-7tT" kind="push" identifier="ToSubMenu" id="9OT-38-8Gh"/>
-                        <segue destination="zZM-14-GSB" kind="push" identifier="ToPage" id="rRC-ut-pYG"/>
-                        <segue destination="LKm-YM-Tz0" kind="push" identifier="ToArticleSet" id="ACW-CL-Xrw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="otA-Wk-mV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-713" y="797"/>
-        </scene>
     </scenes>
     <resources>
         <image name="menu.png" width="64" height="64"/>
@@ -773,13 +543,12 @@ To select your practice, type and search. If you would like to search for the ne
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VT2-W5-8X0"/>
-        <segue reference="eF5-Dc-4Os"/>
-        <segue reference="YVT-oD-Pkl"/>
         <segue reference="LV1-wv-wCh"/>
+        <segue reference="KU8-ks-pYN"/>
+        <segue reference="VT2-W5-8X0"/>
         <segue reference="qsH-Hu-HYl"/>
         <segue reference="cSc-5f-5Z6"/>
     </inferredMetricsTieBreakers>
