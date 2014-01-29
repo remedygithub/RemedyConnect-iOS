@@ -310,7 +310,6 @@
 		5F82A88A170B3D8E00FE72B8 = {
 			isa = PBXGroup;
 			children = (
-				5FB5FA6B1897F01E00156897 /* iPad */,
 				5F82A89C170B3D8E00FE72B8 /* Your Practice */,
 				5F82A895170B3D8E00FE72B8 /* Frameworks */,
 				5F82A894170B3D8E00FE72B8 /* Products */,
@@ -451,13 +450,6 @@
 			);
 			name = TBXML;
 			path = Libs/TBXML;
-			sourceTree = "<group>";
-		};
-		5FB5FA6B1897F01E00156897 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = iPad;
 			sourceTree = "<group>";
 		};
 		5FE3A8B7183D2A4600E881B2 /* Skin */ = {
@@ -608,16 +600,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F8EC141180E99060080A62E /* Storyboard.storyboard in Resources */,
+				5F96F1A9189928DD0015F065 /* Storyboard-iPad.storyboard in Resources */,
 				5F1EF75F182E76890078F89B /* release_notes.md in Resources */,
 				5F82A8A1170B3D8E00FE72B8 /* InfoPlist.strings in Resources */,
 				5F8139101855EBB400EF3E20 /* icon-152.png in Resources */,
-				5F96F1A9189928DD0015F065 /* Storyboard-iPad.storyboard in Resources */,
 				5F8EC155180EA42B0080A62E /* Images.xcassets in Resources */,
 				5F82A8A9170B3D8E00FE72B8 /* Default.png in Resources */,
-				5F940305188FC4FE00DBFD1A /* about.htm in Resources */,
 				5F82A8AB170B3D8E00FE72B8 /* Default@2x.png in Resources */,
 				5F1EF75E182E76890078F89B /* README.md in Resources */,
-				5F8EC141180E99060080A62E /* Storyboard.storyboard in Resources */,
 				5F81390B1855EBB400EF3E20 /* icon-72.png in Resources */,
 				5F81390C1855EBB400EF3E20 /* icon-76.png in Resources */,
 				5F82A8AD170B3D8E00FE72B8 /* Default-568h@2x.png in Resources */,
@@ -635,9 +626,10 @@
 				5F916649183F926A00E74748 /* OpenSans-BoldItalic.ttf in Resources */,
 				5F91664A183F926A00E74748 /* OpenSans-CondBold.ttf in Resources */,
 				5F9D77BC1860915E00808660 /* testbutton.png in Resources */,
-				5F940307188FC50D00DBFD1A /* terms_and_conditions.htm in Resources */,
-				5F916639183F88DB00E74748 /* style.css in Resources */,
 				5F81390A1855EBB400EF3E20 /* icon-57.png in Resources */,
+				5F916639183F88DB00E74748 /* style.css in Resources */,
+				5F940305188FC4FE00DBFD1A /* about.htm in Resources */,
+				5F940307188FC50D00DBFD1A /* terms_and_conditions.htm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
