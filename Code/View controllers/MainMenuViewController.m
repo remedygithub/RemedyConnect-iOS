@@ -24,23 +24,53 @@
 Logic *logic;
 NSArray *menu;
 
+
 - (void)viewDidLoad {
-    [self menuHeightConstraint].constant = self.view.frame.size.height / 2;
+    [self setMenuHeightInOrientation:[UIApplication sharedApplication].statusBarOrientation beforeRotation:NO];
     logic = [Logic sharedLogic];
     [Skin applyMainMenuBGOnImageView:_backgroundImage];
     [Skin applyMainLogoOnImageView:_logoImageView];
     menu = [logic getDataToDisplayForMainMenu];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+- (void)setMenuHeightInOrientation:(UIInterfaceOrientation)interfaceOrientation
+                    beforeRotation:(BOOL)beforeRotation {
+    
+    CGFloat maxHeight = 360;
+    CGFloat minHeight = 150;
+    CGFloat screenSizingRatioLandscape = 3.5;
+    CGFloat screenSizingRatioPortrait = 2;
+    CGFloat height = 0;
+    CGFloat screenRatioHeight = 0;
+    CGFloat screenSizingRatio = 0;
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        screenSizingRatio = screenSizingRatioLandscape;
+    }
+    else {
+        screenSizingRatio = screenSizingRatioPortrait;
+    }
+    if (beforeRotation) {
+        screenRatioHeight = self.view.frame.size.width / screenSizingRatio;
+    }
+    else {
+        screenRatioHeight = self.view.frame.size.height / screenSizingRatio;
+    }
+    
+    height = MAX(minHeight, MIN(screenRatioHeight, maxHeight));
+    [self menuHeightConstraint].constant = height;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration {
+    
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
     if ((UIInterfaceOrientationIsLandscape(currentOrientation) &&
                 UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) ||
                 (UIInterfaceOrientationIsPortrait(currentOrientation) &&
                  UIInterfaceOrientationIsLandscape(toInterfaceOrientation))) {
-                    
-        [self menuHeightConstraint].constant = self.view.frame.size.width / 2;
+
+        [self setMenuHeightInOrientation:toInterfaceOrientation beforeRotation:YES];
     }
 }
 
@@ -148,10 +178,10 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
 
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self setMenuHeightInOrientation:[UIApplication sharedApplication].statusBarOrientation beforeRotation:NO];
     [super viewWillAppear:animated];
     [[self navigationController] setNavigationBarHidden:TRUE];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [self menuHeightConstraint].constant = self.view.frame.size.height / 2;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
