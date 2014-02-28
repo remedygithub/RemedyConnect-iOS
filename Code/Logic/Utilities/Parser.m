@@ -277,7 +277,7 @@
     return [[NSArray alloc] initWithArray:subFeedURLs];
 }
 
-+ (NSString*)subFeedURLToLocal:(NSString*)subFeedURL withFeedRoot:(NSString*)feedRoot {
++ (NSString*)subFeedURLToLocal:(NSString*)subFeedURL withFeedRoot:(NSString*)feedRoot inTemp:(BOOL)temp {
     NSError *regexError;
     NSRegularExpression *regex =
         [NSRegularExpression regularExpressionWithPattern:@"^http(s)?"
@@ -298,7 +298,7 @@
     if (nil == result) {
         result = @"";
     }
-    NSString *resultPath = [FileHandling getFilePathWithComponent:result];
+    NSString *resultPath = [FileHandling getFilePathWithComponent:result inTemp:temp];
     return resultPath;
 }
 

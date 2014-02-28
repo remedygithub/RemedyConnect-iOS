@@ -81,7 +81,7 @@ int itemFromArticleSet = -1;
 
 -(void)ifDataAvailableAdvanceToMain {
     if (nil != [self downloadStartDelegate]) {
-        if ([FileHandling doesIndexExists]) {
+        if ([FileHandling doesIndexExists:NO]) {
             [self pushFeedToBackStack:[DefaultPracticeHandling feedRoot]];
             [[self downloadStartDelegate] performSegueWithIdentifier:@"SkipToMainMenu"
                                                               sender:self];
@@ -96,22 +96,24 @@ int itemFromArticleSet = -1;
 }
 
 -(void)startDownloadingRootForPracticeSelectionByName:(NSString *)practiceName {
+    [FileHandling prepareTempDirectory];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     NSString *URL = [SearchURLGenerator getSearchURLByName:practiceName
                                               withFeedRoot:[Logic getFeedRoot]];
     [downloader addURLToDownload:URL
-                          saveAs:[FileHandling getFilePathWithComponent:@"root.xml"]];
+                          saveAs:[FileHandling getFilePathWithComponent:@"root.xml" inTemp:YES]];
     [downloader startDownload];
 }
 
 -(void)startDownloadingRootForPracticeSelectionByLocation:(CLLocation *)location; {
+    [FileHandling prepareTempDirectory];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
                                               withFeedRoot:[Logic getFeedRoot]];
     [downloader addURLToDownload:URL
-                          saveAs:[FileHandling getFilePathWithComponent:@"root.xml"]];
+                          saveAs:[FileHandling getFilePathWithComponent:@"root.xml" inTemp:YES]];
     [downloader startDownload];
 }
 
@@ -127,7 +129,7 @@ int itemFromArticleSet = -1;
 
 #pragma mark - Practice list
 -(NSArray *)getPracticeList {
-    Parser *parser = [[Parser alloc] initWithXML:[FileHandling getFilePathWithComponent:@"root.xml"]];
+    Parser *parser = [[Parser alloc] initWithXML:[FileHandling getFilePathWithComponent:@"root.xml" inTemp:YES]];
     if ([parser isRoot]) {
         practiceList = [parser getRootPractices];
     }
@@ -189,15 +191,19 @@ int itemFromArticleSet = -1;
         [downloader startNextDownload];
     }
     else {
+        // Finished with all downloads
         if (nil != [self practiceListDownloadStarterDelegate]) {
+            // Shouldn't "un-temp" here
             [[self practiceListDownloadStarterDelegate] didFinish];
             [self advanceToPracticeSelection];
         }
         if (nil != [self mainDownloadStarterDelegate]) {
+            [FileHandling unTempFiles];
             [[self mainDownloadStarterDelegate] didFinish];
             [self advanceToMainMenu];
         }
         if (nil != [self updateDownloadStarterDelegate]) {
+            [FileHandling unTempFiles];
             [[self updateDownloadStarterDelegate] didFinish];
         }
     }
@@ -207,8 +213,8 @@ int itemFromArticleSet = -1;
     NSArray *files = [downloader filesToDownload];
     NSUInteger fileIndex = [[downloader status] currentFileIndex];
     NSString *filePath = [[files objectAtIndex:fileIndex] objectForKey:@"path"];
-    if ([filePath isEqualToString:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip"]]) {
-        [FileHandling unzipFileInPlace:@"skin/DesignPack.zip"];
+    if ([filePath isEqualToString:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip" inTemp:YES]]) {
+        [FileHandling unzipFileInPlace:@"skin/DesignPack.zip" inTemp:YES];
         [self triggerNext];
     }
     else {
@@ -224,7 +230,7 @@ int itemFromArticleSet = -1;
                         if (![URL isEqualToString:@""]) {
                             [downloader addURLToDownload:URL
                                                   saveAs:[Parser subFeedURLToLocal:URL
-                                                                      withFeedRoot:[DefaultPracticeHandling feedRoot]]];
+                                                                      withFeedRoot:[DefaultPracticeHandling feedRoot]inTemp:YES]];
                         }
                     }
                 }
@@ -238,7 +244,7 @@ int itemFromArticleSet = -1;
 }
 
 - (void)hasFailedToDownloadAFile {
-    [self clearDownloadedData];
+    [self clearDownloadedData:YES];
     if (nil != [self practiceListDownloadStarterDelegate]) {
         [[self practiceListDownloadStarterDelegate] hasFailed];
     }
@@ -295,36 +301,36 @@ int itemFromArticleSet = -1;
     }
 }
 
--(void)clearDownloadedData {
-    [FileHandling emptySandbox];
-    [FileHandling prepareSkinDirectory];
+-(void)clearDownloadedData:(BOOL)temp {
+    [FileHandling emptySandbox:temp];
+    [FileHandling prepareSkinDirectory:temp];
 }
 
 -(void)startMainDownloadWithIndex:(NSInteger)index {
     NSString *feedURL = [[practiceList objectAtIndex:index] objectForKey:@"feed"];
     NSString *designPackURL = [[practiceList objectAtIndex:index] objectForKey:@"designPack"];
-    [self clearDownloadedData];
+    [self clearDownloadedData:YES];
     [DefaultPracticeHandling setFeedRoot:feedURL];
     [DefaultPracticeHandling setDesignPackURL:designPackURL];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     [downloader addURLToDownload:feedURL
-                          saveAs:[FileHandling getFilePathWithComponent:@"index.xml"]];
+                          saveAs:[FileHandling getFilePathWithComponent:@"index.xml" inTemp:YES]];
     [downloader addURLToDownload:designPackURL
-                          saveAs:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip"]];
+                          saveAs:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip" inTemp:YES]];
     [downloader startDownload];
 }
 
 -(void)startUpdateDownload {
     NSString *feedURL = [DefaultPracticeHandling feedRoot];
     NSString *designPackURL = [DefaultPracticeHandling designPackURL];
-    [self clearDownloadedData];
+    [self clearDownloadedData:YES];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     [downloader addURLToDownload:feedURL
-                          saveAs:[FileHandling getFilePathWithComponent:@"index.xml"]];
+                          saveAs:[FileHandling getFilePathWithComponent:@"index.xml" inTemp:YES]];
     [downloader addURLToDownload:designPackURL
-                          saveAs:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip"]];
+                          saveAs:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip" inTemp:YES]];
     [downloader startDownload];
 }
 
@@ -339,7 +345,8 @@ int itemFromArticleSet = -1;
         // accordingly: we don't know whether it's a page, an articleset or a
         // sub-menu - yet.
         NSString *localFeed = [Parser subFeedURLToLocal:feed
-                                           withFeedRoot:[DefaultPracticeHandling feedRoot]];
+                                           withFeedRoot:[DefaultPracticeHandling feedRoot]
+                                                 inTemp:NO];
         Parser *parser = [[Parser alloc] initWithXML:localFeed];
         if ([parser isMenu]) {
             [self pushFeedToBackStack:feed];
@@ -442,7 +449,7 @@ int itemFromArticleSet = -1;
 
 -(NSArray *)getDataToDisplayForMainMenu {
     NSArray *menu;
-    NSString *localIndexFeed = [FileHandling getFilePathWithComponent:@"index.xml"];
+    NSString *localIndexFeed = [FileHandling getFilePathWithComponent:@"index.xml" inTemp:NO];
     Parser *parser = [[Parser alloc] initWithXML:localIndexFeed];
     // load menu items, feeds, external links
     if ([parser isMenu]) {
@@ -455,7 +462,8 @@ int itemFromArticleSet = -1;
 -(NSArray *)getDataToDisplayForSubMenu {
     NSArray *submenu;
     NSString *localFeed = [Parser subFeedURLToLocal:[self getCurrentFeedInStack]
-                                       withFeedRoot:[DefaultPracticeHandling feedRoot]];
+                                       withFeedRoot:[DefaultPracticeHandling feedRoot]
+                                             inTemp:NO];
     Parser *parser = [[Parser alloc] initWithXML:localFeed];
     if ([parser isMenu]) {
         submenu = [parser getMenu];
@@ -467,7 +475,8 @@ int itemFromArticleSet = -1;
 -(NSArray *)getDataToDisplayForArticleSet:(Boolean)titlesOnly {
     NSArray *articleSet;
     NSString *localFeed = [Parser subFeedURLToLocal:[self getCurrentFeedInStack]
-                                       withFeedRoot:[DefaultPracticeHandling feedRoot]];
+                                       withFeedRoot:[DefaultPracticeHandling feedRoot]
+                                             inTemp:NO];
     Parser *parser = [[Parser alloc] initWithXML:localFeed];
     if ([parser isArticleSet]) {
         if (titlesOnly) {
@@ -483,7 +492,8 @@ int itemFromArticleSet = -1;
 
 -(NSDictionary *)getDataToDisplayForPage {
     NSString *localFeed = [Parser subFeedURLToLocal:[self getCurrentFeedInStack]
-                                       withFeedRoot:[DefaultPracticeHandling feedRoot]];
+                                       withFeedRoot:[DefaultPracticeHandling feedRoot]
+                                             inTemp:NO];
     Parser *parser = [[Parser alloc] initWithXML:localFeed];
     NSDictionary *page;
     if (shouldParseNextAsArticleSet) {

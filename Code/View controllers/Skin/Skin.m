@@ -12,7 +12,7 @@
 @implementation Skin
 
 +(void)applyFile:(NSString *)fileName onImageView:(UIImageView *)imageView {
-    NSString *splashPath = [FileHandling getSkinFilePathWithComponent:fileName];
+    NSString *splashPath = [FileHandling getSkinFilePathWithComponent:fileName inTemp:NO];
     if (nil != splashPath) {
         UIImage *image = [UIImage imageWithContentsOfFile:splashPath];
         [imageView setImage:image];
@@ -37,7 +37,7 @@
 }
 
 +(void)applyBackgroundOnButton:(UIButton *)button {
-    NSString *buttonPath = [FileHandling getSkinFilePathWithComponent:@"button.9.png"];
+    NSString *buttonPath = [FileHandling getSkinFilePathWithComponent:@"button.9.png" inTemp:NO];
     //NSString *buttonPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"testbutton.png"];
     if (nil != buttonPath) {
         UIImage *image = [[UIImage imageWithContentsOfFile:buttonPath] resizableImageWithCapInsets:UIEdgeInsetsMake(16,16,16,16) resizingMode:UIImageResizingModeStretch];
@@ -46,7 +46,7 @@
 }
 
 +(void)applySubMenuBGOnView:(UITableView *)view {
-    NSString *bgPath = [FileHandling getSkinFilePathWithComponent:@"background_main.png"];
+    NSString *bgPath = [FileHandling getSkinFilePathWithComponent:@"background_main.png" inTemp:NO];
     if (nil != bgPath) {
         UIImage *image = [UIImage imageWithContentsOfFile:bgPath];
         UIImageView *bg = [[UIImageView alloc] initWithImage:image];
@@ -56,12 +56,12 @@
 }
 
 +(NSString *)logoContentsForWebView {
-    NSString *logoPath = [FileHandling getSkinFilePathWithComponent:@"logo.png"];
+    NSString *logoPath = [FileHandling getSkinFilePathWithComponent:@"logo.png" inTemp:NO];
     return [NSString stringWithFormat:@"<img src='file://%@' class='headerlogo' />", logoPath];
 }
 
 +(void)applyPageBGOnWebView:(UIWebView *)webView inViewController:(UIViewController *)viewController {
-    NSString *bgPath = [FileHandling getSkinFilePathWithComponent:@"background_main.png"];
+    NSString *bgPath = [FileHandling getSkinFilePathWithComponent:@"background_main.png" inTemp:NO];
     if (nil != bgPath) {
         UIImage *image = [UIImage imageWithContentsOfFile:bgPath];
         UIImageView *bg = [[UIImageView alloc] initWithImage:image];

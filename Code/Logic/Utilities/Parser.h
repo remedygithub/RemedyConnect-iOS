@@ -23,6 +23,6 @@
 - (NSArray*)getArticleSetTitles;
 - (NSDictionary*)getArticleFromSet:(NSUInteger)index;
 - (NSArray*)getSubFeedURLs;
-+ (NSString*)subFeedURLToLocal:(NSString*)subFeedURL withFeedRoot:(NSString*)feedRoot;
++ (NSString*)subFeedURLToLocal:(NSString*)subFeedURL withFeedRoot:(NSString*)feedRoot inTemp:(BOOL)temp;
 
 @end

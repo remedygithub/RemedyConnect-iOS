@@ -52,12 +52,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQm-fs-DZU" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="748" height="1024"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQm-fs-DZU" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-ku-Muo">
-                                        <rect key="frame" x="20" y="322" width="708" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-ku-Muo">
+                                        <rect key="frame" x="20" y="305" width="729" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Search by name"/>
@@ -65,15 +65,18 @@
                                             <action selector="startDownloading:" destination="uOJ-iz-GR4" eventType="touchUpInside" id="OU7-Jk-3oE"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="My Practice" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-Wd-IiI">
-                                        <rect key="frame" x="20" y="224" width="708" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="My Practice" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-Wd-IiI">
+                                        <rect key="frame" x="20" y="224" width="729" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                     </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="708" translatesAutoresizingMaskIntoConstraints="NO" id="e6g-AH-bAI">
-                                        <rect key="frame" x="20" y="-8" width="708" height="254"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="729" translatesAutoresizingMaskIntoConstraints="NO" id="e6g-AH-bAI">
+                                        <rect key="frame" x="20" y="0.0" width="729" height="168"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="168" id="C2L-DH-elm"/>
+                                        </constraints>
                                         <string key="text">Welcome! Your are about to download information that your primary care provider has approved. Please ensure that you have a working Internet connection before starting the search.
 
 This information is only intended for registered patients of this organization. Please choose the practice where you, or your family member, is a registered patient.
@@ -81,8 +84,8 @@ To select your practice, type and search. If you would like to search for the ne
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7H-Bp-9iJ" userLabel="Location search button">
-                                        <rect key="frame" x="20" y="393" width="708" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7H-Bp-9iJ" userLabel="Location search button">
+                                        <rect key="frame" x="20" y="374" width="729" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Search by location">
@@ -93,9 +96,31 @@ To select your practice, type and search. If you would like to search for the ne
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="PNa-ku-Muo" firstAttribute="top" secondItem="3lV-Wd-IiI" secondAttribute="bottom" constant="51" id="1xK-az-MaN"/>
+                                    <constraint firstItem="3lV-Wd-IiI" firstAttribute="trailing" secondItem="PNa-ku-Muo" secondAttribute="trailing" id="4GQ-gd-2rb"/>
+                                    <constraint firstItem="e6g-AH-bAI" firstAttribute="trailing" secondItem="3lV-Wd-IiI" secondAttribute="trailing" id="5cu-cx-0cX"/>
+                                    <constraint firstItem="PNa-ku-Muo" firstAttribute="centerX" secondItem="EQm-fs-DZU" secondAttribute="centerX" id="8yj-mU-8ea"/>
+                                    <constraint firstItem="e6g-AH-bAI" firstAttribute="top" secondItem="EQm-fs-DZU" secondAttribute="top" id="BJA-Tj-lBr"/>
+                                    <constraint firstItem="e6g-AH-bAI" firstAttribute="leading" secondItem="EQm-fs-DZU" secondAttribute="leading" constant="20" symbolic="YES" id="CMQ-48-RgF"/>
+                                    <constraint firstAttribute="trailing" secondItem="e6g-AH-bAI" secondAttribute="trailing" constant="20" symbolic="YES" id="HBN-J6-P8B"/>
+                                    <constraint firstItem="3lV-Wd-IiI" firstAttribute="leading" secondItem="PNa-ku-Muo" secondAttribute="leading" id="LVe-F1-zeq"/>
+                                    <constraint firstItem="3lV-Wd-IiI" firstAttribute="top" secondItem="e6g-AH-bAI" secondAttribute="bottom" constant="56" id="Weh-Ft-Zlx"/>
+                                    <constraint firstAttribute="bottom" secondItem="S7H-Bp-9iJ" secondAttribute="bottom" constant="597" id="aHq-Lg-E3n"/>
+                                    <constraint firstItem="S7H-Bp-9iJ" firstAttribute="top" secondItem="PNa-ku-Muo" secondAttribute="bottom" constant="36" id="bmG-rQ-5hn"/>
+                                    <constraint firstItem="PNa-ku-Muo" firstAttribute="trailing" secondItem="S7H-Bp-9iJ" secondAttribute="trailing" id="fCl-jK-WIM"/>
+                                    <constraint firstItem="e6g-AH-bAI" firstAttribute="leading" secondItem="3lV-Wd-IiI" secondAttribute="leading" id="pn9-zT-ong"/>
+                                    <constraint firstItem="PNa-ku-Muo" firstAttribute="leading" secondItem="S7H-Bp-9iJ" secondAttribute="leading" id="yfa-ok-eNF"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EQm-fs-DZU" secondAttribute="trailing" id="0MB-7N-aq1"/>
+                            <constraint firstItem="EQm-fs-DZU" firstAttribute="top" secondItem="fkJ-fk-iKW" secondAttribute="top" id="R7K-8r-LsL"/>
+                            <constraint firstItem="EQm-fs-DZU" firstAttribute="leading" secondItem="fkJ-fk-iKW" secondAttribute="leading" id="SUa-iO-K5p"/>
+                            <constraint firstItem="745-tp-keT" firstAttribute="top" secondItem="EQm-fs-DZU" secondAttribute="bottom" id="YZF-xd-IYQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Your Practice" id="Hux-XK-qJu">
                         <barButtonItem key="backBarButtonItem" title="Search" id="l47-2n-0Fk"/>
