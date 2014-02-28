@@ -61,7 +61,8 @@
             NSNumber *isDirectory = nil;
             [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:NULL];
             
-            if ([isDirectory boolValue]) {
+            if ([isDirectory boolValue] &&
+                    [[NSFileManager defaultManager] fileExistsAtPath:[[url path] stringByAppendingPathComponent:@"logo.png"]]) {
                 return [url path];
             }
         }

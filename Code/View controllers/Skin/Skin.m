@@ -37,8 +37,8 @@
 }
 
 +(void)applyBackgroundOnButton:(UIButton *)button {
-    //NSString *buttonPath = [FileHandling getSkinFilePathWithComponent:@"button.9.png"];
-    NSString *buttonPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"testbutton.png"];
+    NSString *buttonPath = [FileHandling getSkinFilePathWithComponent:@"button.9.png"];
+    //NSString *buttonPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"testbutton.png"];
     if (nil != buttonPath) {
         UIImage *image = [[UIImage imageWithContentsOfFile:buttonPath] resizableImageWithCapInsets:UIEdgeInsetsMake(16,16,16,16) resizingMode:UIImageResizingModeStretch];
         [button setBackgroundImage:image forState:UIControlStateNormal];
