@@ -543,7 +543,7 @@
 				ORGANIZATIONNAME = "NewPush LLC";
 				TargetAttributes = {
 					5F82A892170B3D8E00FE72B8 = {
-						DevelopmentTeam = 4JXDQ48W69;
+						DevelopmentTeam = 7VU2ZQ2EYC;
 					};
 				};
 			};
