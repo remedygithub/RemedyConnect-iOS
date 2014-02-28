@@ -108,7 +108,7 @@ CLLocationManager *locationManager;
 }
 
 - (void)hasFailed {
-    [statusHUD setLabelText:@"Failed to download files.\nPlease try again later."];
+    [statusHUD setLabelText:@"Failed to download files.\nPlease check your internet connection and try again."];
     [statusHUD hide:YES afterDelay:2];
 }
 

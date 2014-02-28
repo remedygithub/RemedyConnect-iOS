@@ -191,6 +191,7 @@ int itemFromArticleSet = -1;
         NSString *filePath = [[files objectAtIndex:fileIndex] objectForKey:@"path"];
         Parser *parser = [[Parser alloc]
                           initWithXML:filePath];
+        // @TODO: check whether it was parsable, if not, fail here
         if ([filePath isEqualToString:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip"]]) {
             [FileHandling unzipFileInPlace:@"skin/DesignPack.zip"];
         }
