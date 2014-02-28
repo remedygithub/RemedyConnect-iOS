@@ -61,7 +61,9 @@
     if ((URLandPath = [filesToDownload objectAtIndex:index])) {
         NSURL *urlToDownload =
             [NSURL URLWithString:[URLandPath objectForKey:@"URL"]];
-        NSURLRequest *request = [NSURLRequest requestWithURL:urlToDownload];
+        NSURLRequest *request = [NSURLRequest requestWithURL:urlToDownload
+                                                 cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                             timeoutInterval:15];
         NSURLConnection *connection =
             [[NSURLConnection alloc] initWithRequest:request delegate:self];
         [connection start];
@@ -75,6 +77,13 @@
         }
     }
     return false;
+}
+
+- (void)shutdownOnFailure {
+    downloadedData = nil;
+    if ([[self delegate] respondsToSelector:@selector(hasFailedToDownloadAFile)]) {
+        [[self delegate] hasFailedToDownloadAFile];
+    }
 }
 
 // NSURLConnectionDelegate
@@ -110,10 +119,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    downloadedData = nil;
-    if ([[self delegate] respondsToSelector:@selector(hasFailedToDownloadAFile)]) {
-        [[self delegate] hasFailedToDownloadAFile];
-    }
+    [self shutdownOnFailure];
 }
 
 @end

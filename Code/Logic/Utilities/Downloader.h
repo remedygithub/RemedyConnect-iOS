@@ -28,6 +28,7 @@
 - (void)startDownload;
 - (void)startNextDownload;
 - (Boolean)isDownloadingNecessary:(NSArray *)filesToCheck;
+- (void)shutdownOnFailure;
 
 // NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection

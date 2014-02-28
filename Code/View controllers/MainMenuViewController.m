@@ -232,7 +232,8 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
 }
 
 - (void)hasFailed {
-    [statusHUD setLabelText:@"Failed to download files.\nPlease try again later."];
+    [statusHUD setMode:MBProgressHUDModeText];
+    [statusHUD setLabelText:@"Failed to download files. Please check your internet connection and try again."];
     [statusHUD hide:YES afterDelay:2];
 }
 

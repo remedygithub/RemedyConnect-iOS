@@ -183,30 +183,7 @@ int itemFromArticleSet = -1;
     }
 }
 
-- (void)didFinishForAFile {
-    if (nil != [self mainDownloadStarterDelegate] ||
-            nil != [self updateDownloadStarterDelegate]) {
-        NSArray *files = [downloader filesToDownload];
-        NSUInteger fileIndex = [[downloader status] currentFileIndex];
-        NSString *filePath = [[files objectAtIndex:fileIndex] objectForKey:@"path"];
-        Parser *parser = [[Parser alloc]
-                          initWithXML:filePath];
-        // @TODO: check whether it was parsable, if not, fail here
-        if ([filePath isEqualToString:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip"]]) {
-            [FileHandling unzipFileInPlace:@"skin/DesignPack.zip"];
-        }
-        else if ([parser isMenu]) {
-            NSArray *subFeedURLs = [parser getSubFeedURLs];
-            for (NSString *URL in subFeedURLs) {
-                // Have to do the following check, this might be empty because of externalLinks...
-                if (![URL isEqualToString:@""]) {
-                    [downloader addURLToDownload:URL
-                                          saveAs:[Parser subFeedURLToLocal:URL withFeedRoot:[DefaultPracticeHandling feedRoot]]];
-                }
-            }
-        }
-    }
-    
+- (void)triggerNext {
     if ([[downloader status] currentFileIndex] + 1 <
         [[downloader status] numberOfFilesToDownload]) {
         [downloader startNextDownload];
@@ -226,7 +203,42 @@ int itemFromArticleSet = -1;
     }
 }
 
+- (void)didFinishForAFile {
+    NSArray *files = [downloader filesToDownload];
+    NSUInteger fileIndex = [[downloader status] currentFileIndex];
+    NSString *filePath = [[files objectAtIndex:fileIndex] objectForKey:@"path"];
+    if ([filePath isEqualToString:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip"]]) {
+        [FileHandling unzipFileInPlace:@"skin/DesignPack.zip"];
+        [self triggerNext];
+    }
+    else {
+        Parser *parser = [[Parser alloc]
+                          initWithXML:filePath];
+        if (nil != parser) {
+            if (nil != [self mainDownloadStarterDelegate] ||
+                    nil != [self updateDownloadStarterDelegate]) {
+                if ([parser isMenu]) {
+                    NSArray *subFeedURLs = [parser getSubFeedURLs];
+                    for (NSString *URL in subFeedURLs) {
+                        // Have to do the following check, this might be empty because of externalLinks...
+                        if (![URL isEqualToString:@""]) {
+                            [downloader addURLToDownload:URL
+                                                  saveAs:[Parser subFeedURLToLocal:URL
+                                                                      withFeedRoot:[DefaultPracticeHandling feedRoot]]];
+                        }
+                    }
+                }
+            }
+            [self triggerNext];
+        }
+        else {
+            [downloader shutdownOnFailure];
+        }
+    }
+}
+
 - (void)hasFailedToDownloadAFile {
+    [self clearDownloadedData];
     if (nil != [self practiceListDownloadStarterDelegate]) {
         [[self practiceListDownloadStarterDelegate] hasFailed];
     }
@@ -283,11 +295,15 @@ int itemFromArticleSet = -1;
     }
 }
 
+-(void)clearDownloadedData {
+    [FileHandling emptySandbox];
+    [FileHandling prepareSkinDirectory];
+}
+
 -(void)startMainDownloadWithIndex:(NSInteger)index {
     NSString *feedURL = [[practiceList objectAtIndex:index] objectForKey:@"feed"];
     NSString *designPackURL = [[practiceList objectAtIndex:index] objectForKey:@"designPack"];
-    [FileHandling emptySandbox];
-    [FileHandling prepareSkinDirectory];
+    [self clearDownloadedData];
     [DefaultPracticeHandling setFeedRoot:feedURL];
     [DefaultPracticeHandling setDesignPackURL:designPackURL];
     downloader = [[Downloader alloc] init];
@@ -302,8 +318,7 @@ int itemFromArticleSet = -1;
 -(void)startUpdateDownload {
     NSString *feedURL = [DefaultPracticeHandling feedRoot];
     NSString *designPackURL = [DefaultPracticeHandling designPackURL];
-    [FileHandling emptySandbox];
-    [FileHandling prepareSkinDirectory];
+    [self clearDownloadedData];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     [downloader addURLToDownload:feedURL
