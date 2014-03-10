@@ -8,11 +8,14 @@
 
 #import "YourPracticeAppDelegate.h"
 #import "TestFlight.h"
+#import "ReachabilityManager.h"
 
 @implementation YourPracticeAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [ReachabilityManager sharedManager];
+    
     // Override point for customization after application launch.
     [TestFlight takeOff:@"f32c392f-6402-4d49-8487-d4094af55544"];
     return YES;

@@ -70,6 +70,9 @@
 		5F91664A183F926A00E74748 /* OpenSans-CondBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F91663D183F926A00E74748 /* OpenSans-CondBold.ttf */; };
 		5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F916642183F926A00E74748 /* OpenSans-Italic.ttf */; };
 		5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F916645183F926A00E74748 /* OpenSans-Regular.ttf */; };
+		5F934AE218CDDF28002C4940 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F934AE118CDDF28002C4940 /* Reachability.m */; };
+		5F934AE318CDDF3E002C4940 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFF2AC61717FD020000B80B /* SystemConfiguration.framework */; };
+		5F934AE618CDDF6A002C4940 /* ReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F934AE518CDDF6A002C4940 /* ReachabilityManager.m */; };
 		5F940303188FBE3E00DBFD1A /* AboutTermsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F940302188FBE3E00DBFD1A /* AboutTermsController.m */; };
 		5F96F1A9189928DD0015F065 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F96F1A8189928DD0015F065 /* Storyboard-iPad.storyboard */; };
 		5F9D77BC1860915E00808660 /* testbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D77BB1860915E00808660 /* testbutton.png */; };
@@ -165,6 +168,10 @@
 		5F91663D183F926A00E74748 /* OpenSans-CondBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondBold.ttf"; sourceTree = "<group>"; };
 		5F916642183F926A00E74748 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		5F916645183F926A00E74748 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		5F934AE018CDDF28002C4940 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		5F934AE118CDDF28002C4940 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5F934AE418CDDF6A002C4940 /* ReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityManager.h; sourceTree = "<group>"; };
+		5F934AE518CDDF6A002C4940 /* ReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityManager.m; sourceTree = "<group>"; };
 		5F940301188FBE3E00DBFD1A /* AboutTermsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTermsController.h; sourceTree = "<group>"; };
 		5F940302188FBE3E00DBFD1A /* AboutTermsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTermsController.m; sourceTree = "<group>"; };
 		5F940304188FC4FE00DBFD1A /* about.htm */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = about.htm; sourceTree = "<group>"; };
@@ -220,6 +227,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F934AE318CDDF3E002C4940 /* SystemConfiguration.framework in Frameworks */,
 				5F8138F21855DC6700EF3E20 /* CoreLocation.framework in Frameworks */,
 				5F47012B1855CF4000506CD2 /* libzipzap.a in Frameworks */,
 				5F82A897170B3D8E00FE72B8 /* UIKit.framework in Frameworks */,
@@ -302,6 +310,8 @@
 				5F942D10182D0B6200EF0532 /* DefaultPracticeHandling.m */,
 				5F942D13182D0F4D00EF0532 /* SearchURLGenerator.h */,
 				5F942D14182D0F4D00EF0532 /* SearchURLGenerator.m */,
+				5F934AE418CDDF6A002C4940 /* ReachabilityManager.h */,
+				5F934AE518CDDF6A002C4940 /* ReachabilityManager.m */,
 			);
 			name = Utilities;
 			path = Logic/Utilities;
@@ -375,6 +385,16 @@
 				5F916645183F926A00E74748 /* OpenSans-Regular.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		5F934ADF18CDDF28002C4940 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				5F934AE018CDDF28002C4940 /* Reachability.h */,
+				5F934AE118CDDF28002C4940 /* Reachability.m */,
+			);
+			name = Reachability;
+			path = Libs/Reachability;
 			sourceTree = "<group>";
 		};
 		5F942D09182BA92400EF0532 /* View controllers */ = {
@@ -474,6 +494,7 @@
 		5FFA022F170D8BD5007CD360 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				5F934ADF18CDDF28002C4940 /* Reachability */,
 				5FE3A8A5183CFA0F00E881B2 /* zipzap.xcodeproj */,
 				5F1EF756182E76890078F89B /* TestFlightSDK */,
 				5F942D16182D4F0300EF0532 /* TPKeyboardAvoiding */,
@@ -644,9 +665,11 @@
 				5F8138D71855D28400EF3E20 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				5F8138D81855D28400EF3E20 /* TPKeyboardAvoidingTableView.m in Sources */,
 				5F940303188FBE3E00DBFD1A /* AboutTermsController.m in Sources */,
+				5F934AE218CDDF28002C4940 /* Reachability.m in Sources */,
 				5F8138D91855D28400EF3E20 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				5F8138DB1855D28400EF3E20 /* TBXML.m in Sources */,
 				5F8138DC1855D28400EF3E20 /* PopoverView.m in Sources */,
+				5F934AE618CDDF6A002C4940 /* ReachabilityManager.m in Sources */,
 				5F8138DD1855D28400EF3E20 /* MBProgressHUD.m in Sources */,
 				5F8138DE1855D28400EF3E20 /* main.m in Sources */,
 				5F8138DF1855D28400EF3E20 /* Data.m in Sources */,
@@ -759,7 +782,7 @@
 					"/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2DB53A63-14DE-40FF-99A4-88EFC5BB5AE4";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/zipzap/zipzap";
 				WRAPPER_EXTENSION = app;
@@ -782,7 +805,7 @@
 					"/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2DB53A63-14DE-40FF-99A4-88EFC5BB5AE4";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/zipzap/zipzap";
 				WRAPPER_EXTENSION = app;

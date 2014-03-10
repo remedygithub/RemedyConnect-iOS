@@ -12,6 +12,7 @@
 #import "FileHandling.h"
 #import "Data.h"
 #import "Parser.h"
+#import "ReachabilityManager.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface PracticeSearchViewController ()
@@ -24,34 +25,45 @@ UIGestureRecognizer *tapper;
 UITextField *activeField;
 CLLocationManager *locationManager;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
-    return self;
-}
-
 // Implementation for scrolling along with the keyboard is taken from
 // http://stackoverflow.com/a/4837510/238845
 
+- (void)showNoConnectionPopup {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No internet connection"
+                                                    message:@"Couldn't reach server. Please check your internet connection and try again."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
 - (IBAction)startDownloading:(id)sender {
-    logic = [Logic sharedLogic];
-    [logic setPracticeListDownloadStarterDelegate:self];
-    [logic startDownloadingRootForPracticeSelectionByName:_practiceNameField.text];
+    if ([ReachabilityManager isReachable]) {
+        logic = [Logic sharedLogic];
+        [logic setPracticeListDownloadStarterDelegate:self];
+        [logic startDownloadingRootForPracticeSelectionByName:_practiceNameField.text];
+    }
+    else {
+        [self showNoConnectionPopup];
+    }
+    
 }
 
 - (IBAction)startLocationSearch:(id)sender {
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    locationManager.distanceFilter = 500;
-    [locationManager startUpdatingLocation];
-    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-    [statusHUD setDelegate:self];
-    [statusHUD setDimBackground:TRUE];
-    [statusHUD setLabelText:@"Waiting for location..."];
+    if ([ReachabilityManager isReachable]) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+        locationManager.distanceFilter = 500;
+        [locationManager startUpdatingLocation];
+        statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+        [statusHUD setDelegate:self];
+        [statusHUD setDimBackground:TRUE];
+        [statusHUD setLabelText:@"Waiting for location..."];
+    }
+    else {
+        [self showNoConnectionPopup];
+    }
 }
 
 - (void)viewDidLoad {
@@ -105,6 +117,25 @@ CLLocationManager *locationManager;
     [statusHUD setMode:MBProgressHUDModeText];
     [statusHUD setLabelText:@"Finished!"];
     [statusHUD hide:YES afterDelay:2];
+    if ([[logic getPracticeList] count] == 0) {
+        [logic setCanAdvanceToPracticeSelect:FALSE];
+        NSString *message;
+        if ([logic locationBasedSearch]) {
+            message = @"It seems there are no practices near you. Please try searching by name.";
+        }
+        else {
+            message = @"Please check your spelling and try again.";
+        }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't find any practices"
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    else {
+        [logic setCanAdvanceToPracticeSelect:TRUE];
+    }
 }
 
 - (void)hasFailed {

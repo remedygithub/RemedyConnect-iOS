@@ -17,6 +17,8 @@
 @implementation Logic
 
 @synthesize title = _title;
+@synthesize locationBasedSearch;
+@synthesize canAdvanceToPracticeSelect;
 
 #pragma mark - Internal vars
 
@@ -96,6 +98,7 @@ int itemFromArticleSet = -1;
 }
 
 -(void)startDownloadingRootForPracticeSelectionByName:(NSString *)practiceName {
+    locationBasedSearch = false;
     [FileHandling prepareTempDirectory];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
@@ -107,6 +110,7 @@ int itemFromArticleSet = -1;
 }
 
 -(void)startDownloadingRootForPracticeSelectionByLocation:(CLLocation *)location; {
+    locationBasedSearch = true;
     [FileHandling prepareTempDirectory];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
@@ -129,6 +133,7 @@ int itemFromArticleSet = -1;
 
 #pragma mark - Practice list
 -(NSArray *)getPracticeList {
+    practiceList = nil;
     Parser *parser = [[Parser alloc] initWithXML:[FileHandling getFilePathWithComponent:@"root.xml" inTemp:YES]];
     if ([parser isRoot]) {
         practiceList = [parser getRootPractices];
@@ -195,7 +200,9 @@ int itemFromArticleSet = -1;
         if (nil != [self practiceListDownloadStarterDelegate]) {
             // Shouldn't "un-temp" here
             [[self practiceListDownloadStarterDelegate] didFinish];
-            [self advanceToPracticeSelection];
+            if ([self canAdvanceToPracticeSelect]) {
+                [self advanceToPracticeSelection];
+            }
         }
         if (nil != [self mainDownloadStarterDelegate]) {
             [FileHandling unTempFiles];
@@ -307,6 +314,7 @@ int itemFromArticleSet = -1;
 }
 
 -(void)startMainDownloadWithIndex:(NSInteger)index {
+    locationBasedSearch = false;
     NSString *feedURL = [[practiceList objectAtIndex:index] objectForKey:@"feed"];
     NSString *designPackURL = [[practiceList objectAtIndex:index] objectForKey:@"designPack"];
     [self clearDownloadedData:YES];
@@ -322,6 +330,7 @@ int itemFromArticleSet = -1;
 }
 
 -(void)startUpdateDownload {
+    locationBasedSearch = false;
     NSString *feedURL = [DefaultPracticeHandling feedRoot];
     NSString *designPackURL = [DefaultPracticeHandling designPackURL];
     [self clearDownloadedData:YES];

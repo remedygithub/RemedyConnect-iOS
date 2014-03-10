@@ -58,6 +58,8 @@
 @property (nonatomic, strong) UIViewController <ArticleSetDelegate> *articleSetDelegate;
 @property (nonatomic, strong) UIViewController <PageDelegate> *pageDelegate;
 @property (nonatomic, readonly, strong) NSString *title;
+@property (nonatomic, readonly) Boolean locationBasedSearch;
+@property (nonatomic) Boolean canAdvanceToPracticeSelect;
 
 + (id)sharedLogic;
 
