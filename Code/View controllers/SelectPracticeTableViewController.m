@@ -93,9 +93,13 @@ Logic *logic;
 }
 
 - (void)hasFailed {
-    [statusHUD setMode:MBProgressHUDModeText];
-    [statusHUD setLabelText:@"Failed to download files. Please check your internet connection and try again."];
-    [statusHUD hide:YES afterDelay:2];
+    [statusHUD hide:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to download files"
+                                                    message:@"Please check your internet connection and try again."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end

@@ -7,11 +7,12 @@
 //
 
 #import "SearchURLGenerator.h"
+#import "NSString+URLEncoding.h"
 
 @implementation SearchURLGenerator
 
 +(NSString *)getSearchURLByName:(NSString *)practiceName withFeedRoot:(NSString *)feedRoot {
-    return [NSString stringWithFormat:@"%@?search=%@", feedRoot, practiceName];
+    return [NSString stringWithFormat:@"%@?search=%@", feedRoot, [practiceName urlEncodeUsingEncoding:NSUTF8StringEncoding]];
 }
 
 +(NSString *)getSearchURLWithLatitude: (double)latitude withLongitude:(double)longitude withFeedRoot:(NSString *)feedRoot {

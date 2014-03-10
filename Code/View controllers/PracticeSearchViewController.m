@@ -131,6 +131,7 @@ CLLocationManager *locationManager;
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
+        [statusHUD hide:YES];
         [alert show];
     }
     else {
@@ -140,8 +141,13 @@ CLLocationManager *locationManager;
 
 - (void)hasFailed {
     [statusHUD setMode:MBProgressHUDModeText];
-    [statusHUD setLabelText:@"Failed to download files. Please check your internet connection and try again."];
-    [statusHUD hide:YES afterDelay:2];
+    [statusHUD hide:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to download files"
+                                                    message:@"Please check your internet connection and try again."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -156,8 +162,13 @@ CLLocationManager *locationManager;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    [statusHUD setLabelText:@"Couldn't find location. Please search by name."];
-    [statusHUD hide:YES afterDelay:2];
+    [statusHUD hide:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't find location"
+                                                    message:@"Please try searching by name instead."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end

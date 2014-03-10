@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F0AE35718CE1BE10027824B /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0AE35618CE1BE10027824B /* NSString+URLEncoding.m */; };
 		5F1EF75D182E76890078F89B /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EF757182E76890078F89B /* libTestFlight.a */; };
 		5F1EF75E182E76890078F89B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F1EF758182E76890078F89B /* README.md */; };
 		5F1EF75F182E76890078F89B /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 5F1EF759182E76890078F89B /* release_notes.md */; };
@@ -106,6 +107,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F0AE35518CE1BE10027824B /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		5F0AE35618CE1BE10027824B /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		5F1EF753182D9F790078F89B /* ArticleSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleSetViewController.h; sourceTree = "<group>"; };
 		5F1EF754182D9F790078F89B /* ArticleSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleSetViewController.m; sourceTree = "<group>"; };
 		5F1EF757182E76890078F89B /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 				5F942D14182D0F4D00EF0532 /* SearchURLGenerator.m */,
 				5F934AE418CDDF6A002C4940 /* ReachabilityManager.h */,
 				5F934AE518CDDF6A002C4940 /* ReachabilityManager.m */,
+				5F0AE35518CE1BE10027824B /* NSString+URLEncoding.h */,
+				5F0AE35618CE1BE10027824B /* NSString+URLEncoding.m */,
 			);
 			name = Utilities;
 			path = Logic/Utilities;
@@ -675,6 +680,7 @@
 				5F8138DF1855D28400EF3E20 /* Data.m in Sources */,
 				5F8138E01855D28400EF3E20 /* FileHandling.m in Sources */,
 				5F8138E11855D28400EF3E20 /* DownloadStatus.m in Sources */,
+				5F0AE35718CE1BE10027824B /* NSString+URLEncoding.m in Sources */,
 				5F8138E21855D28400EF3E20 /* Downloader.m in Sources */,
 				5F8138E31855D28400EF3E20 /* Parser.m in Sources */,
 				5F8138E41855D28400EF3E20 /* DefaultPracticeHandling.m in Sources */,
@@ -782,7 +788,7 @@
 					"/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "2DB53A63-14DE-40FF-99A4-88EFC5BB5AE4";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/zipzap/zipzap";
 				WRAPPER_EXTENSION = app;
@@ -805,7 +811,7 @@
 					"/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "2DB53A63-14DE-40FF-99A4-88EFC5BB5AE4";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/zadamek/Documents/NewPush/PediatricWeb\\ iOS\\ application/Your\\ Practice/Libs/zipzap/zipzap";
 				WRAPPER_EXTENSION = app;
