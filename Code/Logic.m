@@ -299,7 +299,7 @@ int itemFromArticleSet = -1;
         if ([menuItems count] >= tag) {
             NSDictionary *menuItem = [menuItems objectAtIndex:tag];
             _title = [menuItems objectAtIndex:tag];
-            itemFromArticleSet = tag;
+            itemFromArticleSet = (int)tag;
             [self handleMenuItem:menuItem shouldProceedToPage:proceedToPage];
         }
         else {

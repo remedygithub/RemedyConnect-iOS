@@ -18,6 +18,8 @@
 @synthesize delegate;
 @synthesize status;
 
+const int TIMEOUT_INTERVAL = 120;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -63,7 +65,7 @@
             [NSURL URLWithString:[URLandPath objectForKey:@"URL"]];
         NSURLRequest *request = [NSURLRequest requestWithURL:urlToDownload
                                                  cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                                             timeoutInterval:15];
+                                             timeoutInterval:TIMEOUT_INTERVAL];
         NSURLConnection *connection =
             [[NSURLConnection alloc] initWithRequest:request delegate:self];
         [connection start];
@@ -119,6 +121,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"Download error: %@", error.description);
     [self shutdownOnFailure];
 }
 
