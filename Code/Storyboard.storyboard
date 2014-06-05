@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Srv-3T-ZyC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Srv-3T-ZyC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Splashscreen Controller-->
@@ -52,54 +52,117 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ztg-Ke-LIB" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="435"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ztg-Ke-LIB" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDS-MT-t6r">
-                                        <rect key="frame" x="20" y="300" width="280" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIj-1q-Hlw">
+                                        <rect key="frame" x="20" y="14" width="280" height="355"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Search by name"/>
-                                        <connections>
-                                            <action selector="startDownloading:" destination="TGd-Uv-wp4" eventType="touchUpInside" id="6yk-5F-oJa"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="My Practice" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OY5-Ke-EZ4">
-                                        <rect key="frame" x="20" y="262" width="280" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                    </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="93N-Bi-hdx">
-                                        <rect key="frame" x="20" y="0.0" width="280" height="254"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Welcome! Your are about to download information that your primary care provider has approved. Please ensure that you have a working Internet connection before starting the search.
-
-This information is only intended for registered patients of this organization. Please choose the practice where you, or your family member, is a registered patient.
-To select your practice, type and search. If you would like to search for the nearest practice, start a location-based search below.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFz-At-Huf" userLabel="Location search button">
-                                        <rect key="frame" x="93" y="338" width="135" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Search by location">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startLocationSearch:" destination="TGd-Uv-wp4" eventType="touchUpInside" id="JWr-zy-3xV"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDS-MT-t6r">
+                                                <rect key="frame" x="10" y="141" width="260" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Submit"/>
+                                                <connections>
+                                                    <action selector="startDownloading:" destination="TGd-Uv-wp4" eventType="touchUpInside" id="6yk-5F-oJa"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your practice's name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OY5-Ke-EZ4">
+                                                <rect key="frame" x="10" y="101" width="260" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                            </textField>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Please enter the practice where you or your family member is a registered patient:" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="93N-Bi-hdx">
+                                                <rect key="frame" x="10" y="40" width="260" height="51"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFz-At-Huf" userLabel="Location search button">
+                                                <rect key="frame" x="10" y="311" width="260" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="Search by current location">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="startLocationSearch:" destination="TGd-Uv-wp4" eventType="touchUpInside" id="JWr-zy-3xV"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvz-cq-Rzi">
+                                                <rect key="frame" x="10" y="10" width="74" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="iCl-HG-yeB">
+                                                <rect key="frame" x="10" y="181" width="260" height="84"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">You are about to download information that your health care provider has approved. This information is only intended for registered patients of this organization.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can't find your practice?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5V-lt-iFy">
+                                                <rect key="frame" x="10" y="285" width="260" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QFz-At-Huf" secondAttribute="bottom" constant="10" id="3Ok-eU-kD5"/>
+                                            <constraint firstItem="Yvz-cq-Rzi" firstAttribute="leading" secondItem="rIj-1q-Hlw" secondAttribute="leading" constant="10" id="57L-mO-iej"/>
+                                            <constraint firstAttribute="width" constant="280" placeholder="YES" id="70i-CH-qzb"/>
+                                            <constraint firstItem="g5V-lt-iFy" firstAttribute="top" secondItem="iCl-HG-yeB" secondAttribute="bottom" constant="20" id="7Qh-g6-DNT"/>
+                                            <constraint firstItem="QFz-At-Huf" firstAttribute="leading" secondItem="rIj-1q-Hlw" secondAttribute="leading" constant="10" id="7Wd-rX-9eQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="93N-Bi-hdx" secondAttribute="trailing" constant="10" id="7w4-zt-YCX"/>
+                                            <constraint firstAttribute="trailing" secondItem="OY5-Ke-EZ4" secondAttribute="trailing" constant="10" id="EiP-2G-nid"/>
+                                            <constraint firstItem="g5V-lt-iFy" firstAttribute="leading" secondItem="rIj-1q-Hlw" secondAttribute="leading" constant="10" id="GKb-U0-Qul"/>
+                                            <constraint firstAttribute="trailing" secondItem="g5V-lt-iFy" secondAttribute="trailing" constant="10" id="Hcu-sp-xRg"/>
+                                            <constraint firstItem="gDS-MT-t6r" firstAttribute="top" secondItem="OY5-Ke-EZ4" secondAttribute="bottom" constant="10" id="UW9-p1-jaO"/>
+                                            <constraint firstItem="93N-Bi-hdx" firstAttribute="leading" secondItem="rIj-1q-Hlw" secondAttribute="leading" constant="10" id="Z9Q-lK-ipe"/>
+                                            <constraint firstItem="OY5-Ke-EZ4" firstAttribute="leading" secondItem="rIj-1q-Hlw" secondAttribute="leading" constant="10" id="ZcH-3I-LMz"/>
+                                            <constraint firstAttribute="trailing" secondItem="gDS-MT-t6r" secondAttribute="trailing" constant="10" id="azb-7m-QcP"/>
+                                            <constraint firstAttribute="height" constant="355" id="bGW-2L-Ohy"/>
+                                            <constraint firstItem="OY5-Ke-EZ4" firstAttribute="top" secondItem="93N-Bi-hdx" secondAttribute="bottom" constant="10" id="c9l-FO-RqL"/>
+                                            <constraint firstItem="93N-Bi-hdx" firstAttribute="top" secondItem="Yvz-cq-Rzi" secondAttribute="bottom" constant="10" id="cXM-5u-jKL"/>
+                                            <constraint firstAttribute="trailing" secondItem="iCl-HG-yeB" secondAttribute="trailing" constant="10" id="e8M-jr-8nC"/>
+                                            <constraint firstAttribute="trailing" secondItem="QFz-At-Huf" secondAttribute="trailing" constant="10" id="ekb-6l-WPy"/>
+                                            <constraint firstItem="iCl-HG-yeB" firstAttribute="top" secondItem="gDS-MT-t6r" secondAttribute="bottom" constant="10" id="fqM-Q5-1n8"/>
+                                            <constraint firstItem="QFz-At-Huf" firstAttribute="top" secondItem="g5V-lt-iFy" secondAttribute="bottom" constant="10" id="h6l-oe-ZqS"/>
+                                            <constraint firstItem="iCl-HG-yeB" firstAttribute="leading" secondItem="rIj-1q-Hlw" secondAttribute="leading" constant="10" id="le7-M4-fw0"/>
+                                            <constraint firstItem="Yvz-cq-Rzi" firstAttribute="top" secondItem="rIj-1q-Hlw" secondAttribute="top" constant="10" id="whM-rA-hyP"/>
+                                            <constraint firstItem="gDS-MT-t6r" firstAttribute="leading" secondItem="rIj-1q-Hlw" secondAttribute="leading" constant="10" id="xbu-zC-3eR"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="rIj-1q-Hlw" firstAttribute="top" secondItem="ztg-Ke-LIB" secondAttribute="top" constant="14" id="4iT-Mp-F3Q"/>
+                                    <constraint firstItem="rIj-1q-Hlw" firstAttribute="leading" secondItem="ztg-Ke-LIB" secondAttribute="leading" constant="20" id="Qi1-Ck-w5a"/>
+                                    <constraint firstAttribute="bottom" secondItem="rIj-1q-Hlw" secondAttribute="bottom" constant="111" id="YvN-Mf-5co"/>
+                                    <constraint firstAttribute="trailing" secondItem="rIj-1q-Hlw" secondAttribute="trailing" constant="20" id="Zl1-Px-82j"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ztg-Ke-LIB" secondAttribute="trailing" id="8dy-Fw-bHv"/>
+                            <constraint firstItem="ztg-Ke-LIB" firstAttribute="leading" secondItem="NDO-1e-ZDN" secondAttribute="leading" id="JdH-eb-lld"/>
+                            <constraint firstItem="XdF-gb-SMk" firstAttribute="top" secondItem="ztg-Ke-LIB" secondAttribute="bottom" id="OpS-6Q-d96"/>
+                            <constraint firstItem="ztg-Ke-LIB" firstAttribute="top" secondItem="NDO-1e-ZDN" secondAttribute="top" id="XVd-w0-dLw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Your Practice" id="neb-Gp-xXO">
                         <barButtonItem key="backBarButtonItem" title="Search" id="HED-f8-iuK"/>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="containerView" destination="rIj-1q-Hlw" id="Ebq-fA-TAx"/>
                         <outlet property="navigationItem" destination="neb-Gp-xXO" id="7Hv-0y-ewb"/>
                         <outlet property="practiceNameField" destination="OY5-Ke-EZ4" id="gU4-AQ-jAR"/>
                         <segue destination="noF-Ua-Ko6" kind="push" identifier="ToPracticeSelect" id="6MZ-V2-zMo"/>
@@ -546,10 +609,10 @@ To select your practice, type and search. If you would like to search for the ne
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LV1-wv-wCh"/>
-        <segue reference="KU8-ks-pYN"/>
         <segue reference="VT2-W5-8X0"/>
+        <segue reference="KU8-ks-pYN"/>
         <segue reference="qsH-Hu-HYl"/>
+        <segue reference="LV1-wv-wCh"/>
         <segue reference="cSc-5f-5Z6"/>
     </inferredMetricsTieBreakers>
 </document>

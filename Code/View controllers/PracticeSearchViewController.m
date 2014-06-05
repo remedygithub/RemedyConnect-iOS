@@ -71,6 +71,23 @@ CLLocationManager *locationManager;
     tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     tapper.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapper];
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.containerView
+                                                                      attribute:NSLayoutAttributeLeading
+                                                                      relatedBy:0
+                                                                         toItem:self.view
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0
+                                                                       constant:0];
+    [self.view addConstraint:leftConstraint];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.containerView
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:0
+                                                                          toItem:self.view
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1.0
+                                                                        constant:0];
+    [self.view addConstraint:rightConstraint];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {

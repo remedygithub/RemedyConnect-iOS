@@ -18,6 +18,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *practiceNameField;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 - (IBAction)startDownloading:(id)sender;
 - (IBAction)startLocationSearch:(id)sender;
 
