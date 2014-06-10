@@ -13,6 +13,7 @@
 #import "Downloader.h"
 #import "Parser.h"
 #import "TestFlight.h"
+#import "Data.h"
 
 @implementation Logic
 
@@ -77,8 +78,9 @@ int itemFromArticleSet = -1;
 
 #pragma mark - Download-related methods
 
+// TODO: Is this really necessary?
 +(NSString *)getFeedRoot {
-    return @"https://cms.pediatricweb.com/mobile-app";
+    return [Data getFeedRoot];
 }
 
 -(void)ifDataAvailableAdvanceToMain {
@@ -198,7 +200,7 @@ int itemFromArticleSet = -1;
     else {
         // Finished with all downloads
         if (nil != [self practiceListDownloadStarterDelegate]) {
-            // Shouldn't "un-temp" here
+            // No need to "un-temp" here
             [[self practiceListDownloadStarterDelegate] didFinish];
             if ([self canAdvanceToPracticeSelect]) {
                 [self advanceToPracticeSelection];
@@ -224,14 +226,14 @@ int itemFromArticleSet = -1;
         [FileHandling unzipFileInPlace:@"skin/DesignPack.zip" inTemp:YES];
         [self triggerNext];
     }
-    else {
+    else if ([filePath isEqualToString:[FileHandling getFilePathWithComponent:@"filefeed.xml" inTemp:YES]]) {
         Parser *parser = [[Parser alloc]
                           initWithXML:filePath];
         if (nil != parser) {
             if (nil != [self mainDownloadStarterDelegate] ||
-                    nil != [self updateDownloadStarterDelegate]) {
-                if ([parser isMenu]) {
-                    NSArray *subFeedURLs = [parser getSubFeedURLs];
+                nil != [self updateDownloadStarterDelegate]) {
+                if ([parser isFileFeed]) {
+                    NSArray *subFeedURLs = [parser getSubFeedURLsFromFileFeed];
                     for (NSString *URL in subFeedURLs) {
                         // Have to do the following check, this might be empty because of externalLinks...
                         if (![URL isEqualToString:@""]) {
@@ -247,6 +249,9 @@ int itemFromArticleSet = -1;
         else {
             [downloader shutdownOnFailure];
         }
+    }
+    else {
+        [self triggerNext];
     }
 }
 
@@ -316,14 +321,18 @@ int itemFromArticleSet = -1;
 -(void)startMainDownloadWithIndex:(NSInteger)index {
     locationBasedSearch = false;
     NSString *feedURL = [[practiceList objectAtIndex:index] objectForKey:@"feed"];
+    NSString *filefeed = [[practiceList objectAtIndex:index] objectForKey:@"filefeed"];
     NSString *designPackURL = [[practiceList objectAtIndex:index] objectForKey:@"designPack"];
     [self clearDownloadedData:YES];
     [DefaultPracticeHandling setFeedRoot:feedURL];
+    [DefaultPracticeHandling setFileFeed:filefeed];
     [DefaultPracticeHandling setDesignPackURL:designPackURL];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     [downloader addURLToDownload:feedURL
                           saveAs:[FileHandling getFilePathWithComponent:@"index.xml" inTemp:YES]];
+    [downloader addURLToDownload:filefeed
+                          saveAs:[FileHandling getFilePathWithComponent:@"filefeed.xml" inTemp:YES]];
     [downloader addURLToDownload:designPackURL
                           saveAs:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip" inTemp:YES]];
     [downloader startDownload];
@@ -332,12 +341,15 @@ int itemFromArticleSet = -1;
 -(void)startUpdateDownload {
     locationBasedSearch = false;
     NSString *feedURL = [DefaultPracticeHandling feedRoot];
+    NSString *filefeed = [DefaultPracticeHandling fileFeed];
     NSString *designPackURL = [DefaultPracticeHandling designPackURL];
     [self clearDownloadedData:YES];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     [downloader addURLToDownload:feedURL
                           saveAs:[FileHandling getFilePathWithComponent:@"index.xml" inTemp:YES]];
+    [downloader addURLToDownload:filefeed
+                          saveAs:[FileHandling getFilePathWithComponent:@"filefeed.xml" inTemp:YES]];
     [downloader addURLToDownload:designPackURL
                           saveAs:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip" inTemp:YES]];
     [downloader startDownload];

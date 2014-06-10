@@ -13,16 +13,19 @@
 
 - (id)initWithXML:(NSString *)path;
 - (Boolean)isRoot;
+- (Boolean)isFileFeed;
 - (Boolean)isPage;
 - (Boolean)isMenu;
 - (Boolean)isArticleSet;
 - (NSArray*)getRootPractices;
 - (NSDictionary*)getPage;
 - (NSArray*)getMenu;
+- (NSArray*)getFileFeed;
 - (NSArray*)getArticleSet;
 - (NSArray*)getArticleSetTitles;
 - (NSDictionary*)getArticleFromSet:(NSUInteger)index;
 - (NSArray*)getSubFeedURLs;
+- (NSArray*)getSubFeedURLsFromFileFeed;
 + (NSString*)subFeedURLToLocal:(NSString*)subFeedURL withFeedRoot:(NSString*)feedRoot inTemp:(BOOL)temp;
 
 @end
