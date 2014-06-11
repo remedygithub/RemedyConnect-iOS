@@ -30,6 +30,7 @@ NSArray *menu;
     logic = [Logic sharedLogic];
     [Skin applyMainMenuBGOnImageView:_backgroundImage];
     [Skin applyMainLogoOnImageView:_logoImageView];
+    [Skin applyBackgroundOnButton:_menuButton];
     menu = [logic getDataToDisplayForMainMenu];
 }
 

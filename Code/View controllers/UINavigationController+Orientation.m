@@ -7,12 +7,18 @@
 //
 
 #import "UINavigationController+Orientation.h"
+#import "PracticeSearchViewController.h"
 
 @implementation UINavigationController (Orientation)
 
 - (BOOL)shouldAutorotate
 {
-    return [self.topViewController shouldAutorotate];
+    if ([self.topViewController isKindOfClass:[PracticeSearchViewController class]]) {
+        return NO;
+    }
+    else {
+        return [self.topViewController shouldAutorotate];
+    }
 }
 
 - (NSUInteger)supportedInterfaceOrientations

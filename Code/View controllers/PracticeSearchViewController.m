@@ -14,6 +14,7 @@
 #import "Parser.h"
 #import "ReachabilityManager.h"
 #import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface PracticeSearchViewController ()
 
@@ -28,6 +29,18 @@ CLLocationManager *locationManager;
 // Implementation for scrolling along with the keyboard is taken from
 // http://stackoverflow.com/a/4837510/238845
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarHidden:FALSE
+                                            withAnimation:UIStatusBarAnimationFade];
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+}
+
 - (void)showNoConnectionPopup {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No internet connection"
                                                     message:@"Couldn't reach server. Please check your internet connection and try again."
@@ -35,6 +48,11 @@ CLLocationManager *locationManager;
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self startDownloading:nil];
+    return YES;
 }
 
 - (IBAction)startDownloading:(id)sender {
@@ -66,11 +84,8 @@ CLLocationManager *locationManager;
     }
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    tapper.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tapper];
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
     NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.containerView
                                                                       attribute:NSLayoutAttributeLeading
                                                                       relatedBy:0
@@ -88,6 +103,28 @@ CLLocationManager *locationManager;
                                                                       multiplier:1.0
                                                                         constant:0];
     [self.view addConstraint:rightConstraint];
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenHeight = screenRect.size.height;
+    
+    _containerHeightConstraint.constant = screenHeight;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    tapper.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapper];
+    
+    UILabel *magnifyingGlass = [[UILabel alloc] init];
+    [magnifyingGlass setText:[[NSString alloc] initWithUTF8String:"\xF0\x9F\x94\x8D"]];
+    [magnifyingGlass sizeToFit];
+    
+    [_practiceNameField setLeftView:magnifyingGlass];
+    [_practiceNameField setLeftViewMode:UITextFieldViewModeAlways];
+    [_practiceNameField setDelegate:self];
+    
+    _locationView.layer.cornerRadius = 4;
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
