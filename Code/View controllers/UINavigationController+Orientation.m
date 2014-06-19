@@ -13,12 +13,13 @@
 
 - (BOOL)shouldAutorotate
 {
-    if ([self.topViewController isKindOfClass:[PracticeSearchViewController class]]) {
+    /*if ([self.topViewController isKindOfClass:[PracticeSearchViewController class]]) {
         return NO;
     }
     else {
         return [self.topViewController shouldAutorotate];
-    }
+    }*/
+    return [self.topViewController shouldAutorotate];
 }
 
 - (NSUInteger)supportedInterfaceOrientations

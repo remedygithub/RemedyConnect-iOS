@@ -25,6 +25,7 @@ Logic *logic;
 UIGestureRecognizer *tapper;
 UITextField *activeField;
 CLLocationManager *locationManager;
+NSLayoutConstraint *oldConstraint;
 
 // Implementation for scrolling along with the keyboard is taken from
 // http://stackoverflow.com/a/4837510/238845
@@ -32,7 +33,7 @@ CLLocationManager *locationManager;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    [[self navigationController] setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -104,8 +105,18 @@ CLLocationManager *locationManager;
                                                                         constant:0];
     [self.view addConstraint:rightConstraint];
     
+    BOOL isLandscape = UIInterfaceOrientationIsLandscape(self.interfaceOrientation);
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenHeight = screenRect.size.height;
+    CGFloat screenHeight;
+    if (!isLandscape) {
+        screenHeight = screenRect.size.height;
+    }
+    else {
+        screenHeight = screenRect.size.width;
+    }
+    
+    //CGRect screenRect = [[UIScreen mainScreen] bounds];
+    //CGFloat screenHeight = screenRect.size.height;
     
     _containerHeightConstraint.constant = screenHeight;
 }
