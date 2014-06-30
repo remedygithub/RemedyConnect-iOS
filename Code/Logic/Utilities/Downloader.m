@@ -63,6 +63,7 @@ const int TIMEOUT_INTERVAL = 120;
     if ((URLandPath = [filesToDownload objectAtIndex:index])) {
         NSURL *urlToDownload =
             [NSURL URLWithString:[URLandPath objectForKey:@"URL"]];
+
         NSURLRequest *request = [NSURLRequest requestWithURL:urlToDownload
                                                  cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                              timeoutInterval:TIMEOUT_INTERVAL];
@@ -112,6 +113,11 @@ const int TIMEOUT_INTERVAL = 120;
     NSString *filePath = [URLandPath objectForKey:@"path"];
     NSError *error;
     [downloadedData writeToFile:filePath options:NSDataWritingAtomic error:&error];
+    // After writing the file out, we need to set to exclude it from the backups
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+    [fileURL setResourceValue:[NSNumber numberWithBool:YES]
+                                            forKey:NSURLIsExcludedFromBackupKey
+                                             error:&error];
     if (error) {
         NSLog(@"%@", error);
     }

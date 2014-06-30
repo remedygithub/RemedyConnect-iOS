@@ -46,6 +46,13 @@
     [[NSFileManager defaultManager] createDirectoryAtPath:dataPath
                               withIntermediateDirectories:NO
                                                attributes:nil error:&error];
+    
+    NSURL *dirURL = [NSURL fileURLWithPath:dataPath];
+    // Exclude the dir from the backup
+    BOOL success = [dirURL setResourceValue:[NSNumber numberWithBool:YES]
+                          forKey:NSURLIsExcludedFromBackupKey
+                           error:&error];
+    
 }
 
 +(void)prepareSkinDirectory:(BOOL)temp {
@@ -171,6 +178,11 @@
                 [entry.newData writeToURL:targetPath
                             atomically:NO];
             }
+            // Exclude the unzipped files from the backups
+            NSError *error = nil;
+            [targetPath setResourceValue:[NSNumber numberWithBool:YES]
+                                  forKey:NSURLIsExcludedFromBackupKey
+                                   error:&error];
         }
         
         // We are now done with the archive
