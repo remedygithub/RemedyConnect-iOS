@@ -14,7 +14,7 @@
 @implementation Data
 
 +(NSString *)getFeedRoot {
-    return @"http://cms.pediatricweb.com/mobile-app-dev";
+    return @"http://cms.pediatricweb.com/mobile-app"; //-dev";
 }
 
 @end

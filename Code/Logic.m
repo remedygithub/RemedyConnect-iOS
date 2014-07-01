@@ -475,7 +475,17 @@ int itemFromArticleSet = -1;
     // load menu items, feeds, external links
     if ([parser isMenu]) {
         menu = [parser getMenu];
-        return menu;
+    
+        // Limit the number of items to six
+        NSRange range;
+        range.location = 0;
+        if ([menu count] >= 6) {
+            range.length = 6;
+        }
+        else {
+            range.length = [menu count];
+        }
+        return [menu subarrayWithRange:range];
     }
     return nil;
 }
