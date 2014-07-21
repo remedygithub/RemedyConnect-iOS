@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="ieC-YF-9xV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="ieC-YF-9xV">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Splashscreen Controller-->
@@ -40,101 +40,6 @@
             </objects>
             <point key="canvasLocation" x="-2345" y="-590"/>
         </scene>
-        <!--Search Practice View Controller-->
-        <scene sceneID="jjv-0C-al8">
-            <objects>
-                <viewController storyboardIdentifier="searchPractice" title="Your Practice" id="uOJ-iz-GR4" userLabel="Search Practice View Controller" customClass="PracticeSearchViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4xe-O6-LwC"/>
-                        <viewControllerLayoutGuide type="bottom" id="745-tp-keT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fkJ-fk-iKW">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQm-fs-DZU" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-ku-Muo">
-                                        <rect key="frame" x="20" y="305" width="729" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Search by name"/>
-                                        <connections>
-                                            <action selector="startDownloading:" destination="uOJ-iz-GR4" eventType="touchUpInside" id="OU7-Jk-3oE"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="My Practice" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-Wd-IiI">
-                                        <rect key="frame" x="20" y="224" width="729" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                    </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="729" translatesAutoresizingMaskIntoConstraints="NO" id="e6g-AH-bAI">
-                                        <rect key="frame" x="20" y="0.0" width="729" height="168"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="168" id="C2L-DH-elm"/>
-                                        </constraints>
-                                        <string key="text">Welcome! Your are about to download information that your primary care provider has approved. Please ensure that you have a working Internet connection before starting the search.
-
-This information is only intended for registered patients of this organization. Please choose the practice where you, or your family member, is a registered patient.
-To select your practice, type and search. If you would like to search for the nearest practice, start a location-based search below.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7H-Bp-9iJ" userLabel="Location search button">
-                                        <rect key="frame" x="20" y="374" width="729" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Search by location">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startLocationSearch:" destination="uOJ-iz-GR4" eventType="touchUpInside" id="Til-JA-oht"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="PNa-ku-Muo" firstAttribute="top" secondItem="3lV-Wd-IiI" secondAttribute="bottom" constant="51" id="1xK-az-MaN"/>
-                                    <constraint firstItem="3lV-Wd-IiI" firstAttribute="trailing" secondItem="PNa-ku-Muo" secondAttribute="trailing" id="4GQ-gd-2rb"/>
-                                    <constraint firstItem="e6g-AH-bAI" firstAttribute="trailing" secondItem="3lV-Wd-IiI" secondAttribute="trailing" id="5cu-cx-0cX"/>
-                                    <constraint firstItem="PNa-ku-Muo" firstAttribute="centerX" secondItem="EQm-fs-DZU" secondAttribute="centerX" id="8yj-mU-8ea"/>
-                                    <constraint firstItem="e6g-AH-bAI" firstAttribute="top" secondItem="EQm-fs-DZU" secondAttribute="top" id="BJA-Tj-lBr"/>
-                                    <constraint firstItem="e6g-AH-bAI" firstAttribute="leading" secondItem="EQm-fs-DZU" secondAttribute="leading" constant="20" symbolic="YES" id="CMQ-48-RgF"/>
-                                    <constraint firstAttribute="trailing" secondItem="e6g-AH-bAI" secondAttribute="trailing" constant="20" symbolic="YES" id="HBN-J6-P8B"/>
-                                    <constraint firstItem="3lV-Wd-IiI" firstAttribute="leading" secondItem="PNa-ku-Muo" secondAttribute="leading" id="LVe-F1-zeq"/>
-                                    <constraint firstItem="3lV-Wd-IiI" firstAttribute="top" secondItem="e6g-AH-bAI" secondAttribute="bottom" constant="56" id="Weh-Ft-Zlx"/>
-                                    <constraint firstAttribute="bottom" secondItem="S7H-Bp-9iJ" secondAttribute="bottom" constant="597" id="aHq-Lg-E3n"/>
-                                    <constraint firstItem="S7H-Bp-9iJ" firstAttribute="top" secondItem="PNa-ku-Muo" secondAttribute="bottom" constant="36" id="bmG-rQ-5hn"/>
-                                    <constraint firstItem="PNa-ku-Muo" firstAttribute="trailing" secondItem="S7H-Bp-9iJ" secondAttribute="trailing" id="fCl-jK-WIM"/>
-                                    <constraint firstItem="e6g-AH-bAI" firstAttribute="leading" secondItem="3lV-Wd-IiI" secondAttribute="leading" id="pn9-zT-ong"/>
-                                    <constraint firstItem="PNa-ku-Muo" firstAttribute="leading" secondItem="S7H-Bp-9iJ" secondAttribute="leading" id="yfa-ok-eNF"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="EQm-fs-DZU" secondAttribute="trailing" id="0MB-7N-aq1"/>
-                            <constraint firstItem="EQm-fs-DZU" firstAttribute="top" secondItem="fkJ-fk-iKW" secondAttribute="top" id="R7K-8r-LsL"/>
-                            <constraint firstItem="EQm-fs-DZU" firstAttribute="leading" secondItem="fkJ-fk-iKW" secondAttribute="leading" id="SUa-iO-K5p"/>
-                            <constraint firstItem="745-tp-keT" firstAttribute="top" secondItem="EQm-fs-DZU" secondAttribute="bottom" id="YZF-xd-IYQ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Your Practice" id="Hux-XK-qJu">
-                        <barButtonItem key="backBarButtonItem" title="Search" id="l47-2n-0Fk"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="navigationItem" destination="Hux-XK-qJu" id="CxG-ch-oFC"/>
-                        <outlet property="practiceNameField" destination="3lV-Wd-IiI" id="ZIY-1B-IFR"/>
-                        <segue destination="JJf-AW-o76" kind="push" identifier="ToPracticeSelect" id="Szj-QO-4PU"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RF9-m2-Eyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-347" y="-1418"/>
-        </scene>
         <!--Main Menu Navigation Controller-->
         <scene sceneID="e3I-UW-rwx">
             <objects>
@@ -145,7 +50,7 @@ To select your practice, type and search. If you would like to search for the ne
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="uOJ-iz-GR4" kind="relationship" relationship="rootViewController" id="Rsk-O6-i0o"/>
+                        <segue destination="5Gk-L0-Wga" kind="relationship" relationship="rootViewController" id="uRR-ow-vwn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjL-4f-yPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -342,12 +247,12 @@ To select your practice, type and search. If you would like to search for the ne
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Bh6-9y-kEn" userLabel="Header image">
-                            <rect key="frame" x="0.0" y="64" width="768" height="100"/>
+                            <rect key="frame" x="0.0" y="44" width="768" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="EnN-Bb-Wvf" style="IBUITableViewCellStyleDefault" id="3Cz-cT-BLg">
-                                <rect key="frame" x="0.0" y="186" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="166" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Cz-cT-BLg" id="9NI-Kd-zOi">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -399,12 +304,12 @@ To select your practice, type and search. If you would like to search for the ne
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <imageView key="tableHeaderView" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WIQ-GC-qfh" userLabel="Header image">
-                            <rect key="frame" x="0.0" y="64" width="768" height="100"/>
+                            <rect key="frame" x="0.0" y="44" width="768" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="S7r-j4-uR2" style="IBUITableViewCellStyleDefault" id="uhW-zf-fuR">
-                                <rect key="frame" x="0.0" y="186" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="166" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uhW-zf-fuR" id="8Wh-i1-Xvd">
                                     <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
@@ -561,9 +466,147 @@ To select your practice, type and search. If you would like to search for the ne
             </objects>
             <point key="canvasLocation" x="-339" y="1237"/>
         </scene>
+        <!--Search Practice View Controller-->
+        <scene sceneID="2h1-bH-v16">
+            <objects>
+                <viewController storyboardIdentifier="searchPractice" title="Your Practice" id="5Gk-L0-Wga" userLabel="Search Practice View Controller" customClass="PracticeSearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="47z-sB-oVF"/>
+                        <viewControllerLayoutGuide type="bottom" id="aZf-9I-UtM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oqf-sN-IC5">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search-tree.png" translatesAutoresizingMaskIntoConstraints="NO" id="q9i-RJ-QvO">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhB-2x-ubb" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyx-cp-4jD" userLabel="Container for scroll">
+                                        <rect key="frame" x="20" y="0.0" width="280" height="450"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6b-js-q9b">
+                                                <rect key="frame" x="20" y="219" width="122" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <size key="shadowOffset" width="1" height="1"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your practice's name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ece-6R-U4E">
+                                                <rect key="frame" x="20" y="285" width="240" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DB-Am-DLY" userLabel="Container for location-based searching">
+                                                <rect key="frame" x="20" y="345" width="240" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.png" translatesAutoresizingMaskIntoConstraints="NO" id="wx9-Uo-nXB">
+                                                        <rect key="frame" x="0.0" y="5" width="20" height="20"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="B6C-3Z-NDV"/>
+                                                            <constraint firstAttribute="width" constant="20" id="Xjj-Zf-hz5"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can't find your practice?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kv9-pa-ih3">
+                                                        <rect key="frame" x="21" y="10" width="105" height="11"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJA-JC-xEj" userLabel="Location search button">
+                                                        <rect key="frame" x="129" y="4" width="111" height="23"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                        <state key="normal" title="Search by current location">
+                                                            <color key="titleShadowColor" red="0.0050532110040000001" green="0.098655894399999999" blue="0.22261400519999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="startLocationSearch:" destination="5Gk-L0-Wga" eventType="touchUpInside" id="oV4-vh-zKb"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.99215692280000001" green="0.99607849120000003" blue="0.99607849120000003" alpha="0.89000000000000001" colorSpace="deviceRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerY" secondItem="wx9-Uo-nXB" secondAttribute="centerY" id="7Ou-cb-E9P"/>
+                                                    <constraint firstItem="wx9-Uo-nXB" firstAttribute="leading" secondItem="0DB-Am-DLY" secondAttribute="leading" id="C6B-SC-ONW"/>
+                                                    <constraint firstAttribute="height" constant="30" id="EtD-bd-7fe"/>
+                                                    <constraint firstItem="iJA-JC-xEj" firstAttribute="leading" secondItem="kv9-pa-ih3" secondAttribute="trailing" constant="3" id="aSD-tx-DiF"/>
+                                                    <constraint firstItem="kv9-pa-ih3" firstAttribute="centerY" secondItem="0DB-Am-DLY" secondAttribute="centerY" id="qvU-xM-yoz"/>
+                                                    <constraint firstItem="kv9-pa-ih3" firstAttribute="baseline" secondItem="iJA-JC-xEj" secondAttribute="baseline" id="tX4-2D-ZWV"/>
+                                                    <constraint firstItem="kv9-pa-ih3" firstAttribute="leading" secondItem="wx9-Uo-nXB" secondAttribute="trailing" constant="1" id="xBb-j5-lO9"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" placeholder="YES" id="3qj-eB-A5T"/>
+                                            <constraint firstAttribute="height" constant="450" id="5sF-dJ-vWX"/>
+                                            <constraint firstItem="ece-6R-U4E" firstAttribute="top" secondItem="c6b-js-q9b" secondAttribute="bottom" constant="30" id="EUW-yF-SmU"/>
+                                            <constraint firstItem="0DB-Am-DLY" firstAttribute="top" secondItem="ece-6R-U4E" secondAttribute="bottom" constant="30" id="Ecz-1A-NKO"/>
+                                            <constraint firstAttribute="bottom" secondItem="0DB-Am-DLY" secondAttribute="bottom" constant="75" id="EkR-1i-12q"/>
+                                            <constraint firstAttribute="trailing" secondItem="0DB-Am-DLY" secondAttribute="trailing" constant="20" id="XmF-g6-Jeu"/>
+                                            <constraint firstItem="0DB-Am-DLY" firstAttribute="leading" secondItem="lyx-cp-4jD" secondAttribute="leading" constant="20" id="fAV-ce-fn4"/>
+                                            <constraint firstItem="c6b-js-q9b" firstAttribute="leading" secondItem="lyx-cp-4jD" secondAttribute="leading" constant="20" id="mdz-Nx-xDG"/>
+                                            <constraint firstItem="ece-6R-U4E" firstAttribute="leading" secondItem="lyx-cp-4jD" secondAttribute="leading" constant="20" id="sKL-jf-74l"/>
+                                            <constraint firstAttribute="trailing" secondItem="ece-6R-U4E" secondAttribute="trailing" constant="20" id="uo6-3q-d01"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lyx-cp-4jD" firstAttribute="leading" secondItem="QhB-2x-ubb" secondAttribute="leading" constant="20" placeholder="YES" id="5IQ-2z-5c8"/>
+                                    <constraint firstItem="lyx-cp-4jD" firstAttribute="top" secondItem="QhB-2x-ubb" secondAttribute="top" id="8dK-xq-79y"/>
+                                    <constraint firstAttribute="bottom" secondItem="lyx-cp-4jD" secondAttribute="bottom" constant="20" id="fkO-KH-b8D"/>
+                                    <constraint firstAttribute="trailing" secondItem="lyx-cp-4jD" secondAttribute="trailing" constant="20" placeholder="YES" id="gYK-8n-ksy"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QhB-2x-ubb" secondAttribute="trailing" id="1dY-eR-qnP"/>
+                            <constraint firstItem="QhB-2x-ubb" firstAttribute="leading" secondItem="oqf-sN-IC5" secondAttribute="leading" id="6ZK-5v-Fms"/>
+                            <constraint firstItem="QhB-2x-ubb" firstAttribute="top" secondItem="oqf-sN-IC5" secondAttribute="top" id="FyI-Wz-8ZT"/>
+                            <constraint firstItem="aZf-9I-UtM" firstAttribute="top" secondItem="QhB-2x-ubb" secondAttribute="bottom" id="bTQ-Sb-vit"/>
+                            <constraint firstItem="q9i-RJ-QvO" firstAttribute="top" secondItem="oqf-sN-IC5" secondAttribute="top" id="d7j-i6-Tmq"/>
+                            <constraint firstAttribute="trailing" secondItem="q9i-RJ-QvO" secondAttribute="trailing" id="fyk-yC-u8U"/>
+                            <constraint firstItem="aZf-9I-UtM" firstAttribute="top" secondItem="q9i-RJ-QvO" secondAttribute="bottom" id="o6q-Bl-bxw"/>
+                            <constraint firstItem="q9i-RJ-QvO" firstAttribute="leading" secondItem="oqf-sN-IC5" secondAttribute="leading" id="wgT-pZ-beH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Your Practice" id="zHL-Zx-XP3">
+                        <barButtonItem key="backBarButtonItem" title="Search" id="pgZ-wh-LbG"/>
+                    </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="containerHeightConstraint" destination="5sF-dJ-vWX" id="tIJ-rm-1d0"/>
+                        <outlet property="containerView" destination="lyx-cp-4jD" id="oAK-H9-AJp"/>
+                        <outlet property="locationView" destination="0DB-Am-DLY" id="QAI-ut-2OZ"/>
+                        <outlet property="navigationItem" destination="zHL-Zx-XP3" id="dZ3-6q-UlG"/>
+                        <outlet property="practiceNameField" destination="ece-6R-U4E" id="4G1-cR-pBP"/>
+                        <outlet property="scrollView" destination="QhB-2x-ubb" id="Zcq-5f-njc"/>
+                        <segue destination="JJf-AW-o76" kind="push" identifier="ToPracticeSelect" id="iU6-87-WUe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RBb-tv-cnq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-339" y="-1418"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="menu.png" width="64" height="64"/>
+        <image name="location.png" width="64" height="64"/>
+        <image name="menu.png" width="256" height="256"/>
+        <image name="search-tree.png" width="720" height="960"/>
         <image name="splashscreen.png" width="1080" height="1920"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -572,10 +615,10 @@ To select your practice, type and search. If you would like to search for the ne
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="uwy-M1-1MU"/>
         <segue reference="y9R-ag-ZKc"/>
         <segue reference="kqf-jh-1Ap"/>
-        <segue reference="vxh-3e-qYP"/>
-        <segue reference="uwy-M1-1MU"/>
         <segue reference="du4-PP-ZTH"/>
+        <segue reference="vxh-3e-qYP"/>
     </inferredMetricsTieBreakers>
 </document>

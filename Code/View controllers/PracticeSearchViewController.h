@@ -10,14 +10,19 @@
 #import "MBProgressHUD.h"
 #import "Logic.h"
 #import "Downloader.h"
+#import "TPKeyboardAvoidingScrollView.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface PracticeSearchViewController : UIViewController <MBProgressHUDDelegate, PracticeListDownloadStarterDelegate, CLLocationManagerDelegate>
+@interface PracticeSearchViewController : UIViewController <MBProgressHUDDelegate, PracticeListDownloadStarterDelegate, CLLocationManagerDelegate, UITextFieldDelegate>
 {
     MBProgressHUD *statusHUD;
 }
 
+@property (weak, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *practiceNameField;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *locationView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerHeightConstraint;
 - (IBAction)startDownloading:(id)sender;
 - (IBAction)startLocationSearch:(id)sender;
 

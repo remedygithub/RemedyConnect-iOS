@@ -59,6 +59,10 @@
     return [self hasElements:@"mobilefeed practices Practice"];
 }
 
+- (Boolean)isFileFeed {
+    return [self hasElements:@"mobilefeed buttons filefeed feed"];
+}
+
 - (Boolean)isPage {
     return [self hasElements:@"mobilefeed PageText"];
 }
@@ -78,25 +82,28 @@
     TBXMLElement *root = xml.rootXMLElement;
     TBXMLElement *practices = [TBXML childElementNamed:@"practices" parentElement:root];
     TBXMLElement *currentPractice =
-    [TBXML childElementNamed:@"Practice" parentElement:practices];
-    TBXMLElement *name, *feed, *designPack;
+                    [TBXML childElementNamed:@"Practice" parentElement:practices];
+    TBXMLElement *name, *feed, *filefeed, *designPack;
     NSString *location;
     NSMutableDictionary *practice;
     while (currentPractice != nil) {
         name = [TBXML childElementNamed:@"PracticeName"
                           parentElement:currentPractice];
-        // @TODO: for this, an additional method is necessary.
         location = [self getRootPracticesLocation:currentPractice];
         feed = [TBXML childElementNamed:@"PracticeFeed"
                           parentElement:currentPractice];
+        filefeed = [TBXML childElementNamed:@"FileFeed"
+                            parentElement:currentPractice];
         designPack = [TBXML childElementNamed:@"PracticeDesignPack"
-                                parentElement:currentPractice];
+                            parentElement:currentPractice];
         practice = [[NSMutableDictionary alloc] init];
         [practice setObject:[TBXML textForElement:name]
                      forKey:@"name"];
         [practice setObject:location forKey:@"location"];
         [practice setObject:[TBXML textForElement:feed]
                      forKey:@"feed"];
+        [practice setObject:[TBXML textForElement:filefeed]
+                     forKey:@"filefeed"];
         [practice setObject:[TBXML textForElement:designPack]
                      forKey:@"designPack"];
         [rootPractices addObject:practice];
@@ -195,6 +202,38 @@
     return [[NSArray alloc] initWithArray:buttons];
 }
 
+- (NSArray*)getFileFeed {
+    NSMutableArray *filefeeds = [[NSMutableArray alloc] init];
+    TBXMLElement *root = xml.rootXMLElement;
+    TBXMLElement *feedsElement = [TBXML childElementNamed:@"buttons" parentElement:root];
+    TBXMLElement *currentFeed =
+                [TBXML childElementNamed:@"filefeed" parentElement:feedsElement];
+    TBXMLElement *name, *feedURL, *dateModified;
+    NSMutableDictionary *feed;
+    while (currentFeed != nil) {
+        name = [TBXML childElementNamed:@"buttonName"
+                          parentElement:currentFeed];
+        
+        if (![[TBXML textForElement:name] isEqual:@"Design Pack"]) {
+            feedURL = [TBXML childElementNamed:@"feed"
+                                  parentElement:currentFeed];
+            dateModified = [TBXML childElementNamed:@"dateModified"
+                                      parentElement:currentFeed];
+            feed = [[NSMutableDictionary alloc] init];
+            [feed setObject:[TBXML textForElement:name]
+                       forKey:@"name"];
+            [feed setObject:[Parser stringForElement:feedURL] forKey:@"feed"];
+            [feed setObject:[Parser stringForElement:dateModified] forKey:@"dateModified"];
+            
+            [filefeeds addObject:feed];
+        }
+        
+        currentFeed = [TBXML nextSiblingNamed:@"filefeed"
+                              searchFromElement:currentFeed];
+    }
+    return [[NSArray alloc] initWithArray:filefeeds];
+}
+
 - (NSArray*)getArticleSet {
     NSMutableArray *articles = [[NSMutableArray alloc] init];
     TBXMLElement *root = xml.rootXMLElement;
@@ -271,6 +310,15 @@
 - (NSArray*)getSubFeedURLs {
     NSMutableArray *subFeedURLs = [[NSMutableArray alloc] init];
     NSArray *menu = [self getMenu];
+    for (NSDictionary *menuItem in menu) {
+        [subFeedURLs addObject:[menuItem objectForKey:@"feed"]];
+    }
+    return [[NSArray alloc] initWithArray:subFeedURLs];
+}
+
+- (NSArray*)getSubFeedURLsFromFileFeed {
+    NSMutableArray *subFeedURLs = [[NSMutableArray alloc] init];
+    NSArray *menu = [self getFileFeed];
     for (NSDictionary *menuItem in menu) {
         [subFeedURLs addObject:[menuItem objectForKey:@"feed"]];
     }

@@ -22,6 +22,18 @@
     return result;
 }
 
++ (void)setFileFeed:(NSString *)fileFeed {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:fileFeed forKey:@"fileFeed"];
+    [defaults synchronize];
+}
+
++ (NSString *)fileFeed {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *result = [defaults objectForKey:@"fileFeed"];
+    return result;
+}
+
 + (void)setDesignPackURL:(NSString *)designPackURL {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:designPackURL forKey:@"designPackURL"];

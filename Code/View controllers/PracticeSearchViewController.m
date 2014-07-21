@@ -14,6 +14,7 @@
 #import "Parser.h"
 #import "ReachabilityManager.h"
 #import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface PracticeSearchViewController ()
 
@@ -24,9 +25,22 @@ Logic *logic;
 UIGestureRecognizer *tapper;
 UITextField *activeField;
 CLLocationManager *locationManager;
+NSLayoutConstraint *oldConstraint;
 
 // Implementation for scrolling along with the keyboard is taken from
 // http://stackoverflow.com/a/4837510/238845
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
+    [[self navigationController] setNavigationBarHidden:YES animated:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[UIApplication sharedApplication] setStatusBarHidden:FALSE
+                                            withAnimation:UIStatusBarAnimationFade];
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+}
 
 - (void)showNoConnectionPopup {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No internet connection"
@@ -35,6 +49,11 @@ CLLocationManager *locationManager;
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self startDownloading:nil];
+    return YES;
 }
 
 - (IBAction)startDownloading:(id)sender {
@@ -66,11 +85,57 @@ CLLocationManager *locationManager;
     }
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.containerView
+                                                                      attribute:NSLayoutAttributeLeading
+                                                                      relatedBy:0
+                                                                         toItem:self.view
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0
+                                                                       constant:0];
+    [self.view addConstraint:leftConstraint];
+    
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.containerView
+                                                                       attribute:NSLayoutAttributeTrailing
+                                                                       relatedBy:0
+                                                                          toItem:self.view
+                                                                       attribute:NSLayoutAttributeRight
+                                                                      multiplier:1.0
+                                                                        constant:0];
+    [self.view addConstraint:rightConstraint];
+    
+    BOOL isLandscape = UIInterfaceOrientationIsLandscape(self.interfaceOrientation);
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenHeight;
+    if (!isLandscape) {
+        screenHeight = screenRect.size.height;
+    }
+    else {
+        screenHeight = screenRect.size.width;
+    }
+    
+    //CGRect screenRect = [[UIScreen mainScreen] bounds];
+    //CGFloat screenHeight = screenRect.size.height;
+    
+    _containerHeightConstraint.constant = screenHeight;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     tapper.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapper];
+    
+    UILabel *magnifyingGlass = [[UILabel alloc] init];
+    [magnifyingGlass setText:[[NSString alloc] initWithUTF8String:"\xF0\x9F\x94\x8D"]];
+    [magnifyingGlass sizeToFit];
+    
+    [_practiceNameField setLeftView:magnifyingGlass];
+    [_practiceNameField setLeftViewMode:UITextFieldViewModeAlways];
+    [_practiceNameField setDelegate:self];
+    
+    _locationView.layer.cornerRadius = 4;
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {

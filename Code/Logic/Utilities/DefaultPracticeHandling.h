@@ -13,6 +13,8 @@
 #pragma mark - Store / retrieve the feed URLs for the currently selected practice
 + (void)setFeedRoot:(NSString *)feedRoot;
 + (NSString *)feedRoot;
++ (void)setFileFeed:(NSString *)fileFeed;
++ (NSString *)fileFeed;
 + (void)setDesignPackURL:(NSString *)designPackURL;
 + (NSString *)designPackURL;
 
