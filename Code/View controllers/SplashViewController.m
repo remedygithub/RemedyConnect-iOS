@@ -18,10 +18,14 @@
 NSTimer *timer;
 Logic *logic;
 
--(void)viewDidLoad {
+-(void)viewDidLoad
+{
     logic = [Logic sharedLogic];
     [Skin applySplashOnImageView:_splashImageView];
+    
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

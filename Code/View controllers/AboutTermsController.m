@@ -8,7 +8,7 @@
 
 #import "AboutTermsController.h"
 #import "Skin.h"
-#import "TestFlight.h"
+//#import "TestFlight.h"
 
 @implementation AboutTermsController
 
@@ -47,16 +47,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *unzipPath = [path stringByAppendingPathComponent:@"unzipPath"];
+    NSString *imageFilePath = [unzipPath stringByAppendingPathComponent:@"background_main.png"];
+    NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+    UIImage *img = [UIImage imageWithData:imageData];
+    
+    UIImageView *yourImageView = [[UIImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [yourImageView setImage:img];
+    [yourImageView setContentMode:UIViewContentModeCenter];
+    [self.view addSubview:yourImageView];
+    
+    [_pageWebView setDelegate:self];
+    [_pageWebView setOpaque:NO];
+    [self.view bringSubviewToFront:_pageWebView];
     [Skin applyPageBGOnWebView:_pageWebView inViewController:self];
  
     [self setTitle:webTitle];
-    [_pageWebView setDelegate:self];
-    
-    if (nil != webText) {
+
+     if (nil != webText)
+     {
         NSURL *baseURL = [NSURL URLWithString:@""];
         webText = [Skin wrapHTMLBodyWithStyle:webText];
         [_pageWebView loadHTMLString:webText baseURL:baseURL];
     }
+}
+
+
+-(void)displayImages
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *unzipPath = [path stringByAppendingPathComponent:@"unzipPath"];
+    NSString *imageFilePath = [unzipPath stringByAppendingPathComponent:@"background_main.png"];
+    NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+    UIImage *img = [UIImage imageWithData:imageData];
+    
+    UIImageView *yourImageView = [[UIImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [yourImageView setImage:img];
+    [yourImageView setContentMode:UIViewContentModeCenter];
+    [self.view addSubview:yourImageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

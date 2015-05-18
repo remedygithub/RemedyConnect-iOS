@@ -9,6 +9,7 @@
 #import "SelectPracticeTableViewController.h"
 #import "SelectYourPracticeTableCell.h"
 #import "Logic.h"
+#import "SSZipArchive.h"
 
 @interface SelectPracticeTableViewController ()
 
@@ -27,6 +28,8 @@ Logic *logic;
 - (void)viewDidLoad {
     logic = [Logic sharedLogic];
     practiceList = [logic getPracticeList];
+    NSLog(@"%@",practiceList);
+    [self designpack:practiceList];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -45,7 +48,10 @@ Logic *logic;
                                                                         forIndexPath:indexPath];
 
     NSString *practiceName = [[practiceList objectAtIndex:indexPath.row] objectForKey:@"name"];
+    NSLog(@"%@",practiceName);
     NSString *practiceLocation = [[practiceList objectAtIndex:indexPath.row] objectForKey:@"location"];;
+    NSLog(@"%@",practiceLocation);
+    
     [cell.practiceName setText:practiceName];
     [cell.practiceLocation setText:practiceLocation];
     [cell setTag: indexPath.row];
@@ -53,9 +59,74 @@ Logic *logic;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     [logic setMainDownloadStarterDelegate:self];
     [logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
+    
+    NSString *practiceName = [[practiceList objectAtIndex:indexPath.row] objectForKey:@"name"];
+    NSLog(@"%@",practiceName);
+    
+    NSUserDefaults *indexDefault = [NSUserDefaults standardUserDefaults];
+    [indexDefault setObject:practiceName forKey:@"nameOfPratice"];
+    [indexDefault synchronize];
+    
+}
+
+
+
+-(void)designpack:(NSArray *)iMagesArray
+{
+    for (int i =0; i< [iMagesArray count]; i++)
+    {
+        NSLog(@"%lu",(unsigned long)[iMagesArray count]);
+        NSMutableDictionary *ldict = [[NSMutableDictionary alloc]init];
+        ldict = [iMagesArray objectAtIndex:i];
+        NSString *zipUrl = [ldict objectForKey:@"designPack"];
+        NSLog(@"%@",zipUrl);
+        //[self SaveFileToResourseFromUrl:zipUrl];
+        [self performSelectorInBackground:@selector(SaveFileToResourseFromUrl:) withObject:zipUrl];
+
+    }
+}
+
+
+
+-(void)SaveFileToResourseFromUrl:(NSString *)zipUrl
+{
+    //NSURL *url = [[NSURL alloc] initWithString:zipUrl];
+    NSURL *url = [[NSURL alloc] initWithString:[zipUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"%@",url);
+    NSError *error = nil;
+    NSData *data = [NSData  dataWithContentsOfURL:url options:0 error:&error];
+    if (!error)
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *path = [paths objectAtIndex:0];
+        NSString *zipPath = [path stringByAppendingPathComponent:@"zipfile.zip"];
+        NSString *unzipPath = [path stringByAppendingPathComponent:@"unzipPath"];
+        
+        [data writeToFile:zipPath options:0 error:&error];
+        
+        if(!error)
+        {
+            // TODO: Unzip
+            [SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath];
+            NSArray * directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:unzipPath error:&error];
+            NSLog(@"the array %@", directoryContents);
+            //return YES;
+        }
+       // else
+        //{
+          //  NSLog(@"Error saving file %@",error);
+          //  return NO;
+        //}
+    }
+   /* else
+    {
+        NSLog(@"Error downloading zip file: %@", error);
+        return NO;
+    }*/
 }
 
 #pragma mark - HUD handling

@@ -27,13 +27,38 @@ NSArray *menuItems;
     [_menuHeaderImageView setContentMode:UIViewContentModeScaleAspectFit];
     logic = [Logic sharedLogic];
     menuItems = [logic getDataToDisplayForSubMenu];
+    NSLog(@"%lu",(unsigned long)[menuItems count]);
     [self setTitle:logic.title];
+    [self displayImages];
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent {
     if (nil == parent) {
         [logic unwindBackStack];
     }
+}
+
+
+-(void)displayImages
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *unzipPath = [path stringByAppendingPathComponent:@"unzipPath"];
+    NSString *imageFilePath = [unzipPath stringByAppendingPathComponent:@"logo.png"];
+    NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+    UIImage *img = [UIImage imageWithData:imageData];
+    
+    NSString *tableBackFilePath = [unzipPath stringByAppendingPathComponent:@"background_main.png"];
+    NSData *tableImgData = [NSData dataWithContentsOfFile:tableBackFilePath options:0 error:nil];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:tableImgData]];
+    [self.menuTableView setContentMode:UIViewContentModeCenter];
+    self.menuTableView.backgroundView = imageView;
+    
+    
+    dispatch_async(dispatch_get_main_queue(),
+                   ^{
+                       self.menuHeaderImageView.image = img;
+                   });
 }
 
 #pragma mark - Table view data source

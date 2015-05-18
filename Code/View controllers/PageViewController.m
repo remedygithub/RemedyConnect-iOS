@@ -9,7 +9,7 @@
 #import "PageViewController.h"
 #import "Logic.h"
 #import "Skin.h"
-#import "TestFlight.h"
+//#import "TestFlight.h"
 
 @interface PageViewController ()
 
@@ -49,26 +49,55 @@ Logic *logic;
     [Skin reorientBGFrameInViewController:self];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    [Skin applyPageBGOnWebView:_pageWebView inViewController:self];
     
-    logic = [Logic sharedLogic];
+     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+     NSString *path = [paths objectAtIndex:0];
+     NSString *unzipPath = [path stringByAppendingPathComponent:@"unzipPath"];
+     NSString *imageFilePath = [unzipPath stringByAppendingPathComponent:@"background_main.png"];
+     NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+     UIImage *img = [UIImage imageWithData:imageData];
     
-    NSDictionary *page = [logic getDataToDisplayForPage];
-    NSString *title = [page objectForKey:@"title"];
+     NSString *imageFileLogoPath = [unzipPath stringByAppendingPathComponent:@"logo.png"];
     
+    
+     UIImageView *yourImageView = [[UIImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+     [yourImageView setImage:img];
+     [yourImageView setContentMode:UIViewContentModeCenter];
+     [self.view addSubview:yourImageView];
+    
+     [_pageWebView setDelegate:self];
+     [_pageWebView setOpaque:NO];
+     [self.view bringSubviewToFront:_pageWebView];
+     [Skin applyPageBGOnWebView:_pageWebView inViewController:self];
+    
+     logic = [Logic sharedLogic];
+    
+     NSDictionary *page = [logic getDataToDisplayForPage];
+     NSString *title = [page objectForKey:@"title"];
+    
+    //NSString *text = [NSString stringWithFormat:@"%@ %@",
+                     // [Skin logoContentsForWebView],
+                      //[page objectForKey:@"text"]];
     NSString *text = [NSString stringWithFormat:@"%@ %@",
-                      [Skin logoContentsForWebView],
+                      [Skin logoContentsHeaderForWebView:imageFileLogoPath],
                       [page objectForKey:@"text"]];
     [self setTitle:title];
-    [_pageWebView setDelegate:self];
     
-    if (nil != text) {
+    if (nil != text)
+    {
         NSURL *baseURL = [NSURL URLWithString:@""];
         text = [Skin wrapHTMLBodyWithStyle:text];
+        NSLog(@"%@",text);
         [_pageWebView loadHTMLString:text baseURL:baseURL];
     }
+    ;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent {

@@ -8,19 +8,26 @@
 
 #import "FileHandling.h"
 #import <zipzap/zipzap.h>
+#import <Foundation/Foundation.h>
+#import "SSZipArchive.h"
+
 
 @implementation FileHandling
 
-+(NSString *)getDocumentsPath:(BOOL)temp {
++(NSString *)getDocumentsPath:(BOOL)temp
+{
     NSString* documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
                                objectAtIndex:0];
-    if (!temp) {
+    if (!temp)
+    {
         return documentsPath;
     }
-    else {
+    else
+    {
         return [documentsPath stringByAppendingPathComponent:@"/temp"];
     }
 }
+
 
 +(NSString *)getFilePathWithComponent:(NSString *)pathComponent inTemp:(BOOL)temp {
 	NSString *docPath = [self getDocumentsPath:temp];
@@ -63,10 +70,32 @@
     [FileHandling prepareDirectory:@"temp" inTemp:NO];
 }
 
-+(NSString *)getEffectiveSkinDirectory:(BOOL)temp {
-    NSString *dataPath = [[self getDocumentsPath:temp] stringByAppendingPathComponent:@"/skin"];
+
+
++(NSString *)getSkinFilePathWithComponent:(NSString *)pathComponent inTemp:(BOOL)temp
+{
+    NSString *skinPath = [self getEffectiveSkinDirectory:temp];
+    NSLog(@"%@",skinPath);
+    skinPath = [skinPath stringByAppendingPathComponent:pathComponent];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:dataPath]) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:skinPath])
+    {
+        return skinPath;
+    }
+    return nil;
+}
+
+
+
+
++(NSString *)getEffectiveSkinDirectory:(BOOL)temp
+{
+    //Documents/skin/ -Creates Skin
+    NSString *dataPath = [[self getDocumentsPath:temp] stringByAppendingPathComponent:@"/skin"];
+
+    if ([[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+    {
+        //Documents/skin/
         NSURL *directoryURL = [NSURL fileURLWithPath:dataPath];
         NSArray *keys = [NSArray arrayWithObjects: NSURLIsDirectoryKey, nil];
         
@@ -75,34 +104,102 @@
                                              includingPropertiesForKeys:keys
                                              options:(NSDirectoryEnumerationSkipsPackageDescendants |
                                                       NSDirectoryEnumerationSkipsHiddenFiles)
-                                             errorHandler:^(NSURL *url, NSError *error) {
+                                             errorHandler:^(NSURL *url, NSError *error)
+                                             {
                                                  return YES;
                                              }];
-        
-        for (NSURL *url in enumerator) {
+        //Documents/skin/DesignPack/
+        for (NSURL *url in enumerator)
+        {
+            BOOL present = [self SaveFileToResourseFromUrl:[url absoluteString]];
+            NSLog(@"%hhd",present);
+            
             NSNumber *isDirectory = nil;
             [url getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:NULL];
-            
-            if ([isDirectory boolValue] &&
-                    [[NSFileManager defaultManager] fileExistsAtPath:[[url path] stringByAppendingPathComponent:@"logo.png"]]) {
-                return [url path];
-            }
+//            if ([isDirectory boolValue] &&
+//                    [[NSFileManager defaultManager] fileExistsAtPath:[[url path] stringByAppendingPathComponent:@"logo.png"]])
+//            {
+//                return [url path];
+//            }
+        
         }
-        if ([[NSFileManager defaultManager] fileExistsAtPath:[dataPath stringByAppendingPathComponent:@"logo.png"]]) {
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[dataPath stringByAppendingPathComponent:@"logo.png"]])
+        {
             return dataPath;
         }
     }
+
     return @"";
 }
 
-+(NSString *)getSkinFilePathWithComponent:(NSString *)pathComponent inTemp:(BOOL)temp {
-	NSString *skinPath = [self getEffectiveSkinDirectory:temp];
-    skinPath = [skinPath stringByAppendingPathComponent:pathComponent];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:skinPath]) {
-        return skinPath;
+
+
++(BOOL)SaveFileToResourseFromUrl:(NSString *)zipUrl
+{
+    //NSURL *url = [[NSURL alloc] initWithString:zipUrl];
+    NSURL *url = [[NSURL alloc] initWithString:[zipUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"%@",url);
+    NSError *error = nil;
+    NSData *data = [NSData  dataWithContentsOfURL:url options:0 error:&error];
+    if (!error) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *path = [paths objectAtIndex:0];
+        NSString *zipPath = [path stringByAppendingPathComponent:@"zipfile.zip"];
+        NSString *unzipPath = [path stringByAppendingPathComponent:@"unzipPath"];
+        
+        [data writeToFile:zipPath options:0 error:&error];
+        
+        if(!error)
+        {
+            // TODO: Unzip
+            [SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath];
+            NSArray * directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:unzipPath error:&error];
+            NSLog(@"the array %@", directoryContents);
+            return YES;
+            
+        }
+        else
+        {
+            NSLog(@"Error saving file %@",error);
+            return NO;
+        }
     }
-	return nil;
+    else
+    {
+        NSLog(@"Error downloading zip file: %@", error);
+        return NO;
+    }
 }
+
+
++(void)downloadAndUnzip : (NSString *)sURL_p : (NSString *)sFolderName_p tempValue:(BOOL)temp
+{
+    dispatch_queue_t q = dispatch_get_global_queue(0, 0);
+    dispatch_queue_t main = dispatch_get_main_queue();
+    dispatch_async(q, ^{
+        //Path info
+        NSURL *url = [NSURL URLWithString:sURL_p];
+        NSData *data = [NSData  dataWithContentsOfURL:url];
+        NSString *fileName = [[url path] lastPathComponent];
+        NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
+        [data writeToFile:filePath atomically:YES];
+        dispatch_async(main, ^
+                       
+                       
+                       {
+                           //Write To
+                           NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                           NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+                           NSString *dataPath = [[self getDocumentsPath:temp] stringByAppendingPathComponent:sFolderName_p];
+                           
+                           [SSZipArchive unzipFileAtPath:filePath toDestination:dataPath];
+                           
+                       });
+    });
+    
+}
+
+
 
 +(void)emptySandbox:(BOOL)temp {
     NSFileManager *fileMgr = [[NSFileManager alloc] init];
@@ -150,23 +247,29 @@
     }
 }
 
+
 +(void)unzipFileInPlace:(NSString *)zipPath inTemp:(BOOL)temp {
     zipPath = [self getFilePathWithComponent:zipPath inTemp:temp];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *path = [[NSURL fileURLWithPath:zipPath] URLByDeletingLastPathComponent];
     @autoreleasepool {
-        ZZArchive* archive = [ZZArchive archiveWithContentsOfURL:[NSURL fileURLWithPath:zipPath]];
-        for (ZZArchiveEntry* entry in archive.entries) {
+        
+        ZZArchive *archive = [ZZArchive archiveWithURL:[NSURL fileURLWithPath:zipPath] error:nil];
+        
+        for (ZZArchiveEntry* entry in archive.entries)
+        {
             NSURL* targetPath = [path URLByAppendingPathComponent:entry.fileName];
             
-            if (entry.fileMode & S_IFDIR) {
+            if (entry.fileMode & S_IFDIR)
+            {
                 // check if directory bit is set
                 [fileManager createDirectoryAtURL:targetPath
                       withIntermediateDirectories:YES
                                        attributes:nil
                                             error:nil];
             }
-            else {
+            else
+            {
                 // Some archives don't have a separate entry for each directory and just
                 // include the directory's name in the filename. Make sure that directory exists
                 // before writing a file into it.
@@ -175,8 +278,12 @@
                                        attributes:nil
                                             error:nil];
                 
-                [entry.newData writeToURL:targetPath
-                            atomically:NO];
+               
+
+                //[entry.newData writeToURL:targetPath atomically:NO];
+               // [archive.contents writeToURL:targetPath atomically:NO];
+                
+                 [entry.fileName writeToFile:[NSString stringWithFormat:@"%@",targetPath] atomically:NO encoding:NSUTF8StringEncoding  error:nil];
             }
             // Exclude the unzipped files from the backups
             NSError *error = nil;
@@ -189,5 +296,4 @@
         archive = nil;
     }
 }
-
 @end

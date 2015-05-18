@@ -121,7 +121,8 @@ const int TIMEOUT_INTERVAL = 120;
     if (error) {
         NSLog(@"%@", error);
     }
-    if ([[self delegate] respondsToSelector:@selector(didFinishForAFile)]) {
+    if ([[self delegate] respondsToSelector:@selector(didFinishForAFile)])
+    {
         [[self delegate] didFinishForAFile];
     }
 }

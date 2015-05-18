@@ -15,6 +15,7 @@
 #import "ReachabilityManager.h"
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @interface PracticeSearchViewController ()
 
@@ -57,7 +58,11 @@ NSLayoutConstraint *oldConstraint;
 }
 
 - (IBAction)startDownloading:(id)sender {
-    if ([ReachabilityManager isReachable]) {
+    if ([ReachabilityManager isReachable])
+    {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:_practiceNameField.text forKey:@"nameOfPratice"];
+        [defaults synchronize];
         logic = [Logic sharedLogic];
         [logic setPracticeListDownloadStarterDelegate:self];
         [logic startDownloadingRootForPracticeSelectionByName:_practiceNameField.text];
@@ -69,11 +74,18 @@ NSLayoutConstraint *oldConstraint;
 }
 
 - (IBAction)startLocationSearch:(id)sender {
-    if ([ReachabilityManager isReachable]) {
+    if ([ReachabilityManager isReachable])
+    {
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
         locationManager.distanceFilter = 500;
+        if(IS_OS_8_OR_LATER)
+        {
+            //Use one or the other, not both. Depending on what you put in info.plist
+            [locationManager requestWhenInUseAuthorization];
+            [locationManager requestAlwaysAuthorization];
+        }
         [locationManager startUpdatingLocation];
         statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
         [statusHUD setDelegate:self];
@@ -226,7 +238,8 @@ NSLayoutConstraint *oldConstraint;
     [manager stopUpdatingHeading];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
     [statusHUD hide:YES];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't find location"
                                                     message:@"Please try searching by name instead."

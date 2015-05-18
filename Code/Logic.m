@@ -1,4 +1,4 @@
-//
+;//
 //  Logic.m
 //  Your Practice
 //
@@ -12,7 +12,7 @@
 #import "DefaultPracticeHandling.h"
 #import "Downloader.h"
 #import "Parser.h"
-#import "TestFlight.h"
+//#import "TestFlight.h"
 #import "Data.h"
 
 @implementation Logic
@@ -117,7 +117,12 @@ int itemFromArticleSet = -1;
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
     NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
-                                              withFeedRoot:[Logic getFeedRoot]];
+                                            withFeedRoot:[Logic getFeedRoot]];
+    
+  // NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.759623 withLongitude:-104.764509
+                                                    //withFeedRoot:[Logic getFeedRoot]];
+    
+//    NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.318310 withLongitude:-76.546424                                                    withFeedRoot:[Logic getFeedRoot]];
     [downloader addURLToDownload:URL
                           saveAs:[FileHandling getFilePathWithComponent:@"root.xml" inTemp:YES]];
     [downloader startDownload];
@@ -222,7 +227,8 @@ int itemFromArticleSet = -1;
     NSArray *files = [downloader filesToDownload];
     NSUInteger fileIndex = [[downloader status] currentFileIndex];
     NSString *filePath = [[files objectAtIndex:fileIndex] objectForKey:@"path"];
-    if ([filePath isEqualToString:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip" inTemp:YES]]) {
+    if ([filePath isEqualToString:[FileHandling getFilePathWithComponent:@"skin/DesignPack.zip" inTemp:YES]])
+    {
         [FileHandling unzipFileInPlace:@"skin/DesignPack.zip" inTemp:YES];
         [self triggerNext];
     }
@@ -269,7 +275,8 @@ int itemFromArticleSet = -1;
 }
 
 #pragma mark - Menu choices handling
--(void)handleActionWithTag:(NSInteger)tag shouldProceedToPage:(Boolean)proceedToPage {
+-(void)handleActionWithTag:(NSInteger)tag shouldProceedToPage:(Boolean)proceedToPage
+{
     NSArray *menuItems;
     if (nil != _mainDownloadStarterDelegate) {
         [self startMainDownloadWithIndex:tag];
@@ -411,7 +418,8 @@ int itemFromArticleSet = -1;
     _pageDelegate = nil;
 }
 
--(UIViewController *)getSeguePerformer {
+-(UIViewController *)getSeguePerformer
+{
     if (nil != _downloadStartDelegate) return _downloadStartDelegate;
     if (nil != _practiceListDownloadStarterDelegate) return _practiceListDownloadStarterDelegate;
     if (nil != _mainDownloadStarterDelegate) return _mainDownloadStarterDelegate;
@@ -435,14 +443,18 @@ int itemFromArticleSet = -1;
     [self resetAllDelegates];
 }
 
--(void)advanceToSubMenu {
-    if ([self getSeguePerformer] == _subMenuDelegate) {
+-(void)advanceToSubMenu
+{
+    if ([self getSeguePerformer] == _subMenuDelegate)
+    {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle: nil];
         UIViewController *destination = [storyboard instantiateViewControllerWithIdentifier:@"SubMenuViewController"];
         [_subMenuDelegate.navigationController pushViewController:destination animated:YES];
     }
-    else {
-        [[self getSeguePerformer] performSegueWithIdentifier:@"ToSubMenu" sender:self];
+    else
+    {
+        [[self getSeguePerformer] performSegueWithIdentifier:@"ToSubMenuNew" sender:self
+         ];
     }
     [self resetAllDelegates];
 }

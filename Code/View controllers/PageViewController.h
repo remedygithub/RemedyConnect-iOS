@@ -11,4 +11,5 @@
 
 @interface PageViewController : UIViewController<UIWebViewDelegate, PageDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *pageWebView;
+@property (strong, nonatomic) IBOutlet UIImageView *logoImage;
 @end

@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface FileHandling : NSObject
+#import "Downloader.h"
+#import "SSZipArchive.h"
+@interface FileHandling : NSObject<SSZipArchiveDelegate>
+{
+    Downloader *downloader;
+}
 
 #pragma mark - Methods for interacting with the file system
 +(NSString *)getDocumentsPath:(BOOL)temp;
@@ -21,5 +25,6 @@
 +(void)emptySandbox:(BOOL)temp;
 +(void)unTempFiles;
 +(void)unzipFileInPlace:(NSString *)zipPath inTemp:(BOOL)temp;
++(void)downloadAndUnzip : (NSString *)sURL_p : (NSString *)sFolderName_p;
 
 @end

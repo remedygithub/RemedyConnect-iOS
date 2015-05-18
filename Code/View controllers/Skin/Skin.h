@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface Skin : NSObject
 
 +(void)applySplashOnImageView:(UIImageView *)imageView;
@@ -18,6 +18,8 @@
 +(void)applySubMenuBGOnView:(UITableView *)view;
 +(void)reorientBGFrameInViewController:(UIViewController *)viewController;
 +(NSString *)logoContentsForWebView;
++(NSString *)logoContentsHeaderForWebView:(NSString *)logoLink;
+
 +(void)applyPageBGOnWebView:(UIWebView *)webView inViewController:(UIViewController *)viewController;
 +(NSString *)wrapHTMLBodyWithStyle:(NSString *)bodyText;
 

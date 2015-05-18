@@ -7,11 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ALActivityIndicatorView.h"
+#import "SessionTime.h"
+#import "PAPasscodeViewController.h"
+#import "MessageListViewController.h"
+#import "ProviderLoginViewController.h"
+#import "RCHelper.h"
+#import "RCPracticeHelper.h"
+#import "Macros.h"
+#import <PushIOManager/PushIOManager.h>
 
-@interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate>
+@interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate,PAPasscodeViewControllerDelegate,PushIOManagerDelegate>
+{
+    ALActivityIndicatorView *m_cActivityIndicator;
+    PAPasscodeViewController *passcode;
+    NSString *deviceTokenStr;
+}
 
 @property (strong, nonatomic) UINavigationController *navigationController;
-
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSString *deviceID;
 
+//Methods for showing activity indicators
+-(void)startActivity;
+-(void)stopActivity;
 @end

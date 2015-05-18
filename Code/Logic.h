@@ -10,6 +10,9 @@
 #import "Downloader.h"
 #import "DownloadStatus.h"
 #import <CoreLocation/CoreLocation.h>
+#import "FileHandling.h"
+#import "RCHelper.h"
+#import <UIKit/UIKit.h>
 
 /*
  Logic is the central singleton for the application logic.

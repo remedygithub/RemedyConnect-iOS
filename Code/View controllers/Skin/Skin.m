@@ -11,28 +11,38 @@
 
 @implementation Skin
 
-+(void)applyFile:(NSString *)fileName onImageView:(UIImageView *)imageView {
++(void)applyFile:(NSString *)fileName onImageView:(UIImageView *)imageView
+{
     NSString *splashPath = [FileHandling getSkinFilePathWithComponent:fileName inTemp:NO];
-    if (nil != splashPath) {
+    if (nil != splashPath)
+    {
         UIImage *image = [UIImage imageWithContentsOfFile:splashPath];
         [imageView setImage:image];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
 }
 
-+(void)applySplashOnImageView:(UIImageView *)imageView {
++(void)applySplashOnImageView:(UIImageView *)imageView
+{
+    NSLog(@"%@",imageView);
     [self applyFile:@"splashscreen.png" onImageView:imageView];
 }
 
-+(void)applyMainMenuBGOnImageView:(UIImageView *)imageView {
++(void)applyMainMenuBGOnImageView:(UIImageView *)imageView
+{
+    NSLog(@"%@",imageView);
     [self applyFile:@"background.png" onImageView:imageView];
 }
 
-+(void)applyMainLogoOnImageView:(UIImageView *)imageView {
++(void)applyMainLogoOnImageView:(UIImageView *)imageView
+{
+    NSLog(@"%@",imageView);
     [self applyFile:@"menulogo.png" onImageView:imageView];
 }
 
-+(void)applySubLogoOnImageView:(UIImageView *)imageView {
++(void)applySubLogoOnImageView:(UIImageView *)imageView
+{
+    NSLog(@"%@",imageView);
     [self applyFile:@"logo.png" onImageView:imageView];
 }
 
@@ -59,6 +69,13 @@
     NSString *logoPath = [FileHandling getSkinFilePathWithComponent:@"logo.png" inTemp:NO];
     return [NSString stringWithFormat:@"<img src='file://%@' class='headerlogo' />", logoPath];
 }
+
++(NSString *)logoContentsHeaderForWebView:(NSString *)logoLink
+{
+    NSString *logoPath = [FileHandling getSkinFilePathWithComponent:logoLink inTemp:NO];
+    return [NSString stringWithFormat:@"<img src='file://%@' class='headerlogo' />", logoPath];
+}
+
 
 +(void)applyPageBGOnWebView:(UIWebView *)webView inViewController:(UIViewController *)viewController {
     NSString *bgPath = [FileHandling getSkinFilePathWithComponent:@"background_main.png" inTemp:NO];

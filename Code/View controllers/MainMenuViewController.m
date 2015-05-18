@@ -13,7 +13,7 @@
 #import "PracticeSearchViewController.h"
 #import "AboutTermsController.h"
 #import "MainMenuButtonCell.h"
-#import "TestFlight.h"
+//#import "TestFlight.h"
 
 @interface MainMenuViewController ()
 
@@ -25,13 +25,60 @@ Logic *logic;
 NSArray *menu;
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    practiceName = [[NSUserDefaults standardUserDefaults]objectForKey:@"nameOfPratice"];
+    self.village = [[UIImageView alloc]init];
+    [self.view addSubview:self.village];
+    
     [self setMenuHeightInOrientation:[UIApplication sharedApplication].statusBarOrientation beforeRotation:NO];
     logic = [Logic sharedLogic];
     [Skin applyMainMenuBGOnImageView:_backgroundImage];
     [Skin applyMainLogoOnImageView:_logoImageView];
     [Skin applyBackgroundOnButton:_menuButton];
     menu = [logic getDataToDisplayForMainMenu];
+    [self setFrames];
+    [self displayImages];
+}
+
+
+
+
+
+-(void)displayImages
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *unzipPath = [path stringByAppendingPathComponent:@"unzipPath"];
+    NSLog(@"%@",unzipPath);
+    NSString *imageFilePath = [unzipPath stringByAppendingPathComponent:@"background.png"];
+    NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+    UIImage *img = [UIImage imageWithData:imageData];
+    
+    NSString *imageFileLogoPath = [unzipPath stringByAppendingPathComponent:@"menulogo.png"];
+    NSData *imageLogoData = [NSData dataWithContentsOfFile:imageFileLogoPath options:0 error:nil];
+    UIImage *imgLogo = [UIImage imageWithData:imageLogoData];
+    
+    NSString *menuFilePath = [unzipPath stringByAppendingPathComponent:@"button.9.png"];
+    NSData *menuimageData = [NSData dataWithContentsOfFile:menuFilePath options:0 error:nil];
+    UIImage *menuimg = [UIImage imageWithData:menuimageData];
+    
+    dispatch_async(dispatch_get_main_queue(),
+                   ^{
+                       self.backgroundImage.image = img;
+                       //self.logoImageView.image = imgLogo;
+                       if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"]||[practiceName isEqualToString:@"Children's Healthcare Center"] || [practiceName isEqualToString:@"Brighton Pediatrics"] || [practiceName isEqualToString:@"Goodtime Pediatrics"])
+                       {
+                           self.village.image = imgLogo;
+                       }
+                       else
+                       {
+                           self.logoImageView.image = imgLogo;
+                       }
+                       [self.menuButton setBackgroundImage:menuimg forState:UIControlStateNormal];
+                   });
 }
 
 - (void)setMenuHeightInOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -60,6 +107,13 @@ NSArray *menu;
     height = MAX(minHeight, MIN(screenRatioHeight, maxHeight));
     [self menuHeightConstraint].constant = height;
 }
+
+- (IBAction)backBtnTapped:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration {
@@ -90,6 +144,19 @@ NSArray *menu;
     [cell.button setTitle:[[menu objectAtIndex:indexPath.row] objectForKey:@"name"] forState:UIControlStateNormal];
     [[cell button] addTarget:self action:@selector(menuClick:event:) forControlEvents:UIControlEventTouchUpInside];
     [Skin applyBackgroundOnButton:cell.button];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *unzipPath = [path stringByAppendingPathComponent:@"unzipPath"];
+    NSString *imageFilePath = [unzipPath stringByAppendingPathComponent:@"button.9.png"];
+    NSData *imageData = [NSData dataWithContentsOfFile:imageFilePath options:0 error:nil];
+    UIImage *img = [UIImage imageWithData:imageData];
+    
+    
+    dispatch_async(dispatch_get_main_queue(),
+                   ^{
+                       [cell.button setBackgroundImage:img forState:UIControlStateNormal];
+                   });
     return cell;
 }
 
@@ -97,8 +164,19 @@ NSArray *menu;
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint currentTouchPos = [touch locationInView:self.collectionView];
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:currentTouchPos];
-    [logic setMainMenuDelegate:self];
-    [logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
+    if ([RCHelper SharedHelper].menuToArticle)
+    {
+        [logic setSubMenuDelegate:self];
+        [logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
+        [self  performSegueWithIdentifier:@"MenuToArticle" sender:self];
+    }
+    else
+    {
+        [logic setMainMenuDelegate:self];
+        [logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
+
+    }
+    //[logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -178,7 +256,8 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
 }
 
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [self setMenuHeightInOrientation:[UIApplication sharedApplication].statusBarOrientation beforeRotation:NO];
     [super viewWillAppear:animated];
     [[self navigationController] setNavigationBarHidden:TRUE];
@@ -217,8 +296,10 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
     [statusHUD setLabelText:@"Downloading..."];
 }
 
-- (void)updateProgress:(DownloadStatus *)status {
-    if ([status expectedLength] > 0) {
+- (void)updateProgress:(DownloadStatus *)status
+{
+    if ([status expectedLength] > 0)
+    {
         statusHUD.progress = [status currentLength] / (float)[status expectedLength];
     }
 }
@@ -246,6 +327,95 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
 
 - (IBAction)resetToHere:(UIStoryboardSegue *)segue {
     [logic unwind];
+}
+
+//Checking for device Orientation
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
+    {
+        NSLog(@"Landscape");
+        [self setFrames];
+    }
+    else
+    {
+        NSLog(@"Portrait");
+        [self setFrames];
+        
+    }
+}
+
+
+
+#pragma Setting Frames
+-(void)setFrames
+{
+    
+    if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
+    {
+        if (IS_IPHONE_6H)
+        {
+            
+        }
+        else if (IS_IPHONE_5H)
+        {
+            self.village.frame = CGRectMake(150,0,260,170);
+
+        }
+    }
+    else
+    {
+        if (IS_IPHONE_6)
+        {
+           
+        }
+        else if (IS_IPHONE_5)
+        {
+            if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"])
+            {
+                self.village.frame = CGRectMake(30,30,260,170);
+            }
+            else if([practiceName isEqualToString:@"Children's Healthcare Center"])
+            {
+                self.village.frame = CGRectMake(10,-10,298,250);
+            }
+            else if([practiceName isEqualToString:@"Brighton Pediatrics"])
+            {
+                self.village.frame = CGRectMake(10,10,300,200);
+            }
+            else if ([practiceName isEqualToString:@"Goodtime Pediatrics"])
+            {
+                self.village.frame = CGRectMake(20,10,280,220);
+            }
+            else
+            {
+            }
+            
+        }
+        else if (IS_IPHONE_4)
+        {
+            if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"])
+            {
+                self.village.frame = CGRectMake(30,30,260,170);
+            }
+            else if([practiceName isEqualToString:@"Children's Healthcare Center"])
+            {
+                self.village.frame = CGRectMake(10,-10,298,250);
+            }
+            else if([practiceName isEqualToString:@"Brighton Pediatrics"])
+            {
+                self.village.frame = CGRectMake(10,10,300,200);
+            }
+            else if ([practiceName isEqualToString:@"Goodtime Pediatrics"])
+            {
+                self.village.frame = CGRectMake(20,10,280,220);
+            }
+            else
+            {
+            }
+        
+        }
+    }
 }
 
 @end
