@@ -23,14 +23,11 @@
     [self.view addSubview:self.village];
     logic = [Logic sharedLogic];
     [self displayImages];
-    [self setFrames];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
-    [self setFrames];
-    
+    [self.navigationController setNavigationBarHidden:YES];    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,15 +56,12 @@
     dispatch_async(dispatch_get_main_queue(),
                    ^{
                        self.imageView.image = img;
-                       //self.logoImage.image = logoimg;
-                       if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"] || [practiceName isEqualToString:@"Union Pediatrics, PSC"] || [practiceName isEqualToString:@"Children's Healthcare Center"] || [practiceName isEqualToString:@"Brighton Pediatrics"]||[practiceName isEqualToString:@"Goodtime Pediatrics"])
+                       self.imageView.contentMode = UIViewContentModeCenter;
+                       self.logoImage.image = logoimg;
+                       self.logoImage.contentMode = UIViewContentModeCenter;
+                       if ((self.logoImage.bounds.size.width > (logoimg.size.width && self.logoImage.bounds.size.height > logoimg.size.height)))
                        {
-                           self.village.image = logoimg;
-                       }
-                       
-                       else
-                       {
-                           self.logoImage.image = logoimg;
+                           self.logoImage.contentMode = UIViewContentModeScaleAspectFill;
                        }
                        [self.menuBtn setBackgroundImage:menuimg forState:UIControlStateNormal];
                        [self.messageBtn setBackgroundImage:menuimg forState:UIControlStateNormal];
@@ -122,6 +116,7 @@
             [RCHelper SharedHelper].fromMenuReturn = YES;
             [RCHelper SharedHelper].fromSelfSelect = NO;
             [RCHelper SharedHelper].fromSelfSelectBack = NO;
+            [self clearData]; 
             [self performSegueWithIdentifier:@"MoveBackToSelectPractice" sender:self];
             break;
             
@@ -136,6 +131,11 @@
     [popoverView dismiss:TRUE];
 }
 
+-(void)clearData
+{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
 
 -(void)sendRequest:(NSString *)searchPraticeString
 {
@@ -232,12 +232,10 @@
     if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
     {
         NSLog(@"Landscape");
-        [self setFrames];
     }
     else
     {
         NSLog(@"Portrait");
-        [self setFrames];
         
     }
 }
@@ -260,98 +258,106 @@
     return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
 }
 
-#pragma Setting Frames
--(void)setFrames
-{
-    if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
-    {
-        if (IS_IPHONE_6H)
-        {
-            self.menuBtn.frame = CGRectMake(600, 62, 30, 30);
-            self.logoImage.frame = CGRectMake(420,120,240, 70);
-            self.messageBtn.frame = CGRectMake(190,250,124,60);
-            self.adminBtn.frame = CGRectMake(360,250,124,60);
-        }
-        else if (IS_IPHONE_5H)
-        {
-            self.menuBtn.frame = CGRectMake(420, 62, 30, 30);
-            self.logoImage.frame = CGRectMake(260,100,200, 70);
-            self.messageBtn.frame = CGRectMake(110,230,124,60);
-            self.adminBtn.frame = CGRectMake(280,230,124,60);
-        }
-    }
-    else
-    {
-        if (IS_IPHONE_6)
-        {
-            self.menuBtn.frame = CGRectMake(300, 62, 30, 30);
-            self.logoImage.frame = CGRectMake(120,120,240, 70);
-            self.messageBtn.frame = CGRectMake(120,480,124,60);
-            self.adminBtn.frame = CGRectMake(120,560,124,60);
-        }
-        else if (IS_IPHONE_5)
-        {
-            self.menuBtn.frame = CGRectMake(260,62,30,30);
-            if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"])
-            {
-                self.village.frame = CGRectMake(30,30,260,170);
-            }
-            else if([practiceName isEqualToString:@"Union Pediatrics, PSC"])
-            {
-                self.village.frame = CGRectMake(67,65,180,100);
-            }
-            else if([practiceName isEqualToString:@"Children's Healthcare Center"])
-            {
-                self.village.frame = CGRectMake(50,30,298,274);
-            }
-            else if([practiceName isEqualToString:@"Brighton Pediatrics"])
-            {
-               self.village.frame = CGRectMake(10,10,300,200);
-            }
-            else if ([practiceName isEqualToString:@"Goodtime Pediatrics"])
-            {
-                self.village.frame = CGRectMake(20,10,280,220);
-            }
-            else
-            {
-                self.logoImage.frame = CGRectMake(100,100,200,70);
-            }
-            self.messageBtn.frame = CGRectMake(100,380,124,60);
-            self.adminBtn.frame = CGRectMake(100,460,124,60);
-        }
-        else if (IS_IPHONE_4)
-        {
-            self.menuBtn.frame = CGRectMake(260,62,30,30);
-            if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"])
-            {
-                self.village.frame = CGRectMake(30,30,260,170);
-            }
-            else if([practiceName isEqualToString:@"Union Pediatrics, PSC"])
-            {
-                self.village.frame = CGRectMake(67,65,180,100);
-            }
-            else if([practiceName isEqualToString:@"Children's Healthcare Center"])
-            {
-                self.village.frame = CGRectMake(50,30,298,274);
-            }
-            else if([practiceName isEqualToString:@"Brighton Pediatrics"])
-            {
-                self.village.frame = CGRectMake(10,10,300,200);
-            }
-            else if ([practiceName isEqualToString:@"Goodtime Pediatrics"])
-            {
-                self.village.frame = CGRectMake(20,10,280,220);
-            }
-            else
-            {
-                self.logoImage.frame = CGRectMake(100,100,200,70);
-
-            }
-            self.messageBtn.frame = CGRectMake(100,340,124,60);
-            self.adminBtn.frame = CGRectMake(100,410,124,60);
-        }
-    }
-    self.messageBtn.layer.cornerRadius = 10.0f;
-    self.adminBtn.layer.cornerRadius = 10.0f;
-}
+//#pragma Setting Frames
+//-(void)setFrames
+//{
+//    if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
+//    {
+//        if (IS_IPHONE_6H)
+//        {
+//            self.menuBtn.frame = CGRectMake(600, 62, 30, 30);
+//            self.logoImage.frame = CGRectMake(420,120,240, 70);
+//            self.messageBtn.frame = CGRectMake(190,250,124,60);
+//            self.adminBtn.frame = CGRectMake(360,250,124,60);
+//        }
+//        else if (IS_IPHONE_5H)
+//        {
+//            self.menuBtn.frame = CGRectMake(420, 62, 30, 30);
+//            self.logoImage.frame = CGRectMake(260,100,200, 70);
+//            self.messageBtn.frame = CGRectMake(110,230,124,60);
+//            self.adminBtn.frame = CGRectMake(280,230,124,60);
+//        }
+//    }
+//    else
+//    {
+//        if (IS_IPHONE_6)
+//        {
+//            self.menuBtn.frame = CGRectMake(300, 62, 30, 30);
+//            self.logoImage.frame = CGRectMake(120,120,240, 70);
+//            self.messageBtn.frame = CGRectMake(120,480,124,60);
+//            self.adminBtn.frame = CGRectMake(120,560,124,60);
+//        }
+//        else if (IS_IPHONE_5)
+//        {
+//            self.menuBtn.frame = CGRectMake(260,62,30,30);
+//            if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"])
+//            {
+//                self.village.frame = CGRectMake(30,30,260,170);
+//            }
+//            else if([practiceName isEqualToString:@"Union Pediatrics, PSC"])
+//            {
+//                self.village.frame = CGRectMake(67,65,180,100);
+//            }
+//            else if([practiceName isEqualToString:@"Children's Healthcare Center"])
+//            {
+//                self.village.frame = CGRectMake(50,30,298,274);
+//            }
+//            else if([practiceName isEqualToString:@"Brighton Pediatrics"])
+//            {
+//               self.village.frame = CGRectMake(10,10,300,200);
+//            }
+//            else if ([practiceName isEqualToString:@"Goodtime Pediatrics"])
+//            {
+//                self.village.frame = CGRectMake(20,10,280,220);
+//            }
+//            else if ([practiceName isEqualToString:@"Collin County Pediatrics"])
+//            {
+//                self.village.frame = CGRectMake(20,60,280,114);
+//            }
+//            else
+//            {
+//                self.logoImage.frame = CGRectMake(100,100,200,70);
+//            }
+//            self.messageBtn.frame = CGRectMake(100,380,124,60);
+//            self.adminBtn.frame = CGRectMake(100,460,124,60);
+//        }
+//        else if (IS_IPHONE_4)
+//        {
+//            self.menuBtn.frame = CGRectMake(260,62,30,30);
+//            if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"])
+//            {
+//                self.village.frame = CGRectMake(30,30,260,170);
+//            }
+//            else if([practiceName isEqualToString:@"Union Pediatrics, PSC"])
+//            {
+//                self.village.frame = CGRectMake(67,65,180,100);
+//            }
+//            else if([practiceName isEqualToString:@"Children's Healthcare Center"])
+//            {
+//                self.village.frame = CGRectMake(50,30,298,274);
+//            }
+//            else if([practiceName isEqualToString:@"Brighton Pediatrics"])
+//            {
+//                self.village.frame = CGRectMake(10,10,300,200);
+//            }
+//            else if ([practiceName isEqualToString:@"Goodtime Pediatrics"])
+//            {
+//                self.village.frame = CGRectMake(20,10,280,220);
+//            }
+//            else if ([practiceName isEqualToString:@"Collin County Pediatrics"])
+//            {
+//                self.village.frame = CGRectMake(20,60,280,114);
+//            }
+//            else
+//            {
+//                self.logoImage.frame = CGRectMake(100,100,200,70);
+//
+//            }
+//            self.messageBtn.frame = CGRectMake(100,340,124,60);
+//            self.adminBtn.frame = CGRectMake(100,410,124,60);
+//        }
+//    }
+//    self.messageBtn.layer.cornerRadius = 10.0f;
+//    self.adminBtn.layer.cornerRadius = 10.0f;
+//}
 @end

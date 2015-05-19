@@ -79,6 +79,8 @@
 
 - (IBAction)backBtnTapped:(id)sender
 {
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

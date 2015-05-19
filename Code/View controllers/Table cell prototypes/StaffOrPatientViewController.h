@@ -21,7 +21,7 @@
 }
 @property (strong, nonatomic) UIWindow *window;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (strong, nonatomic) IBOutlet UIImageView *logoImage;
 @property (weak, nonatomic) IBOutlet UIButton *patientBtn;
 @property (weak, nonatomic) IBOutlet UIButton *providerBtn;
 @property (weak, nonatomic) IBOutlet UIButton *returnSearchLabel;

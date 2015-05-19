@@ -22,6 +22,7 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,SSZipArchiveDeleg
 
 }
 
+@property (strong, nonatomic) IBOutlet UIButton *backBtn;
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;

@@ -68,15 +68,17 @@ NSArray *menu;
     dispatch_async(dispatch_get_main_queue(),
                    ^{
                        self.backgroundImage.image = img;
-                       //self.logoImageView.image = imgLogo;
-                       if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"]||[practiceName isEqualToString:@"Children's Healthcare Center"] || [practiceName isEqualToString:@"Brighton Pediatrics"] || [practiceName isEqualToString:@"Goodtime Pediatrics"])
-                       {
-                           self.village.image = imgLogo;
-                       }
-                       else
-                       {
-                           self.logoImageView.image = imgLogo;
-                       }
+                       NSLog(@"%f %f",self.backgroundImage.frame.size.width,self.backgroundImage.frame.size.height);
+                       self.logoImageView.image = imgLogo;
+//                       if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"]||[practiceName isEqualToString:@"Children's Healthcare Center"] || [practiceName isEqualToString:@"Brighton Pediatrics"] || [practiceName isEqualToString:@"Goodtime Pediatrics"])
+//                       {
+//                           self.village.image = imgLogo;
+//                       }
+//                       else
+//                       {
+//                           self.logoImageView.image = imgLogo;
+//                       }
+                       [self.backBtn setBackgroundImage:menuimg forState:UIControlStateNormal];
                        [self.menuButton setBackgroundImage:menuimg forState:UIControlStateNormal];
                    });
 }
@@ -110,6 +112,8 @@ NSArray *menu;
 
 - (IBAction)backBtnTapped:(id)sender
 {
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -230,6 +234,7 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
             break;
         case 1:
             [logic resetBeforeSelection];
+            [self clearData];
             [self performSegueWithIdentifier:@"BackToPracticeSearch" sender:self];
             break;
         case 2:
@@ -240,6 +245,12 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
             break;
     }
     [popoverView dismiss:TRUE];
+}
+
+-(void)clearData
+{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

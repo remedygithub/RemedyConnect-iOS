@@ -15,6 +15,7 @@
 #import "YourPracticeAppDelegate.h"
 
 @protocol FileDownloaderDelegate <NSObject>
+@optional
 //-(void)successfullyParsedFiles:(Practice *)practice;
 -(void)successfullyParsedFiles:(NSMutableArray *)practiceInfo modelData:(Practice *)practice;
 -(void)practiceNotFound;
