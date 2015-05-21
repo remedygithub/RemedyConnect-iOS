@@ -62,7 +62,8 @@
                                                 repeats:NO] ;
 }
 
-- (void)idleTimerExceeded {
+- (void)idleTimerExceeded
+{
     /* Post a notification so anyone who subscribes to it can be notified when
      * the application times out */
     [[NSNotificationCenter defaultCenter]

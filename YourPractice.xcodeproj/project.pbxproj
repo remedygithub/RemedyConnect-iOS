@@ -56,6 +56,11 @@
 		092EC5961B008FFA003A3608 /* papasscode_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 092EC58E1B008FFA003A3608 /* papasscode_marker@2x.png */; };
 		092EC5991B00AC5B003A3608 /* pushio_config_debug.json in Resources */ = {isa = PBXBuildFile; fileRef = 092EC5971B00AC5B003A3608 /* pushio_config_debug.json */; };
 		092EC59A1B00AC5B003A3608 /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092EC5981B00AC5B003A3608 /* PushIOManager.framework */; };
+		09BEB3881B0DA75300A5D1DE /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BEB3841B0DA75300A5D1DE /* background.png */; };
+		09BEB3891B0DA75300A5D1DE /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BEB3851B0DA75300A5D1DE /* button.png */; };
+		09BEB38A1B0DA75300A5D1DE /* remedyconnect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BEB3861B0DA75300A5D1DE /* remedyconnect-logo.png */; };
+		09BEB38B1B0DA75300A5D1DE /* whitebkgrnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BEB3871B0DA75300A5D1DE /* whitebkgrnd.png */; };
+		09BEB3911B0DDF8600A5D1DE /* UnderDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BEB3901B0DDF8600A5D1DE /* UnderDevViewController.m */; };
 		5F0AE35718CE1BE10027824B /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0AE35618CE1BE10027824B /* NSString+URLEncoding.m */; };
 		5F1EF761182E76B30078F89B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EF760182E76B30078F89B /* libz.dylib */; };
 		5F3226751899433E00B01D06 /* about.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940304188FC4FE00DBFD1A /* about.htm */; };
@@ -259,6 +264,12 @@
 		092EC58E1B008FFA003A3608 /* papasscode_marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "papasscode_marker@2x.png"; sourceTree = "<group>"; };
 		092EC5971B00AC5B003A3608 /* pushio_config_debug.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pushio_config_debug.json; path = Libs/Push.IO/pushio_config_debug.json; sourceTree = "<group>"; };
 		092EC5981B00AC5B003A3608 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushIOManager.framework; path = Libs/Push.IO/PushIOManager.framework; sourceTree = "<group>"; };
+		09BEB3841B0DA75300A5D1DE /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = "New Login Screen UI/background.png"; sourceTree = "<group>"; };
+		09BEB3851B0DA75300A5D1DE /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button.png; path = "New Login Screen UI/button.png"; sourceTree = "<group>"; };
+		09BEB3861B0DA75300A5D1DE /* remedyconnect-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "remedyconnect-logo.png"; path = "New Login Screen UI/remedyconnect-logo.png"; sourceTree = "<group>"; };
+		09BEB3871B0DA75300A5D1DE /* whitebkgrnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whitebkgrnd.png; path = "New Login Screen UI/whitebkgrnd.png"; sourceTree = "<group>"; };
+		09BEB38F1B0DDF8600A5D1DE /* UnderDevViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderDevViewController.h; sourceTree = "<group>"; };
+		09BEB3901B0DDF8600A5D1DE /* UnderDevViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderDevViewController.m; sourceTree = "<group>"; };
 		5F0AE35518CE1BE10027824B /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		5F0AE35618CE1BE10027824B /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		5F1EF753182D9F790078F89B /* ArticleSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleSetViewController.h; sourceTree = "<group>"; };
@@ -589,6 +600,8 @@
 				092EC53F1AFE6E58003A3608 /* XMLToDictConvertor */,
 				092EC4E01AFE63B7003A3608 /* StaffOrPatientViewController.h */,
 				092EC4E11AFE63B7003A3608 /* StaffOrPatientViewController.m */,
+				09BEB38F1B0DDF8600A5D1DE /* UnderDevViewController.h */,
+				09BEB3901B0DDF8600A5D1DE /* UnderDevViewController.m */,
 			);
 			name = "ProviderSide Library";
 			sourceTree = "<group>";
@@ -606,6 +619,17 @@
 				092EC58E1B008FFA003A3608 /* papasscode_marker@2x.png */,
 			);
 			path = Passcoda;
+			sourceTree = "<group>";
+		};
+		09BEB38C1B0DA76300A5D1DE /* New Login Screen */ = {
+			isa = PBXGroup;
+			children = (
+				09BEB3841B0DA75300A5D1DE /* background.png */,
+				09BEB3851B0DA75300A5D1DE /* button.png */,
+				09BEB3861B0DA75300A5D1DE /* remedyconnect-logo.png */,
+				09BEB3871B0DA75300A5D1DE /* whitebkgrnd.png */,
+			);
+			name = "New Login Screen";
 			sourceTree = "<group>";
 		};
 		5F4701201855CE1900506CD2 /* Products */ = {
@@ -877,6 +901,7 @@
 		5FFF2AE0171824A70000B80B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				09BEB38C1B0DA76300A5D1DE /* New Login Screen */,
 				092EC5861B008FFA003A3608 /* Passcoda */,
 				092EC4EE1AFE68D0003A3608 /* back_arrow.png */,
 				092EC4EF1AFE68D0003A3608 /* back_arrow@2x.png */,
@@ -1029,6 +1054,7 @@
 				092EC5911B008FFA003A3608 /* papasscode_background.png in Resources */,
 				092EC58F1B008FFA003A3608 /* digitCell.psd in Resources */,
 				5F82A8A1170B3D8E00FE72B8 /* InfoPlist.strings in Resources */,
+				09BEB38A1B0DA75300A5D1DE /* remedyconnect-logo.png in Resources */,
 				5F8139101855EBB400EF3E20 /* icon-152.png in Resources */,
 				092EC5941B008FFA003A3608 /* papasscode_failed_bg@2x.png in Resources */,
 				092EC5961B008FFA003A3608 /* papasscode_marker@2x.png in Resources */,
@@ -1054,6 +1080,7 @@
 				092EC4FC1AFE6DB0003A3608 /* RemedyConnect Horizontal Logo.jpg in Resources */,
 				5FF0EAD619475036001A33D4 /* location.png in Resources */,
 				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
+				09BEB3891B0DA75300A5D1DE /* button.png in Resources */,
 				5F81390E1855EBB400EF3E20 /* icon-120.png in Resources */,
 				5FF0EACD194733B4001A33D4 /* search-tree.png in Resources */,
 				5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */,
@@ -1064,9 +1091,11 @@
 				5F9D77BC1860915E00808660 /* testbutton.png in Resources */,
 				5F81390A1855EBB400EF3E20 /* icon-57.png in Resources */,
 				092EC4F01AFE68D0003A3608 /* back_arrow.png in Resources */,
+				09BEB38B1B0DA75300A5D1DE /* whitebkgrnd.png in Resources */,
 				5F916639183F88DB00E74748 /* style.css in Resources */,
 				5F3226751899433E00B01D06 /* about.htm in Resources */,
 				5F3226761899433E00B01D06 /* terms_and_conditions.htm in Resources */,
+				09BEB3881B0DA75300A5D1DE /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,6 +1133,7 @@
 				5F8138E11855D28400EF3E20 /* DownloadStatus.m in Sources */,
 				5F0AE35718CE1BE10027824B /* NSString+URLEncoding.m in Sources */,
 				092EC5081AFE6E16003A3608 /* RCWebEngine.m in Sources */,
+				09BEB3911B0DDF8600A5D1DE /* UnderDevViewController.m in Sources */,
 				092EC5531AFE6E58003A3608 /* XMLDictionary.m in Sources */,
 				092EC5471AFE6E58003A3608 /* NetworkViewController.m in Sources */,
 				5F8138E21855D28400EF3E20 /* Downloader.m in Sources */,
@@ -1221,8 +1251,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",
@@ -1248,8 +1278,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",

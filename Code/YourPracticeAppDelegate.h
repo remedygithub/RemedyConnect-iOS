@@ -17,12 +17,14 @@
 #import "Macros.h"
 #import <PushIOManager/PushIOManager.h>
 
+
 @interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate,PAPasscodeViewControllerDelegate,PushIOManagerDelegate>
 {
     ALActivityIndicatorView *m_cActivityIndicator;
     PAPasscodeViewController *passcode;
     NSString *deviceTokenStr;
 }
+
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) UIWindow *window;
@@ -31,4 +33,5 @@
 //Methods for showing activity indicators
 -(void)startActivity;
 -(void)stopActivity;
+-(void)startLoginSession;
 @end

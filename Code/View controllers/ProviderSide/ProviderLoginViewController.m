@@ -25,21 +25,26 @@
     [self setThePaddingForTextFields];
     self.userNameTextField.delegate = self;
     self.passwordTextField.delegate = self;
+    self.forgotUrl = [[NSURL alloc]init];
+    self.whiteBackground.layer.cornerRadius = 10.0f;
     [self registerForKeyboardNotifications];
     [self checkViewOrientation];
-
 
     if ([RCHelper SharedHelper].fromLoginTimeout)
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Please enter your RemedyOnCall Admin Username and Password below. Your log in will last 6 HOURS." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
+    [self.backBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self.navigationController setNavigationBarHidden:YES];
+    self.userNameTextField.text = @"";
+    self.passwordTextField.text = @"";
     [self checkViewOrientation];
    
 }
@@ -86,7 +91,20 @@
 
 - (IBAction)forgotBtnTapped:(id)sender
 {
-    [self performSegueWithIdentifier:@"MoveToForgotView" sender:self];
+   self.userNameStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
+    NSLog(@"%@",self.userNameStr);
+    if (self.userNameStr == nil)
+    {
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Username cannot be blank" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    else
+    {
+        self.forgotUrl = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://webteleservicestest.remedyconnect.com/Mobile/Providers/Default.aspx?username=%@",self.userNameStr]];
+        NSLog(@"%@",self.forgotUrl);
+        [[UIApplication sharedApplication]openURL:self.forgotUrl];
+    }
+   
 }
 
 - (IBAction)loginBtnTapped:(id)sender
@@ -103,25 +121,26 @@
                [defaults synchronize];
                 
                 [RCWebEngine SharedWebEngine].delegate = self;
-                [[UIApplication sharedApplication].delegate performSelector:@selector(startActivity)];
+               [self hasStartedDownloading:@"Logging In..."];
+                //[[UIApplication sharedApplication].delegate performSelector:@selector(startActivity)];
                 [[RCWebEngine SharedWebEngine]userLogin:self.userNameTextField.text password:self.passwordTextField.text];
         }
         else
         {
             if ([self.userNameTextField.text isEqualToString:@""] && [self.passwordTextField.text isEqualToString:@""])
             {
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Please enter UserName and Password" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Username and Password cannot be blank" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
             
             else if ([self.userNameTextField.text isEqualToString:@""])
             {
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Please enter UserName" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Username cannot be blank" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
             else if ([self.passwordTextField.text isEqualToString:@""])
             {
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Please enter Password" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Password cannot be blank" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
             
@@ -138,7 +157,7 @@
 }
 
 
-- (void)hasStartedDownloading
+- (void)hasStartedDownloading:(NSString *)processString
 {
     if (nil != statusHUD)
     {
@@ -148,9 +167,10 @@
     [statusHUD setDelegate:self];
     [statusHUD setDimBackground:TRUE];
     [statusHUD show:YES];
-    [statusHUD setLabelText:@"Logging In..."];
+    [statusHUD setLabelText:processString];
     [self.view bringSubviewToFront:statusHUD];
 }
+
 
 
 -(void)verifyingThePincodeTocheck
@@ -325,7 +345,7 @@
 #pragma mark - Delegate methods of RCWebEngine
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
-    [[[UIApplication sharedApplication] delegate] performSelector:@selector(stopActivity)];
+    [statusHUD hide:YES afterDelay:2];
     if ([pResultDict objectForKey:@"token"] != [NSNull null] )
     {
         helper = [[RCHelper alloc]init];
@@ -333,35 +353,46 @@
         helper.practiceID = [pResultDict objectForKey:@"practiceID"];
         helper.tokenID = [pResultDict objectForKey:@"token"];
         
-          NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //Saving Token Locally
+         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
          [defaults setObject:helper.tokenID forKey:@"responseToken"];
          [defaults synchronize];
-        
-            if ([RCHelper SharedHelper].pinCreated)
-            {
-                [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
-            }
-            else if ([RCHelper SharedHelper].fromLoginTimeout)
-            {
-                [self verifyingThePincodeTocheck];
-            }
-            else
-            {
-                [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
-            }
+
+        //Starting Timer
+         [[[UIApplication sharedApplication] delegate] performSelector:@selector(startLoginSession)];
+         [self performSegueWithIdentifier:@"UnderDev" sender:self];
+
+          // if ([RCHelper SharedHelper].pinCreated)
+//            {
+//                [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
+//            }
+//            else if ([RCHelper SharedHelper].fromLoginTimeout)
+//            {
+//                [self verifyingThePincodeTocheck];
+  
+//            }
+//            else
+//            {
+//                [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
+//            }
     }
     else
     {
-        UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:@"Sorry! Your login failed. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [lAlert show];
+        [self connectionFailed];
     }
 
 }
 
+-(void)connectionFailed
+{
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log you in" message:@"Unknown username or bad password - please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
+}
+
 -(void)connectionManagerDidFailWithError:(NSError *)error
 {
-    [[[UIApplication sharedApplication] delegate] performSelector:@selector(stopActivity)];
-    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [statusHUD hide:YES afterDelay:2];
+     UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log you in" message:@"Unknown username or bad password - please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
 }
 
@@ -483,9 +514,9 @@
     {
         NSLog(@"Portrait");
         self.scrollView.contentSize = CGSizeMake(0,[UIScreen mainScreen].bounds.size.height-10);
-        
     }
 }
+
 
 //Padding for textfields
 -(void) setThePaddingForTextFields
@@ -498,6 +529,5 @@
     self.passwordTextField.leftView = lastNPadding;
     self.passwordTextField.leftViewMode = UITextFieldViewModeAlways;
 }
-
-
+//http://stackoverflow.com/questions/15092016/how-to-run-nstimer-in-background-and-sleep-in-ios
 @end

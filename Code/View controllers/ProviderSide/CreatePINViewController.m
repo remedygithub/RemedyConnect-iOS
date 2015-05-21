@@ -164,23 +164,6 @@
 }
 
 
-#pragma mark Orientation handling
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
-}
-
--(BOOL)shouldAutorotate
-{
-    return YES;
-}
-
--(NSUInteger)supportedInterfaceOrientations
-{
-    return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
-}
-
 
 #pragma Setting Frames
 -(void)setFrames

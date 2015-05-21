@@ -116,11 +116,11 @@ int itemFromArticleSet = -1;
     [FileHandling prepareTempDirectory];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
-    NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
+   NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
                                             withFeedRoot:[Logic getFeedRoot]];
     
   // NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.759623 withLongitude:-104.764509
-                                                    //withFeedRoot:[Logic getFeedRoot]];
+                                                   // withFeedRoot:[Logic getFeedRoot]];
     
 //    NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.318310 withLongitude:-76.546424                                                    withFeedRoot:[Logic getFeedRoot]];
     [downloader addURLToDownload:URL

@@ -16,14 +16,14 @@
 #import "MBProgressHUD.h"
 #import "RCRegisterEngine.h"
 #import "CreatePINViewController.h"
+#import "SessionTime.h"
+
 @interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,registerWebDelegate>
 {
     RCHelper *helper;
     MBProgressHUD *statusHUD;
     BOOL isPassword,isAnimatedUp;
     UITextField *activeField;
-
-
 }
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UIView *logoView;
@@ -35,5 +35,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *loginBtn;
 @property (strong, nonatomic) IBOutlet UIButton *forgotBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (strong, nonatomic) IBOutlet UIImageView *whiteBackground;
+
+
 @property (nonatomic, strong) NSXMLParser *xmlParser;
+@property (nonatomic, strong) NSURL *forgotUrl;
+@property (nonatomic, strong) NSString *userNameStr;
+
 @end
