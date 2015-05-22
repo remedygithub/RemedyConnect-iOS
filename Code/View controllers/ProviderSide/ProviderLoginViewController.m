@@ -18,30 +18,62 @@
 
 @implementation ProviderLoginViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.navigationController.navigationBarHidden = YES;
+    
     [self setThePaddingForTextFields];
+    
     self.userNameTextField.delegate = self;
     self.passwordTextField.delegate = self;
     self.forgotUrl = [[NSURL alloc]init];
+    
     self.whiteBackground.layer.cornerRadius = 10.0f;
+    
     [self registerForKeyboardNotifications];
     [self checkViewOrientation];
+    [self checkSessionTime];
+    logic = [Logic sharedLogic];
+
 
     if ([RCHelper SharedHelper].fromLoginTimeout)
     {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Please enter your RemedyOnCall Admin Username and Password below. Your log in will last 6 HOURS." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Please enter your RemedyOnCall Admin Username and Password below. Your log in will last 6 HOURS." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
     }
+    
     [self.backBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
+    [self.menuBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
+
 }
+
+
+-(void)checkSessionTime
+{
+    NSString *deviceResponseToken = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
+    NSString *practiceId = [[NSUserDefaults standardUserDefaults]objectForKey:@"userPracticeId"];
+    NSLog(@"%@",deviceResponseToken);
+    NSLog(@"%@",practiceId);
+    if (deviceResponseToken && practiceId)
+    {
+        NSLog(@"Token Edey");
+        [RCSessionEngine SharedWebEngine].delegate = self;
+        [self hasStartedDownloading:@"Checking Session.."];
+        [RCSessionEngine SharedWebEngine].getLoginInTimeOutDetails;
+    }
+}
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [statusHUD hide:YES afterDelay:2];
+
     [self.navigationController setNavigationBarHidden:YES];
     self.userNameTextField.text = @"";
     self.passwordTextField.text = @"";
@@ -82,12 +114,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+//Back Button Action
 - (IBAction)backBtnTapped:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
     [[NSUserDefaults standardUserDefaults]synchronize];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+
+
 
 - (IBAction)forgotBtnTapped:(id)sender
 {
@@ -115,31 +154,47 @@
     {
         if (![self.userNameTextField.text isEqualToString:@""] && ![self.passwordTextField.text isEqualToString:@""] )
         {
+            [self changeViewBorderColorBlack];
+            if (![self.userNameTextField.text isEqualToString:@""])
+            {
+                self.userNameTextField.layer.borderWidth = 1.0f;
+                self.userNameTextField.layer.borderColor = [UIColor blackColor].CGColor;
+            }
+            else if (![self.passwordTextField.text isEqualToString:@""])
+            {
+                self.passwordTextField.layer.borderWidth = 1.0f;
+                self.passwordTextField.layer.borderColor = [UIColor blackColor].CGColor;
+            }
+            
                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                [defaults setObject:self.userNameTextField.text forKey:@"user"];
                [defaults setObject:self.passwordTextField.text forKey:@"password"];
                [defaults synchronize];
                 
                 [RCWebEngine SharedWebEngine].delegate = self;
-               [self hasStartedDownloading:@"Logging In..."];
-                //[[UIApplication sharedApplication].delegate performSelector:@selector(startActivity)];
+                [self hasStartedDownloading:@"Logging In..."];
                 [[RCWebEngine SharedWebEngine]userLogin:self.userNameTextField.text password:self.passwordTextField.text];
         }
         else
         {
+            [self changeViewBorderColorBlack];
             if ([self.userNameTextField.text isEqualToString:@""] && [self.passwordTextField.text isEqualToString:@""])
             {
+                [self changeView1BorderColor];
+                [self changeView2BorderColor];
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Username and Password cannot be blank" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
             
             else if ([self.userNameTextField.text isEqualToString:@""])
             {
+                [self changeView1BorderColor];
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Username cannot be blank" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
             else if ([self.passwordTextField.text isEqualToString:@""])
             {
+                [self changeView2BorderColor];
                 UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Password cannot be blank" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
@@ -169,6 +224,66 @@
     [statusHUD show:YES];
     [statusHUD setLabelText:processString];
     [self.view bringSubviewToFront:statusHUD];
+}
+
+
+
+
+
+//MenuBtn Action
+- (IBAction)menuBtnTapped:(id)sender
+{
+    CGPoint point = CGPointMake(self.menuBtn.frame.origin.x + self.menuBtn.frame.size.width / 2,
+                                self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
+    [PopoverView showPopoverAtPoint:point
+                             inView:self.view
+                    withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
+                                     @"Choose Your Practice", @"Terms and Conditions",@"About",nil]
+                           delegate:self];
+    [logic setUpdateDownloadStarterDelegate:self];
+}
+
+
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
+{
+    NSString * praticeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameOfPratice"];
+    NSLog(@"%@",praticeName);
+    //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
+    switch (index)
+    {
+        case 0:
+            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
+            {
+                [logic setUpdateDownloadStarterDelegate:self];
+                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
+            }
+            break;
+        case 1:
+//            if ([RCHelper SharedHelper].fromAgainList)
+//            {
+//                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
+//            }
+//            else
+//            {
+//                //[logic setMainMenuDelegate:self];
+//                [RCHelper SharedHelper].menuToArticle = YES;
+//                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
+//            }
+            [self performSegueWithIdentifier:@"FromLoginToSelect" sender:self];
+            break;
+            
+        case 2:
+            [self performSegueWithIdentifier:@"LoginToTerms" sender:self];
+            break;
+            
+        case 3:
+            [self performSegueWithIdentifier:@"LoginToAboutUs" sender:self];
+            break;
+            
+            default:
+            break;
+    }
+    [popoverView dismiss:TRUE];
 }
 
 
@@ -352,15 +467,29 @@
         helper.PhysicianID = [pResultDict objectForKey:@"physicianID"];
         helper.practiceID = [pResultDict objectForKey:@"practiceID"];
         helper.tokenID = [pResultDict objectForKey:@"token"];
-        
+
         //Saving Token Locally
          NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:helper.practiceID forKey:@"userPracticeId"];
          [defaults setObject:helper.tokenID forKey:@"responseToken"];
          [defaults synchronize];
-
+        
+        NSDate *today = [NSDate date];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        dateFormatter.dateFormat = @"HH:mm:ss";
+        
+        NSString *currentTime = [dateFormatter stringFromDate:today];
+        NSLog(@"%@",currentTime);
+        NSLog(@"current time:%@",currentTime);
+        
+         NSUserDefaults *timeDefaults = [NSUserDefaults standardUserDefaults];
+        [timeDefaults setObject:currentTime forKey:@"startTime"];
+        [timeDefaults synchronize];
+        
         //Starting Timer
          [[[UIApplication sharedApplication] delegate] performSelector:@selector(startLoginSession)];
-         [self performSegueWithIdentifier:@"UnderDev" sender:self];
+         [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
 
           // if ([RCHelper SharedHelper].pinCreated)
 //            {
@@ -397,12 +526,51 @@
 }
 
 
+
+
+#pragma mark -Session Delegate
+-(void)SessionManagerDidReceiveResponse:(NSDictionary *)pResultDict
+{
+     [statusHUD hide:YES afterDelay:2];
+    if ([[pResultDict objectForKey:@"successfull"]integerValue])
+    {
+        NSString *timeOutHour = [pResultDict objectForKey:@"loginTimeoutHours"];
+        NSLog(@"%@",timeOutHour);
+        if (timeOutHour == 0)
+        {
+            //Stay Here
+        }
+        else
+        {
+            [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
+        }
+    }
+    
+}
+
+-(void)SessionManagerDidFailWithError:(NSError *)error
+{
+    
+}
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"MoveToCreatePin"])
     {
         CreatePINViewController *detailAboutSpeaker = (CreatePINViewController*)segue.destinationViewController;
         detailAboutSpeaker.self.registerHelper = helper;
+    }
+    
+    if ([segue.identifier isEqualToString:@"LoginToTerms"])
+    {
+        AboutUsViewController *termsController = [segue destinationViewController];
+        termsController.self.Text = @"Terms and Conditions";
+    }
+    if ([segue.identifier isEqualToString:@"LoginToAboutUs"])
+    {
+        AboutUsViewController *aboutController = [segue destinationViewController];
+        aboutController.self.Text = @"About";
     }
 }
 
@@ -517,6 +685,82 @@
     }
 }
 
+
+#pragma mark - HUD handling
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+    [statusHUD removeFromSuperview];
+    statusHUD = nil;
+}
+
+#pragma mark - DownloaderUIDelegate
+- (void)hasStartedDownloading
+{
+    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    [statusHUD setDelegate:self];
+    [statusHUD setDimBackground:TRUE];
+    [statusHUD setLabelText:@"Starting download..."];
+}
+
+- (void)switchToIndeterminate
+{
+    [statusHUD setMode:MBProgressHUDModeIndeterminate];
+}
+
+- (void)didReceiveResponseForAFileSwitchToDeterminate:(DownloadStatus *)status
+{
+    [statusHUD setLabelText:@"Downloading..."];
+}
+
+- (void)updateProgress:(DownloadStatus *)status
+{
+    if ([status expectedLength] > 0)
+    {
+        statusHUD.progress = [status currentLength] / (float)[status expectedLength];
+    }
+}
+
+- (void)didFinish {
+    [statusHUD setMode:MBProgressHUDModeText];
+    [statusHUD setLabelText:@"Finished!"];
+    [statusHUD hide:YES afterDelay:2];
+    // We have to reload the data:
+    [logic resetAfterUpdate];
+    [self viewDidLoad];
+}
+
+- (void)hasFailed {
+    [statusHUD hide:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to download files"
+                                                    message:@"Please check your internet connection and try again."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    [logic resetAfterUpdate];
+}
+
+
+-(void)changeViewBorderColorBlack
+{
+    self.userNameTextField.layer.borderWidth = 1.0f;
+    self.userNameTextField.layer.borderColor = [UIColor blackColor].CGColor;
+    self.passwordTextField.layer.borderWidth = 1.0f;
+    self.passwordTextField.layer.borderColor = [UIColor blackColor].CGColor;
+}
+
+-(void)changeView1BorderColor
+{
+    self.userNameTextField.layer.borderWidth = 1.0f;
+    self.userNameTextField.layer.borderColor = [UIColor colorWithRed:0.54 green:0.20 blue:0.35 alpha:1].CGColor;
+}
+
+-(void)changeView2BorderColor
+{
+    self.passwordTextField.layer.borderWidth = 1.0f;
+    self.passwordTextField.layer.borderColor = [UIColor colorWithRed:0.54 green:0.20 blue:0.35 alpha:1].CGColor;
+}
 
 //Padding for textfields
 -(void) setThePaddingForTextFields

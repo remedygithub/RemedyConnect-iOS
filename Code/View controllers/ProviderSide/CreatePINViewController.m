@@ -165,6 +165,23 @@
 
 
 
+#pragma mark Orientation handling
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+}
+
+-(BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
+}
+
 #pragma Setting Frames
 -(void)setFrames
 {
@@ -188,7 +205,7 @@
             self.label1.frame = CGRectMake(10,100,480,50);
             self.label1.numberOfLines = 2;
             self.label2.frame = CGRectMake(10,145,560,50);
-            self.label2.numberOfLines = 3;
+            self.label2.numberOfLines = 4;
             self.createPin.frame = CGRectMake(110,230,280,50);
         }
     }

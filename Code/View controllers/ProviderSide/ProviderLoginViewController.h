@@ -12,18 +12,25 @@
 #import "NetworkViewController.h"
 #import "YourPracticeAppDelegate.h"
 #import "RCHelper.h"
+#import "RCSessionEngine.h"
 #import "PAPasscodeViewController.h"
 #import "MBProgressHUD.h"
 #import "RCRegisterEngine.h"
 #import "CreatePINViewController.h"
 #import "SessionTime.h"
+#import "PopoverView.h"
+#import "Logic.h"
+#import "AboutUsViewController.h"
 
-@interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,registerWebDelegate>
+
+@interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,registerWebDelegate,DownloaderDelegate,UpdateDownloadStarterDelegate,PopoverViewDelegate,SubMenuDelegate,SessionEngineDelegate>
 {
     RCHelper *helper;
     MBProgressHUD *statusHUD;
     BOOL isPassword,isAnimatedUp;
     UITextField *activeField;
+    Logic *logic;
+
 }
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UIView *logoView;
@@ -36,10 +43,18 @@
 @property (strong, nonatomic) IBOutlet UIButton *forgotBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @property (strong, nonatomic) IBOutlet UIImageView *whiteBackground;
+@property (strong, nonatomic) IBOutlet UIButton *menuBtn;
 
 
 @property (nonatomic, strong) NSXMLParser *xmlParser;
 @property (nonatomic, strong) NSURL *forgotUrl;
 @property (nonatomic, strong) NSString *userNameStr;
 
+#pragma mark - DownloaderUIDelegate
+- (void)hasStartedDownloading;
+- (void)switchToIndeterminate;
+- (void)didReceiveResponseForAFileSwitchToDeterminate:(DownloadStatus *)status;
+- (void)updateProgress:(DownloadStatus *)status;
+- (void)didFinish;
+- (void)hasFailed;
 @end

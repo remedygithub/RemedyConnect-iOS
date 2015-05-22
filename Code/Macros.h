@@ -9,6 +9,9 @@
 #ifndef DroidCon_Macros_h
 #define DroidCon_Macros_h
 
+#define apiKey   @"SSB3aWxsIG1ha2UgbXkgQVBJIHNlY3VyZQ=="
+#define tokenKey @"j2w+jHHs+F8fkvr7Vj5DlPuYg8VqXvOhbtaG4WaOqxA="
+
 #define APNS_TOKEN      @"remedyconnect.pushtoken"
 
 

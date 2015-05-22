@@ -46,7 +46,7 @@
         {
             return;
         }
-        if ([[[NSUserDefaults standardUserDefaults] objectForKey:kPath] isEqualToString:kPatient])
+        else if ([[[NSUserDefaults standardUserDefaults] objectForKey:kPath] isEqualToString:kPatient])
         {            
             MainMenuViewController *mainMenu = [self.storyboard   instantiateViewControllerWithIdentifier:@"MainMenu"];
             [self.navigationController pushViewController:mainMenu animated:NO];
@@ -58,6 +58,8 @@
         }
     }
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -196,8 +198,4 @@
     }
 
 }
-
-
-
-
 @end

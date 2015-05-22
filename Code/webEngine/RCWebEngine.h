@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Macros.h"
 
-#define apiKey   @"SSB3aWxsIG1ha2UgbXkgQVBJIHNlY3VyZQ=="
-#define tokenKey @"j2w+jHHs+F8fkvr7Vj5DlPuYg8VqXvOhbtaG4WaOqxA="
 //Delegate methods
 @protocol WebEngineDelegate <NSObject>
 

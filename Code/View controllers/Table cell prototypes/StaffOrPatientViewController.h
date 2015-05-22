@@ -13,8 +13,9 @@
 #import "Logic.h"
 #import "ProviderLoginViewController.h"
 #import "MainMenuViewController.h"
-
-@interface StaffOrPatientViewController : UIViewController<SubMenuDelegate,MainMenuDelegate>
+#import "RCSessionEngine.h"
+#import "UnderDevViewController.h"
+@interface StaffOrPatientViewController : UIViewController<SubMenuDelegate,MainMenuDelegate,SessionEngineDelegate>
 {
     Logic *logic;
     NSString *practiceName;

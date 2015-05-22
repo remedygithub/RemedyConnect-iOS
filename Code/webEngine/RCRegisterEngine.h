@@ -25,6 +25,8 @@
 
 
 //Method for sending forgotpassword request
--(void)sendRequestForRegister:(NSString *)praticeId  Physician:(NSString *)physicianId device:(NSString *)DeviceId;
+-(void)sendRequestForRegister:(NSString *)praticeId Physician:(NSString *)physicianId device:(NSString *)DeviceId;
+
+
 
 @end
