@@ -22,64 +22,73 @@ static RCRegisterEngine *sharedHelper = nil;
     return sharedHelper;
 }
 
--(void)sendRequestForRegister:(NSString *)praticeId  Physician:(NSString *)physicianId device:(NSString *)DeviceId
+-(void)LogoutTheUser
 {
-    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
-    NSLog(@"%@",token);
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/InsertPhysicianMobileDevice?PracticeID=%@&PhysicianID=%@&DeviceID=%@",praticeId,physicianId,DeviceId];
+    NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
+    NSLog(@"%@",userName);
+    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Users/Logout?UserName=%@",userName];
     NSLog(@"%@",lUrlString);
-    
-    //NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding]];
-    
-    NSURL *lURL = [NSURL URLWithString:[lUrlString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-
-    NSLog(@"URL: %@", lURL);
-    
-   // NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest  requestWithURL:lURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:120.0];
-    [urlRequest setHTTPMethod:@"GET"];
-    //[urlRequest setValue:tokenRep forHTTPHeaderField:@"token"];
-    NSLog(@"%@",[NSString stringWithFormat:@"basic %@",token]);
-    [urlRequest setValue:[NSString stringWithFormat:@"basic%@",token] forHTTPHeaderField:@"Authorization"];
-
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
-         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-         if ([httpResponse statusCode] == 200)
-         {
-             NSError *jsonParsingError = nil;
-             NSMutableDictionary *pResultDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
-             if ([[pResultDict objectForKey:@"success"] boolValue] )
-             {
-                 
-             }
-             [self performSelectorOnMainThread:@selector(sendBackTheDelgate:) withObject:pResultDict waitUntilDone:YES];
-         }
-         else
-         {
-             if (self.delegate != nil) {
-                 if ([self.delegate respondsToSelector:@selector(registerFailedLoading:)]) {
-                     [self.delegate registerFailedLoading:error];
-                 }
-             }
-         }
-         
-     }];
+    NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    NSLog(@"URL:%@", lURL);
+    NSMutableURLRequest *lRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
+    [lRequest setHTTPMethod:@"POST"];
+    NSURLConnection *lConnection = [[NSURLConnection alloc] initWithRequest:lRequest delegate:self];
+    [lConnection start];
 }
 
-// sending the delegate back to the class from where it is called
--(void) sendBackTheDelgate:(id) data
+
+#pragma mark NSURLConnectionDelegate Methods
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    NSMutableDictionary *pResultDict = (NSMutableDictionary *)data;
-    if (self.delegate != nil)
-    {
-        if ([self.delegate respondsToSelector:@selector(registerFinishedLoading:)]) {
-            [self.delegate registerFinishedLoading:pResultDict];
+    NSLog(@"didReceiveResponse setting Length to 0");
+    [self.m_cReceivedData setLength:0];
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    self.code = [httpResponse statusCode];
+    NSLog(@"Response code:%ld",(long)self.code);
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [self.m_cReceivedData appendData:data];
+}
+
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    connection = nil;
+    
+    NSString* buffStr = [[NSString alloc]initWithBytes:[self.m_cReceivedData bytes] length:[self.m_cReceivedData length] encoding:NSUTF8StringEncoding];//NSNonLossyASCIIStringEncoding];//[[NSString alloc]initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
+    
+    if (nil != buffStr) {
+        //        [m_cReceivedData appendString:buffStr];
+        NSLog(@" Received data %@", buffStr);
+        
+        NSError *error;
+         NSDictionary * lJsonData = [NSJSONSerialization JSONObjectWithData:self.m_cReceivedData options:kNilOptions error:&error];
+        // sending back the response to class
+        if (self.delegate != nil) {
+            if ([self.delegate respondsToSelector:@selector(connectionManagerDidReceiveResponse:)]) {
+                [self.delegate logoutFinishedLoading:(BOOL)lJsonData];
+            }
+        }
+    }
+    else {
+        NSLog(@"Received data nil when converted to NSString");
+    }
+    
+}
+
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    
+    if (self.delegate != nil) {
+        if([self.delegate respondsToSelector:@selector(connectionManagerDidFailWithError:)])
+        {
+            [self.delegate logoutFailedLoading:error];
         }
     }
 }
+
 
 
 @end

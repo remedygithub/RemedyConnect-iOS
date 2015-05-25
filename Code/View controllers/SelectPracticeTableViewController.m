@@ -32,6 +32,11 @@ Logic *logic;
     [self designpack:practiceList];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -63,7 +68,9 @@ Logic *logic;
 {
     [logic setMainDownloadStarterDelegate:self];
     [logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
-    
+    [self.view setUserInteractionEnabled:NO];
+    self.navigationItem.hidesBackButton = YES;
+
     NSString *practiceName = [[practiceList objectAtIndex:indexPath.row] objectForKey:@"name"];
     NSLog(@"%@",practiceName);
     
@@ -136,7 +143,8 @@ Logic *logic;
 }
 
 #pragma mark - DownloaderUIDelegate
-- (void)hasStartedDownloading {
+- (void)hasStartedDownloading
+{
     statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
     [statusHUD setDelegate:self];
     [statusHUD setDimBackground:TRUE];
@@ -171,6 +179,8 @@ Logic *logic;
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+    [self.view setUserInteractionEnabled:YES];
+    self.navigationItem.hidesBackButton = NO;
 }
 
 @end

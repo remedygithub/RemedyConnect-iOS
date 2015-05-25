@@ -52,6 +52,21 @@ static RCSessionEngine *sharedEngine = nil;
 }
 
 
+-(void)LogoutTheUser
+{
+    NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
+    NSLog(@"%@",userName);
+    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Users/Logout?UserName=%@",userName];
+    NSLog(@"%@",lUrlString);
+    NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    NSLog(@"URL:%@", lURL);
+    NSMutableURLRequest *lRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
+    [lRequest setHTTPMethod:@"POST"];
+    NSURLConnection *lConnection = [[NSURLConnection alloc] initWithRequest:lRequest delegate:self];
+    [lConnection start];
+}
+
+
 #pragma mark NSURLConnectionDelegate Methods
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -76,7 +91,6 @@ static RCSessionEngine *sharedEngine = nil;
     NSString* buffStr = [[NSString alloc]initWithBytes:[self.m_cReceivedData bytes] length:[self.m_cReceivedData length] encoding:NSUTF8StringEncoding];//NSNonLossyASCIIStringEncoding];//[[NSString alloc]initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
     
     if (nil != buffStr) {
-        //        [m_cReceivedData appendString:buffStr];
         NSLog(@" Received data %@", buffStr);
         
         NSError *error;

@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:@"PIN has been set successfully" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
 }
 
 - (void)didReceiveMemoryWarning {

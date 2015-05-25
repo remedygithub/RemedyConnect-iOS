@@ -24,7 +24,6 @@
 		092EC4FC1AFE6DB0003A3608 /* RemedyConnect Horizontal Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 092EC4F91AFE6DB0003A3608 /* RemedyConnect Horizontal Logo.jpg */; };
 		092EC4FD1AFE6DB0003A3608 /* RemedyConnect_Diamond_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 092EC4FA1AFE6DB0003A3608 /* RemedyConnect_Diamond_Small.png */; };
 		092EC5011AFE6DD8003A3608 /* ProviderLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 092EC5001AFE6DD8003A3608 /* ProviderLoginViewController.m */; };
-		092EC5071AFE6E16003A3608 /* RCRegisterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 092EC5041AFE6E16003A3608 /* RCRegisterEngine.m */; };
 		092EC5081AFE6E16003A3608 /* RCWebEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 092EC5061AFE6E16003A3608 /* RCWebEngine.m */; };
 		092EC50E1AFE6E2D003A3608 /* RCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 092EC50B1AFE6E2D003A3608 /* RCHelper.m */; };
 		092EC50F1AFE6E2D003A3608 /* RCPracticeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 092EC50D1AFE6E2D003A3608 /* RCPracticeHelper.m */; };
@@ -56,6 +55,8 @@
 		092EC5961B008FFA003A3608 /* papasscode_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 092EC58E1B008FFA003A3608 /* papasscode_marker@2x.png */; };
 		092EC5991B00AC5B003A3608 /* pushio_config_debug.json in Resources */ = {isa = PBXBuildFile; fileRef = 092EC5971B00AC5B003A3608 /* pushio_config_debug.json */; };
 		092EC59A1B00AC5B003A3608 /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092EC5981B00AC5B003A3608 /* PushIOManager.framework */; };
+		0986894F1B12D4C900D21BCD /* textField.png in Resources */ = {isa = PBXBuildFile; fileRef = 0986894D1B12D4C900D21BCD /* textField.png */; };
+		098689501B12D4C900D21BCD /* textField@2x .png in Resources */ = {isa = PBXBuildFile; fileRef = 0986894E1B12D4C900D21BCD /* textField@2x .png */; };
 		099282491B0F091400D37DBD /* RCSessionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 099282481B0F091400D37DBD /* RCSessionEngine.m */; };
 		0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */; };
 		09BEB3881B0DA75300A5D1DE /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BEB3841B0DA75300A5D1DE /* background.png */; };
@@ -212,8 +213,6 @@
 		092EC4FA1AFE6DB0003A3608 /* RemedyConnect_Diamond_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RemedyConnect_Diamond_Small.png; path = Logo/RemedyConnect_Diamond_Small.png; sourceTree = "<group>"; };
 		092EC4FF1AFE6DD8003A3608 /* ProviderLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProviderLoginViewController.h; path = ProviderSide/ProviderLoginViewController.h; sourceTree = "<group>"; };
 		092EC5001AFE6DD8003A3608 /* ProviderLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProviderLoginViewController.m; path = ProviderSide/ProviderLoginViewController.m; sourceTree = "<group>"; };
-		092EC5031AFE6E16003A3608 /* RCRegisterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCRegisterEngine.h; path = webEngine/RCRegisterEngine.h; sourceTree = "<group>"; };
-		092EC5041AFE6E16003A3608 /* RCRegisterEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCRegisterEngine.m; path = webEngine/RCRegisterEngine.m; sourceTree = "<group>"; };
 		092EC5051AFE6E16003A3608 /* RCWebEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCWebEngine.h; path = webEngine/RCWebEngine.h; sourceTree = "<group>"; };
 		092EC5061AFE6E16003A3608 /* RCWebEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCWebEngine.m; path = webEngine/RCWebEngine.m; sourceTree = "<group>"; };
 		092EC50A1AFE6E2D003A3608 /* RCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCHelper.h; path = HelperClass/RCHelper.h; sourceTree = "<group>"; };
@@ -266,6 +265,8 @@
 		092EC58E1B008FFA003A3608 /* papasscode_marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "papasscode_marker@2x.png"; sourceTree = "<group>"; };
 		092EC5971B00AC5B003A3608 /* pushio_config_debug.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pushio_config_debug.json; path = Libs/Push.IO/pushio_config_debug.json; sourceTree = "<group>"; };
 		092EC5981B00AC5B003A3608 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushIOManager.framework; path = Libs/Push.IO/PushIOManager.framework; sourceTree = "<group>"; };
+		0986894D1B12D4C900D21BCD /* textField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = textField.png; path = TextField/textField.png; sourceTree = "<group>"; };
+		0986894E1B12D4C900D21BCD /* textField@2x .png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "textField@2x .png"; path = "TextField/textField@2x .png"; sourceTree = "<group>"; };
 		099282471B0F091400D37DBD /* RCSessionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCSessionEngine.h; path = webEngine/RCSessionEngine.h; sourceTree = "<group>"; };
 		099282481B0F091400D37DBD /* RCSessionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCSessionEngine.m; path = webEngine/RCSessionEngine.m; sourceTree = "<group>"; };
 		0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonLengthy.png; path = "New Login Screen UI/buttonLengthy.png"; sourceTree = "<group>"; };
@@ -488,8 +489,6 @@
 		092EC5091AFE6E1D003A3608 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				092EC5031AFE6E16003A3608 /* RCRegisterEngine.h */,
-				092EC5041AFE6E16003A3608 /* RCRegisterEngine.m */,
 				092EC5051AFE6E16003A3608 /* RCWebEngine.h */,
 				092EC5061AFE6E16003A3608 /* RCWebEngine.m */,
 				099282471B0F091400D37DBD /* RCSessionEngine.h */,
@@ -631,6 +630,8 @@
 		09BEB38C1B0DA76300A5D1DE /* New Login Screen */ = {
 			isa = PBXGroup;
 			children = (
+				0986894D1B12D4C900D21BCD /* textField.png */,
+				0986894E1B12D4C900D21BCD /* textField@2x .png */,
 				09BEB3841B0DA75300A5D1DE /* background.png */,
 				0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */,
 				09BEB3851B0DA75300A5D1DE /* button.png */,
@@ -1066,6 +1067,7 @@
 				09BEB38A1B0DA75300A5D1DE /* remedyconnect-logo.png in Resources */,
 				5F8139101855EBB400EF3E20 /* icon-152.png in Resources */,
 				092EC5941B008FFA003A3608 /* papasscode_failed_bg@2x.png in Resources */,
+				098689501B12D4C900D21BCD /* textField@2x .png in Resources */,
 				092EC5961B008FFA003A3608 /* papasscode_marker@2x.png in Resources */,
 				092EC4F11AFE68D0003A3608 /* back_arrow@2x.png in Resources */,
 				5F8EC155180EA42B0080A62E /* Images.xcassets in Resources */,
@@ -1089,6 +1091,7 @@
 				092EC4FC1AFE6DB0003A3608 /* RemedyConnect Horizontal Logo.jpg in Resources */,
 				5FF0EAD619475036001A33D4 /* location.png in Resources */,
 				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
+				0986894F1B12D4C900D21BCD /* textField.png in Resources */,
 				09BEB3891B0DA75300A5D1DE /* button.png in Resources */,
 				5F81390E1855EBB400EF3E20 /* icon-120.png in Resources */,
 				5FF0EACD194733B4001A33D4 /* search-tree.png in Resources */,
@@ -1173,7 +1176,6 @@
 				092EC4301AFC8FF5003A3608 /* ioapi.c in Sources */,
 				092EC5631AFE799B003A3608 /* ProviderHomeViewController.m in Sources */,
 				5F50B9111896B4A500AA9006 /* UINavigationController+Orientation.m in Sources */,
-				092EC5071AFE6E16003A3608 /* RCRegisterEngine.m in Sources */,
 				092EC5601AFE757D003A3608 /* CreatePINViewController.m in Sources */,
 				5F8138F01855D28400EF3E20 /* YourPracticeAppDelegate.m in Sources */,
 				092EC4341AFC8FF5003A3608 /* SSZipArchive.m in Sources */,

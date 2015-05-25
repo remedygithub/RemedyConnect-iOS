@@ -150,6 +150,7 @@
 {
     [self.userNameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
+
     if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
     {
         if (![self.userNameTextField.text isEqualToString:@""] && ![self.passwordTextField.text isEqualToString:@""] )
@@ -487,8 +488,6 @@
         [timeDefaults setObject:currentTime forKey:@"startTime"];
         [timeDefaults synchronize];
         
-        //Starting Timer
-         [[[UIApplication sharedApplication] delegate] performSelector:@selector(startLoginSession)];
          [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
 
           // if ([RCHelper SharedHelper].pinCreated)

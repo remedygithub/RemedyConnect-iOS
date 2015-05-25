@@ -15,7 +15,6 @@
 #import "RCSessionEngine.h"
 #import "PAPasscodeViewController.h"
 #import "MBProgressHUD.h"
-#import "RCRegisterEngine.h"
 #import "CreatePINViewController.h"
 #import "SessionTime.h"
 #import "PopoverView.h"
@@ -23,7 +22,7 @@
 #import "AboutUsViewController.h"
 
 
-@interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,registerWebDelegate,DownloaderDelegate,UpdateDownloadStarterDelegate,PopoverViewDelegate,SubMenuDelegate,SessionEngineDelegate>
+@interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,DownloaderDelegate,UpdateDownloadStarterDelegate,PopoverViewDelegate,SubMenuDelegate,SessionEngineDelegate>
 {
     RCHelper *helper;
     MBProgressHUD *statusHUD;

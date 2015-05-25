@@ -54,12 +54,12 @@
                                                  userInfo:nil
                                                   repeats:NO] ;
     
-    int LoginTimeout = kApplicationLoginTimeoutInMinutes * 60;
+   /* int LoginTimeout = kApplicationLoginTimeoutInMinutes * 60;
     loginTimer = [NSTimer scheduledTimerWithTimeInterval:LoginTimeout
                                                  target:self
                                                selector:@selector(idleLoginTimerExceeded)
                                                userInfo:nil
-                                                repeats:NO] ;
+                                                repeats:NO] ;*/
 }
 
 - (void)idleTimerExceeded
@@ -70,10 +70,10 @@
      postNotificationName:kApplicationDidTimeoutNotification object:nil];
 }
 
--(void)idleLoginTimerExceeded
+/*-(void)idleLoginTimerExceeded
 {
     [[NSNotificationCenter defaultCenter]
      postNotificationName:kApplicationDidLoginTimeoutNotification object:nil];
-}
+}*/
 
 @end

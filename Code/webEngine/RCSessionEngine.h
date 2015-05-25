@@ -28,4 +28,6 @@
 
 //Methods
 -(void)getLoginInTimeOutDetails;
+-(void)LogoutTheUser;
+
 @end

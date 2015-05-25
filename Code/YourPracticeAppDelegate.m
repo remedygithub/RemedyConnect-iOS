@@ -35,7 +35,7 @@
          (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     }
     
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
+   // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidLoginTimeout:) name:kApplicationDidLoginTimeoutNotification object:nil];
     
     [[PushIOManager sharedInstance] setDelegate:self];
@@ -46,11 +46,11 @@
 
 
 
--(void)startLoginSession
-{
-    [RCHelper SharedHelper].fromLoginTimeout = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidLoginTimeout:) name:kApplicationDidLoginTimeoutNotification object:nil];
-}
+//-(void)startLoginSession
+//{
+//    [RCHelper SharedHelper].fromLoginTimeout = YES;
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidLoginTimeout:) name:kApplicationDidLoginTimeoutNotification object:nil];
+//}
 
 
 - (void)applicationDidTimeout:(NSNotification *)notif

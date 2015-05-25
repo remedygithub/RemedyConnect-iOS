@@ -44,9 +44,9 @@
         _action = action;
         switch (action) {
             case PasscodeActionSet:
-                self.title = NSLocalizedString(@"Set Screat PIN", nil);
+                //self.title = NSLocalizedString(@"Set Screat PIN", nil);
                 _enterPrompt = NSLocalizedString(@"Create Your PIN", nil);
-                _confirmPrompt = NSLocalizedString(@"Verfify Your PIN", nil);
+                _confirmPrompt = NSLocalizedString(@"Verify Your PIN", nil);
                 break;
                 
             case PasscodeActionEnter:

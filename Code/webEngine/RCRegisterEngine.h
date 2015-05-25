@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 //Delegate method for forgot passwords
 @protocol registerWebDelegate <NSObject>
--(void)registerFinishedLoading:(NSDictionary*)pResultDict;
--(void)registerFailedLoading:(NSError *)error;
+-(void)logoutFinishedLoading:(BOOL)pResultDict;
+-(void)logoutFailedLoading:(NSError *)error;
 @end
 
 @interface RCRegisterEngine : NSObject
@@ -19,14 +19,11 @@
     
 }
 @property (nonatomic, strong) id<registerWebDelegate> delegate;
-
+@property (nonatomic, readwrite) NSInteger code;
+@property (nonatomic, strong)  NSString *userId;
+@property (nonatomic, strong) NSMutableData *m_cReceivedData;
 
 +(RCRegisterEngine *)sharedHelper;
-
-
-//Method for sending forgotpassword request
--(void)sendRequestForRegister:(NSString *)praticeId Physician:(NSString *)physicianId device:(NSString *)DeviceId;
-
-
+-(void)LogoutTheUser;
 
 @end
