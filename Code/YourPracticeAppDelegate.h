@@ -33,5 +33,4 @@
 //Methods for showing activity indicators
 -(void)startActivity;
 -(void)stopActivity;
--(void)startLoginSession;
 @end

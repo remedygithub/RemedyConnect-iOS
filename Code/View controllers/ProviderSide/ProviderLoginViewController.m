@@ -35,9 +35,22 @@
     
     [self registerForKeyboardNotifications];
     [self checkViewOrientation];
-    [self checkSessionTime];
     logic = [Logic sharedLogic];
-
+    [self.backBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
+    [self.menuBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
+    
+    NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:kPath];
+    if ([path isEqualToString:kProvider])
+    {
+        CreatePINViewController *providerLogin = [self.storyboard   instantiateViewControllerWithIdentifier:@"CreatePINViewController"];
+        [self.navigationController pushViewController:providerLogin animated:NO];
+        return;
+    }
+    
+    NSUserDefaults *patientDefaults = [NSUserDefaults standardUserDefaults];
+    [patientDefaults setObject:kProvider forKey:kPath];
+    [patientDefaults synchronize];
+    
 
     if ([RCHelper SharedHelper].fromLoginTimeout)
     {
@@ -45,28 +58,7 @@
 //        [alert show];
     }
     
-    [self.backBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
-    [self.menuBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
-
-}
-
-
--(void)checkSessionTime
-{
-    NSString *deviceResponseToken = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
-    NSString *practiceId = [[NSUserDefaults standardUserDefaults]objectForKey:@"userPracticeId"];
-    NSLog(@"%@",deviceResponseToken);
-    NSLog(@"%@",practiceId);
-    if (deviceResponseToken && practiceId)
-    {
-        NSLog(@"Token Edey");
-        [RCSessionEngine SharedWebEngine].delegate = self;
-        [self hasStartedDownloading:@"Checking Session.."];
-        [RCSessionEngine SharedWebEngine].getLoginInTimeOutDetails;
-    }
-}
-
-
+   }
 
 
 - (void)viewWillAppear:(BOOL)animated
@@ -227,10 +219,6 @@
     [self.view bringSubviewToFront:statusHUD];
 }
 
-
-
-
-
 //MenuBtn Action
 - (IBAction)menuBtnTapped:(id)sender
 {
@@ -239,7 +227,7 @@
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
                     withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions",@"About",nil]
+                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",nil]
                            delegate:self];
     [logic setUpdateDownloadStarterDelegate:self];
 }
@@ -255,6 +243,7 @@
         case 0:
             if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
             {
+                [RCHelper SharedHelper].isLogin = NO;
                 [logic setUpdateDownloadStarterDelegate:self];
                 [logic handleActionWithTag:index shouldProceedToPage:FALSE];
             }
@@ -270,6 +259,7 @@
 //                [RCHelper SharedHelper].menuToArticle = YES;
 //                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
 //            }
+            [RCHelper SharedHelper].isLogin = NO;
             [self performSegueWithIdentifier:@"FromLoginToSelect" sender:self];
             break;
             
@@ -488,6 +478,7 @@
         [timeDefaults setObject:currentTime forKey:@"startTime"];
         [timeDefaults synchronize];
         
+         [RCHelper SharedHelper].isLogin = YES;
          [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
 
           // if ([RCHelper SharedHelper].pinCreated)
@@ -522,34 +513,6 @@
     [statusHUD hide:YES afterDelay:2];
      UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log you in" message:@"Unknown username or bad password - please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
-}
-
-
-
-
-#pragma mark -Session Delegate
--(void)SessionManagerDidReceiveResponse:(NSDictionary *)pResultDict
-{
-     [statusHUD hide:YES afterDelay:2];
-    if ([[pResultDict objectForKey:@"successfull"]integerValue])
-    {
-        NSString *timeOutHour = [pResultDict objectForKey:@"loginTimeoutHours"];
-        NSLog(@"%@",timeOutHour);
-        if (timeOutHour == 0)
-        {
-            //Stay Here
-        }
-        else
-        {
-            [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
-        }
-    }
-    
-}
-
--(void)SessionManagerDidFailWithError:(NSError *)error
-{
-    
 }
 
 
@@ -743,22 +706,18 @@
 
 -(void)changeViewBorderColorBlack
 {
-    self.userNameTextField.layer.borderWidth = 1.0f;
-    self.userNameTextField.layer.borderColor = [UIColor blackColor].CGColor;
-    self.passwordTextField.layer.borderWidth = 1.0f;
-    self.passwordTextField.layer.borderColor = [UIColor blackColor].CGColor;
+    self.userNameTextField.background = [UIImage imageNamed:@"input.png"];
+    self.passwordTextField.background = [UIImage imageNamed:@"input.png"];
 }
 
 -(void)changeView1BorderColor
 {
-    self.userNameTextField.layer.borderWidth = 1.0f;
-    self.userNameTextField.layer.borderColor = [UIColor colorWithRed:0.54 green:0.20 blue:0.35 alpha:1].CGColor;
+    self.userNameTextField.background = [UIImage imageNamed:@"password.png"];
 }
 
 -(void)changeView2BorderColor
 {
-    self.passwordTextField.layer.borderWidth = 1.0f;
-    self.passwordTextField.layer.borderColor = [UIColor colorWithRed:0.54 green:0.20 blue:0.35 alpha:1].CGColor;
+    self.passwordTextField.background = [UIImage imageNamed:@"password.png"];
 }
 
 //Padding for textfields

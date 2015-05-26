@@ -1,4 +1,4 @@
-////
+//
 //  GPAppDelegate.m
 //  Greenwood Pediatrics
 //
@@ -53,43 +53,43 @@
 //}
 
 
-- (void)applicationDidTimeout:(NSNotification *)notif
-{
-    NSLog (@"time exceeded!!");
-    //PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
-    if (passcode)
-    {
-        [passcode removeFromParentViewController];
-        passcode = nil;
-    }
-    passcode = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-    {
-        passcode.backgroundView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
-    }
-    passcode.delegate = self;
-    [self.window.rootViewController presentViewController:passcode animated:YES completion:nil];
-}
-
-
-- (void)applicationDidLoginTimeout:(NSNotification *)notif
-{
-     NSLog (@"LogIn time exceeded!!");
-    //[self PAPasscodeViewControllerDidCancel:passcode];
-    [self performSelector:@selector(moveToLoginAfterSixHourTimeOut) withObject:nil afterDelay:1.0];
-}
-
-
-
--(void)moveToLoginAfterSixHourTimeOut
-{
-    [RCHelper SharedHelper].fromLoginTimeout = YES;
-    [RCHelper SharedHelper].pinCreated = NO;
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle: nil];
-    ProviderLoginViewController *controller = (ProviderLoginViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"ProviderLoginViewController"];
-    [navigationController pushViewController:controller animated:YES];
-}
+//- (void)applicationDidTimeout:(NSNotification *)notif
+//{
+//    NSLog (@"time exceeded!!");
+//    //PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
+//    if (passcode)
+//    {
+//        [passcode removeFromParentViewController];
+//        passcode = nil;
+//    }
+//    passcode = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+//    {
+//        passcode.backgroundView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+//    }
+//    passcode.delegate = self;
+//    [self.window.rootViewController presentViewController:passcode animated:YES completion:nil];
+//}
+//
+//
+//- (void)applicationDidLoginTimeout:(NSNotification *)notif
+//{
+//     NSLog (@"LogIn time exceeded!!");
+//    //[self PAPasscodeViewControllerDidCancel:passcode];
+//    [self performSelector:@selector(moveToLoginAfterSixHourTimeOut) withObject:nil afterDelay:1.0];
+//}
+//
+//
+//
+//-(void)moveToLoginAfterSixHourTimeOut
+//{
+//    [RCHelper SharedHelper].fromLoginTimeout = YES;
+//    [RCHelper SharedHelper].pinCreated = NO;
+//    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle: nil];
+//    ProviderLoginViewController *controller = (ProviderLoginViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"ProviderLoginViewController"];
+//    [navigationController pushViewController:controller animated:YES];
+//}
 
 
 

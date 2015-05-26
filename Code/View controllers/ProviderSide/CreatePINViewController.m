@@ -32,13 +32,16 @@
 
     
     [RCWebEngine SharedWebEngine].delegate = self;
-    [[UIApplication sharedApplication].delegate performSelector:@selector(startActivity)];
     [[RCWebEngine SharedWebEngine] sendRequestForRegister:practieID Physician:physicanID device:hashUserString];
+    
+    
     [self.menuBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
     
-    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:@"you've been logged in" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [lAlert show];
-    
+    if ([RCHelper SharedHelper].isLogin)
+    {
+        UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:@"You've been logged in" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [lAlert show];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +61,7 @@
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
                     withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions",@"About",@"Logout",nil]
+                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",nil]
                            delegate:self];
     [logic setUpdateDownloadStarterDelegate:self];
 }
@@ -76,6 +79,7 @@
         case 0:
             if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
             {
+                [RCHelper SharedHelper].isLogin = NO;
                 [logic setUpdateDownloadStarterDelegate:self];
                 [logic handleActionWithTag:index shouldProceedToPage:FALSE];
             }
@@ -91,6 +95,7 @@
             //                [RCHelper SharedHelper].menuToArticle = YES;
             //                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
             //            }
+            [RCHelper SharedHelper].isLogin = NO;
             [self performSegueWithIdentifier:@"FromPinToSearch" sender:self];
             break;
             

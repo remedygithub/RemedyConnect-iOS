@@ -19,9 +19,10 @@
 @property (nonatomic, readwrite) BOOL fromMenuReturn;
 @property (nonatomic, readwrite) BOOL fromAgainList;
 @property (nonatomic, readwrite) BOOL fromLocation;
-@property (nonatomic,readwrite) BOOL menuToArticle;
+@property (nonatomic, readwrite) BOOL menuToArticle;
 
-
+//Alert Bool
+@property (nonatomic, readwrite) BOOL isLogin;
 
 +(RCHelper *)SharedHelper;
 

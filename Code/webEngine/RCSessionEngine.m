@@ -33,23 +33,23 @@ static RCSessionEngine *sharedEngine = nil;
 }
 
 
--(void)getLoginInTimeOutDetails
-{
-    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
-    NSString *practice = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPracticeId"];
-    NSLog(@"%@",token);
-    
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Physician/GetPracticeTimeout?PracticeID=%@&apikey=%@&token=%@",practice,apiKey,tokenKey];
-    NSLog(@"%@",lUrlString);
-    NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-    NSLog(@"URL:%@", lURL);
-    
-    NSMutableURLRequest *lRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
-    [lRequest setHTTPMethod:@"GET"];
-    [lRequest setValue:[NSString stringWithFormat:@"basic %@",token] forHTTPHeaderField:@"Authorization"];
-    NSURLConnection *lConnection = [[NSURLConnection alloc] initWithRequest:lRequest delegate:self];
-    [lConnection start];
-}
+//-(void)getLoginInTimeOutDetails
+//{
+//    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
+//    NSString *practice = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPracticeId"];
+//    NSLog(@"%@",token);
+//    
+//    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Physician/GetPracticeTimeout?PracticeID=%@&apikey=%@&token=%@",practice,apiKey,tokenKey];
+//    NSLog(@"%@",lUrlString);
+//    NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+//    NSLog(@"URL:%@", lURL);
+//    
+//    NSMutableURLRequest *lRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
+//    [lRequest setHTTPMethod:@"GET"];
+//    [lRequest setValue:[NSString stringWithFormat:@"basic %@",token] forHTTPHeaderField:@"Authorization"];
+//    NSURLConnection *lConnection = [[NSURLConnection alloc] initWithRequest:lRequest delegate:self];
+//    [lConnection start];
+//}
 
 
 -(void)LogoutTheUser
@@ -83,6 +83,13 @@ static RCSessionEngine *sharedEngine = nil;
     [self.m_cReceivedData appendData:data];
 }
 
+-(void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    if ([[challenge protectionSpace] authenticationMethod] == NSURLAuthenticationMethodServerTrust) {
+        
+        [[challenge sender] useCredential:[NSURLCredential credentialForTrust:[[challenge protectionSpace] serverTrust]] forAuthenticationChallenge:challenge];
+    }
+}
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
@@ -90,7 +97,8 @@ static RCSessionEngine *sharedEngine = nil;
     
     NSString* buffStr = [[NSString alloc]initWithBytes:[self.m_cReceivedData bytes] length:[self.m_cReceivedData length] encoding:NSUTF8StringEncoding];//NSNonLossyASCIIStringEncoding];//[[NSString alloc]initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
     
-    if (nil != buffStr) {
+    if (nil != buffStr)
+    {
         NSLog(@" Received data %@", buffStr);
         
         NSError *error;
@@ -102,7 +110,8 @@ static RCSessionEngine *sharedEngine = nil;
             }
         }
     }
-    else {
+    else
+    {
         NSLog(@"Received data nil when converted to NSString");
     }
     

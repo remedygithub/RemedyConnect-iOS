@@ -108,6 +108,14 @@ const int TIMEOUT_INTERVAL = 120;
     }
 }
 
+-(void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    if ([[challenge protectionSpace] authenticationMethod] == NSURLAuthenticationMethodServerTrust) {
+        
+        [[challenge sender] useCredential:[NSURLCredential credentialForTrust:[[challenge protectionSpace] serverTrust]] forAuthenticationChallenge:challenge];
+    }
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSDictionary *URLandPath = [filesToDownload objectAtIndex:[[self status] currentFileIndex]];
     NSString *filePath = [URLandPath objectForKey:@"path"];

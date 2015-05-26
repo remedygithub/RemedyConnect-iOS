@@ -239,7 +239,7 @@
                     [self showScreenForPhase:0 animated:YES];
                     messageLabel.text = NSLocalizedString(@"PIN did not match. Try again.", nil);
                     
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Sorry!" message:@"Oops! The two PIN numbers you entered did not match. Please start over" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Sorry!" message:@"Oops! The two PIN numbers you entered did not match. Please start over" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alert show];
                 }
             }

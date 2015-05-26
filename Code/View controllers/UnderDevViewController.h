@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RCSessionEngine.h"
+#import "MBProgressHUD.h"
+#import "RCWebEngine.h"
+@interface UnderDevViewController : UIViewController<MBProgressHUDDelegate,WebEngineDelegate>
+{
+    MBProgressHUD *statusHUD;
 
-@interface UnderDevViewController : UIViewController
-
+}
 @end

@@ -172,9 +172,6 @@
 - (IBAction)providerBtnTapped:(id)sender
 {
     //Login
-    NSUserDefaults *patientDefaults = [NSUserDefaults standardUserDefaults];
-    [patientDefaults setObject:kProvider forKey:kPath];
-    [patientDefaults synchronize];
     [self performSegueWithIdentifier:@"ToProvider" sender:self];
 }
 
