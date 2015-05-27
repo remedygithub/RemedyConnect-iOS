@@ -25,7 +25,8 @@
     [self displayImages];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];    
 }
@@ -56,7 +57,8 @@
     dispatch_async(dispatch_get_main_queue(),
                    ^{
                        self.imageView.image = img;
-                       self.imageView.contentMode = UIViewContentModeCenter;
+                       //self.imageView.contentMode = UIViewContentModeCenter;
+                       
                        self.logoImage.image = logoimg;
                        self.logoImage.contentMode = UIViewContentModeCenter;
                        if ((self.logoImage.bounds.size.width > (logoimg.size.width && self.logoImage.bounds.size.height > logoimg.size.height)))
@@ -64,8 +66,11 @@
                            self.logoImage.contentMode = UIViewContentModeScaleAspectFill;
                        }
                        [self.menuBtn setBackgroundImage:menuimg forState:UIControlStateNormal];
-                       [self.messageBtn setBackgroundImage:menuimg forState:UIControlStateNormal];
-                       [self.adminBtn setBackgroundImage:menuimg forState:UIControlStateNormal];
+                       
+                       UIEdgeInsets insets = UIEdgeInsetsMake(50,25, 50,25);
+                       UIImage *stretchableImage = [menuimg resizableImageWithCapInsets:insets];
+                       [self.messageBtn  setBackgroundImage:stretchableImage forState:UIControlStateNormal];
+                       [self.adminBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
                    });
 }
 
@@ -78,58 +83,58 @@
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
                     withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Patient/Guardian", @"Return to Search",@"About",@"Terms and Conditions", nil]
+                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",@"Change application mode",nil]
                            delegate:self];
     [logic setUpdateDownloadStarterDelegate:self];
 }
 
 
 
-- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
-{
-    NSString * praticeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameOfPratice"];
-    NSLog(@"%@",praticeName);
-    //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
-    switch (index)
-    {
-        case 0:
-            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
-            {
-                [logic setUpdateDownloadStarterDelegate:self];
-                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
-            }
-            break;
-        case 1:
-            if ([RCHelper SharedHelper].fromAgainList)
-            {
-                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
-            }
-            else
-            {
-                //[logic setMainMenuDelegate:self];
-                [RCHelper SharedHelper].menuToArticle = YES;
-                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
-            }
-            break;
-            
-        case 2:
-            [RCHelper SharedHelper].fromMenuReturn = YES;
-            [RCHelper SharedHelper].fromSelfSelect = NO;
-            [RCHelper SharedHelper].fromSelfSelectBack = NO;
-            [self clearData]; 
-            [self performSegueWithIdentifier:@"MoveBackToSelectPractice" sender:self];
-            break;
-            
-        case 3:
-            [self performSegueWithIdentifier:@"AboutUs" sender:self];
-            break;
-            
-        case 4:
-            [self performSegueWithIdentifier:@"Terms" sender:self];
-            break;
-    }
-    [popoverView dismiss:TRUE];
-}
+//- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
+//{
+//    NSString * praticeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameOfPratice"];
+//    NSLog(@"%@",praticeName);
+//    //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
+//    switch (index)
+//    {
+//        case 0:
+//            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
+//            {
+//                [logic setUpdateDownloadStarterDelegate:self];
+//                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
+//            }
+//            break;
+//        case 1:
+//            if ([RCHelper SharedHelper].fromAgainList)
+//            {
+//                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
+//            }
+//            else
+//            {
+//                //[logic setMainMenuDelegate:self];
+//                [RCHelper SharedHelper].menuToArticle = YES;
+//                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
+//            }
+//            break;
+//            
+//        case 2:
+//            [RCHelper SharedHelper].fromMenuReturn = YES;
+//            [RCHelper SharedHelper].fromSelfSelect = NO;
+//            [RCHelper SharedHelper].fromSelfSelectBack = NO;
+//            [self clearData]; 
+//            [self performSegueWithIdentifier:@"MoveBackToSelectPractice" sender:self];
+//            break;
+//            
+//        case 3:
+//            [self performSegueWithIdentifier:@"AboutUs" sender:self];
+//            break;
+//            
+//        case 4:
+//            [self performSegueWithIdentifier:@"Terms" sender:self];
+//            break;
+//    }
+//    [popoverView dismiss:TRUE];
+//}
 
 -(void)clearData
 {
@@ -241,22 +246,7 @@
 }
 
 
-#pragma mark Orientation handling
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
-}
-
--(BOOL)shouldAutorotate
-{
-    return YES;
-}
-
--(NSUInteger)supportedInterfaceOrientations
-{
-    return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
-}
 
 //#pragma Setting Frames
 //-(void)setFrames

@@ -19,6 +19,15 @@
 @property (nonatomic,readwrite) BOOL fromParentingInfo;
 
 
+
+
+//BOOL for checking logout
+@property (nonatomic, readwrite) BOOL isChangePractice;
+@property (nonatomic, readwrite) BOOL isLogout;
+@property (nonatomic, readwrite) BOOL isApplicationMode;
+
+
+
 @property (nonatomic, readwrite) BOOL fromPatient;
 @property (nonatomic, readwrite) BOOL fromProvider;
 

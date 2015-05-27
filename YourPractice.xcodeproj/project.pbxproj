@@ -494,7 +494,7 @@
 			name = ProviderSide;
 			sourceTree = "<group>";
 		};
-		092EC5091AFE6E1D003A3608 /* New Group */ = {
+		092EC5091AFE6E1D003A3608 /* WebEngine */ = {
 			isa = PBXGroup;
 			children = (
 				092EC5051AFE6E16003A3608 /* RCWebEngine.h */,
@@ -503,7 +503,7 @@
 				099282481B0F091400D37DBD /* RCSessionEngine.m */,
 				092EC5101AFE6E31003A3608 /* Helper Class */,
 			);
-			name = "New Group";
+			name = WebEngine;
 			sourceTree = "<group>";
 		};
 		092EC5101AFE6E31003A3608 /* Helper Class */ = {
@@ -679,7 +679,7 @@
 			children = (
 				5F8EC140180E99060080A62E /* Storyboard.storyboard */,
 				5F96F1A8189928DD0015F065 /* Storyboard-iPad.storyboard */,
-				092EC5091AFE6E1D003A3608 /* New Group */,
+				092EC5091AFE6E1D003A3608 /* WebEngine */,
 				5F942D0A182BA94200EF0532 /* Logic */,
 				5F942D09182BA92400EF0532 /* View controllers */,
 				5F82A8A5170B3D8E00FE72B8 /* YourPracticeAppDelegate.h */,

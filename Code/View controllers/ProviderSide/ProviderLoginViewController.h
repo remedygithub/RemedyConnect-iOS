@@ -20,6 +20,7 @@
 #import "PopoverView.h"
 #import "Logic.h"
 #import "AboutUsViewController.h"
+#import "RCSessionEngine.h"
 
 
 @interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,DownloaderDelegate,UpdateDownloadStarterDelegate,PopoverViewDelegate,SubMenuDelegate,SessionEngineDelegate>

@@ -17,6 +17,7 @@
 #import "MBProgressHUD.h"
 #import "AboutUsViewController.h"
 #import "RCSessionEngine.h"
+#import "RCPracticeHelper.h"
 @interface CreatePINViewController : UIViewController<PAPasscodeViewControllerDelegate,WebEngineDelegate,PopoverViewDelegate,UpdateDownloadStarterDelegate,SubMenuDelegate,DownloaderDelegate,MBProgressHUDDelegate,SessionEngineDelegate>
 {
     Logic *logic;

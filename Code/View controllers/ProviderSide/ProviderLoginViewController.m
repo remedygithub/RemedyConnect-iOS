@@ -122,20 +122,18 @@
 
 - (IBAction)forgotBtnTapped:(id)sender
 {
-   self.userNameStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
-    NSLog(@"%@",self.userNameStr);
-    if (self.userNameStr == nil)
+    NSLog(@"%@",self.userNameTextField.text);
+    if ([self.userNameTextField.text isEqualToString:@""] )
     {
         UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Username cannot be blank" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
     else
     {
-        self.forgotUrl = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://webteleservicestest.remedyconnect.com/Mobile/Providers/Default.aspx?username=%@",self.userNameStr]];
-        NSLog(@"%@",self.forgotUrl);
+        self.forgotUrl = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://webteleservicestest.remedyconnect.com/Mobile/Providers/Default.aspx?username=%@",self.userNameTextField.text]];
+         NSLog(@"%@",self.forgotUrl);
         [[UIApplication sharedApplication]openURL:self.forgotUrl];
     }
-   
 }
 
 - (IBAction)loginBtnTapped:(id)sender
@@ -150,13 +148,11 @@
             [self changeViewBorderColorBlack];
             if (![self.userNameTextField.text isEqualToString:@""])
             {
-                self.userNameTextField.layer.borderWidth = 1.0f;
-                self.userNameTextField.layer.borderColor = [UIColor blackColor].CGColor;
+                self.passwordTextField.background = [UIImage imageNamed:@"input.png"];
             }
             else if (![self.passwordTextField.text isEqualToString:@""])
             {
-                self.passwordTextField.layer.borderWidth = 1.0f;
-                self.passwordTextField.layer.borderColor = [UIColor blackColor].CGColor;
+                self.passwordTextField.background = [UIImage imageNamed:@"input.png"];
             }
             
                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -227,7 +223,7 @@
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
                     withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",nil]
+                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Change application mode",nil]
                            delegate:self];
     [logic setUpdateDownloadStarterDelegate:self];
 }
@@ -260,6 +256,8 @@
 //                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
 //            }
             [RCHelper SharedHelper].isLogin = NO;
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+            [[NSUserDefaults standardUserDefaults]synchronize];
             [self performSegueWithIdentifier:@"FromLoginToSelect" sender:self];
             break;
             
@@ -270,11 +268,28 @@
         case 3:
             [self performSegueWithIdentifier:@"LoginToAboutUs" sender:self];
             break;
+           
+        case 4:
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
             
             default:
             break;
     }
     [popoverView dismiss:TRUE];
+}
+
+
+-(void)LogoutTheUser
+{
+    [RCSessionEngine SharedWebEngine].delegate = self;
+    if ([RCPracticeHelper SharedHelper].isLogout)
+    {
+        [self hasStartedDownloading:@"Logging Out..."];
+    }
+    [[RCSessionEngine SharedWebEngine] LogoutTheUser];
 }
 
 
@@ -513,6 +528,26 @@
     [statusHUD hide:YES afterDelay:2];
      UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log you in" message:@"Unknown username or bad password - please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
+}
+
+
+
+-(void)SessionManagerDidReceiveResponse:(NSDictionary*)pResultDict
+{
+    [statusHUD hide:YES afterDelay:2];
+    if ([[pResultDict objectForKey:@"success"]boolValue])
+    {
+        
+        
+        
+        if ([RCPracticeHelper SharedHelper].isApplicationMode)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            NSArray *array = [self.navigationController viewControllers];
+            [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+        }
+    }
 }
 
 

@@ -61,7 +61,7 @@
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
                     withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",nil]
+                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",@"Change application mode",nil]
                            delegate:self];
     [logic setUpdateDownloadStarterDelegate:self];
 }
@@ -96,7 +96,11 @@
             //                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
             //            }
             [RCHelper SharedHelper].isLogin = NO;
-            [self performSegueWithIdentifier:@"FromPinToSearch" sender:self];
+            [RCPracticeHelper SharedHelper].isChangePractice =YES;
+            [RCPracticeHelper SharedHelper].isLogout =NO;
+            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            [self LogoutTheUser];
+
             break;
             
         case 2:
@@ -108,15 +112,34 @@
             break;
             
         case 4:
-            [RCSessionEngine SharedWebEngine].delegate = self;
-            [self hasStartedDownloading:@"Logging Out..."];
-            [[RCSessionEngine SharedWebEngine] LogoutTheUser];
+            [RCPracticeHelper SharedHelper].isChangePractice =NO;
+            [RCPracticeHelper SharedHelper].isLogout =YES;
+            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            [self LogoutTheUser];
+            break;
+            
+        case 5:
+            [RCPracticeHelper SharedHelper].isChangePractice =NO;
+            [RCPracticeHelper SharedHelper].isLogout =NO;
+            [RCPracticeHelper SharedHelper].isApplicationMode = YES;
+            [self LogoutTheUser];
             break;
             
         default:
             break;
     }
     [popoverView dismiss:TRUE];
+}
+
+
+-(void)LogoutTheUser
+{
+    [RCSessionEngine SharedWebEngine].delegate = self;
+    if ([RCPracticeHelper SharedHelper].isLogout)
+    {
+        [self hasStartedDownloading:@"Logging Out..."];
+    }
+    [[RCSessionEngine SharedWebEngine] LogoutTheUser];
 }
 
 
@@ -186,8 +209,7 @@
           NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
          [defaults setObject:controller.passcode forKey:@"screatKey"];
          [defaults synchronize];
-        // [self performSegueWithIdentifier:@"MoveToProviderFromPin" sender:self];
-         [self performSegueWithIdentifier:@"UnderDev" sender:self];
+         [self performSegueWithIdentifier:@"MoveToProviderFromPin" sender:self];
      }];
 }
 
@@ -230,6 +252,26 @@
 -(void)SessionManagerDidReceiveResponse:(NSDictionary*)pResultDict
 {
     [statusHUD hide:YES afterDelay:2];
+    if ([[pResultDict objectForKey:@"success"]boolValue])
+    {
+        if ([RCPracticeHelper SharedHelper].isChangePractice)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            [self performSegueWithIdentifier:@"FromPinToSearch" sender:self];
+        }
+        else if ([RCPracticeHelper SharedHelper].isLogout)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else if ([RCPracticeHelper SharedHelper].isApplicationMode)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+             NSArray *array = [self.navigationController viewControllers];
+            [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+        }
+    }
 }
 
 -(void)SessionManagerDidFailWithError:(NSError *)error

@@ -101,6 +101,17 @@ static RCSessionEngine *sharedEngine = nil;
     {
         NSLog(@" Received data %@", buffStr);
         
+        if ([buffStr isEqualToString:@"true"]) {
+            
+            if (self.delegate != nil) {
+                if ([self.delegate respondsToSelector:@selector(connectionManagerDidReceiveResponse:)]) {
+                    [self.delegate SessionManagerDidReceiveResponse:[NSDictionary dictionaryWithObjectsAndKeys:@"true",@"success", nil]];
+                }
+                return;
+            }
+
+        }
+        
         NSError *error;
         NSDictionary *lJsonData = [NSJSONSerialization JSONObjectWithData:self.m_cReceivedData options:kNilOptions error:&error];
         // sending back the response to class
