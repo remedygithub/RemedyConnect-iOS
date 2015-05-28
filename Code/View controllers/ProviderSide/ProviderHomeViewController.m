@@ -23,6 +23,22 @@
     [self.view addSubview:self.village];
     logic = [Logic sharedLogic];
     [self displayImages];
+
+  
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(resetAction)
+                                                 name:kResetPinNotification
+                                               object:nil];
+}
+
+
+
+-(void)resetAction
+{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -35,6 +51,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 -(void)displayImages
@@ -90,51 +107,84 @@
 
 
 
-//- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
-//{
-//    NSString * praticeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameOfPratice"];
-//    NSLog(@"%@",praticeName);
-//    //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
-//    switch (index)
-//    {
-//        case 0:
-//            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
-//            {
-//                [logic setUpdateDownloadStarterDelegate:self];
-//                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
-//            }
-//            break;
-//        case 1:
-//            if ([RCHelper SharedHelper].fromAgainList)
-//            {
-//                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
-//            }
-//            else
-//            {
-//                //[logic setMainMenuDelegate:self];
-//                [RCHelper SharedHelper].menuToArticle = YES;
-//                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
-//            }
-//            break;
-//            
-//        case 2:
-//            [RCHelper SharedHelper].fromMenuReturn = YES;
-//            [RCHelper SharedHelper].fromSelfSelect = NO;
-//            [RCHelper SharedHelper].fromSelfSelectBack = NO;
-//            [self clearData]; 
-//            [self performSegueWithIdentifier:@"MoveBackToSelectPractice" sender:self];
-//            break;
-//            
-//        case 3:
-//            [self performSegueWithIdentifier:@"AboutUs" sender:self];
-//            break;
-//            
-//        case 4:
-//            [self performSegueWithIdentifier:@"Terms" sender:self];
-//            break;
-//    }
-//    [popoverView dismiss:TRUE];
-//}
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
+{
+    NSString * praticeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameOfPratice"];
+    NSLog(@"%@",praticeName);
+    //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
+    switch (index)
+    {
+        case 0:
+            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
+            {
+                [logic setUpdateDownloadStarterDelegate:self];
+                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
+            }
+            break;
+            
+        case 1:
+            [RCPracticeHelper SharedHelper].isChangePractice =YES;
+            [RCPracticeHelper SharedHelper].isLogout =NO;
+            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            [self LogoutTheUser];
+            break;
+            
+          case 2:
+            [self performSegueWithIdentifier:@"Terms" sender:self];
+            break;
+            
+         case 3:
+            [self performSegueWithIdentifier:@"AboutUs" sender:self];
+            break;
+            
+         case 4:
+            [RCPracticeHelper SharedHelper].isChangePractice =NO;
+            [RCPracticeHelper SharedHelper].isLogout =YES;
+            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            [self LogoutTheUser];
+            break;
+            
+         case 5:
+            [RCPracticeHelper SharedHelper].isChangePractice =NO;
+            [RCPracticeHelper SharedHelper].isLogout =NO;
+            [RCPracticeHelper SharedHelper].isApplicationMode = YES;
+            [self LogoutTheUser];
+            break;
+            
+         default:
+            break;
+            
+    }
+    [popoverView dismiss:TRUE];
+}
+
+
+
+-(void)LogoutTheUser
+{
+    if ([RCPracticeHelper SharedHelper].isLogout)
+    {
+        [self hasStartedDownloading:@"Logging Out..."];
+    }
+    [RCSessionEngine SharedWebEngine].delegate = self;
+    [[RCSessionEngine SharedWebEngine] LogoutTheUser];
+}
+
+
+- (void)hasStartedDownloading:(NSString *)processString
+{
+    if (nil != statusHUD)
+    {
+        [statusHUD hide:TRUE];
+    }
+    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    [statusHUD setDelegate:self];
+    [statusHUD setDimBackground:TRUE];
+    [statusHUD show:YES];
+    [statusHUD setLabelText:processString];
+    [self.view bringSubviewToFront:statusHUD];
+}
+
 
 -(void)clearData
 {
@@ -224,130 +274,52 @@
     }
 }
 
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+#pragma connectin Manager Delegate
+-(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
+    [[UIApplication sharedApplication].delegate performSelector:@selector(stopActivity)];
+}
+
+-(void)connectionManagerDidFailWithError:(NSError *)error
+{
+    [[[UIApplication sharedApplication] delegate] performSelector:@selector(stopActivity)];
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
 }
 
 
-
-//Checking for device Orientation
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+#pragma mark - SessionManager delegate
+-(void)SessionManagerDidReceiveResponse:(NSDictionary*)pResultDict
 {
-    if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
+    [statusHUD hide:YES afterDelay:2];
+    if ([[pResultDict objectForKey:@"success"]boolValue])
     {
-        NSLog(@"Landscape");
-    }
-    else
-    {
-        NSLog(@"Portrait");
-        
+        if ([RCPracticeHelper SharedHelper].isChangePractice)
+        {
+            [self clearData];
+            [self performSegueWithIdentifier:@"MoveBackToSelectPractice" sender:self];
+        }
+        else if ([RCPracticeHelper SharedHelper].isLogout)
+        {
+            NSArray *array = [self.navigationController viewControllers];
+            [self.navigationController popToViewController:[array objectAtIndex:1] animated:YES];
+        }
+        else if ([RCPracticeHelper SharedHelper].isApplicationMode)
+        {
+            [self clearData];
+            NSArray *array = [self.navigationController viewControllers];
+            [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+        }
     }
 }
 
+-(void)SessionManagerDidFailWithError:(NSError *)error
+{
+    [statusHUD hide:YES afterDelay:2];
+    
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
+}
 
 
-
-//#pragma Setting Frames
-//-(void)setFrames
-//{
-//    if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
-//    {
-//        if (IS_IPHONE_6H)
-//        {
-//            self.menuBtn.frame = CGRectMake(600, 62, 30, 30);
-//            self.logoImage.frame = CGRectMake(420,120,240, 70);
-//            self.messageBtn.frame = CGRectMake(190,250,124,60);
-//            self.adminBtn.frame = CGRectMake(360,250,124,60);
-//        }
-//        else if (IS_IPHONE_5H)
-//        {
-//            self.menuBtn.frame = CGRectMake(420, 62, 30, 30);
-//            self.logoImage.frame = CGRectMake(260,100,200, 70);
-//            self.messageBtn.frame = CGRectMake(110,230,124,60);
-//            self.adminBtn.frame = CGRectMake(280,230,124,60);
-//        }
-//    }
-//    else
-//    {
-//        if (IS_IPHONE_6)
-//        {
-//            self.menuBtn.frame = CGRectMake(300, 62, 30, 30);
-//            self.logoImage.frame = CGRectMake(120,120,240, 70);
-//            self.messageBtn.frame = CGRectMake(120,480,124,60);
-//            self.adminBtn.frame = CGRectMake(120,560,124,60);
-//        }
-//        else if (IS_IPHONE_5)
-//        {
-//            self.menuBtn.frame = CGRectMake(260,62,30,30);
-//            if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"])
-//            {
-//                self.village.frame = CGRectMake(30,30,260,170);
-//            }
-//            else if([practiceName isEqualToString:@"Union Pediatrics, PSC"])
-//            {
-//                self.village.frame = CGRectMake(67,65,180,100);
-//            }
-//            else if([practiceName isEqualToString:@"Children's Healthcare Center"])
-//            {
-//                self.village.frame = CGRectMake(50,30,298,274);
-//            }
-//            else if([practiceName isEqualToString:@"Brighton Pediatrics"])
-//            {
-//               self.village.frame = CGRectMake(10,10,300,200);
-//            }
-//            else if ([practiceName isEqualToString:@"Goodtime Pediatrics"])
-//            {
-//                self.village.frame = CGRectMake(20,10,280,220);
-//            }
-//            else if ([practiceName isEqualToString:@"Collin County Pediatrics"])
-//            {
-//                self.village.frame = CGRectMake(20,60,280,114);
-//            }
-//            else
-//            {
-//                self.logoImage.frame = CGRectMake(100,100,200,70);
-//            }
-//            self.messageBtn.frame = CGRectMake(100,380,124,60);
-//            self.adminBtn.frame = CGRectMake(100,460,124,60);
-//        }
-//        else if (IS_IPHONE_4)
-//        {
-//            self.menuBtn.frame = CGRectMake(260,62,30,30);
-//            if ([practiceName isEqualToString:@"Village Pediatrics (Westport, CT)"])
-//            {
-//                self.village.frame = CGRectMake(30,30,260,170);
-//            }
-//            else if([practiceName isEqualToString:@"Union Pediatrics, PSC"])
-//            {
-//                self.village.frame = CGRectMake(67,65,180,100);
-//            }
-//            else if([practiceName isEqualToString:@"Children's Healthcare Center"])
-//            {
-//                self.village.frame = CGRectMake(50,30,298,274);
-//            }
-//            else if([practiceName isEqualToString:@"Brighton Pediatrics"])
-//            {
-//                self.village.frame = CGRectMake(10,10,300,200);
-//            }
-//            else if ([practiceName isEqualToString:@"Goodtime Pediatrics"])
-//            {
-//                self.village.frame = CGRectMake(20,10,280,220);
-//            }
-//            else if ([practiceName isEqualToString:@"Collin County Pediatrics"])
-//            {
-//                self.village.frame = CGRectMake(20,60,280,114);
-//            }
-//            else
-//            {
-//                self.logoImage.frame = CGRectMake(100,100,200,70);
-//
-//            }
-//            self.messageBtn.frame = CGRectMake(100,340,124,60);
-//            self.adminBtn.frame = CGRectMake(100,410,124,60);
-//        }
-//    }
-//    self.messageBtn.layer.cornerRadius = 10.0f;
-//    self.adminBtn.layer.cornerRadius = 10.0f;
-//}
 @end

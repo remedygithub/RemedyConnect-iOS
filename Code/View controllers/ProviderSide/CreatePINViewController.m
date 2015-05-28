@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+
     NSString *practieID = self.registerHelper.practiceID;
     NSString *physicanID = self.registerHelper.PhysicianID;
  
@@ -42,6 +44,19 @@
         UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:@"You've been logged in" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [lAlert show];
     }
+    
+    
+    NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:kPath];
+    if ([path isEqualToString:kCreatePin])
+    {
+        ProviderHomeViewController *providerLogin = [self.storyboard   instantiateViewControllerWithIdentifier:@"ProviderHomeViewController"];
+        [self.navigationController pushViewController:providerLogin animated:NO];
+        return;
+    }
+    
+    NSUserDefaults *patientDefaults = [NSUserDefaults standardUserDefaults];
+    [patientDefaults setObject:kCreatePin forKey:kPath];
+    [patientDefaults synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,16 +100,7 @@
             }
             break;
         case 1:
-            //            if ([RCHelper SharedHelper].fromAgainList)
-            //            {
-            //                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
-            //            }
-            //            else
-            //            {
-            //                //[logic setMainMenuDelegate:self];
-            //                [RCHelper SharedHelper].menuToArticle = YES;
-            //                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
-            //            }
+          
             [RCHelper SharedHelper].isLogin = NO;
             [RCPracticeHelper SharedHelper].isChangePractice =YES;
             [RCPracticeHelper SharedHelper].isLogout =NO;
@@ -223,17 +229,30 @@
 
 -(void)PAPasscodeViewControllerDidResetPasscode:(PAPasscodeViewController *)controller
 {
-      [self dismissViewControllerAnimated:YES completion:^()
+    [self dismissViewControllerAnimated:YES completion:^()
      {
-         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Forgot your PIN?" delegate:nil cancelButtonTitle:@"Reset your PIN" otherButtonTitles:nil];
-         [alert show];
+         [RCHelper SharedHelper].pinCreated =  NO;
+         
+         PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
+         
+         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+         {
+             passcodeViewController.backgroundView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+         }
+         passcodeViewController.delegate = self;
+         [self presentViewController:passcodeViewController animated:YES completion:nil];
      }];
-  
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+}
+
+-(void)clearData
+{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 
@@ -256,8 +275,7 @@
     {
         if ([RCPracticeHelper SharedHelper].isChangePractice)
         {
-            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
-            [[NSUserDefaults standardUserDefaults]synchronize];
+            [self clearData];
             [self performSegueWithIdentifier:@"FromPinToSearch" sender:self];
         }
         else if ([RCPracticeHelper SharedHelper].isLogout)
@@ -266,8 +284,7 @@
         }
         else if ([RCPracticeHelper SharedHelper].isApplicationMode)
         {
-            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
-            [[NSUserDefaults standardUserDefaults]synchronize];
+            [self clearData];
              NSArray *array = [self.navigationController viewControllers];
             [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
         }
@@ -276,7 +293,10 @@
 
 -(void)SessionManagerDidFailWithError:(NSError *)error
 {
+    [statusHUD hide:YES afterDelay:2];
     
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
 }
 
 

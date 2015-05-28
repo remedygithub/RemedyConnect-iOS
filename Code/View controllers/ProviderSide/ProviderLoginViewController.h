@@ -16,7 +16,6 @@
 #import "PAPasscodeViewController.h"
 #import "MBProgressHUD.h"
 #import "CreatePINViewController.h"
-#import "SessionTime.h"
 #import "PopoverView.h"
 #import "Logic.h"
 #import "AboutUsViewController.h"

@@ -18,6 +18,7 @@
 #import "AboutUsViewController.h"
 #import "RCSessionEngine.h"
 #import "RCPracticeHelper.h"
+#import "ProviderHomeViewController.h"
 @interface CreatePINViewController : UIViewController<PAPasscodeViewControllerDelegate,WebEngineDelegate,PopoverViewDelegate,UpdateDownloadStarterDelegate,SubMenuDelegate,DownloaderDelegate,MBProgressHUDDelegate,SessionEngineDelegate>
 {
     Logic *logic;

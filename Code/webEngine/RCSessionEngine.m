@@ -52,6 +52,11 @@ static RCSessionEngine *sharedEngine = nil;
 //}
 
 
+
+
+
+
+//Logout
 -(void)LogoutTheUser
 {
     NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
@@ -104,7 +109,8 @@ static RCSessionEngine *sharedEngine = nil;
         if ([buffStr isEqualToString:@"true"]) {
             
             if (self.delegate != nil) {
-                if ([self.delegate respondsToSelector:@selector(connectionManagerDidReceiveResponse:)]) {
+                if ([self.delegate respondsToSelector:@selector(connectionManagerDidReceiveResponse:)])
+                {
                     [self.delegate SessionManagerDidReceiveResponse:[NSDictionary dictionaryWithObjectsAndKeys:@"true",@"success", nil]];
                 }
                 return;

@@ -90,6 +90,28 @@ static RCWebEngine *sharedEngine = nil;
 }
 
 
+
+//Checkinh PIN Timeout Session
+-(void)checkPinTimeOutSession
+{
+    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
+    NSString *practice = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPracticeId"];
+    NSString *physican = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhysicanId"];
+    NSLog(@"%@",token);
+    
+    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Physician/GetPhysiciansPinTimeout?PracticeID=%@&PhysicianID=%@&apikey=%@&token=%@",practice,physican,apiKey,tokenKey];
+    
+    NSLog(@"%@",lUrlString);
+    NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    NSLog(@"URL:%@", lURL);
+    
+    NSMutableURLRequest *lRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
+    [lRequest setHTTPMethod:@"GET"];
+    [lRequest setValue:[NSString stringWithFormat:@"basic %@",token] forHTTPHeaderField:@"Authorization"];
+    NSURLConnection *lConnection = [[NSURLConnection alloc] initWithRequest:lRequest delegate:self];
+    [lConnection start];
+}
+
 #pragma mark NSURLConnectionDelegate Methods
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

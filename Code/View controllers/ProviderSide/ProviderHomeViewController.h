@@ -15,8 +15,11 @@
 #import "NetworkViewController.h"
 #import "MBProgressHUD.h"
 #import "Logic.h"
+#import "RCSessionEngine.h"
+#import "RCPracticeHelper.h"
+#import "RCWebEngine.h"
 
-@interface ProviderHomeViewController : UIViewController<PopoverViewDelegate,FileDownloaderDelegate,NetworkDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate>
+@interface ProviderHomeViewController : UIViewController<PopoverViewDelegate,DownloaderDelegate,NetworkDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,SessionEngineDelegate,WebEngineDelegate>
 {
     MBProgressHUD *statusHUD;
     Logic *logic;

@@ -10,6 +10,8 @@
 //#import "TestFlight.h"
 #import "TestFairy.h"
 #import "ReachabilityManager.h"
+#import "RCHelper.h"
+
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @implementation YourPracticeAppDelegate
@@ -35,13 +37,33 @@
          (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     }
     
-   // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidLoginTimeout:) name:kApplicationDidLoginTimeoutNotification object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(PAPasscodeViewControllerDidCancel:)
+                                                 name:kResetPinNotification
+                                               object:nil];
     
     [[PushIOManager sharedInstance] setDelegate:self];
     [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:launchOptions];
 
     return YES;
+}
+
+
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    
+        if ([RCHelper SharedHelper].isPassCodeView)
+        {
+            return UIInterfaceOrientationMaskPortrait;
+        }
+        else
+            return UIInterfaceOrientationMaskAll;
+        
 }
 
 
@@ -53,43 +75,31 @@
 //}
 
 
-//- (void)applicationDidTimeout:(NSNotification *)notif
-//{
-//    NSLog (@"time exceeded!!");
-//    //PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
-//    if (passcode)
-//    {
-//        [passcode removeFromParentViewController];
-//        passcode = nil;
-//    }
-//    passcode = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-//    {
-//        passcode.backgroundView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
-//    }
-//    passcode.delegate = self;
-//    [self.window.rootViewController presentViewController:passcode animated:YES completion:nil];
-//}
-//
-//
-//- (void)applicationDidLoginTimeout:(NSNotification *)notif
-//{
-//     NSLog (@"LogIn time exceeded!!");
-//    //[self PAPasscodeViewControllerDidCancel:passcode];
-//    [self performSelector:@selector(moveToLoginAfterSixHourTimeOut) withObject:nil afterDelay:1.0];
-//}
-//
-//
-//
-//-(void)moveToLoginAfterSixHourTimeOut
-//{
-//    [RCHelper SharedHelper].fromLoginTimeout = YES;
-//    [RCHelper SharedHelper].pinCreated = NO;
-//    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle: nil];
-//    ProviderLoginViewController *controller = (ProviderLoginViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"ProviderLoginViewController"];
-//    [navigationController pushViewController:controller animated:YES];
-//}
+- (void)applicationDidTimeout:(NSNotification *)notif
+{
+    NSLog (@"time exceeded!!");
+    //PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
+    NSString *pinString = [[NSUserDefaults standardUserDefaults] valueForKey:@"screatKey"];
+    if (!pinString)
+    {
+        return;
+    }
+    
+    if (passcode)
+    {
+        [passcode.view removeFromSuperview];
+        [passcode removeFromParentViewController];
+        passcode = nil;
+    }
+    passcode = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        passcode.backgroundView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    }
+    passcode.delegate = self;
+    [[self window] addSubview:passcode.view];
+    [[self window] bringSubviewToFront:passcode.view];
+}
 
 
 
@@ -158,51 +168,93 @@
 #pragma Screat PIN Checking Delegate Methods
 - (void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller
 {
-    [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+    //[self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+    if (passcode)
+    {
+        [passcode.view removeFromSuperview];
+        [passcode removeFromParentViewController];
+         passcode = nil;
+       
+    }
 }
 
 - (void)PAPasscodeViewControllerDidEnterPasscode:(PAPasscodeViewController *)controller
 {
+    if (passcode)
+    {
+        [passcode.view removeFromSuperview];
+        [passcode removeFromParentViewController];
+        passcode = nil;
+    }
+
     // [self dismissViewControllerAnimated:YES completion:^()
-    [self.window.rootViewController dismissViewControllerAnimated:YES completion:^()
-     {
-         [[[UIAlertView alloc] initWithTitle:nil message:@"Pin entered correctly" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-     }];
+//    [self.window.rootViewController dismissViewControllerAnimated:YES completion:^()
+//     {
+//         [[[UIAlertView alloc] initWithTitle:nil message:@"Pin entered correctly" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+//     }];
 }
 
 -(void)PAPasscodeViewControllerDidResetPasscode:(PAPasscodeViewController *)controller
 {
-    [self.window.rootViewController dismissViewControllerAnimated:YES completion:^()
-     {
-         [RCHelper SharedHelper].pinCreated =  NO;
-         
-         //        PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
-         passcode = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
-         
-         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-         {
-             passcode.backgroundView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
-         }
-         passcode.delegate = self;
-         [self.window.rootViewController presentViewController:passcode animated:YES completion:nil];
-     }];
+    
+    if (passcode)
+    {
+        [passcode.view removeFromSuperview];
+        [passcode removeFromParentViewController];
+        passcode = nil;
+        
+        [RCHelper SharedHelper].pinCreated =  NO;
+        
+        //        PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
+        passcode = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+        {
+            passcode.backgroundView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+        }
+        passcode.delegate = self;
+    }
+//    [self.window.rootViewController dismissViewControllerAnimated:YES completion:^()
+//     {
+//         [RCHelper SharedHelper].pinCreated =  NO;
+//         
+//         //        PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
+//         passcode = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
+//         
+//         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+//         {
+//             passcode.backgroundView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+//         }
+//         passcode.delegate = self;
+//         [self.window.rootViewController presentViewController:passcode animated:YES completion:nil];
+//     }];
 }
 
 - (void)PAPasscodeViewControllerDidSetPasscode:(PAPasscodeViewController *)controller
 {
-    [self.window.rootViewController dismissViewControllerAnimated:YES completion:^()
-     {
-         NSLog(@"%@",controller.passcode);
-         [RCHelper SharedHelper].pinCreated = YES;
-         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-         [defaults setObject:controller.passcode forKey:@"screatKey"];
-         [defaults synchronize];
-         [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-     }];
+    if (passcode)
+    {
+        NSLog(@"%@",controller.passcode);
+        [RCHelper SharedHelper].pinCreated = YES;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:controller.passcode forKey:@"screatKey"];
+        [defaults synchronize];
+        [passcode.view removeFromSuperview];
+        [passcode removeFromParentViewController];
+        passcode = nil;
+    }
+    
+    
+//    [self.window.rootViewController dismissViewControllerAnimated:YES completion:^()
+//     {
+//         NSLog(@"%@",controller.passcode);
+//         [RCHelper SharedHelper].pinCreated = YES;
+//         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//         [defaults setObject:controller.passcode forKey:@"screatKey"];
+//         [defaults synchronize];
+//         [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+//     }];
 }
-
-
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -226,6 +278,11 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     NSLog(@"Active");
+    if ([RCHelper SharedHelper].pinCreated)
+    {
+         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
+    }
+   
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -249,5 +306,6 @@
 {
     [m_cActivityIndicator stopAnimating];
 }
+
 
 @end

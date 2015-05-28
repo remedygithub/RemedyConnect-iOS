@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "YourPracticeAppDelegate.h"
+#import "SessionTime.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {	
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([YourPracticeAppDelegate class]));
+        return UIApplicationMain(argc, argv, NSStringFromClass([SessionTime class]), NSStringFromClass([YourPracticeAppDelegate class]));
     }
 }

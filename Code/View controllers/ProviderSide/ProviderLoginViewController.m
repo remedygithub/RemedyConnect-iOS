@@ -318,7 +318,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)PAPasscodeViewControllerDidEnterPasscode:(PAPasscodeViewController *)controller {
+- (void)PAPasscodeViewControllerDidEnterPasscode:(PAPasscodeViewController *)controller
+{
     [self dismissViewControllerAnimated:YES completion:^()
     {
         [[[UIAlertView alloc] initWithTitle:nil message:@"Pin entered correctly" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -477,6 +478,8 @@
         //Saving Token Locally
          NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:helper.practiceID forKey:@"userPracticeId"];
+        [defaults setObject:helper.PhysicianID forKey:@"userPhysicanId"];
+
          [defaults setObject:helper.tokenID forKey:@"responseToken"];
          [defaults synchronize];
         
@@ -538,8 +541,6 @@
     if ([[pResultDict objectForKey:@"success"]boolValue])
     {
         
-        
-        
         if ([RCPracticeHelper SharedHelper].isApplicationMode)
         {
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
@@ -548,6 +549,14 @@
             [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
         }
     }
+}
+
+-(void)SessionManagerDidFailWithError:(NSError *)error
+{
+    [statusHUD hide:YES afterDelay:2];
+
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
 }
 
 

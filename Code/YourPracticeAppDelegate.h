@@ -16,9 +16,10 @@
 #import "RCPracticeHelper.h"
 #import "Macros.h"
 #import <PushIOManager/PushIOManager.h>
+#import "RCWebEngine.h"
 
 
-@interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate,PAPasscodeViewControllerDelegate,PushIOManagerDelegate>
+@interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate,PAPasscodeViewControllerDelegate,PushIOManagerDelegate,WebEngineDelegate>
 {
     ALActivityIndicatorView *m_cActivityIndicator;
     PAPasscodeViewController *passcode;

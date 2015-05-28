@@ -20,10 +20,7 @@
         [self resetIdleTimer];
     }
     
-    if (!loginTimer)
-    {
-        [self resetIdleTimer];
-    }
+
     
     // Check to see if there was a touch event
     NSSet *allTouches = [event allTouches];
@@ -41,12 +38,9 @@
     if (idleTimer)
     {
         [idleTimer invalidate];
+        idleTimer = nil;
     }
-    
-    if (loginTimer)
-    {
-        [loginTimer invalidate];
-    }
+
     int timeout = kApplicationTimeoutInMinutes * 60;
     idleTimer = [NSTimer scheduledTimerWithTimeInterval:timeout
                                                    target:self

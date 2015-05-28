@@ -32,5 +32,7 @@
 -(void)userLogin:(NSString *)userName password:(NSString *)userPassword;
 -(void)sendRequestForRegister:(NSString *)praticeId  Physician:(NSString *)physicianId device:(NSString *)DeviceId;
 -(void)getLoginInTimeOutDetails;
+-(void)checkPinTimeOutSession;
+
 
 @end

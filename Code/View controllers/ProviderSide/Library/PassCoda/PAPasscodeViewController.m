@@ -8,7 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "PAPasscodeViewController.h"
-
+#import "Macros.h"
 #define NAVBAR_HEIGHT   44
 #define PROMPT_HEIGHT   74
 #define DIGIT_SPACING   10
@@ -190,9 +190,11 @@
     [passcodeTextField becomeFirstResponder];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
+    [RCHelper SharedHelper].isPassCodeView = true;
     if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidCancel:)]) {
         if (_simple) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
@@ -210,6 +212,12 @@
     [super viewWillAppear:animated];
     [self showScreenForPhase:0 animated:NO];
     [passcodeTextField becomeFirstResponder];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [RCHelper SharedHelper].isPassCodeView = false;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -355,7 +363,11 @@
 //        [RCHelper SharedHelper].pinCreated =  NO;
          if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidResetPasscode:)])
            {
-             [_delegate PAPasscodeViewControllerDidResetPasscode:self];
+               
+               [[NSNotificationCenter defaultCenter] postNotificationName:kResetPinNotification
+                                                                   object:self];
+               //[_delegate PAPasscodeViewControllerDidResetPasscode:self];
+               
            }
     }
 }

@@ -24,6 +24,9 @@
 //Alert Bool
 @property (nonatomic, readwrite) BOOL isLogin;
 
+//Passcode Bool
+@property (nonatomic, readwrite) BOOL isPassCodeView;
+
 +(RCHelper *)SharedHelper;
 
 //SearchPractice Data

@@ -41,5 +41,9 @@
 #define kPath @"Path"
 #define kPatient @"Patient"
 #define kProvider @"Provider"
+#define kCreatePin @"CreatePin"
+
+
+#define kResetPinNotification @"ResetPinNotification"
 
 #endif
