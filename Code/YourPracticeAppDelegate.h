@@ -17,6 +17,7 @@
 #import "Macros.h"
 #import <PushIOManager/PushIOManager.h>
 #import "RCWebEngine.h"
+#import "ProviderHomeViewController.h"
 
 
 @interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate,PAPasscodeViewControllerDelegate,PushIOManagerDelegate,WebEngineDelegate>

@@ -80,7 +80,10 @@
     NSLog (@"time exceeded!!");
     //PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
     NSString *pinString = [[NSUserDefaults standardUserDefaults] valueForKey:@"screatKey"];
-    if (!pinString)
+    
+    UIViewController *vc = [self visibleViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+
+    if (!pinString || ![vc isKindOfClass:[ProviderHomeViewController class]] )
     {
         return;
     }
@@ -101,7 +104,24 @@
     [[self window] bringSubviewToFront:passcode.view];
 }
 
-
+- (UIViewController *)visibleViewController:(UIViewController *)rootViewController
+{
+    if (rootViewController.presentedViewController == nil)
+    {
+        return rootViewController;
+    }
+    if ([rootViewController.presentedViewController isKindOfClass:[UINavigationController class]])
+    {
+        UINavigationController *navigationController = (UINavigationController *)rootViewController.presentedViewController;
+        UIViewController *lastViewController = [[navigationController viewControllers] lastObject];
+        
+        return [self visibleViewController:lastViewController];
+    }
+    
+    UIViewController *presentedViewController = (UIViewController *)rootViewController.presentedViewController;
+    
+    return [self visibleViewController:presentedViewController];
+}
 
 #pragma mark Push Notification Methods
 //Here we are taking and saving the "Device Token" of the device
@@ -280,6 +300,7 @@
     NSLog(@"Active");
     if ([RCHelper SharedHelper].pinCreated)
     {
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
          [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
     }
    

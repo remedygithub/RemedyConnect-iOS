@@ -41,6 +41,7 @@
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -188,6 +189,7 @@
 
 -(void)clearData
 {
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
@@ -301,6 +303,7 @@
         }
         else if ([RCPracticeHelper SharedHelper].isLogout)
         {
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
             NSArray *array = [self.navigationController viewControllers];
             [self.navigationController popToViewController:[array objectAtIndex:1] animated:YES];
         }
