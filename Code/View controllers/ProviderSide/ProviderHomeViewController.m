@@ -23,6 +23,10 @@
     [self.view addSubview:self.village];
     logic = [Logic sharedLogic];
     [self displayImages];
+    [self checkUserUnreadMessage];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 
   
     [[NSUserDefaults standardUserDefaults]synchronize];
@@ -37,10 +41,28 @@
 -(void)resetAction
 {
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
-    [self.navigationController popViewControllerAnimated:NO];
+   // [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+   NSArray *arrayOfControllers = [self.navigationController viewControllers];
+    
+    //Checking whether viewcontroller exist
+    for (id controller in arrayOfControllers)
+    {
+        if ([controller isKindOfClass:[CreatePINViewController class]])
+        {
+            [self.navigationController popViewControllerAnimated:NO];
+            return;
+        }
+    }
+    [self performSegueWithIdentifier:@"PushToCreatePin" sender:self];
+    
 }
 
+
+-(void)checkUserUnreadMessage
+{
+    [RCWebEngine SharedWebEngine].delegate = self;
+    [RCWebEngine SharedWebEngine].checkPinTimeOutSession;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -190,7 +212,7 @@
 -(void)clearData
 {
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
@@ -279,7 +301,8 @@
 #pragma connectin Manager Delegate
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
-    [[UIApplication sharedApplication].delegate performSelector:@selector(stopActivity)];
+    NSString *pinTimeOut = [pResultDict objectForKey:@"pinTimeoutSeconds"];
+    [[UIApplication sharedApplication] performSelector:@selector(resetIdleTimer:) withObject:pinTimeOut];
 }
 
 -(void)connectionManagerDidFailWithError:(NSError *)error
@@ -304,14 +327,26 @@
         else if ([RCPracticeHelper SharedHelper].isLogout)
         {
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
-            NSArray *array = [self.navigationController viewControllers];
-            [self.navigationController popToViewController:[array objectAtIndex:1] animated:YES];
+            //Checking whether viewcontroller exist
+            NSArray *arrayOfControllers = [self.navigationController viewControllers];
+            
+            //Checking whether viewcontroller exist
+            for (id controller in arrayOfControllers)
+            {
+                if ([controller isKindOfClass:[ProviderLoginViewController class]])
+                {
+                    [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1] animated:YES];
+                    return;
+                }
+            }
+           UIViewController *controller =  [self.storyboard instantiateViewControllerWithIdentifier:@"ProviderLoginViewController"];
+            [self.navigationController pushViewController:controller animated:NO];
+
         }
         else if ([RCPracticeHelper SharedHelper].isApplicationMode)
         {
             [self clearData];
-            NSArray *array = [self.navigationController viewControllers];
-            [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }
 }

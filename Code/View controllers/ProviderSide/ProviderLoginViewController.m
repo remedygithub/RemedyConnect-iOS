@@ -38,18 +38,9 @@
     logic = [Logic sharedLogic];
     [self.backBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
     [self.menuBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
-    
-    NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:kPath];
-    if ([path isEqualToString:kProvider])
-    {
-        CreatePINViewController *providerLogin = [self.storyboard   instantiateViewControllerWithIdentifier:@"CreatePINViewController"];
-        [self.navigationController pushViewController:providerLogin animated:NO];
-        return;
-    }
-    
-    NSUserDefaults *patientDefaults = [NSUserDefaults standardUserDefaults];
-    [patientDefaults setObject:kProvider forKey:kPath];
-    [patientDefaults synchronize];
+
+    [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
 
     if ([RCHelper SharedHelper].fromLoginTimeout)
@@ -113,12 +104,9 @@
 {
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
     [[NSUserDefaults standardUserDefaults]synchronize];
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
-
-
-
-
 
 - (IBAction)forgotBtnTapped:(id)sender
 {
@@ -345,17 +333,17 @@
      }];
 }
 
-- (void)PAPasscodeViewControllerDidSetPasscode:(PAPasscodeViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:^()
-     {
-         NSLog(@"%@",controller.passcode);
-         [RCHelper SharedHelper].pinCreated = YES;
-         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-         [defaults setObject:controller.passcode forKey:@"screatKey"];
-         [defaults synchronize];
-     }];
-}
+//- (void)PAPasscodeViewControllerDidSetPasscode:(PAPasscodeViewController *)controller
+//{
+//    [self dismissViewControllerAnimated:YES completion:^()
+//     {
+//         NSLog(@"%@",controller.passcode);
+//         [RCHelper SharedHelper].pinCreated = YES;
+//         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//         [defaults setObject:controller.passcode forKey:@"screatKey"];
+//         [defaults synchronize];
+//     }];
+//}
 
 
 #pragma TextField Delegates

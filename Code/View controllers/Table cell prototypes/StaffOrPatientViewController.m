@@ -10,6 +10,8 @@
 #import "Skin.h"
 #import "MainMenuViewController.h"
 #import "ProviderLoginViewController.h"
+#import "ProviderHomeViewController.h"
+#import "CreatePINViewController.h"
 #import <QuartzCore/QuartzCore.h>
 //#import "SearchPracticeViewController.h"
 @interface StaffOrPatientViewController ()
@@ -39,24 +41,20 @@
 
 -(void)checkForUserLastInteractedPage
 {
+    
     if ([self checkForfiles])
     {
         // checks if user is already moved into some other views
-        if (![[NSUserDefaults standardUserDefaults] objectForKey:kPath])
+        
+        NSString *savedClassName = [[NSUserDefaults standardUserDefaults] objectForKey:KLastLaunchedController];
+        if (savedClassName)
         {
-            return;
+            UIViewController *lastLauncedController = [self.storyboard   instantiateViewControllerWithIdentifier:savedClassName];
+            [self.navigationController pushViewController:lastLauncedController animated:NO];
         }
-        else if ([[[NSUserDefaults standardUserDefaults] objectForKey:kPath] isEqualToString:kPatient])
-        {            
-            MainMenuViewController *mainMenu = [self.storyboard   instantiateViewControllerWithIdentifier:@"MainMenu"];
-            [self.navigationController pushViewController:mainMenu animated:NO];
-        }
-        else if ([[[NSUserDefaults standardUserDefaults] objectForKey:kPath] isEqualToString:kProvider])
-        {
-            ProviderLoginViewController *providerLogin = [self.storyboard   instantiateViewControllerWithIdentifier:@"ProviderLoginViewController"];
-            [self.navigationController pushViewController:providerLogin animated:NO];
-        }
-    }
+        
+
+   }
 }
 
 

@@ -18,12 +18,15 @@
 #import "RCSessionEngine.h"
 #import "RCPracticeHelper.h"
 #import "RCWebEngine.h"
+#import "SessionTime.h"
+#import "ProviderLoginViewController.h"
 
 @interface ProviderHomeViewController : UIViewController<PopoverViewDelegate,DownloaderDelegate,NetworkDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,SessionEngineDelegate,WebEngineDelegate>
 {
     MBProgressHUD *statusHUD;
     Logic *logic;
     NSString *practiceName;
+    SessionTime *timeSession;
 
 }
 @property (weak, nonatomic) IBOutlet UIButton *menuBtn;
@@ -32,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *messageBtn;
 @property (weak, nonatomic) IBOutlet UIButton *adminBtn;
 @property (strong, nonatomic) UIImageView *village;
+@property (strong, nonatomic) UIWindow *window;
+
 
 #pragma mark - DownloaderUIDelegate
 - (void)hasStartedDownloading;

@@ -25,18 +25,18 @@
     
     [TestFairy begin:@"7f6f0f7e226f59d3b1a2ae5446b11a5b2427a176"];
     // Differentiate between ios 8 and ios 7,6 push notification registration
-    if(IS_OS_8_OR_LATER)
-    {
-        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-        
-    } else
-    {
-        //register to receive notifications
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    }
-    
+//    if(IS_OS_8_OR_LATER)
+//    {
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+//        [[UIApplication sharedApplication] registerForRemoteNotifications];
+//        
+//    } else
+//    {
+//        //register to receive notifications
+//        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+//         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+//    }
+//    
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
@@ -48,7 +48,6 @@
     
     [[PushIOManager sharedInstance] setDelegate:self];
     [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:launchOptions];
-
     return YES;
 }
 
@@ -300,7 +299,6 @@
     NSLog(@"Active");
     if ([RCHelper SharedHelper].pinCreated)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
          [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
     }
    

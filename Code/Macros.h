@@ -45,5 +45,51 @@
 
 
 #define kResetPinNotification @"ResetPinNotification"
+#define KLastLaunchedController @"LastLaunchedController"
+
+
+
+
+
+
+
+//        if (![[NSUserDefaults standardUserDefaults] objectForKey:kPath])
+//        {
+//            return;
+//        }
+//        else if ([[[NSUserDefaults standardUserDefaults] objectForKey:kPath] isEqualToString:kPatient])
+//        {
+//            MainMenuViewController *mainMenu = [self.storyboard   instantiateViewControllerWithIdentifier:@"MainMenu"];
+//            [self.navigationController pushViewController:mainMenu animated:NO];
+//        }
+//        else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"screatKey"])
+//        {
+//            ProviderHomeViewController *providerLogin = [self.storyboard   instantiateViewControllerWithIdentifier:@"ProviderHomeViewController"];
+//            [self.navigationController pushViewController:providerLogin animated:NO];
+//        }
+//        else if ([[NSUserDefaults standardUserDefaults] objectForKey:@"responseToken"])
+//        {
+//            CreatePINViewController *createPin = [self.storyboard   instantiateViewControllerWithIdentifier:@"CreatePINViewController"];
+//            [self.navigationController pushViewController:createPin animated:NO];
+//        }
+//        else if ([[[NSUserDefaults standardUserDefaults] objectForKey:kPath] isEqualToString:kProvider])
+//        {
+//            ProviderLoginViewController *providerLogin = [self.storyboard   instantiateViewControllerWithIdentifier:@"ProviderLoginViewController"];
+//            [self.navigationController pushViewController:providerLogin animated:NO];
+//        }
+
+
+
+//    NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:kPath];
+//    if ([path isEqualToString:kProvider])
+//    {
+//        CreatePINViewController *providerLogin = [self.storyboard   instantiateViewControllerWithIdentifier:@"CreatePINViewController"];
+//        [self.navigationController pushViewController:providerLogin animated:NO];
+//        return;
+//    }
+//
+//    NSUserDefaults *patientDefaults = [NSUserDefaults standardUserDefaults];
+//    [patientDefaults setObject:kProvider forKey:kPath];
+//    [patientDefaults synchronize];
 
 #endif

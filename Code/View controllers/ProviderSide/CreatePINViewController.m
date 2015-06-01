@@ -45,18 +45,8 @@
         [lAlert show];
     }
     
-    
-    NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:kPath];
-    if ([path isEqualToString:kCreatePin])
-    {
-        ProviderHomeViewController *providerLogin = [self.storyboard   instantiateViewControllerWithIdentifier:@"ProviderHomeViewController"];
-        [self.navigationController pushViewController:providerLogin animated:NO];
-        return;
-    }
-    
-    NSUserDefaults *patientDefaults = [NSUserDefaults standardUserDefaults];
-    [patientDefaults setObject:kCreatePin forKey:kPath];
-    [patientDefaults synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +56,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];    
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (IBAction)menuBtnTapped:(id)sender
@@ -251,7 +241,7 @@
 
 -(void)clearData
 {
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
@@ -285,8 +275,7 @@
         else if ([RCPracticeHelper SharedHelper].isApplicationMode)
         {
             [self clearData];
-             NSArray *array = [self.navigationController viewControllers];
-            [self.navigationController popToViewController:[array objectAtIndex:0] animated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }
 }

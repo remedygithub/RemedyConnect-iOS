@@ -11,13 +11,14 @@
 
 @implementation SessionTime
 
+
 - (void)sendEvent:(UIEvent *)event {
     [super sendEvent:event];
     
     // Fire up the timer upon first event
     if(!idleTimer)
     {
-        [self resetIdleTimer];
+        [self resetIdleTimer:[NSString stringWithFormat:@"%d",resetTime]];
     }
     
 
@@ -28,20 +29,23 @@
         UITouchPhase phase = ((UITouch *)[allTouches anyObject]).phase;
         if (phase == UITouchPhaseBegan)
         {
-            [self resetIdleTimer];
+            [self resetIdleTimer:[NSString stringWithFormat:@"%d",resetTime]];
         }
     }
 }
 
-- (void)resetIdleTimer
+- (void)resetIdleTimer:(NSString *) timeOutSecondsString
 {
+    NSLog(@"%@",timeOutSecondsString);
+    
     if (idleTimer)
     {
         [idleTimer invalidate];
         idleTimer = nil;
     }
 
-    int timeout = kApplicationTimeoutInMinutes * 60;
+    int timeout = [timeOutSecondsString intValue];
+    resetTime = [timeOutSecondsString intValue];
     idleTimer = [NSTimer scheduledTimerWithTimeInterval:timeout
                                                    target:self
                                                  selector:@selector(idleTimerExceeded)

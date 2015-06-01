@@ -13,12 +13,13 @@
 
 //#define kApplicationLoginTimeoutInMinutes 360
 #define kApplicationLoginTimeoutInMinutes 1
-
 #define kApplicationDidLoginTimeoutNotification @"ApplicationDidLoginTimeout"
 
 @interface SessionTime : UIApplication
 {
     NSTimer *idleTimer,*loginTimer;
+    int resetTime;
 }
-- (void)resetIdleTimer;
+- (void)resetIdleTimer:(NSString *) timeOutSecondsString;
+
 @end

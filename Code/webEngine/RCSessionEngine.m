@@ -51,11 +51,6 @@ static RCSessionEngine *sharedEngine = nil;
 //    [lConnection start];
 //}
 
-
-
-
-
-
 //Logout
 -(void)LogoutTheUser
 {

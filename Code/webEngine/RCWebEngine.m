@@ -97,9 +97,12 @@ static RCWebEngine *sharedEngine = nil;
     NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
     NSString *practice = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPracticeId"];
     NSString *physican = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhysicanId"];
-    NSLog(@"%@",token);
+    NSLog(@"%@",physican);
     
     NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Physician/GetPhysiciansPinTimeout?PracticeID=%@&PhysicianID=%@&apikey=%@&token=%@",practice,physican,apiKey,tokenKey];
+    
+    
+//     NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/GetUnreadCalls?PhysicianID=%@&apikey=%@&token=%@",physican,apiKey,tokenKey];
     
     NSLog(@"%@",lUrlString);
     NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
