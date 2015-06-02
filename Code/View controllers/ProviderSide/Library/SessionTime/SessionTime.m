@@ -45,6 +45,10 @@
     }
 
     int timeout = [timeOutSecondsString intValue];
+    if (timeout<10)
+    {
+        timeout = 60;
+    }
     resetTime = [timeOutSecondsString intValue];
     idleTimer = [NSTimer scheduledTimerWithTimeInterval:timeout
                                                    target:self

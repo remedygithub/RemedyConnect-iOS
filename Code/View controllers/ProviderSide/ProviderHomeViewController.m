@@ -27,6 +27,11 @@
     [self displayImages];
     [self checkUserUnreadMessage];
     
+    NSArray *arrayOfControllers = [self.navigationController viewControllers];
+    if (arrayOfControllers.count == 2) {
+        [self appEnteredForeground];
+    }
+    
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
 

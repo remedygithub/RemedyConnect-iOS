@@ -156,9 +156,9 @@
 
 - (IBAction)patientBtnTapped:(id)sender
 {
-    NSUserDefaults *patientDefaults = [NSUserDefaults standardUserDefaults];
-    [patientDefaults setObject:kPatient forKey:kPath];
-    [patientDefaults synchronize];
+//    NSUserDefaults *patientDefaults = [NSUserDefaults standardUserDefaults];
+//    [patientDefaults setObject:kPatient forKey:kPath];
+//    [patientDefaults synchronize];
     [self performSegueWithIdentifier:@"ToPatient" sender:self];
 
 }
