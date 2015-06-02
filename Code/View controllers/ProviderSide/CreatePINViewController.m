@@ -32,7 +32,7 @@
     NSLog(@"%@",hashUserString);
     logic = [Logic sharedLogic];
 
-    
+    [RCHelper SharedHelper].isCreateTimeOutRequest = NO;
     [RCWebEngine SharedWebEngine].delegate = self;
     [[RCWebEngine SharedWebEngine] sendRequestForRegister:practieID Physician:physicanID device:hashUserString];
     
@@ -68,9 +68,7 @@
                     withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
                                      @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",@"Change application mode",nil]
                            delegate:self];
-    [logic setUpdateDownloadStarterDelegate:self];
 }
-
 
 
 
@@ -153,9 +151,13 @@
     [self.view bringSubviewToFront:statusHUD];
 }
 
+//Create Pin
 - (IBAction)createPinBtnTapped:(id)sender
 {
     [self setCreatePinAndVerfiyPinView];
+    [RCHelper SharedHelper].isCreateTimeOutRequest = YES;
+    [RCWebEngine SharedWebEngine].delegate = self;
+    [RCWebEngine SharedWebEngine].checkPinTimeOutSession;
 }
 
 -(void)setCreatePinAndVerfiyPinView
@@ -248,7 +250,11 @@
 
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
-    [[UIApplication sharedApplication].delegate performSelector:@selector(stopActivity)];
+    if ([RCHelper SharedHelper].isCreateTimeOutRequest)
+    {
+        NSString *pinTimeOut = [pResultDict objectForKey:@"pinTimeoutSeconds"];
+        [[UIApplication sharedApplication] performSelector:@selector(resetIdleTimer:) withObject:pinTimeOut];
+    }
 }
 
 -(void)connectionManagerDidFailWithError:(NSError *)error

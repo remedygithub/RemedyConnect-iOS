@@ -25,21 +25,21 @@
     
     [TestFairy begin:@"7f6f0f7e226f59d3b1a2ae5446b11a5b2427a176"];
     // Differentiate between ios 8 and ios 7,6 push notification registration
-//    if(IS_OS_8_OR_LATER)
-//    {
-//        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-//        [[UIApplication sharedApplication] registerForRemoteNotifications];
-//        
-//    } else
-//    {
-//        //register to receive notifications
-//        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-//         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-//    }
-//    
+    if(IS_OS_8_OR_LATER)
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        
+    } else
+    {
+        //register to receive notifications
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+//
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout) name:kApplicationDidTimeoutNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(PAPasscodeViewControllerDidCancel:)
@@ -74,7 +74,7 @@
 //}
 
 
-- (void)applicationDidTimeout:(NSNotification *)notif
+- (void)applicationDidTimeout
 {
     NSLog (@"time exceeded!!");
     //PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
@@ -102,6 +102,8 @@
     [[self window] addSubview:passcode.view];
     [[self window] bringSubviewToFront:passcode.view];
 }
+
+
 
 - (UIViewController *)visibleViewController:(UIViewController *)rootViewController
 {
@@ -262,17 +264,6 @@
         [passcode removeFromParentViewController];
         passcode = nil;
     }
-    
-    
-//    [self.window.rootViewController dismissViewControllerAnimated:YES completion:^()
-//     {
-//         NSLog(@"%@",controller.passcode);
-//         [RCHelper SharedHelper].pinCreated = YES;
-//         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//         [defaults setObject:controller.passcode forKey:@"screatKey"];
-//         [defaults synchronize];
-//         [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-//     }];
 }
 
 

@@ -33,6 +33,8 @@
 @property (strong, nonatomic) NSString *deviceID;
 
 //Methods for showing activity indicators
+-(void)applicationDidTimeout;
 -(void)startActivity;
 -(void)stopActivity;
+
 @end

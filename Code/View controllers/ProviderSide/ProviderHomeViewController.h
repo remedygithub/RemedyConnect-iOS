@@ -29,6 +29,7 @@
     SessionTime *timeSession;
 
 }
+@property (nonatomic, strong) RCHelper *messageHelper;
 @property (weak, nonatomic) IBOutlet UIButton *menuBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;

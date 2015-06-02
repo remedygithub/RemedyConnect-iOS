@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
     [self.navigationController setNavigationBarHidden:YES];
     practiceName = [[NSUserDefaults standardUserDefaults]objectForKey:@"nameOfPratice"];
     self.village = [[UIImageView alloc]init];
@@ -28,8 +30,6 @@
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
-  
-    [[NSUserDefaults standardUserDefaults]synchronize];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(resetAction)
                                                  name:kResetPinNotification
@@ -40,42 +40,39 @@
 
 -(void)resetAction
 {
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
-   // [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
-   NSArray *arrayOfControllers = [self.navigationController viewControllers];
-    
-    //Checking whether viewcontroller exist
-    for (id controller in arrayOfControllers)
-    {
-        if ([controller isKindOfClass:[CreatePINViewController class]])
-        {
-            [self.navigationController popViewControllerAnimated:NO];
-            return;
-        }
-    }
-    [self performSegueWithIdentifier:@"PushToCreatePin" sender:self];
-    
+    [RCPracticeHelper SharedHelper].isChangePractice = NO;
+    [RCPracticeHelper SharedHelper].isLogout =NO;
+    [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+    [RCPracticeHelper SharedHelper].isPinFailureAttempt = YES;
+    [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+    [self LogoutTheUser];
 }
 
 
 -(void)checkUserUnreadMessage
 {
     [RCWebEngine SharedWebEngine].delegate = self;
-    [RCWebEngine SharedWebEngine].checkPinTimeOutSession;
+    [RCWebEngine SharedWebEngine].checkUserUnreadMessages;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
+
     [self.navigationController setNavigationBarHidden:YES];    
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)appEnteredForeground
+{
+    [[UIApplication sharedApplication].delegate performSelector:@selector(applicationDidTimeout)];
+}
 
 -(void)displayImages
 {
@@ -125,7 +122,6 @@
                     withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
                                      @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",@"Change application mode",nil]
                            delegate:self];
-    [logic setUpdateDownloadStarterDelegate:self];
 }
 
 
@@ -149,6 +145,9 @@
             [RCPracticeHelper SharedHelper].isChangePractice =YES;
             [RCPracticeHelper SharedHelper].isLogout =NO;
             [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+
             [self LogoutTheUser];
             break;
             
@@ -164,6 +163,8 @@
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =YES;
             [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
             [self LogoutTheUser];
             break;
             
@@ -171,6 +172,8 @@
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =NO;
             [RCPracticeHelper SharedHelper].isApplicationMode = YES;
+            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
             [self LogoutTheUser];
             break;
             
@@ -185,7 +188,7 @@
 
 -(void)LogoutTheUser
 {
-    if ([RCPracticeHelper SharedHelper].isLogout)
+    if ([RCPracticeHelper SharedHelper].isLogout || [RCPracticeHelper SharedHelper].isPinFailureAttempt)
     {
         [self hasStartedDownloading:@"Logging Out..."];
     }
@@ -211,7 +214,6 @@
 
 -(void)clearData
 {
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
@@ -301,8 +303,21 @@
 #pragma connectin Manager Delegate
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
-    NSString *pinTimeOut = [pResultDict objectForKey:@"pinTimeoutSeconds"];
-    [[UIApplication sharedApplication] performSelector:@selector(resetIdleTimer:) withObject:pinTimeOut];
+    if ([[pResultDict objectForKey:@"successfull"]integerValue])
+    {
+        self.messageHelper = [RCHelper SharedHelper];
+        self.messageHelper.messageCount = [pResultDict objectForKey:@"count"];
+        NSLog(@"%@",self.messageHelper.messageCount);
+    }
+    else
+    {
+        [RCPracticeHelper SharedHelper].isChangePractice =NO;
+        [RCPracticeHelper SharedHelper].isLogout =NO;
+        [RCPracticeHelper SharedHelper].isApplicationMode = NO;
+        [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+        [RCPracticeHelper SharedHelper].isLoginTimeOut = YES;
+        [self LogoutTheUser];
+    }
 }
 
 -(void)connectionManagerDidFailWithError:(NSError *)error
@@ -316,39 +331,56 @@
 #pragma mark - SessionManager delegate
 -(void)SessionManagerDidReceiveResponse:(NSDictionary*)pResultDict
 {
-    [statusHUD hide:YES afterDelay:2];
+    [statusHUD hide:YES afterDelay:1];
     if ([[pResultDict objectForKey:@"success"]boolValue])
     {
         if ([RCPracticeHelper SharedHelper].isChangePractice)
         {
             [self clearData];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
             [self performSegueWithIdentifier:@"MoveBackToSelectPractice" sender:self];
         }
         else if ([RCPracticeHelper SharedHelper].isLogout)
         {
-            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
-            //Checking whether viewcontroller exist
-            NSArray *arrayOfControllers = [self.navigationController viewControllers];
-            
-            //Checking whether viewcontroller exist
-            for (id controller in arrayOfControllers)
-            {
-                if ([controller isKindOfClass:[ProviderLoginViewController class]])
-                {
-                    [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1] animated:YES];
-                    return;
-                }
-            }
-           UIViewController *controller =  [self.storyboard instantiateViewControllerWithIdentifier:@"ProviderLoginViewController"];
-            [self.navigationController pushViewController:controller animated:NO];
-
+            [self clearData];
+            [self moveToLoginController];
         }
         else if ([RCPracticeHelper SharedHelper].isApplicationMode)
         {
             [self clearData];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
+        else if ([RCPracticeHelper SharedHelper].isPinFailureAttempt)
+        {
+            [RCHelper SharedHelper].pinCreated = NO;
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
+            [self moveToLoginController];
+        }
+        else if ([RCPracticeHelper SharedHelper].isLoginTimeOut)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"responseToken"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            [self moveToLoginController];
+        }
     }
+}
+
+
+
+-(void)moveToLoginController
+{
+    NSArray *arrayOfControllers = [self.navigationController viewControllers];
+    //Checking whether viewcontroller exist
+    for (id controller in arrayOfControllers)
+    {
+        if ([controller isKindOfClass:[ProviderLoginViewController class]])
+        {
+            [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1] animated:YES];
+            return;
+        }
+    }
+    UIViewController *controller =  [self.storyboard instantiateViewControllerWithIdentifier:@"ProviderLoginViewController"];
+    [self.navigationController pushViewController:controller animated:NO];
 }
 
 -(void)SessionManagerDidFailWithError:(NSError *)error

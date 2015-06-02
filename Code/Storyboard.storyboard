@@ -932,11 +932,12 @@
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="LoginToAboutUs" id="IhC-Ri-3qT"/>
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="LoginToTerms" id="cfG-rP-kXA"/>
                         <segue destination="4aC-Xq-ii5" kind="push" identifier="MoveToCreatePin" id="JBX-gV-qxt"/>
+                        <segue destination="Krn-2C-ois" kind="push" identifier="MoveToProvider" id="TAt-5L-lLW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c23-gT-Ldt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1107" y="1878"/>
+            <point key="canvasLocation" x="-1236" y="1839"/>
         </scene>
         <!--CreatePIN View Controller-->
         <scene sceneID="iKu-G8-Z1X">
@@ -1059,7 +1060,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oE9-IQ-3fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-369" y="1903"/>
+            <point key="canvasLocation" x="-705" y="1834"/>
         </scene>
         <!--Forgot Password View Controller-->
         <scene sceneID="OkF-Dj-eqf">
@@ -1183,12 +1184,12 @@
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="AboutUs" id="qt4-eK-TwA"/>
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="Terms" id="ie8-Ya-wT0"/>
                         <segue destination="5WQ-Sd-arl" kind="modal" identifier="MoveBackToSelectPractice" id="PHN-Ac-KIr"/>
-                        <segue destination="4aC-Xq-ii5" kind="push" identifier="PushToCreatePin" id="5sz-aD-uOy"/>
+                        <segue destination="uxm-h3-zj8" kind="push" identifier="PushToLoginFromHome" id="Syr-Nf-Tr2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmo-b5-l2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="1886"/>
+            <point key="canvasLocation" x="-144" y="1834"/>
         </scene>
         <!--Message List View Controller-->
         <scene sceneID="pgL-Y8-907">
@@ -1326,12 +1327,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0C-R1-WkK">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0C-R1-WkK">
                                 <rect key="frame" x="0.0" y="75" width="320" height="493"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W0C-R1-WkK" firstAttribute="leading" secondItem="R8Z-UK-mQ9" secondAttribute="leading" id="E62-fb-3b4"/>
+                            <constraint firstAttribute="trailing" secondItem="W0C-R1-WkK" secondAttribute="trailing" id="EuO-Cw-Qlr"/>
+                            <constraint firstItem="W0C-R1-WkK" firstAttribute="top" secondItem="poj-xG-CRS" secondAttribute="bottom" constant="55" id="McL-zw-6Sy"/>
+                            <constraint firstItem="W0C-R1-WkK" firstAttribute="bottom" secondItem="Tpo-AQ-uno" secondAttribute="top" id="Wfv-Nc-8j4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jzn-Kj-DUu"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -1342,7 +1349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8eH-Tu-ljY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290" y="3919"/>
+            <point key="canvasLocation" x="-718" y="2887"/>
         </scene>
     </scenes>
     <resources>
@@ -1367,11 +1374,12 @@
         <segue reference="eF5-Dc-4Os"/>
         <segue reference="ra9-QH-37U"/>
         <segue reference="cSc-5f-5Z6"/>
+        <segue reference="lj3-vq-Z0e"/>
         <segue reference="LV1-wv-wCh"/>
         <segue reference="qsH-Hu-HYl"/>
-        <segue reference="lj3-vq-Z0e"/>
-        <segue reference="PHN-Ac-KIr"/>
-        <segue reference="5sz-aD-uOy"/>
-        <segue reference="qt4-eK-TwA"/>
+        <segue reference="Syr-Nf-Tr2"/>
+        <segue reference="nyo-sS-3lt"/>
+        <segue reference="tLC-Bn-IEk"/>
+        <segue reference="vEe-pD-j9d"/>
     </inferredMetricsTieBreakers>
 </document>

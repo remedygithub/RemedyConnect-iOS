@@ -32,25 +32,6 @@ static RCSessionEngine *sharedEngine = nil;
     return self;
 }
 
-
-//-(void)getLoginInTimeOutDetails
-//{
-//    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
-//    NSString *practice = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPracticeId"];
-//    NSLog(@"%@",token);
-//    
-//    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Physician/GetPracticeTimeout?PracticeID=%@&apikey=%@&token=%@",practice,apiKey,tokenKey];
-//    NSLog(@"%@",lUrlString);
-//    NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-//    NSLog(@"URL:%@", lURL);
-//    
-//    NSMutableURLRequest *lRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
-//    [lRequest setHTTPMethod:@"GET"];
-//    [lRequest setValue:[NSString stringWithFormat:@"basic %@",token] forHTTPHeaderField:@"Authorization"];
-//    NSURLConnection *lConnection = [[NSURLConnection alloc] initWithRequest:lRequest delegate:self];
-//    [lConnection start];
-//}
-
 //Logout
 -(void)LogoutTheUser
 {

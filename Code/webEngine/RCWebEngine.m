@@ -115,6 +115,28 @@ static RCWebEngine *sharedEngine = nil;
     [lConnection start];
 }
 
+
+
+-(void)checkUserUnreadMessages
+{
+    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
+    NSString *practice = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPracticeId"];
+    NSString *physican = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhysicanId"];
+    NSLog(@"%@",physican);
+  
+    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/GetUnreadCalls?PhysicianID=%@&apikey=%@&token=%@",physican,apiKey,tokenKey];
+    
+    NSLog(@"%@",lUrlString);
+    NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    NSLog(@"URL:%@", lURL);
+    
+    NSMutableURLRequest *lRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
+    [lRequest setHTTPMethod:@"GET"];
+    [lRequest setValue:[NSString stringWithFormat:@"basic %@",token] forHTTPHeaderField:@"Authorization"];
+    NSURLConnection *lConnection = [[NSURLConnection alloc] initWithRequest:lRequest delegate:self];
+    [lConnection start];
+}
+
 #pragma mark NSURLConnectionDelegate Methods
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -147,10 +169,21 @@ static RCWebEngine *sharedEngine = nil;
     
     NSString* buffStr = [[NSString alloc]initWithBytes:[self.m_cReceivedData bytes] length:[self.m_cReceivedData length] encoding:NSUTF8StringEncoding];//NSNonLossyASCIIStringEncoding];//[[NSString alloc]initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
     
-    if (nil != buffStr) {
+    if (nil != buffStr)
+    {
         //        [m_cReceivedData appendString:buffStr];
         NSLog(@" Received data %@", buffStr);
-        
+        if ([buffStr isEqualToString:@""]) {
+            
+            if (self.delegate != nil) {
+                if ([self.delegate respondsToSelector:@selector(connectionManagerDidReceiveResponse:)])
+                {
+                    [self.delegate connectionManagerDidReceiveResponse:[NSDictionary dictionaryWithObjectsAndKeys:@"false",@"success", nil]];
+                }
+                return;
+            }
+            
+        }
         NSError *error;
         NSDictionary *lJsonData = [NSJSONSerialization JSONObjectWithData:self.m_cReceivedData options:kNilOptions error:&error];
         // sending back the response to class

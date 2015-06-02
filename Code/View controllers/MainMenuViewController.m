@@ -41,6 +41,9 @@ NSArray *menu;
     menu = [logic getDataToDisplayForMainMenu];
     [self setFrames];
     [self displayImages];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
@@ -221,12 +224,11 @@ NSArray *menu;
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
                     withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions", @"About", nil]
+                                     @"Choose Your Practice", @"Terms and Conditions", @"About",@"Change application mode",nil]
                            delegate:self];
 }
 
-- (void)
-popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
     switch (index) {
         case 0:
             [logic setUpdateDownloadStarterDelegate:self];
@@ -243,7 +245,13 @@ popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
         case 3:
             [self performSegueWithIdentifier:@"toAbout" sender:self];
             break;
-    }
+        case 4:
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            break;
+            
+        default:
+            break;
+     }
     [popoverView dismiss:TRUE];
 }
 

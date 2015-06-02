@@ -41,19 +41,15 @@
 
 -(void)checkForUserLastInteractedPage
 {
-    
     if ([self checkForfiles])
     {
         // checks if user is already moved into some other views
-        
         NSString *savedClassName = [[NSUserDefaults standardUserDefaults] objectForKey:KLastLaunchedController];
         if (savedClassName)
         {
             UIViewController *lastLauncedController = [self.storyboard   instantiateViewControllerWithIdentifier:savedClassName];
             [self.navigationController pushViewController:lastLauncedController animated:NO];
         }
-        
-
    }
 }
 

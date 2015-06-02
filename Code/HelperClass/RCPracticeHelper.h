@@ -25,6 +25,10 @@
 @property (nonatomic, readwrite) BOOL isChangePractice;
 @property (nonatomic, readwrite) BOOL isLogout;
 @property (nonatomic, readwrite) BOOL isApplicationMode;
+@property (nonatomic, readwrite) BOOL isPinFailureAttempt;
+@property (nonatomic, readwrite) BOOL isLoginTimeOut;
+
+
 
 
 

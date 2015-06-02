@@ -361,14 +361,10 @@
 {
     if (buttonIndex == 0)
     {
-//        [RCHelper SharedHelper].pinCreated =  NO;
          if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidResetPasscode:)])
            {
-               
                [[NSNotificationCenter defaultCenter] postNotificationName:kResetPinNotification
                                                                    object:self];
-               //[_delegate PAPasscodeViewControllerDidResetPasscode:self];
-               
            }
     }
 }

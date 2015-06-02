@@ -56,7 +56,6 @@
 {
     [super viewWillAppear:animated];
     [statusHUD hide:YES afterDelay:2];
-
     [self.navigationController setNavigationBarHidden:YES];
     self.userNameTextField.text = @"";
     self.passwordTextField.text = @"";
@@ -213,7 +212,6 @@
                     withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
                                      @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Change application mode",nil]
                            delegate:self];
-    [logic setUpdateDownloadStarterDelegate:self];
 }
 
 
@@ -464,42 +462,30 @@
         helper.tokenID = [pResultDict objectForKey:@"token"];
 
         //Saving Token Locally
-         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:helper.practiceID forKey:@"userPracticeId"];
-        [defaults setObject:helper.PhysicianID forKey:@"userPhysicanId"];
-
+          NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+         [defaults setObject:helper.practiceID forKey:@"userPracticeId"];
+         [defaults setObject:helper.PhysicianID forKey:@"userPhysicanId"];
          [defaults setObject:helper.tokenID forKey:@"responseToken"];
          [defaults synchronize];
-        
-        NSDate *today = [NSDate date];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-        dateFormatter.dateFormat = @"HH:mm:ss";
-        
-        NSString *currentTime = [dateFormatter stringFromDate:today];
-        NSLog(@"%@",currentTime);
-        NSLog(@"current time:%@",currentTime);
-        
-         NSUserDefaults *timeDefaults = [NSUserDefaults standardUserDefaults];
-        [timeDefaults setObject:currentTime forKey:@"startTime"];
-        [timeDefaults synchronize];
-        
+     
          [RCHelper SharedHelper].isLogin = YES;
-         [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
 
-          // if ([RCHelper SharedHelper].pinCreated)
-//            {
-//                [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
-//            }
+           if ([RCHelper SharedHelper].pinCreated)
+            {
+                [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
+            }
+           else
+            {
+                [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
+            }
+        
+        
 //            else if ([RCHelper SharedHelper].fromLoginTimeout)
 //            {
 //                [self verifyingThePincodeTocheck];
   
 //            }
-//            else
-//            {
-//                [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
-//            }
+//
     }
     else
     {

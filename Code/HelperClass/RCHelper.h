@@ -26,6 +26,7 @@
 
 //Passcode Bool
 @property (nonatomic, readwrite) BOOL isPassCodeView;
+@property (nonatomic, readwrite) BOOL isCreateTimeOutRequest;
 
 +(RCHelper *)SharedHelper;
 
@@ -46,6 +47,8 @@
 //Practice Feeds
 @property (nonatomic, strong) NSString *practiceFeed;
 
+//Message Count
+@property (nonatomic, strong) NSString *messageCount;
 
 //User Registration for Message Notification
 @property (nonatomic, strong) NSString *messageToken;
