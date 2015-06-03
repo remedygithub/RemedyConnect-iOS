@@ -1097,6 +1097,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7I-a8-Jqv">
                                 <rect key="frame" x="20" y="387" width="280" height="61"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="Qv6-XZ-vPl"/>
                                     <constraint firstAttribute="height" constant="61" id="eYB-eh-jWh"/>
@@ -1133,12 +1134,26 @@
                                     <action selector="menuBtnTapped:" destination="Krn-2C-ois" eventType="touchUpInside" id="A6M-Oh-AIK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3u-AI-hb1">
+                                <rect key="frame" x="273" y="373" width="35" height="35"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="CWj-D5-1Mi"/>
+                                    <constraint firstAttribute="width" constant="35" id="PDM-0j-8Aj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="E07-kr-2z5" secondAttribute="trailing" constant="4" id="0Ue-IB-cu9"/>
+                            <constraint firstItem="x7I-a8-Jqv" firstAttribute="top" secondItem="d3u-AI-hb1" secondAttribute="bottom" constant="-21" id="2Da-az-E5d"/>
                             <constraint firstItem="97e-ad-8Vk" firstAttribute="centerX" secondItem="U4a-Gw-qoS" secondAttribute="centerX" id="3jR-5I-L3l"/>
                             <constraint firstItem="x7I-a8-Jqv" firstAttribute="top" secondItem="U4a-Gw-qoS" secondAttribute="bottom" constant="-181" id="5z4-h0-Xwy"/>
+                            <constraint firstItem="E07-kr-2z5" firstAttribute="top" secondItem="d3u-AI-hb1" secondAttribute="bottom" constant="61" id="73v-f6-qhX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d3u-AI-hb1" secondAttribute="trailing" constant="-4" id="AVF-ZD-z5o"/>
                             <constraint firstItem="tfS-Ob-87C" firstAttribute="top" secondItem="io5-hV-94s" secondAttribute="bottom" id="AmX-TM-vYC"/>
                             <constraint firstAttribute="trailing" secondItem="U4a-Gw-qoS" secondAttribute="trailing" id="Ar2-uu-cIH"/>
                             <constraint firstItem="x7I-a8-Jqv" firstAttribute="centerX" secondItem="U4a-Gw-qoS" secondAttribute="centerX" id="Dby-hX-T9W"/>
@@ -1163,6 +1178,7 @@
                         <outlet property="logoImage" destination="97e-ad-8Vk" id="VXr-gw-i4V"/>
                         <outlet property="menuBtn" destination="tfS-Ob-87C" id="iY2-xd-u2Q"/>
                         <outlet property="messageBtn" destination="x7I-a8-Jqv" id="ks2-7g-BwL"/>
+                        <outlet property="messageCountLabel" destination="d3u-AI-hb1" id="EqS-fU-R2j"/>
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="AboutUs" id="qt4-eK-TwA"/>
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="Terms" id="ie8-Ya-wT0"/>
                         <segue destination="5WQ-Sd-arl" kind="modal" identifier="MoveBackToSelectPractice" id="PHN-Ac-KIr"/>
@@ -1353,15 +1369,15 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="PHN-Ac-KIr"/>
+        <segue reference="nyo-sS-3lt"/>
+        <segue reference="Syr-Nf-Tr2"/>
+        <segue reference="qt4-eK-TwA"/>
         <segue reference="eF5-Dc-4Os"/>
-        <segue reference="Pb6-Vq-zgU"/>
         <segue reference="ra9-QH-37U"/>
         <segue reference="cSc-5f-5Z6"/>
-        <segue reference="qsH-Hu-HYl"/>
-        <segue reference="VT2-W5-8X0"/>
-        <segue reference="lj3-vq-Z0e"/>
         <segue reference="LV1-wv-wCh"/>
-        <segue reference="tLC-Bn-IEk"/>
-        <segue reference="nyo-sS-3lt"/>
+        <segue reference="lj3-vq-Z0e"/>
+        <segue reference="qsH-Hu-HYl"/>
     </inferredMetricsTieBreakers>
 </document>

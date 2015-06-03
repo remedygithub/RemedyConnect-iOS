@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @property (weak, nonatomic) IBOutlet UIButton *messageBtn;
 @property (weak, nonatomic) IBOutlet UIButton *adminBtn;
+@property (strong, nonatomic) IBOutlet UILabel *messageCountLabel;
 @property (strong, nonatomic) UIImageView *village;
 @property (strong, nonatomic) UIWindow *window;
 

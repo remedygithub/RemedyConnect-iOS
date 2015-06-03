@@ -40,6 +40,7 @@
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout) name:kApplicationDidTimeoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logOut) name:kLogoutNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(PAPasscodeViewControllerDidCancel:)
@@ -78,11 +79,13 @@
 {
     NSLog (@"time exceeded!!");
     //PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
-    NSString *pinString = [[NSUserDefaults standardUserDefaults] valueForKey:@"screatKey"];
+//    NSString *pinString = [[NSUserDefaults standardUserDefaults] valueForKey:@"screatKey"];
+    
+      NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
     
     UIViewController *vc = [self visibleViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 
-    if (!pinString || ![vc isKindOfClass:[ProviderHomeViewController class]] )
+    if ((![userDict valueForKey:kSecretPin] || [[userDict valueForKey:kSecretPin] isEqualToString:@""]) || ![vc isKindOfClass:[ProviderHomeViewController class]] )
     {
         return;
     }
@@ -266,6 +269,13 @@
     }
 }
 
+
+-(void)logOut
+{
+    [passcode.view removeFromSuperview];
+    [passcode removeFromParentViewController];
+    passcode = nil;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

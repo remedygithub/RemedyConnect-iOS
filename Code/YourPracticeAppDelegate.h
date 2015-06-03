@@ -36,5 +36,7 @@
 -(void)applicationDidTimeout;
 -(void)startActivity;
 -(void)stopActivity;
+-(void)logOut;
+
 
 @end

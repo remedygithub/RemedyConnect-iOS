@@ -246,6 +246,7 @@ NSArray *menu;
             [self performSegueWithIdentifier:@"toAbout" sender:self];
             break;
         case 4:
+            //[RCHelper SharedHelper].pinCreated = YES;
             [self.navigationController popToRootViewControllerAnimated:YES];
             break;
             
@@ -257,7 +258,7 @@ NSArray *menu;
 
 -(void)clearData
 {
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 

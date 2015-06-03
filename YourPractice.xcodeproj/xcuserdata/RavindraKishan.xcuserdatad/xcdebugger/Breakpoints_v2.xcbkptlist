@@ -9,45 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Code/YourPracticeAppDelegate.m"
-            timestampString = "454937075.11362"
+            filePath = "Code/View controllers/ProviderSide/ProviderHomeViewController.m"
+            timestampString = "455030629.396967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-applicationDidTimeout"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Code/View controllers/ProviderSide/CreatePINViewController.m"
-            timestampString = "454937661.140209"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
-            landmarkName = "-connectionManagerDidReceiveResponse:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Code/View controllers/Table cell prototypes/StaffOrPatientViewController.m"
-            timestampString = "454938701.395662"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "-patientBtnTapped:"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
+            landmarkName = "-moveToLoginController"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Code/View controllers/ProviderSide/ProviderHomeViewController.m"
-            timestampString = "454939408.776549"
+            timestampString = "455030646.326243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
+            landmarkName = "-moveToLoginController"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

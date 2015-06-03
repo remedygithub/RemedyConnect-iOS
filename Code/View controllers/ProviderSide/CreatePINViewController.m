@@ -93,6 +93,8 @@
             [RCPracticeHelper SharedHelper].isChangePractice =YES;
             [RCPracticeHelper SharedHelper].isLogout =NO;
             [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
             [self LogoutTheUser];
 
             break;
@@ -109,6 +111,8 @@
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =YES;
             [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
             [self LogoutTheUser];
             break;
             
@@ -116,6 +120,8 @@
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =NO;
             [RCPracticeHelper SharedHelper].isApplicationMode = YES;
+            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
             [self LogoutTheUser];
             break;
             
@@ -204,9 +210,14 @@
      {
          NSLog(@"%@",controller.passcode);
          [RCHelper SharedHelper].pinCreated = YES;
-          NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-         [defaults setObject:controller.passcode forKey:@"screatKey"];
-         [defaults synchronize];
+//          NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//         [defaults setObject:controller.passcode forKey:@"screatKey"];
+//         [defaults synchronize];
+         
+          NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+         [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:controller.passcode andLoggedIN:YES];
+         
+         
          [self performSegueWithIdentifier:@"MoveToProviderFromPin" sender:self];
      }];
 }

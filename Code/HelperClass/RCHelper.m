@@ -7,6 +7,7 @@
 //
 
 #import "RCHelper.h"
+#import "Macros.h"
 static RCHelper *sharedHelper = nil;
 @implementation RCHelper
 
@@ -65,6 +66,90 @@ static RCHelper *sharedHelper = nil;
     NSString *path = [[NSBundle mainBundle] pathForResource: @"terms_and_conditions" ofType: @"htm"];
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
     return content;
+}
+
+
+
+
+#pragma user setting and getting
+-(NSMutableDictionary *)getUser:(NSString *)userName
+{
+    NSMutableArray *userArray = [[NSUserDefaults standardUserDefaults] valueForKey:kUserDetails];
+    if (userArray) {
+        for (NSMutableDictionary *userDict in userArray) {
+            if ([[userDict valueForKey:kUserName] isEqualToString:userName]) {
+                return userDict;
+            }
+        }
+        return nil;
+    }
+    else
+        return nil;
+}
+
+-(NSMutableDictionary *)getLoggedInUser
+{
+    NSMutableArray *userArray = [[NSUserDefaults standardUserDefaults] valueForKey:kUserDetails];
+    if (userArray) {
+        for (NSMutableDictionary *userDict in userArray) {
+            if ([[userDict valueForKey:kLoggedIn] boolValue]) {
+                return userDict;
+            }
+        }
+        return nil;
+    }
+    else
+        return nil;
+}
+
+
+
+-(NSMutableDictionary *) setUserWithUserName:(NSString *)userName andPin:(NSString *)pin andLoggedIN:(BOOL)isLoggedIn
+{
+    
+    if (!pin) {
+        pin = @"";
+    }
+    NSMutableArray *userArray = [[NSUserDefaults standardUserDefaults] valueForKey:kUserDetails];
+    // if array exist
+    if (userArray) {
+        NSMutableArray *userArrayMutable = [[NSMutableArray alloc] initWithArray:(NSArray *)userArray];
+        for (int i = 0; i<userArrayMutable.count; i++) {
+            NSMutableDictionary *dict = [[userArrayMutable objectAtIndex:i] mutableCopy];
+            // if userName already exist, we are replacing the user in the array
+            if ([[dict valueForKey:kUserName] isEqualToString:userName]) {
+                NSMutableDictionary *userDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:userName,kUserName, pin,kSecretPin, [NSNumber numberWithBool:isLoggedIn], kLoggedIn, nil];
+                [userArrayMutable replaceObjectAtIndex:i withObject:userDict];
+                
+                [[NSUserDefaults standardUserDefaults] setObject:userArrayMutable forKey:kUserDetails];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                return userDict;
+            }
+            
+        }
+        //if username doesnt exist we are creating a new user and adding to array
+        NSMutableDictionary *userDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:userName,kUserName, pin,kSecretPin, [NSNumber numberWithBool:isLoggedIn], kLoggedIn, nil];
+        [userArrayMutable addObject:userDict];
+        [[NSUserDefaults standardUserDefaults] setObject:userArrayMutable forKey:kUserDetails];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return userDict;
+        
+    }
+    else //array doesent exist ; we are creating an array and adding the user into it and saving it
+    {
+    
+        NSMutableArray *newUserArray = [[NSMutableArray alloc] init];
+        NSMutableDictionary *userDict = [[NSMutableDictionary alloc] init];
+        [userDict setObject:userName forKey:kUserName];
+        [userDict setObject:pin forKey:kSecretPin];
+        [userDict setObject:[NSNumber numberWithBool:isLoggedIn] forKey:kLoggedIn];
+
+        
+        [newUserArray addObject:userDict];
+        [[NSUserDefaults standardUserDefaults] setObject:newUserArray forKey:kUserDetails];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return userDict;
+    }
 }
 
 @end

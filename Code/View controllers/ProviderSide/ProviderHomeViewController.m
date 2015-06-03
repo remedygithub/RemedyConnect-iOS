@@ -21,17 +21,20 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     practiceName = [[NSUserDefaults standardUserDefaults]objectForKey:@"nameOfPratice"];
-    self.village = [[UIImageView alloc]init];
-    [self.view addSubview:self.village];
+
     logic = [Logic sharedLogic];
     [self displayImages];
-    [self checkUserUnreadMessage];
-    
+    [self roundedLabelUI];
+
     NSArray *arrayOfControllers = [self.navigationController viewControllers];
-    if (arrayOfControllers.count == 2) {
+    if (arrayOfControllers.count == 2)
+    {
         [self appEnteredForeground];
     }
-    
+    else
+    {
+        [self checkUserUnreadMessageCount];
+    }
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
@@ -53,8 +56,14 @@
     [self LogoutTheUser];
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
--(void)checkUserUnreadMessage
+
+-(void)checkUserUnreadMessageCount
 {
     [RCWebEngine SharedWebEngine].delegate = self;
     [RCWebEngine SharedWebEngine].checkUserUnreadMessages;
@@ -76,7 +85,15 @@
 
 -(void)appEnteredForeground
 {
+    [self roundedLabelUI];
+    [self checkUserUnreadMessageCount];
     [[UIApplication sharedApplication].delegate performSelector:@selector(applicationDidTimeout)];
+}
+
+-(void)roundedLabelUI
+{
+    self.messageCountLabel.layer.cornerRadius = 19.0f;
+    self.messageCountLabel.layer.masksToBounds = YES;
 }
 
 -(void)displayImages
@@ -190,9 +207,14 @@
 }
 
 
+-(void)assignMessageCountValue:(NSString *)countValue
+{
+    self.messageCountLabel.text = countValue;
+}
 
 -(void)LogoutTheUser
 {
+    
     if ([RCPracticeHelper SharedHelper].isLogout || [RCPracticeHelper SharedHelper].isPinFailureAttempt)
     {
         [self hasStartedDownloading:@"Logging Out..."];
@@ -312,7 +334,10 @@
     {
         self.messageHelper = [RCHelper SharedHelper];
         self.messageHelper.messageCount = [pResultDict objectForKey:@"count"];
-        NSLog(@"%@",self.messageHelper.messageCount);
+        NSString * messageCount = [NSString stringWithFormat:@"%@",[pResultDict objectForKey:@"count"]];
+        NSLog(@"Damm %@",messageCount);
+        
+        [self assignMessageCountValue:messageCount];
     }
     else
     {
@@ -321,7 +346,10 @@
         [RCPracticeHelper SharedHelper].isApplicationMode = NO;
         [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
         [RCPracticeHelper SharedHelper].isLoginTimeOut = YES;
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Login Expired" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
         [self LogoutTheUser];
+        
     }
 }
 
@@ -342,34 +370,47 @@
         if ([RCPracticeHelper SharedHelper].isChangePractice)
         {
             [self clearData];
-            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
+            [RCHelper SharedHelper].pinCreated = NO;
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
             [self performSegueWithIdentifier:@"MoveBackToSelectPractice" sender:self];
         }
         else if ([RCPracticeHelper SharedHelper].isLogout)
         {
             [self clearData];
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:NO];
             [self moveToLoginController];
         }
         else if ([RCPracticeHelper SharedHelper].isApplicationMode)
         {
             [self clearData];
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:NO];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
         else if ([RCPracticeHelper SharedHelper].isPinFailureAttempt)
         {
             [RCHelper SharedHelper].pinCreated = NO;
-            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"screatKey"];
+            
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
+            
             [self moveToLoginController];
         }
         else if ([RCPracticeHelper SharedHelper].isLoginTimeOut)
         {
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:NO];
+            
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"responseToken"];
             [[NSUserDefaults standardUserDefaults]synchronize];
             [self moveToLoginController];
+           
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLogoutNotification object:nil];
         }
     }
 }
-
 
 
 -(void)moveToLoginController
@@ -380,7 +421,7 @@
     {
         if ([controller isKindOfClass:[ProviderLoginViewController class]])
         {
-            [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1] animated:YES];
+            [self.navigationController popToViewController:controller animated:YES];
             return;
         }
     }
@@ -395,6 +436,8 @@
     UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
 }
+
+
 
 
 @end

@@ -62,4 +62,8 @@
 -(NSString *)getSearchURLByName:(NSString *)practiceName;
 -(NSString *)getAboutHTML;
 -(NSString *)getTermsHTML;
+
+-(NSMutableDictionary *) setUserWithUserName:(NSString *)userName andPin:(NSString *)pin andLoggedIN:(BOOL)isLoggedIn;
+-(NSMutableDictionary *)getLoggedInUser;
+-(NSMutableDictionary *)getUser:(NSString *)userName;
 @end

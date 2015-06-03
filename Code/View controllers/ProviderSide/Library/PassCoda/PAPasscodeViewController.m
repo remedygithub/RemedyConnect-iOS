@@ -302,8 +302,7 @@
 
 - (void)handleFailedAttempt
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *enteredPin = [defaults objectForKey:@"screatKey"];
+    NSString *enteredPin = [[[RCHelper SharedHelper] getLoggedInUser] valueForKey:kSecretPin];
     NSLog(@"%@",enteredPin);
     
     if ([enteredPin isEqualToString:passcodeTextField.text])
@@ -332,14 +331,15 @@
     _failedAttempts = 0;
 }
 
-- (void)showFailedAttempts {
+- (void)showFailedAttempts
+{
     messageLabel.hidden = YES;
     failedImageView.hidden = NO;
     failedAttemptsLabel.hidden = NO;
     if (_failedAttempts >= 3)
     {
         //failedAttemptsLabel.text = NSLocalizedString(@"1 Failed Passcode Attempt", nil);
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!" message:@"Forgot your PIN?" delegate:self cancelButtonTitle:@"Reset your PIN" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Max Log In Attempts" delegate:self cancelButtonTitle:@"Please Re-Login" otherButtonTitles:nil];
         [alert show];
     }
     else
