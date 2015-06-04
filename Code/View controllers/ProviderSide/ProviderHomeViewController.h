@@ -21,7 +21,7 @@
 #import "SessionTime.h"
 #import "ProviderLoginViewController.h"
 
-@interface ProviderHomeViewController : UIViewController<PopoverViewDelegate,DownloaderDelegate,NetworkDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,SessionEngineDelegate,WebEngineDelegate>
+@interface ProviderHomeViewController : UIViewController<PopoverViewDelegate,NetworkDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,SessionEngineDelegate,WebEngineDelegate>
 {
     MBProgressHUD *statusHUD;
     Logic *logic;

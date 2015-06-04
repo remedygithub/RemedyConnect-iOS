@@ -484,10 +484,10 @@
 				092EC55F1AFE757D003A3608 /* CreatePINViewController.m */,
 				092EC5611AFE799B003A3608 /* ProviderHomeViewController.h */,
 				092EC5621AFE799B003A3608 /* ProviderHomeViewController.m */,
-				092EC5641AFE7AC3003A3608 /* MessageDetailsViewController.h */,
-				092EC5651AFE7AC3003A3608 /* MessageDetailsViewController.m */,
 				092EC5661AFE7AC3003A3608 /* MessageListViewController.h */,
 				092EC5671AFE7AC3003A3608 /* MessageListViewController.m */,
+				092EC5641AFE7AC3003A3608 /* MessageDetailsViewController.h */,
+				092EC5651AFE7AC3003A3608 /* MessageDetailsViewController.m */,
 				092EC5701AFE7C59003A3608 /* AboutUsViewController.h */,
 				092EC5711AFE7C59003A3608 /* AboutUsViewController.m */,
 			);

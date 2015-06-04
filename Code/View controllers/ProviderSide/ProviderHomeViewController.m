@@ -96,6 +96,19 @@
     self.messageCountLabel.layer.masksToBounds = YES;
 }
 
+
+- (IBAction)messageBtnTapped:(id)sender
+{
+    [self performSegueWithIdentifier:@"MoveToViewMessageList" sender:self];
+}
+
+
+- (IBAction)adminBtnTapped:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://webteleservicestest.remedyconnect.com/Default.aspx?ReturnUrl=%2fPractice%2fInformation%2fMainOffice.aspx"]];
+}
+
+
 -(void)displayImages
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);

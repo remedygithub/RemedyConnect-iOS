@@ -17,11 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    logic = [Logic sharedLogic];
 
     self.dummyArray = [[NSMutableArray alloc]initWithObjects:@"John Calvin",@"Srinivasan",@"Marie",@"Mark Steve",nil];
     self.dummyMsgArray = [[NSMutableArray alloc]initWithObjects:@"Need Appointment for Uncle",@"Medicare Inquiry",@"Need Diet Information for 12 year Boy",@"Bill payment Issue", nil];
-    NSString * pratice = [[NSUserDefaults standardUserDefaults] objectForKey:@"messageLabel"];
-    self.practiceNameLabel.text = pratice;
     [self.navigationController setNavigationBarHidden:YES];
 }
 
@@ -30,6 +29,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
 
 
 - (IBAction)backBtnTapped:(id)sender
@@ -40,8 +44,79 @@
 
 - (IBAction)menuBtnTapped:(id)sender
 {
-    
+    CGPoint point = CGPointMake(self.menuBtn.frame.origin.x + self.menuBtn.frame.size.width / 2,
+                                self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
+    [PopoverView showPopoverAtPoint:point
+                             inView:self.view
+                    withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
+                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",@"Change application mode",nil]
+                           delegate:self];
 }
+
+
+
+
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
+{
+    NSString * praticeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameOfPratice"];
+    NSLog(@"%@",praticeName);
+    //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
+    switch (index)
+    {
+        case 0:
+            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
+            {
+                [logic setUpdateDownloadStarterDelegate:self];
+                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
+            }
+            break;
+            
+//        case 1:
+//            [RCPracticeHelper SharedHelper].isChangePractice =YES;
+//            [RCPracticeHelper SharedHelper].isLogout =NO;
+//            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+//            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+//            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+//            
+//            [self LogoutTheUser];
+//            break;
+//            
+        case 2:
+            [self performSegueWithIdentifier:@"FromMessageListToTerms" sender:self];
+            break;
+            
+        case 3:
+            [self performSegueWithIdentifier:@"FromMessageListToAbout" sender:self];
+            break;
+//            
+//        case 4:
+//            [RCPracticeHelper SharedHelper].isChangePractice =NO;
+//            [RCPracticeHelper SharedHelper].isLogout =YES;
+//            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+//            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+//            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+//            [self LogoutTheUser];
+//            break;
+//            
+//        case 5:
+//            [RCPracticeHelper SharedHelper].isChangePractice =NO;
+//            [RCPracticeHelper SharedHelper].isLogout =NO;
+//            [RCPracticeHelper SharedHelper].isApplicationMode = YES;
+//            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+//            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+//            [self LogoutTheUser];
+//            break;
+            
+        default:
+            break;
+            
+    }
+    [popoverView dismiss:TRUE];
+}
+
+
+
+
 
 #pragma UITableView Delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -68,10 +143,10 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self getNameDetails:self.dummyArray getMessageDetails:self.dummyMsgArray dataIndex:indexPath.row];
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self getNameDetails:self.dummyArray getMessageDetails:self.dummyMsgArray dataIndex:indexPath.row];
+//}
 
 
 -(void)getNameDetails:(NSMutableArray *)detail  getMessageDetails:(NSMutableArray *)messageDetail  dataIndex:(NSInteger)index
@@ -94,24 +169,72 @@
         NSLog(@"%@",detail.self.str1);
         detail.self.str2 = help.string2;
     }
+    if ([segue.identifier isEqualToString:@"FromMessageListToAbout"])
+    {
+        AboutUsViewController *aboutController = [segue destinationViewController];
+        aboutController.self.Text = @"About";
+    }
+    if ([segue.identifier isEqualToString:@"FromMessageListToTerms"])
+    {
+        AboutUsViewController *termsController = [segue destinationViewController];
+        termsController.self.Text = @"Terms and Conditions";
+    }
 }
 
-#pragma mark Orientation handling
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+
+#pragma mark - HUD handling
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    [statusHUD removeFromSuperview];
+    statusHUD = nil;
+}
+
+#pragma mark - DownloaderUIDelegate
+- (void)hasStartedDownloading
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    [statusHUD setDelegate:self];
+    [statusHUD setDimBackground:TRUE];
+    [statusHUD setLabelText:@"Starting download..."];
 }
 
--(BOOL)shouldAutorotate
+- (void)switchToIndeterminate
 {
-    return YES;
+    [statusHUD setMode:MBProgressHUDModeIndeterminate];
 }
 
--(NSUInteger)supportedInterfaceOrientations
+- (void)didReceiveResponseForAFileSwitchToDeterminate:(DownloadStatus *)status
 {
-    return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
+    [statusHUD setLabelText:@"Downloading..."];
 }
 
+- (void)updateProgress:(DownloadStatus *)status
+{
+    if ([status expectedLength] > 0)
+    {
+        statusHUD.progress = [status currentLength] / (float)[status expectedLength];
+    }
+}
+
+- (void)didFinish {
+    [statusHUD setMode:MBProgressHUDModeText];
+    [statusHUD setLabelText:@"Finished!"];
+    [statusHUD hide:YES afterDelay:2];
+    // We have to reload the data:
+    [logic resetAfterUpdate];
+    [self viewDidLoad];
+}
+
+- (void)hasFailed {
+    [statusHUD hide:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to download files"
+                                                    message:@"Please check your internet connection and try again."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    [logic resetAfterUpdate];
+}
 
 @end
