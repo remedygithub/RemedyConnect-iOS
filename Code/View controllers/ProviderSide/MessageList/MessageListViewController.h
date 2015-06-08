@@ -14,6 +14,7 @@
 #import "MBProgressHUD.h"
 #import "NetworkViewController.h"
 #import "AboutUsViewController.h"
+#import "MessageListCell.h"
 
 @interface MessageListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,PopoverViewDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,NetworkDelegate>
 {

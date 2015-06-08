@@ -453,7 +453,7 @@
 #pragma mark - Delegate methods of RCWebEngine
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
-    [statusHUD hide:YES afterDelay:2];
+   // [statusHUD hide:YES afterDelay:2];
     if ([pResultDict objectForKey:@"token"] != [NSNull null] )
     {
         helper = [[RCHelper alloc]init];
@@ -470,33 +470,36 @@
      
          [RCHelper SharedHelper].isLogin = YES;
         
+        [RCPinEngine SharedWebEngine].delegate = self;
+        [RCPinEngine SharedWebEngine].checkPinTimeOutSession;
+        
        // if user already exist, then we need to check if he has a pin generated. If pin is there we will push it. and before that we will set the user as logged in.
         
-        NSMutableDictionary *userDict = [[RCHelper SharedHelper] getUser:self.userNameTextField.text];
-        if (userDict) {
-            // user exist
-            if ([userDict valueForKey:kSecretPin] && ![[userDict valueForKey:kSecretPin] isEqualToString:@""]) {
-                // setting user as loggedIn
-                [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:YES];
-                 [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
-                return;
-                
-            }
-            else{ // user doesnt have secret pin; still set it as logged in, and pushing to create pin
-                
-                [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
-                [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
-                return;
-            }
-            
-        }
-        else //user doesentExist; set user and move
-        {
-            [[RCHelper SharedHelper] setUserWithUserName:self.userNameTextField.text andPin:nil andLoggedIN:YES];
-            [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
-            return;
-
-        }
+//        NSMutableDictionary *userDict = [[RCHelper SharedHelper] getUser:self.userNameTextField.text];
+//        if (userDict) {
+//            // user exist
+//            if ([userDict valueForKey:kSecretPin] && ![[userDict valueForKey:kSecretPin] isEqualToString:@""]) {
+//                // setting user as loggedIn
+//                [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:YES];
+//                 [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
+//                return;
+//                
+//            }
+//            else{ // user doesnt have secret pin; still set it as logged in, and pushing to create pin
+//                
+//                [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
+//                [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
+//                return;
+//            }
+//            
+//        }
+//        else //user doesentExist; set user and move
+//        {
+//            [[RCHelper SharedHelper] setUserWithUserName:self.userNameTextField.text andPin:nil andLoggedIN:YES];
+//            [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
+//            return;
+//
+//        }
 
     }
     else
@@ -541,6 +544,50 @@
 {
     [statusHUD hide:YES afterDelay:2];
 
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
+}
+
+
+
+
+-(void)PinManagerDidReceiveResponse:(NSDictionary *)pResultDict
+{
+    [statusHUD hide:YES afterDelay:2];
+    NSString *pinTimeOut = [pResultDict objectForKey:@"pinTimeoutSeconds"];
+    [[UIApplication sharedApplication] performSelector:@selector(resetIdleTimer:) withObject:pinTimeOut];
+    // if user already exist, then we need to check if he has a pin generated. If pin is there we will push it. and before that we will set the user as logged in.
+    
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getUser:self.userNameTextField.text];
+            if (userDict) {
+                // user exist
+                if ([userDict valueForKey:kSecretPin] && ![[userDict valueForKey:kSecretPin] isEqualToString:@""]) {
+                    // setting user as loggedIn
+                    [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:YES];
+                     [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
+                    return;
+    
+                }
+                else{ // user doesnt have secret pin; still set it as logged in, and pushing to create pin
+    
+                    [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
+                    [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
+                    return;
+                }
+    
+            }
+            else //user doesentExist; set user and move
+            {
+                [[RCHelper SharedHelper] setUserWithUserName:self.userNameTextField.text andPin:nil andLoggedIN:YES];
+                [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
+                return;
+    
+            }
+}
+
+
+-(void)PinManagerDidFailWithError:(NSError *)error
+{
     UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
 }

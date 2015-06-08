@@ -57,6 +57,18 @@
 		092EC59A1B00AC5B003A3608 /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092EC5981B00AC5B003A3608 /* PushIOManager.framework */; };
 		099282491B0F091400D37DBD /* RCSessionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 099282481B0F091400D37DBD /* RCSessionEngine.m */; };
 		0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */; };
+		0994FA161B25604A00938F19 /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0994FA151B25604A00938F19 /* MessageListCell.m */; };
+		0994FA251B25658C00938F19 /* a2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1B1B25658C00938F19 /* a2d.png */; };
+		0994FA261B25658C00938F19 /* adm.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1C1B25658C00938F19 /* adm.png */; };
+		0994FA271B25658C00938F19 /* apt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1D1B25658C00938F19 /* apt.png */; };
+		0994FA281B25658C00938F19 /* d2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1E1B25658C00938F19 /* d2d.png */; };
+		0994FA291B25658C00938F19 /* n2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1F1B25658C00938F19 /* n2d.png */; };
+		0994FA2A1B25658C00938F19 /* p2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA201B25658C00938F19 /* p2d.png */; };
+		0994FA2B1B25658C00938F19 /* rnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA211B25658C00938F19 /* rnd.png */; };
+		0994FA2C1B25658C00938F19 /* rxd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA221B25658C00938F19 /* rxd.png */; };
+		0994FA2D1B25658C00938F19 /* triage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA231B25658C00938F19 /* triage.png */; };
+		0994FA2E1B25658C00938F19 /* urgent.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA241B25658C00938F19 /* urgent.png */; };
+		0994FA321B2580A400938F19 /* RCPinEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0994FA311B2580A400938F19 /* RCPinEngine.m */; };
 		09A7E2651B1433C4009F6256 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFF2AC81717FD110000B80B /* Security.framework */; };
 		09A7E26D1B144487009F6256 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A7E2691B144487009F6256 /* password.png */; };
 		09A7E26E1B144487009F6256 /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A7E26A1B144487009F6256 /* password@2x.png */; };
@@ -272,6 +284,20 @@
 		099282471B0F091400D37DBD /* RCSessionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCSessionEngine.h; path = webEngine/RCSessionEngine.h; sourceTree = "<group>"; };
 		099282481B0F091400D37DBD /* RCSessionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCSessionEngine.m; path = webEngine/RCSessionEngine.m; sourceTree = "<group>"; };
 		0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonLengthy.png; path = "New Login Screen UI/buttonLengthy.png"; sourceTree = "<group>"; };
+		0994FA141B25604A00938F19 /* MessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageListCell.h; path = ProviderSide/TableCell/MessageListCell.h; sourceTree = "<group>"; };
+		0994FA151B25604A00938F19 /* MessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageListCell.m; path = ProviderSide/TableCell/MessageListCell.m; sourceTree = "<group>"; };
+		0994FA1B1B25658C00938F19 /* a2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = a2d.png; path = icons/a2d.png; sourceTree = "<group>"; };
+		0994FA1C1B25658C00938F19 /* adm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = adm.png; path = icons/adm.png; sourceTree = "<group>"; };
+		0994FA1D1B25658C00938F19 /* apt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = apt.png; path = icons/apt.png; sourceTree = "<group>"; };
+		0994FA1E1B25658C00938F19 /* d2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = d2d.png; path = icons/d2d.png; sourceTree = "<group>"; };
+		0994FA1F1B25658C00938F19 /* n2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = n2d.png; path = icons/n2d.png; sourceTree = "<group>"; };
+		0994FA201B25658C00938F19 /* p2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = p2d.png; path = icons/p2d.png; sourceTree = "<group>"; };
+		0994FA211B25658C00938F19 /* rnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rnd.png; path = icons/rnd.png; sourceTree = "<group>"; };
+		0994FA221B25658C00938F19 /* rxd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rxd.png; path = icons/rxd.png; sourceTree = "<group>"; };
+		0994FA231B25658C00938F19 /* triage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = triage.png; path = icons/triage.png; sourceTree = "<group>"; };
+		0994FA241B25658C00938F19 /* urgent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = urgent.png; path = icons/urgent.png; sourceTree = "<group>"; };
+		0994FA301B2580A400938F19 /* RCPinEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCPinEngine.h; path = webEngine/RCPinEngine.h; sourceTree = "<group>"; };
+		0994FA311B2580A400938F19 /* RCPinEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCPinEngine.m; path = webEngine/RCPinEngine.m; sourceTree = "<group>"; };
 		09A7E2691B144487009F6256 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = password.png; path = "New Login Screen UI/password.png"; sourceTree = "<group>"; };
 		09A7E26A1B144487009F6256 /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "password@2x.png"; path = "New Login Screen UI/password@2x.png"; sourceTree = "<group>"; };
 		09A7E26B1B144487009F6256 /* userName.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = userName.png; path = "New Login Screen UI/userName.png"; sourceTree = "<group>"; };
@@ -486,6 +512,8 @@
 				092EC5621AFE799B003A3608 /* ProviderHomeViewController.m */,
 				092EC5661AFE7AC3003A3608 /* MessageListViewController.h */,
 				092EC5671AFE7AC3003A3608 /* MessageListViewController.m */,
+				0994FA141B25604A00938F19 /* MessageListCell.h */,
+				0994FA151B25604A00938F19 /* MessageListCell.m */,
 				092EC5641AFE7AC3003A3608 /* MessageDetailsViewController.h */,
 				092EC5651AFE7AC3003A3608 /* MessageDetailsViewController.m */,
 				092EC5701AFE7C59003A3608 /* AboutUsViewController.h */,
@@ -501,6 +529,8 @@
 				092EC5061AFE6E16003A3608 /* RCWebEngine.m */,
 				099282471B0F091400D37DBD /* RCSessionEngine.h */,
 				099282481B0F091400D37DBD /* RCSessionEngine.m */,
+				0994FA301B2580A400938F19 /* RCPinEngine.h */,
+				0994FA311B2580A400938F19 /* RCPinEngine.m */,
 				092EC5101AFE6E31003A3608 /* Helper Class */,
 			);
 			name = WebEngine;
@@ -633,6 +663,23 @@
 				092EC58E1B008FFA003A3608 /* papasscode_marker@2x.png */,
 			);
 			path = Passcoda;
+			sourceTree = "<group>";
+		};
+		0994FA2F1B25659700938F19 /* Message List Icon */ = {
+			isa = PBXGroup;
+			children = (
+				0994FA1B1B25658C00938F19 /* a2d.png */,
+				0994FA1C1B25658C00938F19 /* adm.png */,
+				0994FA1D1B25658C00938F19 /* apt.png */,
+				0994FA1E1B25658C00938F19 /* d2d.png */,
+				0994FA1F1B25658C00938F19 /* n2d.png */,
+				0994FA201B25658C00938F19 /* p2d.png */,
+				0994FA211B25658C00938F19 /* rnd.png */,
+				0994FA221B25658C00938F19 /* rxd.png */,
+				0994FA231B25658C00938F19 /* triage.png */,
+				0994FA241B25658C00938F19 /* urgent.png */,
+			);
+			name = "Message List Icon";
 			sourceTree = "<group>";
 		};
 		09BEB38C1B0DA76300A5D1DE /* New Login Screen */ = {
@@ -921,6 +968,7 @@
 		5FFF2AE0171824A70000B80B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0994FA2F1B25659700938F19 /* Message List Icon */,
 				09BEB38C1B0DA76300A5D1DE /* New Login Screen */,
 				092EC5861B008FFA003A3608 /* Passcoda */,
 				092EC4EE1AFE68D0003A3608 /* back_arrow.png */,
@@ -1067,11 +1115,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0994FA2C1B25658C00938F19 /* rxd.png in Resources */,
 				5F8EC141180E99060080A62E /* Storyboard.storyboard in Resources */,
 				092EC5951B008FFA003A3608 /* papasscode_marker.png in Resources */,
 				5FF0EACC194733B4001A33D4 /* search-sea.png in Resources */,
+				0994FA261B25658C00938F19 /* adm.png in Resources */,
 				09A7E26D1B144487009F6256 /* password.png in Resources */,
 				5F96F1A9189928DD0015F065 /* Storyboard-iPad.storyboard in Resources */,
+				0994FA291B25658C00938F19 /* n2d.png in Resources */,
 				092EC5911B008FFA003A3608 /* papasscode_background.png in Resources */,
 				0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */,
 				092EC58F1B008FFA003A3608 /* digitCell.psd in Resources */,
@@ -1090,6 +1141,7 @@
 				5F81390C1855EBB400EF3E20 /* icon-76.png in Resources */,
 				5F82A8AD170B3D8E00FE72B8 /* Default-568h@2x.png in Resources */,
 				5F8EC149180EA2620080A62E /* button.9.png in Resources */,
+				0994FA2E1B25658C00938F19 /* urgent.png in Resources */,
 				5F82D6751862EE1F00430B91 /* splashscreen.png in Resources */,
 				5F8EC148180EA2620080A62E /* background_texture.png in Resources */,
 				092EC5921B008FFA003A3608 /* papasscode_background@2x.png in Resources */,
@@ -1100,13 +1152,18 @@
 				5F8EC14C180EA2620080A62E /* logo.png in Resources */,
 				092EC5931B008FFA003A3608 /* papasscode_failed_bg.png in Resources */,
 				092EC5991B00AC5B003A3608 /* pushio_config_debug.json in Resources */,
+				0994FA251B25658C00938F19 /* a2d.png in Resources */,
 				5F81390D1855EBB400EF3E20 /* icon-114.png in Resources */,
 				092EC4FC1AFE6DB0003A3608 /* RemedyConnect Horizontal Logo.jpg in Resources */,
+				0994FA2A1B25658C00938F19 /* p2d.png in Resources */,
 				09A7E26F1B144487009F6256 /* userName.png in Resources */,
+				0994FA281B25658C00938F19 /* d2d.png in Resources */,
 				5FF0EAD619475036001A33D4 /* location.png in Resources */,
 				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
 				09BEB3891B0DA75300A5D1DE /* button.png in Resources */,
+				0994FA271B25658C00938F19 /* apt.png in Resources */,
 				5F81390E1855EBB400EF3E20 /* icon-120.png in Resources */,
+				0994FA2B1B25658C00938F19 /* rnd.png in Resources */,
 				5FF0EACD194733B4001A33D4 /* search-tree.png in Resources */,
 				09A7E2701B144487009F6256 /* userName@2x.png in Resources */,
 				5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */,
@@ -1116,6 +1173,7 @@
 				092EC4FB1AFE6DB0003A3608 /* RemedyConnect Horizontal Logo for Mobile.jpg in Resources */,
 				5F9D77BC1860915E00808660 /* testbutton.png in Resources */,
 				5F81390A1855EBB400EF3E20 /* icon-57.png in Resources */,
+				0994FA2D1B25658C00938F19 /* triage.png in Resources */,
 				092EC4F01AFE68D0003A3608 /* back_arrow.png in Resources */,
 				09BEB38B1B0DA75300A5D1DE /* whitebkgrnd.png in Resources */,
 				5F916639183F88DB00E74748 /* style.css in Resources */,
@@ -1161,6 +1219,7 @@
 				5F0AE35718CE1BE10027824B /* NSString+URLEncoding.m in Sources */,
 				092EC5081AFE6E16003A3608 /* RCWebEngine.m in Sources */,
 				09BEB3911B0DDF8600A5D1DE /* UnderDevViewController.m in Sources */,
+				0994FA161B25604A00938F19 /* MessageListCell.m in Sources */,
 				092EC5531AFE6E58003A3608 /* XMLDictionary.m in Sources */,
 				092EC5471AFE6E58003A3608 /* NetworkViewController.m in Sources */,
 				5F8138E21855D28400EF3E20 /* Downloader.m in Sources */,
@@ -1189,6 +1248,7 @@
 				5F8138EF1855D28400EF3E20 /* PageViewController.m in Sources */,
 				092EC4301AFC8FF5003A3608 /* ioapi.c in Sources */,
 				092EC5631AFE799B003A3608 /* ProviderHomeViewController.m in Sources */,
+				0994FA321B2580A400938F19 /* RCPinEngine.m in Sources */,
 				5F50B9111896B4A500AA9006 /* UINavigationController+Orientation.m in Sources */,
 				092EC5601AFE757D003A3608 /* CreatePINViewController.m in Sources */,
 				5F8138F01855D28400EF3E20 /* YourPracticeAppDelegate.m in Sources */,

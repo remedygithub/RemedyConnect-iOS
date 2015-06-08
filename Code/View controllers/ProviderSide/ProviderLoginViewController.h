@@ -20,9 +20,10 @@
 #import "Logic.h"
 #import "AboutUsViewController.h"
 #import "RCSessionEngine.h"
+#import "RCPinEngine.h"
 
 
-@interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,DownloaderDelegate,UpdateDownloadStarterDelegate,PopoverViewDelegate,SubMenuDelegate,SessionEngineDelegate>
+@interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,DownloaderDelegate,UpdateDownloadStarterDelegate,PopoverViewDelegate,SubMenuDelegate,SessionEngineDelegate,PinEngineDelegate>
 {
     RCHelper *helper;
     MBProgressHUD *statusHUD;

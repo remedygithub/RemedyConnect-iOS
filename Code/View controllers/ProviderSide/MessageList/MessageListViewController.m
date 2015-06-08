@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
     logic = [Logic sharedLogic];
 
-    self.dummyArray = [[NSMutableArray alloc]initWithObjects:@"John Calvin",@"Srinivasan",@"Marie",@"Mark Steve",nil];
+    self.dummyArray = [[NSMutableArray alloc]initWithObjects:@"John Calvin",@"Srinivasan Murthy",@"Marie Joseph",@"Mark Steve",nil];
     self.dummyMsgArray = [[NSMutableArray alloc]initWithObjects:@"Need Appointment for Uncle",@"Medicare Inquiry",@"Need Diet Information for 12 year Boy",@"Bill payment Issue", nil];
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -129,16 +129,27 @@
     return [self.dummyArray count];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString*CellIdentifer = @"Cell";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifer];
+    static NSString *CellIdentifier = @"Cell";
+    MessageListCell *cell = (MessageListCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
+        
     {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifer];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MessageListCell" owner:self options:nil];
+        cell = [nib objectAtIndex: 0];
+        
+        
     }
-    cell.textLabel.text = [self.dummyArray objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [self.dummyMsgArray objectAtIndex:indexPath.row];
+  
+    cell.fNameAndLName.text = [self.dummyArray objectAtIndex:indexPath.row];
+    cell.descpLabel.text =    [self.dummyMsgArray objectAtIndex:indexPath.row];
+    cell.timeLabel.text = @"8Jun 15 - 02:15PM";
     return cell;
 }
 

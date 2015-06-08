@@ -32,7 +32,6 @@
     NSLog(@"%@",hashUserString);
     logic = [Logic sharedLogic];
 
-    [RCHelper SharedHelper].isCreateTimeOutRequest = NO;
     [RCWebEngine SharedWebEngine].delegate = self;
     [[RCWebEngine SharedWebEngine] sendRequestForRegister:practieID Physician:physicanID device:hashUserString];
     
@@ -161,9 +160,6 @@
 - (IBAction)createPinBtnTapped:(id)sender
 {
     [self setCreatePinAndVerfiyPinView];
-    [RCHelper SharedHelper].isCreateTimeOutRequest = YES;
-    [RCWebEngine SharedWebEngine].delegate = self;
-    [RCWebEngine SharedWebEngine].checkPinTimeOutSession;
 }
 
 -(void)setCreatePinAndVerfiyPinView
@@ -261,11 +257,7 @@
 
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
-    if ([RCHelper SharedHelper].isCreateTimeOutRequest)
-    {
-        NSString *pinTimeOut = [pResultDict objectForKey:@"pinTimeoutSeconds"];
-        [[UIApplication sharedApplication] performSelector:@selector(resetIdleTimer:) withObject:pinTimeOut];
-    }
+    NSLog(@"Registering Device Successfull");
 }
 
 -(void)connectionManagerDidFailWithError:(NSError *)error
