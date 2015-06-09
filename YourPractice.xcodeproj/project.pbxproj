@@ -58,16 +58,16 @@
 		099282491B0F091400D37DBD /* RCSessionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 099282481B0F091400D37DBD /* RCSessionEngine.m */; };
 		0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */; };
 		0994FA161B25604A00938F19 /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0994FA151B25604A00938F19 /* MessageListCell.m */; };
-		0994FA251B25658C00938F19 /* a2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1B1B25658C00938F19 /* a2d.png */; };
-		0994FA261B25658C00938F19 /* adm.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1C1B25658C00938F19 /* adm.png */; };
-		0994FA271B25658C00938F19 /* apt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1D1B25658C00938F19 /* apt.png */; };
-		0994FA281B25658C00938F19 /* d2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1E1B25658C00938F19 /* d2d.png */; };
-		0994FA291B25658C00938F19 /* n2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1F1B25658C00938F19 /* n2d.png */; };
-		0994FA2A1B25658C00938F19 /* p2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA201B25658C00938F19 /* p2d.png */; };
-		0994FA2B1B25658C00938F19 /* rnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA211B25658C00938F19 /* rnd.png */; };
-		0994FA2C1B25658C00938F19 /* rxd.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA221B25658C00938F19 /* rxd.png */; };
-		0994FA2D1B25658C00938F19 /* triage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA231B25658C00938F19 /* triage.png */; };
-		0994FA2E1B25658C00938F19 /* urgent.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA241B25658C00938F19 /* urgent.png */; };
+		0994FA251B25658C00938F19 /* AnsweringService.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1B1B25658C00938F19 /* AnsweringService.png */; };
+		0994FA261B25658C00938F19 /* HospitalAdmission.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1C1B25658C00938F19 /* HospitalAdmission.png */; };
+		0994FA271B25658C00938F19 /* Appointment.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1D1B25658C00938F19 /* Appointment.png */; };
+		0994FA281B25658C00938F19 /* Provider.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1E1B25658C00938F19 /* Provider.png */; };
+		0994FA291B25658C00938F19 /* Newborn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA1F1B25658C00938F19 /* Newborn.png */; };
+		0994FA2A1B25658C00938F19 /* Patient.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA201B25658C00938F19 /* Patient.png */; };
+		0994FA2B1B25658C00938F19 /* Roundingdoctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA211B25658C00938F19 /* Roundingdoctor.png */; };
+		0994FA2C1B25658C00938F19 /* RxRefill.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA221B25658C00938F19 /* RxRefill.png */; };
+		0994FA2D1B25658C00938F19 /* Triage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA231B25658C00938F19 /* Triage.png */; };
+		0994FA2E1B25658C00938F19 /* Urgent.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA241B25658C00938F19 /* Urgent.png */; };
 		0994FA321B2580A400938F19 /* RCPinEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0994FA311B2580A400938F19 /* RCPinEngine.m */; };
 		09A7E2651B1433C4009F6256 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFF2AC81717FD110000B80B /* Security.framework */; };
 		09A7E26D1B144487009F6256 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A7E2691B144487009F6256 /* password.png */; };
@@ -286,16 +286,16 @@
 		0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonLengthy.png; path = "New Login Screen UI/buttonLengthy.png"; sourceTree = "<group>"; };
 		0994FA141B25604A00938F19 /* MessageListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageListCell.h; path = ProviderSide/TableCell/MessageListCell.h; sourceTree = "<group>"; };
 		0994FA151B25604A00938F19 /* MessageListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageListCell.m; path = ProviderSide/TableCell/MessageListCell.m; sourceTree = "<group>"; };
-		0994FA1B1B25658C00938F19 /* a2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = a2d.png; path = icons/a2d.png; sourceTree = "<group>"; };
-		0994FA1C1B25658C00938F19 /* adm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = adm.png; path = icons/adm.png; sourceTree = "<group>"; };
-		0994FA1D1B25658C00938F19 /* apt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = apt.png; path = icons/apt.png; sourceTree = "<group>"; };
-		0994FA1E1B25658C00938F19 /* d2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = d2d.png; path = icons/d2d.png; sourceTree = "<group>"; };
-		0994FA1F1B25658C00938F19 /* n2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = n2d.png; path = icons/n2d.png; sourceTree = "<group>"; };
-		0994FA201B25658C00938F19 /* p2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = p2d.png; path = icons/p2d.png; sourceTree = "<group>"; };
-		0994FA211B25658C00938F19 /* rnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rnd.png; path = icons/rnd.png; sourceTree = "<group>"; };
-		0994FA221B25658C00938F19 /* rxd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rxd.png; path = icons/rxd.png; sourceTree = "<group>"; };
-		0994FA231B25658C00938F19 /* triage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = triage.png; path = icons/triage.png; sourceTree = "<group>"; };
-		0994FA241B25658C00938F19 /* urgent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = urgent.png; path = icons/urgent.png; sourceTree = "<group>"; };
+		0994FA1B1B25658C00938F19 /* AnsweringService.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AnsweringService.png; path = icons/AnsweringService.png; sourceTree = "<group>"; };
+		0994FA1C1B25658C00938F19 /* HospitalAdmission.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HospitalAdmission.png; path = icons/HospitalAdmission.png; sourceTree = "<group>"; };
+		0994FA1D1B25658C00938F19 /* Appointment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Appointment.png; path = icons/Appointment.png; sourceTree = "<group>"; };
+		0994FA1E1B25658C00938F19 /* Provider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Provider.png; path = icons/Provider.png; sourceTree = "<group>"; };
+		0994FA1F1B25658C00938F19 /* Newborn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Newborn.png; path = icons/Newborn.png; sourceTree = "<group>"; };
+		0994FA201B25658C00938F19 /* Patient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Patient.png; path = icons/Patient.png; sourceTree = "<group>"; };
+		0994FA211B25658C00938F19 /* Roundingdoctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Roundingdoctor.png; path = icons/Roundingdoctor.png; sourceTree = "<group>"; };
+		0994FA221B25658C00938F19 /* RxRefill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RxRefill.png; path = icons/RxRefill.png; sourceTree = "<group>"; };
+		0994FA231B25658C00938F19 /* Triage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Triage.png; path = icons/Triage.png; sourceTree = "<group>"; };
+		0994FA241B25658C00938F19 /* Urgent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Urgent.png; path = icons/Urgent.png; sourceTree = "<group>"; };
 		0994FA301B2580A400938F19 /* RCPinEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCPinEngine.h; path = webEngine/RCPinEngine.h; sourceTree = "<group>"; };
 		0994FA311B2580A400938F19 /* RCPinEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCPinEngine.m; path = webEngine/RCPinEngine.m; sourceTree = "<group>"; };
 		09A7E2691B144487009F6256 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = password.png; path = "New Login Screen UI/password.png"; sourceTree = "<group>"; };
@@ -668,16 +668,16 @@
 		0994FA2F1B25659700938F19 /* Message List Icon */ = {
 			isa = PBXGroup;
 			children = (
-				0994FA1B1B25658C00938F19 /* a2d.png */,
-				0994FA1C1B25658C00938F19 /* adm.png */,
-				0994FA1D1B25658C00938F19 /* apt.png */,
-				0994FA1E1B25658C00938F19 /* d2d.png */,
-				0994FA1F1B25658C00938F19 /* n2d.png */,
-				0994FA201B25658C00938F19 /* p2d.png */,
-				0994FA211B25658C00938F19 /* rnd.png */,
-				0994FA221B25658C00938F19 /* rxd.png */,
-				0994FA231B25658C00938F19 /* triage.png */,
-				0994FA241B25658C00938F19 /* urgent.png */,
+				0994FA1B1B25658C00938F19 /* AnsweringService.png */,
+				0994FA1C1B25658C00938F19 /* HospitalAdmission.png */,
+				0994FA1D1B25658C00938F19 /* Appointment.png */,
+				0994FA1E1B25658C00938F19 /* Provider.png */,
+				0994FA1F1B25658C00938F19 /* Newborn.png */,
+				0994FA201B25658C00938F19 /* Patient.png */,
+				0994FA211B25658C00938F19 /* Roundingdoctor.png */,
+				0994FA221B25658C00938F19 /* RxRefill.png */,
+				0994FA231B25658C00938F19 /* Triage.png */,
+				0994FA241B25658C00938F19 /* Urgent.png */,
 			);
 			name = "Message List Icon";
 			sourceTree = "<group>";
@@ -1115,14 +1115,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0994FA2C1B25658C00938F19 /* rxd.png in Resources */,
+				0994FA2C1B25658C00938F19 /* RxRefill.png in Resources */,
 				5F8EC141180E99060080A62E /* Storyboard.storyboard in Resources */,
 				092EC5951B008FFA003A3608 /* papasscode_marker.png in Resources */,
 				5FF0EACC194733B4001A33D4 /* search-sea.png in Resources */,
-				0994FA261B25658C00938F19 /* adm.png in Resources */,
+				0994FA261B25658C00938F19 /* HospitalAdmission.png in Resources */,
 				09A7E26D1B144487009F6256 /* password.png in Resources */,
 				5F96F1A9189928DD0015F065 /* Storyboard-iPad.storyboard in Resources */,
-				0994FA291B25658C00938F19 /* n2d.png in Resources */,
+				0994FA291B25658C00938F19 /* Newborn.png in Resources */,
 				092EC5911B008FFA003A3608 /* papasscode_background.png in Resources */,
 				0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */,
 				092EC58F1B008FFA003A3608 /* digitCell.psd in Resources */,
@@ -1141,7 +1141,7 @@
 				5F81390C1855EBB400EF3E20 /* icon-76.png in Resources */,
 				5F82A8AD170B3D8E00FE72B8 /* Default-568h@2x.png in Resources */,
 				5F8EC149180EA2620080A62E /* button.9.png in Resources */,
-				0994FA2E1B25658C00938F19 /* urgent.png in Resources */,
+				0994FA2E1B25658C00938F19 /* Urgent.png in Resources */,
 				5F82D6751862EE1F00430B91 /* splashscreen.png in Resources */,
 				5F8EC148180EA2620080A62E /* background_texture.png in Resources */,
 				092EC5921B008FFA003A3608 /* papasscode_background@2x.png in Resources */,
@@ -1152,18 +1152,18 @@
 				5F8EC14C180EA2620080A62E /* logo.png in Resources */,
 				092EC5931B008FFA003A3608 /* papasscode_failed_bg.png in Resources */,
 				092EC5991B00AC5B003A3608 /* pushio_config_debug.json in Resources */,
-				0994FA251B25658C00938F19 /* a2d.png in Resources */,
+				0994FA251B25658C00938F19 /* AnsweringService.png in Resources */,
 				5F81390D1855EBB400EF3E20 /* icon-114.png in Resources */,
 				092EC4FC1AFE6DB0003A3608 /* RemedyConnect Horizontal Logo.jpg in Resources */,
-				0994FA2A1B25658C00938F19 /* p2d.png in Resources */,
+				0994FA2A1B25658C00938F19 /* Patient.png in Resources */,
 				09A7E26F1B144487009F6256 /* userName.png in Resources */,
-				0994FA281B25658C00938F19 /* d2d.png in Resources */,
+				0994FA281B25658C00938F19 /* Provider.png in Resources */,
 				5FF0EAD619475036001A33D4 /* location.png in Resources */,
 				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
 				09BEB3891B0DA75300A5D1DE /* button.png in Resources */,
-				0994FA271B25658C00938F19 /* apt.png in Resources */,
+				0994FA271B25658C00938F19 /* Appointment.png in Resources */,
 				5F81390E1855EBB400EF3E20 /* icon-120.png in Resources */,
-				0994FA2B1B25658C00938F19 /* rnd.png in Resources */,
+				0994FA2B1B25658C00938F19 /* Roundingdoctor.png in Resources */,
 				5FF0EACD194733B4001A33D4 /* search-tree.png in Resources */,
 				09A7E2701B144487009F6256 /* userName@2x.png in Resources */,
 				5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */,
@@ -1173,7 +1173,7 @@
 				092EC4FB1AFE6DB0003A3608 /* RemedyConnect Horizontal Logo for Mobile.jpg in Resources */,
 				5F9D77BC1860915E00808660 /* testbutton.png in Resources */,
 				5F81390A1855EBB400EF3E20 /* icon-57.png in Resources */,
-				0994FA2D1B25658C00938F19 /* triage.png in Resources */,
+				0994FA2D1B25658C00938F19 /* Triage.png in Resources */,
 				092EC4F01AFE68D0003A3608 /* back_arrow.png in Resources */,
 				09BEB38B1B0DA75300A5D1DE /* whitebkgrnd.png in Resources */,
 				5F916639183F88DB00E74748 /* style.css in Resources */,

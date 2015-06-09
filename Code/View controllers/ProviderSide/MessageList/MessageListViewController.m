@@ -18,12 +18,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     logic = [Logic sharedLogic];
-
-    self.dummyArray = [[NSMutableArray alloc]initWithObjects:@"John Calvin",@"Srinivasan Murthy",@"Marie Joseph",@"Mark Steve",nil];
-    self.dummyMsgArray = [[NSMutableArray alloc]initWithObjects:@"Need Appointment for Uncle",@"Medicare Inquiry",@"Need Diet Information for 12 year Boy",@"Bill payment Issue", nil];
+    self.dataArray = [[NSMutableArray alloc]init];
     [self.navigationController setNavigationBarHidden:YES];
+    [self getMessageList];
 }
 
+-(void)getMessageList
+{
+    [self hasStartedDownloading:@"Refreshing Messages"];
+    [RCWebEngine SharedWebEngine].delegate = self;
+    [[RCWebEngine SharedWebEngine] getMessageListInformation];
+}
+
+
+- (void)hasStartedDownloading:(NSString *)processString
+{
+    if (nil != statusHUD)
+    {
+        [statusHUD hide:TRUE];
+    }
+    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    [statusHUD setDelegate:self];
+    [statusHUD setDimBackground:TRUE];
+    [statusHUD show:YES];
+    [statusHUD setLabelText:processString];
+    [self.view bringSubviewToFront:statusHUD];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -126,7 +146,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dummyArray count];
+    return [self.dataArray count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -147,38 +167,71 @@
         
     }
   
-    cell.fNameAndLName.text = [self.dummyArray objectAtIndex:indexPath.row];
-    cell.descpLabel.text =    [self.dummyMsgArray objectAtIndex:indexPath.row];
-    cell.timeLabel.text = @"8Jun 15 - 02:15PM";
+    RCHelper *messageInfo = [self.dataArray objectAtIndex:indexPath.row];
+    cell.fNameAndLName.text = [NSString stringWithFormat:@"%@ %@",messageInfo.messageFName, messageInfo.messageLName];
+    cell.descpLabel.text = messageInfo.messageDetails;
+    cell.timeLabel.text = messageInfo.messageDate;
+    NSString *iConID = [NSString stringWithFormat:@"%@",messageInfo.callerTypeID];
+    NSLog(@"%@",iConID);
+    if ([iConID isEqualToString:@"1"])
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"Patient.png"];
+    }
+    else if ([iConID isEqualToString:@"2"])
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"Provider.png"];
+    }
+    else if ([iConID isEqualToString:@"3"])
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"Newborn.png"];
+    }
+    else if ([iConID isEqualToString:@"4"])
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"RxRefill.png"];
+    }
+    else if ([iConID isEqualToString:@"5"])
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"AnsweringService.png"];
+    }
+    else if ([iConID isEqualToString:@"6"])
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"Triage.png"];
+    }
+    else if ([iConID isEqualToString:@"7"])
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"Roundingdoctor.png"];
+    }
+    else if ([iConID isEqualToString:@"8"])
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"HospitalAdmission.png"];
+    }
+    else if ([iConID isEqualToString:@"9"])
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"Appointment.png"];
+    }
+    else
+    {
+        cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+    }
     return cell;
 }
 
 
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [self getNameDetails:self.dummyArray getMessageDetails:self.dummyMsgArray dataIndex:indexPath.row];
-//}
-
-
--(void)getNameDetails:(NSMutableArray *)detail  getMessageDetails:(NSMutableArray *)messageDetail  dataIndex:(NSInteger)index
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    help =[[RCHelper alloc]init];
-    help.string1= [detail objectAtIndex:index];
-    help.string2 = [messageDetail objectAtIndex:index];
+     messageHelper = [self.dataArray objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"MoveToMessageDetail" sender:self];
 }
 
-#pragma mark - Navigation
 
+#pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"MoveToMessageDetail"])
     {
         MessageDetailsViewController *detail = (MessageDetailsViewController*)segue.destinationViewController;
-        detail.self.str1 = help.string1;
-        NSLog(@"%@",detail.self.str1);
-        detail.self.str2 = help.string2;
+        detail.messageDetailHelper = messageHelper;
     }
     if ([segue.identifier isEqualToString:@"FromMessageListToAbout"])
     {
@@ -248,4 +301,35 @@
     [logic resetAfterUpdate];
 }
 
+
+#pragma mark - Connection Manager 
+-(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
+{
+    [statusHUD hide:YES afterDelay:1];
+    if ([[pResultDict objectForKey:@"successfull"]boolValue])
+    {
+        for (int i=0 ; i <[[pResultDict objectForKey:@"messages"] count]; i++)
+        {
+            messageHelper = [[RCHelper alloc]init];
+            messageHelper.messageFName = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i] objectForKey:@"callerFirstName"];
+            NSLog(@"%@",messageHelper.messageFName);
+            messageHelper.messageLName = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"callerLastName"];
+            messageHelper.messageDate = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"messageDate"];
+            messageHelper.messageDetails = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"message"];
+             messageHelper.callerTypeID = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"callTypeId"];
+             messageHelper.phoneNumber = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"phone"];
+            [self.dataArray addObject:messageHelper];
+            NSLog(@"%lu",(unsigned long)[self.dataArray count]);
+
+        }
+    }
+    [self.messageTableView reloadData];
+}
+
+-(void)connectionManagerDidFailWithError:(NSError *)error
+{
+    [statusHUD hide:YES afterDelay:2];
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
+}
 @end

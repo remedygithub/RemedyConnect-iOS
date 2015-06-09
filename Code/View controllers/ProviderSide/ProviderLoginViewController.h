@@ -21,9 +21,10 @@
 #import "AboutUsViewController.h"
 #import "RCSessionEngine.h"
 #import "RCPinEngine.h"
+#import <PushIOManager/PushIOManager.h>
 
 
-@interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,DownloaderDelegate,UpdateDownloadStarterDelegate,PopoverViewDelegate,SubMenuDelegate,SessionEngineDelegate,PinEngineDelegate>
+@interface ProviderLoginViewController : UIViewController<UITextFieldDelegate,WebEngineDelegate,NetworkDelegate,NSXMLParserDelegate,PAPasscodeViewControllerDelegate,MBProgressHUDDelegate,DownloaderDelegate,UpdateDownloadStarterDelegate,PopoverViewDelegate,SubMenuDelegate,SessionEngineDelegate,PinEngineDelegate,PushIOManagerDelegate>
 {
     RCHelper *helper;
     MBProgressHUD *statusHUD;

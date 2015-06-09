@@ -15,15 +15,15 @@
 #import "NetworkViewController.h"
 #import "AboutUsViewController.h"
 #import "MessageListCell.h"
+#import "RCWebEngine.h"
 
-@interface MessageListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,PopoverViewDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,NetworkDelegate>
+@interface MessageListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,PopoverViewDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,NetworkDelegate,WebEngineDelegate>
 {
-    RCHelper *help;
+    RCHelper *messageHelper;
     Logic *logic;
     MBProgressHUD *statusHUD;
 }
 @property (strong, nonatomic) IBOutlet UITableView *messageTableView;
-@property (strong, nonatomic) NSMutableArray *dummyMsgArray;
-@property (strong, nonatomic) NSMutableArray *dummyArray;
+@property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) IBOutlet UIButton *menuBtn;
 @end

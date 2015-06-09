@@ -42,6 +42,11 @@
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [[PushIOManager sharedInstance] setDelegate:self];
+    YourPracticeAppDelegate *appdelegate = (YourPracticeAppDelegate *) [[UIApplication sharedApplication] delegate];
+    NSLog(@"%@",appdelegate.launchDict);
+    [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:appdelegate.launchDict];
+    
 
     if ([RCHelper SharedHelper].fromLoginTimeout)
     {
@@ -447,6 +452,28 @@
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     [self.scrollView setContentOffset:CGPointZero animated:YES];
+}
+
+
+#pragma mark - PUSH IO
+
+- (void)readyForRegistration
+{
+    // If this method is called back, PushIOManager has a proper device token
+    // so now you are ready to register.
+    [[PushIOManager sharedInstance] registerWithPushIO];
+}
+
+- (void)registrationSucceeded
+{
+    // Push IO registration was successful
+    NSLog(@"Successfull");
+}
+
+- (void)registrationFailedWithError:(NSError *)error statusCode:(int)statusCode
+{
+    // Push IO registration failed
+    NSLog(@"Failed");
 }
 
 

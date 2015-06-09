@@ -16,17 +16,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSString * pratice = [[NSUserDefaults standardUserDefaults] objectForKey:@"messageLabel"];
-    self.practiceNameLabel.text = pratice;
-    NSLog(@"%@",self.str1);
-    self.label1.text = self.str1;
-    self.label2.text = self.str2;
+     self.scrollView.backgroundColor = [UIColor whiteColor];
+    logic = [Logic sharedLogic];
+
+    self.messageDetails.text = self.messageDetailHelper.messageDetails;
+    NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
+    self.phoneLabel.attributedText = [[NSAttributedString alloc] initWithString:self.messageDetailHelper.phoneNumber attributes:underlineAttribute];
+    
+    [self displayImages];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (IBAction)backBtnTapped:(id)sender
@@ -36,237 +44,184 @@
 
 - (IBAction)menuBtnTapped:(id)sender
 {
-    [self showGrid];
+    CGPoint point = CGPointMake(self.menuBtn.frame.origin.x + self.menuBtn.frame.size.width / 2,
+                                self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
+    [PopoverView showPopoverAtPoint:point
+                             inView:self.view
+                    withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
+                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",@"Change application mode",nil]
+                           delegate:self];
 }
 
-- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress
-{
-    if (longPress.state == UIGestureRecognizerStateBegan) {
-        [self showGridWithHeaderFromPoint:[longPress locationInView:self.view]];
-    }
-}
 
-#pragma mark - RNGridMenuDelegate
 
-- (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex
+
+
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
 {
-    NSLog(@"Dismissed with item %ld: %@", (long)itemIndex, item.title);
-    
-    switch (itemIndex)
+    NSString * praticeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameOfPratice"];
+    NSLog(@"%@",praticeName);
+    //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
+    switch (index)
     {
         case 0:
-            [self mycareBtn];
+            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
+            {
+                [logic setUpdateDownloadStarterDelegate:self];
+                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
+            }
             break;
             
-        case 1:
-            [self myAppointmentsBtn];
-            break;
-            
+            //        case 1:
+            //            [RCPracticeHelper SharedHelper].isChangePractice =YES;
+            //            [RCPracticeHelper SharedHelper].isLogout =NO;
+            //            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            //            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+            //            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+            //
+            //            [self LogoutTheUser];
+            //            break;
+            //
         case 2:
-            [self myMessagesBtn];
+            [self performSegueWithIdentifier:@"MoveFromMsgDetailToTerms" sender:self];
             break;
             
         case 3:
-            [self AreYouSickBtn];
+            [self performSegueWithIdentifier:@"MoveFromMsgDetailToAbout" sender:self];
             break;
-            
-        case 4:
-            [self OurOfficeBtn];
-            break;
-            
-        case 5:
-            [self MarketPlaceBtn];
-            break;
+            //
+            //        case 4:
+            //            [RCPracticeHelper SharedHelper].isChangePractice =NO;
+            //            [RCPracticeHelper SharedHelper].isLogout =YES;
+            //            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+            //            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+            //            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+            //            [self LogoutTheUser];
+            //            break;
+            //
+            //        case 5:
+            //            [RCPracticeHelper SharedHelper].isChangePractice =NO;
+            //            [RCPracticeHelper SharedHelper].isLogout =NO;
+            //            [RCPracticeHelper SharedHelper].isApplicationMode = YES;
+            //            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+            //            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+            //            [self LogoutTheUser];
+            //            break;
             
         default:
             break;
+            
     }
+    [popoverView dismiss:TRUE];
 }
 
 
-#pragma mark - MenuBtn Action
-//Care
--(void)mycareBtn
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"Care");
-}
-
-//Appointments
--(void)myAppointmentsBtn
-{
-    NSLog(@"myAppointments");
-}
-
-//Message
--(void)myMessagesBtn
-{
-    NSLog(@"myMessages");
-}
-
-//Sick
--(void)AreYouSickBtn
-{
-    NSLog(@"AreYouSick");
-}
-
-
--(void)OurOfficeBtn
-{
-    NSLog(@"OurOfficeBtn");
-}
-
-//Market
--(void)MarketPlaceBtn
-{
-    NSLog(@"MarketPlaceBtn");
-}
-
-#pragma mark - Private
-- (void)showImagesOnly {
-    NSInteger numberOfOptions = 5;
-    NSArray *images = @[
-                        [UIImage imageNamed:@"Circle"],
-                        [UIImage imageNamed:@"attachment"],
-                        [UIImage imageNamed:@"block"],
-                        [UIImage imageNamed:@"bluetooth"],
-                        [UIImage imageNamed:@"cube"],
-                        [UIImage imageNamed:@"download"],
-                        [UIImage imageNamed:@"enter"],
-                        [UIImage imageNamed:@"file"],
-                        [UIImage imageNamed:@"github"]
-                        ];
-    RNGridMenu *av = [[RNGridMenu alloc] initWithImages:[images subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
-    av.delegate = self;
-    if (IS_IPHONE_6)
+    if ([segue.identifier isEqualToString:@"MoveFromMsgDetailToTerms"])
     {
-         [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/0.7, self.view.bounds.size.height/2.9)];
+        AboutUsViewController *aboutController = [segue destinationViewController];
+        aboutController.self.Text = @"Terms and Conditions";
     }
-    else if (IS_IPHONE_5)
+    if ([segue.identifier isEqualToString:@"MoveFromMsgDetailToAbout"])
     {
-        [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/0.7, self.view.bounds.size.height/2.5)];
+        AboutUsViewController *termsController = [segue destinationViewController];
+        termsController.self.Text = @"About";
     }
+}
+
+
+- (IBAction)phoneNumBtnTapped:(id)sender
+{
+    NSString *phoneNumber = self.messageDetailHelper.phoneNumber;
+    NSString *cleanedString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+    NSLog(@"%@",cleanedString);
+    
+    NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
+    
+    NSLog(@"making call with %@",telURL);
+    [[UIApplication sharedApplication] openURL:telURL];
+}
+
+
+
+
+
+
+
+
+-(void)displayImages
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *unzipPath = [path stringByAppendingPathComponent:@"unzipPath"];
    
-}
-
-- (void)showList {
-    NSInteger numberOfOptions = 5;
-    NSArray *options = @[
-                         @"My Care",
-                         @"Appointments",
-                         @"Cancel",
-                         @"Messages",
-                         @"Are You Sick?",
-                         @"Download",
-                         @"Our Office",
-                         @"Market Place",
-                         @"Github"
-                         ];
-    RNGridMenu *av = [[RNGridMenu alloc] initWithTitles:[options subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
-    av.delegate = self;
-    av.itemFont = [UIFont boldSystemFontOfSize:18];
-    av.itemSize = CGSizeMake(150, 55);
-    if (IS_IPHONE_6)
-    {
-        [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/0.7, self.view.bounds.size.height/2.9)];
-    }
-    else if (IS_IPHONE_5)
-    {
-        [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/0.7, self.view.bounds.size.height/2.5)];
-    }
-}
-
-- (void)showGrid {
-    NSInteger numberOfOptions = 6;
+    NSString *logoimageFilePath = [unzipPath stringByAppendingPathComponent:@"menulogo.png"];
+    NSData *logoimageData = [NSData dataWithContentsOfFile:logoimageFilePath options:0 error:nil];
+    UIImage *logoimg = [UIImage imageWithData:logoimageData];
     
-    NSArray *items = @[
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"Circle"] title:@"My Care"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"attachment"] title:@"Appointments"],
-                      [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"bluetooth"] title:@"Messages"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"cube"] title:@"Are You Sick?"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"enter"] title:@"Our Office"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"file"] title:@"Market Place"],
-                       ];
-    
-    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
-    av.delegate = self;
-    if (IS_IPHONE_6)
-    {
-        [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/0.7, self.view.bounds.size.height/2.9)];
-    }
-    else if (IS_IPHONE_5)
-    {
-        [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/0.7, self.view.bounds.size.height/2.5)];
-    }
+    dispatch_async(dispatch_get_main_queue(),
+                   ^{
+                       self.logoImage.image = logoimg;
+                   });
 }
 
-- (void)showGridWithHeaderFromPoint:(CGPoint)point
+
+
+#pragma mark - HUD handling
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    [statusHUD removeFromSuperview];
+    statusHUD = nil;
+}
+
+#pragma mark - DownloaderUIDelegate
+- (void)hasStartedDownloading
 {
-    NSInteger numberOfOptions = 6;
-    NSArray *items = @[
-                       [RNGridMenuItem emptyItem],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"attachment"] title:@"Appointments"],
-                       [RNGridMenuItem emptyItem],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"bluetooth"] title:@"Messages"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"cube"] title:@"Are You Sick?"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"download"] title:@"Download"],
-                       [RNGridMenuItem emptyItem],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"file"] title:@"Market Place"],
-                       [RNGridMenuItem emptyItem]
-                       ];
-    
-    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
-    av.delegate = self;
-    av.bounces = NO;
-    av.animationDuration = 0.2;
- 
-    UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
-    header.text = @"Example Header";
-    header.font = [UIFont boldSystemFontOfSize:18];
-    header.backgroundColor = [UIColor clearColor];
-    header.textColor = [UIColor whiteColor];
-    header.textAlignment = NSTextAlignmentCenter;
-    [av showInViewController:self center:point];
+    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    [statusHUD setDelegate:self];
+    [statusHUD setDimBackground:TRUE];
+    [statusHUD setLabelText:@"Starting download..."];
 }
 
-- (void)showGridWithPath {
-    NSInteger numberOfOptions = 6;
-    
-    NSArray *items = @[
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"Circle"] title:@"My Care"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"attachment"] title:@"Appointments"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"bluetooth"] title:@"Messages"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"cube"] title:@"Are You Sick?"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"enter"] title:@"Our Office"],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"file"] title:@"Market Place"],
-                       ];
-    
-    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
-    av.delegate = self;
-    if (IS_IPHONE_6)
+- (void)switchToIndeterminate
+{
+    [statusHUD setMode:MBProgressHUDModeIndeterminate];
+}
+
+- (void)didReceiveResponseForAFileSwitchToDeterminate:(DownloadStatus *)status
+{
+    [statusHUD setLabelText:@"Downloading..."];
+}
+
+- (void)updateProgress:(DownloadStatus *)status
+{
+    if ([status expectedLength] > 0)
     {
-        [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/0.7, self.view.bounds.size.height/2.9)];
-    }
-    else if (IS_IPHONE_5)
-    {
-        [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/0.7, self.view.bounds.size.height/2.5)];
+        statusHUD.progress = [status currentLength] / (float)[status expectedLength];
     }
 }
 
-#pragma mark Orientation handling
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+- (void)didFinish {
+    [statusHUD setMode:MBProgressHUDModeText];
+    [statusHUD setLabelText:@"Finished!"];
+    [statusHUD hide:YES afterDelay:2];
+    // We have to reload the data:
+    [logic resetAfterUpdate];
+    [self viewDidLoad];
 }
 
--(BOOL)shouldAutorotate
-{
-    return YES;
-}
-
--(NSUInteger)supportedInterfaceOrientations
-{
-    return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
+- (void)hasFailed {
+    [statusHUD hide:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to download files"
+                                                    message:@"Please check your internet connection and try again."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    [logic resetAfterUpdate];
 }
 
 

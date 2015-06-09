@@ -222,7 +222,15 @@
 
 -(void)assignMessageCountValue:(NSString *)countValue
 {
-    self.messageCountLabel.text = countValue;
+    NSLog(@"%@",countValue);
+    if ([countValue isEqualToString:@"0"])
+    {
+        self.messageCountLabel.hidden = YES;
+    }
+    else
+    {
+        self.messageCountLabel.text = countValue;
+    }
 }
 
 -(void)LogoutTheUser

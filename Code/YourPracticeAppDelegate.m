@@ -23,6 +23,7 @@
     // Override point for customization after application launch.
     //[TestFlight takeOff:@"f32c392f-6402-4d49-8487-d4094af55544"];
     
+    
     [TestFairy begin:@"7f6f0f7e226f59d3b1a2ae5446b11a5b2427a176"];
     // Differentiate between ios 8 and ios 7,6 push notification registration
     if(IS_OS_8_OR_LATER)
@@ -46,9 +47,11 @@
                                              selector:@selector(PAPasscodeViewControllerDidCancel:)
                                                  name:kResetPinNotification
                                                object:nil];
+    self.launchDict = [[NSDictionary alloc]initWithDictionary:launchOptions];
+    NSLog(@"%@",self.launchDict);
     
-    [[PushIOManager sharedInstance] setDelegate:self];
-    [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:launchOptions];
+//    [[PushIOManager sharedInstance] setDelegate:self];
+   // [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
@@ -152,6 +155,7 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    NSLog(@"User Info Data...");
     [[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo];
 }
 
@@ -168,26 +172,26 @@
 
 
 
-
-- (void)readyForRegistration
-{
-    // If this method is called back, PushIOManager has a proper device token
-    // so now you are ready to register.
-    [[PushIOManager sharedInstance] registerWithPushIO];
-}
-
-- (void)registrationSucceeded
-{
-    // Push IO registration was successful
-    NSLog(@"Successfull");
-    
-}
-
-- (void)registrationFailedWithError:(NSError *)error statusCode:(int)statusCode
-{
-    // Push IO registration failed
-    NSLog(@"Failed");
-}
+//#pragma PUSHIO Manager
+//- (void)readyForRegistration
+//{
+//    // If this method is called back, PushIOManager has a proper device token
+//    // so now you are ready to register.
+//    [[PushIOManager sharedInstance] registerWithPushIO];
+//}
+//
+//- (void)registrationSucceeded
+//{
+//    // Push IO registration was successful
+//    NSLog(@"Successfull");
+//    
+//}
+//
+//- (void)registrationFailedWithError:(NSError *)error statusCode:(int)statusCode
+//{
+//    // Push IO registration failed
+//    NSLog(@"Failed");
+//}
 
 #pragma Screat PIN Checking Delegate Methods
 - (void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller

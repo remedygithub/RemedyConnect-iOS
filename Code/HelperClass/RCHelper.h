@@ -56,6 +56,13 @@
 
 @property (nonatomic,strong) NSString *string1, *string2;
 
+//Message List
+@property (nonatomic, strong) NSString *messageFName;
+@property (nonatomic, strong) NSString *messageLName;
+@property (nonatomic, strong) NSString *messageDate;
+@property (nonatomic, strong) NSString *messageDetails;
+@property (nonatomic, strong) NSString *callerTypeID;
+@property (nonatomic, strong) NSString *phoneNumber;
 
 
 //Instance Method

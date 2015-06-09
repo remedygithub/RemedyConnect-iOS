@@ -262,7 +262,6 @@
 
 -(void)connectionManagerDidFailWithError:(NSError *)error
 {
-    [[[UIApplication sharedApplication] delegate] performSelector:@selector(stopActivity)];
     UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
 }
