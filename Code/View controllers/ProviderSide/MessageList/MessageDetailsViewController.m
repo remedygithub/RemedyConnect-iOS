@@ -23,7 +23,32 @@
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
     self.phoneLabel.attributedText = [[NSAttributedString alloc] initWithString:self.messageDetailHelper.phoneNumber attributes:underlineAttribute];
     
+    [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [self displayImages];
+    [self getUserLoginSession];
+
+}
+
+-(void)getUserLoginSession
+{
+    [RCPinEngine SharedWebEngine].delegate = self;
+    [[RCPinEngine SharedWebEngine]checkLoginSessionOfUser];
+}
+
+- (void)hasStartedDownloading:(NSString *)processString
+{
+    if (nil != statusHUD)
+    {
+        [statusHUD hide:TRUE];
+    }
+    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    [statusHUD setDelegate:self];
+    [statusHUD setDimBackground:TRUE];
+    [statusHUD show:YES];
+    [statusHUD setLabelText:processString];
+    [self.view bringSubviewToFront:statusHUD];
 }
 
 - (void)didReceiveMemoryWarning
@@ -31,15 +56,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self.navigationController setNavigationBarHidden:YES];
+}
+
+-(void)appEnteredForeground
+{
+    [[UIApplication sharedApplication].delegate performSelector:@selector(applicationDidTimeout)];
 }
 
 - (IBAction)backBtnTapped:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+    [RCHelper SharedHelper].isFromDetailMessage = YES;
 }
 
 - (IBAction)menuBtnTapped:(id)sender
@@ -54,14 +87,21 @@
 }
 
 
-
-
+-(void)LogoutTheUser
+{
+    
+    if ([RCPracticeHelper SharedHelper].isLogout || [RCPracticeHelper SharedHelper].isPinFailureAttempt || [RCPracticeHelper SharedHelper].isLoginTimeOut)
+    {
+        [self hasStartedDownloading:@"Logging Out..."];
+    }
+    [RCSessionEngine SharedWebEngine].delegate = self;
+    [[RCSessionEngine SharedWebEngine] LogoutTheUser];
+}
 
 - (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
 {
     NSString * praticeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameOfPratice"];
     NSLog(@"%@",praticeName);
-    //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
     switch (index)
     {
         case 0:
@@ -72,16 +112,15 @@
             }
             break;
             
-            //        case 1:
-            //            [RCPracticeHelper SharedHelper].isChangePractice =YES;
-            //            [RCPracticeHelper SharedHelper].isLogout =NO;
-            //            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
-            //            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
-            //            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
-            //
-            //            [self LogoutTheUser];
-            //            break;
-            //
+            case 1:
+                 [RCPracticeHelper SharedHelper].isChangePractice =YES;
+                 [RCPracticeHelper SharedHelper].isLogout =NO;
+                 [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+                 [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+                 [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+                 [self LogoutTheUser];
+                 break;
+            
         case 2:
             [self performSegueWithIdentifier:@"MoveFromMsgDetailToTerms" sender:self];
             break;
@@ -89,24 +128,24 @@
         case 3:
             [self performSegueWithIdentifier:@"MoveFromMsgDetailToAbout" sender:self];
             break;
-            //
-            //        case 4:
-            //            [RCPracticeHelper SharedHelper].isChangePractice =NO;
-            //            [RCPracticeHelper SharedHelper].isLogout =YES;
-            //            [RCPracticeHelper SharedHelper].isApplicationMode =NO;
-            //            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
-            //            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
-            //            [self LogoutTheUser];
-            //            break;
-            //
-            //        case 5:
-            //            [RCPracticeHelper SharedHelper].isChangePractice =NO;
-            //            [RCPracticeHelper SharedHelper].isLogout =NO;
-            //            [RCPracticeHelper SharedHelper].isApplicationMode = YES;
-            //            [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
-            //            [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
-            //            [self LogoutTheUser];
-            //            break;
+            
+        case 4:
+                [RCPracticeHelper SharedHelper].isChangePractice =NO;
+                [RCPracticeHelper SharedHelper].isLogout =YES;
+                [RCPracticeHelper SharedHelper].isApplicationMode =NO;
+                [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+                [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+                [self LogoutTheUser];
+                break;
+    
+            case 5:
+                [RCPracticeHelper SharedHelper].isChangePractice =NO;
+                [RCPracticeHelper SharedHelper].isLogout =NO;
+                [RCPracticeHelper SharedHelper].isApplicationMode = YES;
+                [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+                [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
+                [self LogoutTheUser];
+                break;
             
         default:
             break;
@@ -144,12 +183,6 @@
     NSLog(@"making call with %@",telURL);
     [[UIApplication sharedApplication] openURL:telURL];
 }
-
-
-
-
-
-
 
 
 -(void)displayImages
@@ -224,5 +257,132 @@
     [logic resetAfterUpdate];
 }
 
+
+#pragma mark - PinEngine Delegate
+-(void)PinManagerDidReceiveResponse:(NSDictionary *)pResultDict
+{
+    if ([[pResultDict objectForKey:@"successfull"]integerValue])
+    {
+    }
+    else
+    {
+        [RCPracticeHelper SharedHelper].isChangePractice =NO;
+        [RCPracticeHelper SharedHelper].isLogout =NO;
+        [RCPracticeHelper SharedHelper].isApplicationMode = NO;
+        [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
+        [RCPracticeHelper SharedHelper].isLoginTimeOut = YES;
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Your session has expired" message:@"You will need to login again. Please press OK to proceed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alert.tag = 10;
+        [alert show];
+    }
+}
+
+
+
+-(void)PinManagerDidFailWithError:(NSError *)error
+{
+    [statusHUD hide:YES afterDelay:2];
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 10 && buttonIndex == 0)
+    {
+        [self LogoutTheUser];
+    }
+}
+
+-(void)clearData
+{
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:KLastLaunchedController];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
+#pragma mark - SessionManager delegate
+-(void)SessionManagerDidReceiveResponse:(NSDictionary*)pResultDict
+{
+    [statusHUD hide:YES afterDelay:1];
+    if ([[pResultDict objectForKey:@"success"]boolValue])
+    {
+        if ([RCPracticeHelper SharedHelper].isChangePractice)
+        {
+            [self clearData];
+            [RCHelper SharedHelper].pinCreated = NO;
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
+            [self performSegueWithIdentifier:@"MoveToMessageDetailToSearch" sender:self];
+        }
+        else if ([RCPracticeHelper SharedHelper].isLogout)
+        {
+            [self clearData];
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:NO];
+            [self moveToLoginController];
+        }
+        else if ([RCPracticeHelper SharedHelper].isApplicationMode)
+        {
+            [self clearData];
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:NO];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        else if ([RCPracticeHelper SharedHelper].isPinFailureAttempt)
+        {
+            [RCHelper SharedHelper].pinCreated = NO;
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
+            [self moveToLoginController];
+        }
+        else if ([RCPracticeHelper SharedHelper].isLoginTimeOut)
+        {
+            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:NO];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"responseToken"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            [self moveToLoginController];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLogoutNotification object:nil];
+        }
+    }
+}
+
+
+-(void)moveToLoginController
+{
+    NSArray *arrayOfControllers = [self.navigationController viewControllers];
+    //Checking whether viewcontroller exist
+    for (id controller in arrayOfControllers)
+    {
+        if ([controller isKindOfClass:[ProviderLoginViewController class]])
+        {
+            [self.navigationController popToViewController:controller animated:YES];
+            return;
+        }
+    }
+    UIViewController *controller =  [self.storyboard instantiateViewControllerWithIdentifier:@"ProviderLoginViewController"];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
+-(void)SessionManagerDidFailWithError:(NSError *)error
+{
+    [statusHUD hide:YES afterDelay:2];
+    
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
+}
+
+
+-(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
+{
+    
+}
+
+-(void)connectionManagerDidFailWithError:(NSError *)error
+{
+    
+}
 
 @end

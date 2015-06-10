@@ -16,8 +16,12 @@
 #import "AboutUsViewController.h"
 #import "MessageListCell.h"
 #import "RCWebEngine.h"
+#import "RCPracticeHelper.h"
+#import "RCSessionEngine.h"
+#import "ProviderHomeViewController.h"
+#import "RCPinEngine.h"
 
-@interface MessageListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,PopoverViewDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,NetworkDelegate,WebEngineDelegate>
+@interface MessageListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,PopoverViewDelegate,MBProgressHUDDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,NetworkDelegate,WebEngineDelegate,SessionEngineDelegate,PinEngineDelegate>
 {
     RCHelper *messageHelper;
     Logic *logic;

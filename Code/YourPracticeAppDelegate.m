@@ -37,7 +37,7 @@
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
          (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     }
-//
+
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout) name:kApplicationDidTimeoutNotification object:nil];
@@ -50,8 +50,8 @@
     self.launchDict = [[NSDictionary alloc]initWithDictionary:launchOptions];
     NSLog(@"%@",self.launchDict);
     
-//    [[PushIOManager sharedInstance] setDelegate:self];
-   // [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:launchOptions];
+    [[PushIOManager sharedInstance] setDelegate:self];
+    [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
@@ -70,14 +70,6 @@
 }
 
 
-
-//-(void)startLoginSession
-//{
-//    [RCHelper SharedHelper].fromLoginTimeout = YES;
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidLoginTimeout:) name:kApplicationDidLoginTimeoutNotification object:nil];
-//}
-
-
 - (void)applicationDidTimeout
 {
     NSLog (@"time exceeded!!");
@@ -88,7 +80,7 @@
     
     UIViewController *vc = [self visibleViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 
-    if ((![userDict valueForKey:kSecretPin] || [[userDict valueForKey:kSecretPin] isEqualToString:@""]) || ![vc isKindOfClass:[ProviderHomeViewController class]] )
+    if ((![userDict valueForKey:kSecretPin] || [[userDict valueForKey:kSecretPin] isEqualToString:@""]) || !([vc isKindOfClass:[ProviderHomeViewController class]] || [vc isKindOfClass:[MessageListViewController class]] || [vc isKindOfClass:[MessageDetailsViewController class]]))
     {
         return;
     }
@@ -135,8 +127,11 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"Device Token: %@", deviceToken);
-    [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:deviceToken forKey:kDeviceToken];
+    [defaults synchronize];
+        
     //Convert device token to machine readable format from human readable format
     self.deviceID = [[[UIDevice currentDevice] identifierForVendor]UUIDString];
     NSLog(@"%@", self.deviceID);
@@ -172,26 +167,26 @@
 
 
 
-//#pragma PUSHIO Manager
-//- (void)readyForRegistration
-//{
-//    // If this method is called back, PushIOManager has a proper device token
-//    // so now you are ready to register.
-//    [[PushIOManager sharedInstance] registerWithPushIO];
-//}
-//
-//- (void)registrationSucceeded
-//{
-//    // Push IO registration was successful
-//    NSLog(@"Successfull");
-//    
-//}
-//
-//- (void)registrationFailedWithError:(NSError *)error statusCode:(int)statusCode
-//{
-//    // Push IO registration failed
-//    NSLog(@"Failed");
-//}
+#pragma PUSHIO Manager
+- (void)readyForRegistration
+{
+    // If this method is called back, PushIOManager has a proper device token
+    // so now you are ready to register.
+    [[PushIOManager sharedInstance] registerWithPushIO];
+}
+
+- (void)registrationSucceeded
+{
+    // Push IO registration was successful
+    NSLog(@"Successfull");
+    
+}
+
+- (void)registrationFailedWithError:(NSError *)error statusCode:(int)statusCode
+{
+    // Push IO registration failed
+    NSLog(@"Failed");
+}
 
 #pragma Screat PIN Checking Delegate Methods
 - (void)PAPasscodeViewControllerDidCancel:(PAPasscodeViewController *)controller

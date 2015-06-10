@@ -314,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJC-K9-cwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-144" y="163"/>
+            <point key="canvasLocation" x="-70" y="39"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="rmN-RD-ezA">
@@ -846,6 +846,13 @@
                                             <action selector="menuBtnTapped:" destination="uxm-h3-zj8" eventType="touchUpInside" id="hZR-ok-6aV"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="remedyconnect-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="htG-Hy-RWl">
+                                        <rect key="frame" x="36" y="448" width="248" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="7QU-xN-4V8"/>
+                                            <constraint firstAttribute="width" constant="248" id="h1z-EQ-6Oq"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -859,12 +866,14 @@
                                     <constraint firstItem="M5I-ge-Fop" firstAttribute="top" secondItem="hXM-kq-apG" secondAttribute="top" id="Fcd-n5-tX9"/>
                                     <constraint firstItem="hXM-kq-apG" firstAttribute="centerX" secondItem="QkV-h0-QQL" secondAttribute="centerX" constant="-1" id="Jq3-bK-ujC"/>
                                     <constraint firstItem="jMS-jo-nII" firstAttribute="centerX" secondItem="o6D-7e-V8o" secondAttribute="centerX" id="Kea-Zf-4dh"/>
+                                    <constraint firstItem="htG-Hy-RWl" firstAttribute="top" secondItem="o6D-7e-V8o" secondAttribute="bottom" constant="17" id="R3S-AM-w1R"/>
                                     <constraint firstItem="l3M-7G-B5D" firstAttribute="leading" secondItem="hXM-kq-apG" secondAttribute="trailing" constant="-125" id="WTD-3f-4sv"/>
                                     <constraint firstItem="QkV-h0-QQL" firstAttribute="leading" secondItem="eWb-W2-eBs" secondAttribute="leadingMargin" constant="40" id="WlC-JB-5Va"/>
                                     <constraint firstItem="hXM-kq-apG" firstAttribute="trailing" secondItem="TWm-a8-TNG" secondAttribute="trailing" constant="-11" id="XHA-93-Nb4"/>
                                     <constraint firstItem="M5I-ge-Fop" firstAttribute="centerX" secondItem="TWm-a8-TNG" secondAttribute="centerX" id="XsU-9D-S6s"/>
                                     <constraint firstItem="QkV-h0-QQL" firstAttribute="trailing" secondItem="M5I-ge-Fop" secondAttribute="trailing" constant="-11" id="YrW-Du-6gS"/>
                                     <constraint firstItem="hXM-kq-apG" firstAttribute="top" secondItem="TWm-a8-TNG" secondAttribute="bottom" constant="16" id="acZ-cd-t3l"/>
+                                    <constraint firstAttribute="centerX" secondItem="htG-Hy-RWl" secondAttribute="centerX" id="bbm-PK-3nD"/>
                                     <constraint firstItem="TWm-a8-TNG" firstAttribute="top" secondItem="5SB-JA-dso" secondAttribute="bottom" constant="29" id="btH-A1-3b6"/>
                                     <constraint firstItem="l3M-7G-B5D" firstAttribute="top" secondItem="jMS-jo-nII" secondAttribute="bottom" constant="17" id="een-Am-hMh"/>
                                     <constraint firstItem="aRj-nQ-DBy" firstAttribute="top" secondItem="hXM-kq-apG" secondAttribute="bottom" constant="-54" id="f8d-Po-FAr"/>
@@ -1311,11 +1320,12 @@
                         <segue destination="ykW-wO-6Fv" kind="push" identifier="MoveToMessageDetail" id="Hn4-fQ-bBt"/>
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="FromMessageListToTerms" id="KNm-FM-2yb"/>
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="FromMessageListToAbout" id="Zmm-6h-E1O"/>
+                        <segue destination="5WQ-Sd-arl" kind="modal" identifier="MoveToMessageListToSearch" id="w0h-D8-hUi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y87-aJ-94S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="327" y="1822"/>
+            <point key="canvasLocation" x="351" y="1834"/>
         </scene>
         <!--Message Details View Controller-->
         <scene sceneID="yxA-pu-jcJ">
@@ -1490,11 +1500,12 @@
                         <outlet property="scrollView" destination="ZqC-iY-KL6" id="fZX-R7-fW8"/>
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="MoveFromMsgDetailToTerms" id="jAu-Pq-YHR"/>
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="MoveFromMsgDetailToAbout" id="qXe-Fj-o2R"/>
+                        <segue destination="5WQ-Sd-arl" kind="modal" identifier="MoveToMessageDetailToSearch" id="y4C-ea-75X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXI-w1-fBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="784" y="1822"/>
+            <point key="canvasLocation" x="1028" y="1839"/>
         </scene>
         <!--About Us View Controller-->
         <scene sceneID="fCB-iE-VcT">
@@ -1530,7 +1541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8eH-Tu-ljY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120" y="2862"/>
+            <point key="canvasLocation" x="-144" y="3126"/>
         </scene>
     </scenes>
     <resources>
@@ -1552,15 +1563,15 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Syr-Nf-Tr2"/>
-        <segue reference="nyo-sS-3lt"/>
-        <segue reference="PHN-Ac-KIr"/>
-        <segue reference="qXe-Fj-o2R"/>
         <segue reference="eF5-Dc-4Os"/>
         <segue reference="ra9-QH-37U"/>
-        <segue reference="cSc-5f-5Z6"/>
         <segue reference="qsH-Hu-HYl"/>
         <segue reference="lj3-vq-Z0e"/>
         <segue reference="LV1-wv-wCh"/>
+        <segue reference="cSc-5f-5Z6"/>
+        <segue reference="8rv-F8-1Y1"/>
+        <segue reference="Syr-Nf-Tr2"/>
+        <segue reference="TAt-5L-lLW"/>
+        <segue reference="cfG-rP-kXA"/>
     </inferredMetricsTieBreakers>
 </document>

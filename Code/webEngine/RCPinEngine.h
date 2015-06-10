@@ -26,5 +26,7 @@
 @property (nonatomic, strong) NSMutableData *m_cReceivedData;
 
 -(void)checkPinTimeOutSession;
+-(void)checkLoginSessionOfUser;
+
 
 @end

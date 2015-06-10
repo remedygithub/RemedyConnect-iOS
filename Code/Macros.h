@@ -54,4 +54,6 @@
 #define kUserDetails @"UserDetails"
 #define kLogoutNotification @"LogoutNotification"
 
+#define kDeviceToken  @"DeviceToken"
+
 #endif

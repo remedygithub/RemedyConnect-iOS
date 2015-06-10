@@ -15,7 +15,13 @@
 #import "MBProgressHUD.h"
 #import "NetworkViewController.h"
 #import "AboutUsViewController.h"
-@interface MessageDetailsViewController : UIViewController<RNGridMenuDelegate,PopoverViewDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,NetworkDelegate>
+#import "RCPinEngine.h"
+#import "RCPracticeHelper.h"
+#import "RCSessionEngine.h"
+#import "ProviderLoginViewController.h"
+#import "RCWebEngine.h"
+
+@interface MessageDetailsViewController : UIViewController<RNGridMenuDelegate,PopoverViewDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,NetworkDelegate,PinEngineDelegate,SessionEngineDelegate,MBProgressHUDDelegate,WebEngineDelegate>
 {
     RCHelper *messageHelper;
     Logic *logic;

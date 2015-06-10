@@ -73,7 +73,6 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
-
     [self.navigationController setNavigationBarHidden:YES];    
 }
 

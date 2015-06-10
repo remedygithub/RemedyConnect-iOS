@@ -11,6 +11,7 @@
 #import "NSData+MD5.h"
 #import <CommonCrypto/CommonDigest.h>
 #define kOFFSET_FOR_KEYBOARD 80.0
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @interface ProviderLoginViewController ()
 
@@ -42,12 +43,8 @@
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    [[PushIOManager sharedInstance] setDelegate:self];
-    YourPracticeAppDelegate *appdelegate = (YourPracticeAppDelegate *) [[UIApplication sharedApplication] delegate];
-    NSLog(@"%@",appdelegate.launchDict);
-    [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:appdelegate.launchDict];
-    
 
+   
     if ([RCHelper SharedHelper].fromLoginTimeout)
     {
 //        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Please enter your RemedyOnCall Admin Username and Password below. Your log in will last 6 HOURS." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -480,7 +477,6 @@
 #pragma mark - Delegate methods of RCWebEngine
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
-   // [statusHUD hide:YES afterDelay:2];
     if ([pResultDict objectForKey:@"token"] != [NSNull null] )
     {
         helper = [[RCHelper alloc]init];
@@ -495,38 +491,15 @@
          [defaults setObject:helper.tokenID forKey:@"responseToken"];
          [defaults synchronize];
      
+        NSData *devicetoken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
+        NSLog(@"%@",devicetoken);
+        [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:devicetoken];
+        
          [RCHelper SharedHelper].isLogin = YES;
+         [RCPinEngine SharedWebEngine].delegate = self;
+        [[RCPinEngine SharedWebEngine] checkPinTimeOutSession];
         
-        [RCPinEngine SharedWebEngine].delegate = self;
-        [RCPinEngine SharedWebEngine].checkPinTimeOutSession;
-        
-       // if user already exist, then we need to check if he has a pin generated. If pin is there we will push it. and before that we will set the user as logged in.
-        
-//        NSMutableDictionary *userDict = [[RCHelper SharedHelper] getUser:self.userNameTextField.text];
-//        if (userDict) {
-//            // user exist
-//            if ([userDict valueForKey:kSecretPin] && ![[userDict valueForKey:kSecretPin] isEqualToString:@""]) {
-//                // setting user as loggedIn
-//                [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:YES];
-//                 [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
-//                return;
-//                
-//            }
-//            else{ // user doesnt have secret pin; still set it as logged in, and pushing to create pin
-//                
-//                [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
-//                [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
-//                return;
-//            }
-//            
-//        }
-//        else //user doesentExist; set user and move
-//        {
-//            [[RCHelper SharedHelper] setUserWithUserName:self.userNameTextField.text andPin:nil andLoggedIN:YES];
-//            [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
-//            return;
-//
-//        }
+      
 
     }
     else
@@ -538,13 +511,14 @@
 
 -(void)connectionFailed
 {
+    [statusHUD hide:YES afterDelay:0];
     UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log you in" message:@"Unknown username or bad password - please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
 }
 
 -(void)connectionManagerDidFailWithError:(NSError *)error
 {
-    [statusHUD hide:YES afterDelay:2];
+    [statusHUD hide:YES afterDelay:0];
      UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log you in" message:@"Unknown username or bad password - please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
 }

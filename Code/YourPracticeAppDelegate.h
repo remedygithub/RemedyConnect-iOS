@@ -17,6 +17,8 @@
 #import "Macros.h"
 #import <PushIOManager/PushIOManager.h>
 #import "ProviderHomeViewController.h"
+#import "MessageListViewController.h"
+#import "MessageDetailsViewController.h"
 
 
 @interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate,PAPasscodeViewControllerDelegate,PushIOManagerDelegate>
@@ -31,6 +33,8 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *deviceID;
 @property (strong, nonatomic) NSDictionary *launchDict;
+@property (strong, nonatomic) NSData *userDeviceToken;
+
 
 
 //Methods for showing activity indicators
