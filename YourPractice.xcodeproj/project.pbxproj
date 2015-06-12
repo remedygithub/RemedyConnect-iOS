@@ -69,6 +69,8 @@
 		0994FA2D1B25658C00938F19 /* Triage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA231B25658C00938F19 /* Triage.png */; };
 		0994FA2E1B25658C00938F19 /* Urgent.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA241B25658C00938F19 /* Urgent.png */; };
 		0994FA321B2580A400938F19 /* RCPinEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0994FA311B2580A400938F19 /* RCPinEngine.m */; };
+		0994FA3A1B2AB82200938F19 /* Newprovider.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA381B2AB82200938F19 /* Newprovider.png */; };
+		0994FA3B1B2AB82200938F19 /* Newpatient.png in Resources */ = {isa = PBXBuildFile; fileRef = 0994FA391B2AB82200938F19 /* Newpatient.png */; };
 		09A7E2651B1433C4009F6256 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFF2AC81717FD110000B80B /* Security.framework */; };
 		09A7E26D1B144487009F6256 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A7E2691B144487009F6256 /* password.png */; };
 		09A7E26E1B144487009F6256 /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A7E26A1B144487009F6256 /* password@2x.png */; };
@@ -298,6 +300,8 @@
 		0994FA241B25658C00938F19 /* Urgent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Urgent.png; path = icons/Urgent.png; sourceTree = "<group>"; };
 		0994FA301B2580A400938F19 /* RCPinEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCPinEngine.h; path = webEngine/RCPinEngine.h; sourceTree = "<group>"; };
 		0994FA311B2580A400938F19 /* RCPinEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCPinEngine.m; path = webEngine/RCPinEngine.m; sourceTree = "<group>"; };
+		0994FA381B2AB82200938F19 /* Newprovider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Newprovider.png; path = icons/Newprovider.png; sourceTree = "<group>"; };
+		0994FA391B2AB82200938F19 /* Newpatient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Newpatient.png; path = icons/Newpatient.png; sourceTree = "<group>"; };
 		09A7E2691B144487009F6256 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = password.png; path = "New Login Screen UI/password.png"; sourceTree = "<group>"; };
 		09A7E26A1B144487009F6256 /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "password@2x.png"; path = "New Login Screen UI/password@2x.png"; sourceTree = "<group>"; };
 		09A7E26B1B144487009F6256 /* userName.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = userName.png; path = "New Login Screen UI/userName.png"; sourceTree = "<group>"; };
@@ -668,6 +672,8 @@
 		0994FA2F1B25659700938F19 /* Message List Icon */ = {
 			isa = PBXGroup;
 			children = (
+				0994FA381B2AB82200938F19 /* Newprovider.png */,
+				0994FA391B2AB82200938F19 /* Newpatient.png */,
 				0994FA1B1B25658C00938F19 /* AnsweringService.png */,
 				0994FA1C1B25658C00938F19 /* HospitalAdmission.png */,
 				0994FA1D1B25658C00938F19 /* Appointment.png */,
@@ -1127,7 +1133,9 @@
 				0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */,
 				092EC58F1B008FFA003A3608 /* digitCell.psd in Resources */,
 				5F82A8A1170B3D8E00FE72B8 /* InfoPlist.strings in Resources */,
+				0994FA3A1B2AB82200938F19 /* Newprovider.png in Resources */,
 				09BEB38A1B0DA75300A5D1DE /* remedyconnect-logo.png in Resources */,
+				0994FA3B1B2AB82200938F19 /* Newpatient.png in Resources */,
 				5F8139101855EBB400EF3E20 /* icon-152.png in Resources */,
 				092EC5941B008FFA003A3608 /* papasscode_failed_bg@2x.png in Resources */,
 				092EC5961B008FFA003A3608 /* papasscode_marker@2x.png in Resources */,

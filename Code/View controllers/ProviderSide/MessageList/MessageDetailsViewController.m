@@ -19,9 +19,13 @@
      self.scrollView.backgroundColor = [UIColor whiteColor];
     logic = [Logic sharedLogic];
 
-    self.messageDetails.text = self.messageDetailHelper.messageDetails;
+    NSString *messageDetail = [[NSUserDefaults standardUserDefaults]objectForKey:@"Details"];
+    self.messageDetails.text = messageDetail;
+    
+    NSString *cellNumber = [[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"];
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
-    self.phoneLabel.attributedText = [[NSAttributedString alloc] initWithString:self.messageDetailHelper.phoneNumber attributes:underlineAttribute];
+    NSLog(@"phone Number %@", cellNumber);
+    self.phoneLabel.attributedText = [[NSAttributedString alloc] initWithString:cellNumber attributes:underlineAttribute];
     
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -60,6 +64,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"BackToList"];
+    [defaults synchronize];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -71,8 +78,18 @@
 
 - (IBAction)backBtnTapped:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
-    [RCHelper SharedHelper].isFromDetailMessage = YES;
+    BOOL Back = [[NSUserDefaults standardUserDefaults]objectForKey:@"BackToList"];
+    if (Back)
+    {
+        [RCHelper SharedHelper].isFromDetailMessage = YES;
+        UIViewController *controller =  [self.storyboard instantiateViewControllerWithIdentifier:@"MessageListViewController"];
+        [self.navigationController pushViewController:controller animated:NO];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"BackToList"];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)menuBtnTapped:(id)sender

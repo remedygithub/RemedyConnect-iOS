@@ -31,6 +31,11 @@
 @property (nonatomic, readwrite) BOOL isPassCodeView;
 @property (nonatomic, readwrite) BOOL isCreateTimeOutRequest;
 
+//Navigation Bool
+@property (nonatomic, readwrite) BOOL isBackFromDetail;
+@property (nonatomic, readwrite) BOOL isBackFromMessageList;
+
+
 +(RCHelper *)SharedHelper;
 
 //SearchPractice Data
@@ -66,6 +71,7 @@
 @property (nonatomic, strong) NSString *messageDetails;
 @property (nonatomic, strong) NSString *callerTypeID;
 @property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic, strong) NSString *urgentId;
 
 
 //Instance Method

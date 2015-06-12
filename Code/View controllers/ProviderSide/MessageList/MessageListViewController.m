@@ -100,10 +100,13 @@
     [super viewWillAppear:animated];
     if ([RCHelper SharedHelper].isFromDetailMessage)
     {
-        [self.dataArray removeAllObjects];
         [self getMessageList];
     }
 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"BackToHome"];
+    [defaults synchronize];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -115,7 +118,18 @@
 
 - (IBAction)backBtnTapped:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    BOOL Back = [[NSUserDefaults standardUserDefaults]objectForKey:@"BackToHome"];
+    if (Back)
+    {
+        UIViewController *controller =  [self.storyboard instantiateViewControllerWithIdentifier:@"ProviderHomeViewController"];
+        [self.navigationController pushViewController:controller animated:NO];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"BackToHome"];
+        
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)menuBtnTapped:(id)sender
@@ -222,47 +236,137 @@
     cell.descpLabel.text = messageInfo.messageDetails;
     cell.timeLabel.text = messageInfo.messageDate;
     NSString *iConID = [NSString stringWithFormat:@"%@",messageInfo.callerTypeID];
+    NSString *urgentID = [NSString stringWithFormat:@"%@",messageInfo.urgentId];
     NSLog(@"%@",iConID);
-    if ([iConID isEqualToString:@"1"])
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"Patient.png"];
-    }
-    else if ([iConID isEqualToString:@"2"])
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"Provider.png"];
-    }
-    else if ([iConID isEqualToString:@"3"])
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"Newborn.png"];
-    }
-    else if ([iConID isEqualToString:@"4"])
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"RxRefill.png"];
-    }
-    else if ([iConID isEqualToString:@"5"])
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"AnsweringService.png"];
-    }
-    else if ([iConID isEqualToString:@"6"])
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"Triage.png"];
-    }
-    else if ([iConID isEqualToString:@"14"])
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"Roundingdoctor.png"];
-    }
-    else if ([iConID isEqualToString:@"15"])
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"HospitalAdmission.png"];
-    }
-    else if ([iConID isEqualToString:@"17"])
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"Appointment.png"];
-    }
-    else
-    {
-        cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
-    }
+    NSLog(@"%@",urgentID);
+
+     if ([iConID isEqualToString:@"1"])
+     {
+         if ([urgentID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+         }
+         else
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Newpatient.png"];
+         }
+         return cell;
+     }
+    
+    
+     if ([iConID isEqualToString:@"2"] )
+     {
+         if ([urgentID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+         }
+         else
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Newprovider.png"];
+         }
+         return cell;
+     }
+    
+    
+     if ([iConID isEqualToString:@"3"])
+     {
+         if ([urgentID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+         }
+         else
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Newborn.png"];
+         }
+         return cell;
+     }
+    
+    
+    
+     if ([iConID isEqualToString:@"4"])
+     {
+         if ([urgentID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+         }
+         else
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"RxRefill.png"];
+         }
+         return cell;
+     }
+    
+    
+    
+     if ([iConID isEqualToString:@"5"])
+     {
+         if ([urgentID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+         }
+         else
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"AnsweringService.png"];
+         }
+         return cell;
+     }
+   
+    
+    
+     if ([iConID isEqualToString:@"6"])
+     {
+         if ([urgentID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+         }
+         else
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Triage.png"];
+         }
+         return cell;
+     }
+    
+    
+     if ([iConID isEqualToString:@"14"])
+     {
+         if ([urgentID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+         }
+         else
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Roundingdoctor.png"];
+         }
+         return cell;
+     }
+    
+    
+     if ([iConID isEqualToString:@"15"])
+     {
+         if ([urgentID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+         }
+         else
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"HospitalAdmission.png"];
+         }
+         return cell;
+     }
+    
+    
+     if ([iConID isEqualToString:@"17"])
+     {
+         if ([urgentID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+         }
+         else
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Appointment.png"];
+         }
+         return cell;
+     }
     return cell;
 }
 
@@ -402,6 +506,8 @@
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
     [statusHUD hide:YES afterDelay:1];
+    [self.dataArray removeAllObjects];
+
     [RCHelper SharedHelper].isFromDetailMessage = NO;
     if ([[pResultDict objectForKey:@"successfull"]boolValue])
     {
@@ -415,6 +521,10 @@
             messageHelper.messageDetails = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"message"];
              messageHelper.callerTypeID = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"callTypeId"];
              messageHelper.phoneNumber = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"phone"];
+            messageHelper.urgentId = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"urgent"];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:[[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"message"] forKey:@"Details"];
+            [defaults setObject:[[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"phone"] forKey:@"phoneNumber"];
             [self.dataArray addObject:messageHelper];
             NSLog(@"%lu",(unsigned long)[self.dataArray count]);
 

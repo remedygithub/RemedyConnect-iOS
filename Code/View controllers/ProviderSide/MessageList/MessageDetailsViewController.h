@@ -20,6 +20,7 @@
 #import "RCSessionEngine.h"
 #import "ProviderLoginViewController.h"
 #import "RCWebEngine.h"
+#import "MessageListViewController.h"
 
 @interface MessageDetailsViewController : UIViewController<RNGridMenuDelegate,PopoverViewDelegate,UpdateDownloadStarterDelegate,MainMenuDelegate,DownloaderDelegate,SubMenuDelegate,NetworkDelegate,PinEngineDelegate,SessionEngineDelegate,MBProgressHUDDelegate,WebEngineDelegate>
 {

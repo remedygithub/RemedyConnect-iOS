@@ -299,7 +299,7 @@
     NSLog(@"Active");
     if ([RCHelper SharedHelper].pinCreated)
     {
-         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
+        [self applicationDidTimeout];
     }
    
 }

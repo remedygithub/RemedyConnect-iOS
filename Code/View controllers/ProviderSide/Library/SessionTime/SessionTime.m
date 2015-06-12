@@ -49,7 +49,7 @@
     {
         timeout = 60;
     }
-    resetTime = [timeOutSecondsString intValue];
+    resetTime = timeout;
     idleTimer = [NSTimer scheduledTimerWithTimeInterval:timeout
                                                    target:self
                                                  selector:@selector(idleTimerExceeded)

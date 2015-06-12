@@ -752,7 +752,7 @@
                                             <action selector="backBtnTapped:" destination="uxm-h3-zj8" eventType="touchUpInside" id="McW-ES-Sdd"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="remedyconnect-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="TWm-a8-TNG">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TWm-a8-TNG">
                                         <rect key="frame" x="22" y="80" width="281" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="6Og-Bg-dtK"/>
@@ -1330,7 +1330,7 @@
         <!--Message Details View Controller-->
         <scene sceneID="yxA-pu-jcJ">
             <objects>
-                <viewController id="ykW-wO-6Fv" customClass="MessageDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageDetailsViewController" id="ykW-wO-6Fv" customClass="MessageDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9BU-J8-OWS"/>
                         <viewControllerLayoutGuide type="bottom" id="wh8-sD-7bq"/>
