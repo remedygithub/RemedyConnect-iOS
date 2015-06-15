@@ -131,7 +131,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:deviceToken forKey:kDeviceToken];
     [defaults synchronize];
-        
+    
     //Convert device token to machine readable format from human readable format
     self.deviceID = [[[UIDevice currentDevice] identifierForVendor]UUIDString];
     NSLog(@"%@", self.deviceID);
@@ -227,8 +227,6 @@
         passcode = nil;
         
         [RCHelper SharedHelper].pinCreated =  NO;
-        
-        //        PAPasscodeViewController* passcodeViewController = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
         passcode = [[PAPasscodeViewController alloc] initForAction:PasscodeActionSet];
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)

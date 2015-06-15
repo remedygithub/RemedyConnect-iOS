@@ -42,22 +42,13 @@
 
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-
-   
-    if ([RCHelper SharedHelper].fromLoginTimeout)
-    {
-//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Please enter your RemedyOnCall Admin Username and Password below. Your log in will last 6 HOURS." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [alert show];
-    }
-    
-   }
+}
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [statusHUD hide:YES afterDelay:2];
+    [statusHUD hide:YES afterDelay:0];
     [self.navigationController setNavigationBarHidden:YES];
     self.userNameTextField.text = @"";
     self.passwordTextField.text = @"";
@@ -233,16 +224,6 @@
             }
             break;
         case 1:
-//            if ([RCHelper SharedHelper].fromAgainList)
-//            {
-//                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:2] animated:YES];
-//            }
-//            else
-//            {
-//                //[logic setMainMenuDelegate:self];
-//                [RCHelper SharedHelper].menuToArticle = YES;
-//                [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:0] animated:YES];
-//            }
             [RCHelper SharedHelper].isLogin = NO;
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
             [[NSUserDefaults standardUserDefaults]synchronize];
@@ -493,14 +474,10 @@
      
         NSData *devicetoken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
         NSLog(@"%@",devicetoken);
-        [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:devicetoken];
-        
+         [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:devicetoken];
          [RCHelper SharedHelper].isLogin = YES;
          [RCPinEngine SharedWebEngine].delegate = self;
-        [[RCPinEngine SharedWebEngine] checkPinTimeOutSession];
-        
-      
-
+         [[RCPinEngine SharedWebEngine] checkPinTimeOutSession];
     }
     else
     {
@@ -508,6 +485,7 @@
     }
 
 }
+
 
 -(void)connectionFailed
 {
@@ -519,12 +497,113 @@
 -(void)connectionManagerDidFailWithError:(NSError *)error
 {
     [statusHUD hide:YES afterDelay:0];
-     UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log you in" message:@"Unknown username or bad password - please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:@"Couldn't log you in" message:@"Unknown username or bad password - please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
 }
 
 
 
+#pragma mark - PinManager Delegate Methods
+-(void)PinManagerDidReceiveResponse:(NSDictionary *)pResultDict
+{
+    NSString *pinTimeOut = [pResultDict objectForKey:@"pinTimeoutSeconds"];
+    [[UIApplication sharedApplication] performSelector:@selector(resetIdleTimer:) withObject:pinTimeOut];
+    [self registerUserForPushIO];
+}
+
+
+-(void)PinManagerDidFailWithError:(NSError *)error
+{
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
+}
+
+
+
+-(void)registerUserForPushIO
+{
+    NSString *practice = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPracticeId"];
+    NSString *physican = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhysicanId"];
+    NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
+    NSString *token =    [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
+   
+    //Encrypting the Username into Hash value (Message-Digest MD5)
+    NSString *hashUserString = [userName MD5];
+    NSLog(@"%@",hashUserString);
+    
+    NSData *devicetoken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
+    NSLog(@"%@",devicetoken);
+    
+    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/InsertPhysicianMobileDevice?PracticeID=%@&PhysicianID=%@&DeviceID=%@&apikey=%@&token=%@",practice,physican,hashUserString,apiKey,tokenKey];
+  
+        NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding]];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:lURL];
+    [urlRequest setHTTPMethod:@"GET"];
+    [urlRequest setValue:[NSString stringWithFormat:@"basic %@",token] forHTTPHeaderField:@"Authorization"];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         
+         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+         if ([httpResponse statusCode] == 200)
+         {
+             [statusHUD hide:YES afterDelay:0];
+              NSString* buffStr = [[NSString alloc]initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
+             if (buffStr)
+             {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                    // successfull in registering
+                     
+                     // if user already exist, then we need to check if he has a pin generated. If pin is there we will push it. and before that we will set the user as logged in.
+                     
+                       NSMutableDictionary *userDict = [[RCHelper SharedHelper] getUser:self.userNameTextField.text];
+                      if (userDict) {
+                      // user exist
+                      if ([userDict valueForKey:kSecretPin] && ![[userDict valueForKey:kSecretPin] isEqualToString:@""]) {
+                      // setting user as loggedIn
+                      [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:YES];
+                      [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
+                      return;
+                      
+                      }
+                      else{ // user doesnt have secret pin; still set it as logged in, and pushing to create pin
+                      
+                      [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
+                      [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
+                      return;
+                      }
+                      
+                      }
+                      else //user doesentExist; set user and move
+                      {
+                      [[RCHelper SharedHelper] setUserWithUserName:self.userNameTextField.text andPin:nil andLoggedIN:YES];
+                      [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
+                      return;
+                      
+                      }
+
+                 });
+             }
+         }
+         else
+         {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 // failure case
+                 UIAlertView *alertView = [[UIAlertView  alloc]initWithTitle:@"Failed To register" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                 [alertView show];
+             });
+             
+         }
+         
+     }];
+
+}
+
+
+
+
+#pragma mark - SessionManager Delegate Methods
 -(void)SessionManagerDidReceiveResponse:(NSDictionary*)pResultDict
 {
     [statusHUD hide:YES afterDelay:2];
@@ -552,46 +631,6 @@
 
 
 
--(void)PinManagerDidReceiveResponse:(NSDictionary *)pResultDict
-{
-    [statusHUD hide:YES afterDelay:2];
-    NSString *pinTimeOut = [pResultDict objectForKey:@"pinTimeoutSeconds"];
-    [[UIApplication sharedApplication] performSelector:@selector(resetIdleTimer:) withObject:pinTimeOut];
-    // if user already exist, then we need to check if he has a pin generated. If pin is there we will push it. and before that we will set the user as logged in.
-    
-            NSMutableDictionary *userDict = [[RCHelper SharedHelper] getUser:self.userNameTextField.text];
-            if (userDict) {
-                // user exist
-                if ([userDict valueForKey:kSecretPin] && ![[userDict valueForKey:kSecretPin] isEqualToString:@""]) {
-                    // setting user as loggedIn
-                    [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:[userDict valueForKey:kSecretPin] andLoggedIN:YES];
-                     [self performSegueWithIdentifier:@"MoveToProvider" sender:self];
-                    return;
-    
-                }
-                else{ // user doesnt have secret pin; still set it as logged in, and pushing to create pin
-    
-                    [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
-                    [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
-                    return;
-                }
-    
-            }
-            else //user doesentExist; set user and move
-            {
-                [[RCHelper SharedHelper] setUserWithUserName:self.userNameTextField.text andPin:nil andLoggedIN:YES];
-                [self performSegueWithIdentifier:@"MoveToCreatePin" sender:self];
-                return;
-    
-            }
-}
-
-
--(void)PinManagerDidFailWithError:(NSError *)error
-{
-    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [lAlert show];
-}
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -12,6 +12,16 @@
 		091D38B11B00EDD800147E28 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D38B01B00EDD800147E28 /* CoreMotion.framework */; };
 		091D38B31B00EDE200147E28 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D38B21B00EDE100147E28 /* AVFoundation.framework */; };
 		091D38B51B00EE0500147E28 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D38B41B00EE0500147E28 /* OpenGLES.framework */; };
+		092559031B2E9E74001CFA4C /* answering_service.png in Resources */ = {isa = PBXBuildFile; fileRef = 092558F91B2E9E74001CFA4C /* answering_service.png */; };
+		092559041B2E9E74001CFA4C /* appointment.png in Resources */ = {isa = PBXBuildFile; fileRef = 092558FA1B2E9E74001CFA4C /* appointment.png */; };
+		092559051B2E9E74001CFA4C /* hospital_admission.png in Resources */ = {isa = PBXBuildFile; fileRef = 092558FB1B2E9E74001CFA4C /* hospital_admission.png */; };
+		092559061B2E9E74001CFA4C /* newborn.png in Resources */ = {isa = PBXBuildFile; fileRef = 092558FC1B2E9E74001CFA4C /* newborn.png */; };
+		092559071B2E9E74001CFA4C /* patientNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 092558FD1B2E9E74001CFA4C /* patientNew.png */; };
+		092559081B2E9E74001CFA4C /* providerNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 092558FE1B2E9E74001CFA4C /* providerNew.png */; };
+		092559091B2E9E74001CFA4C /* rounding_doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = 092558FF1B2E9E74001CFA4C /* rounding_doctor.png */; };
+		0925590A1B2E9E74001CFA4C /* rx_refill.png in Resources */ = {isa = PBXBuildFile; fileRef = 092559001B2E9E74001CFA4C /* rx_refill.png */; };
+		0925590B1B2E9E74001CFA4C /* triage.png in Resources */ = {isa = PBXBuildFile; fileRef = 092559011B2E9E74001CFA4C /* triage.png */; };
+		0925590C1B2E9E74001CFA4C /* urgent_message.png in Resources */ = {isa = PBXBuildFile; fileRef = 092559021B2E9E74001CFA4C /* urgent_message.png */; };
 		092EC4301AFC8FF5003A3608 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 092EC4261AFC8FF5003A3608 /* ioapi.c */; };
 		092EC4311AFC8FF5003A3608 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 092EC4281AFC8FF5003A3608 /* mztools.c */; };
 		092EC4321AFC8FF5003A3608 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 092EC42A1AFC8FF5003A3608 /* unzip.c */; };
@@ -209,6 +219,16 @@
 		091D38B01B00EDD800147E28 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		091D38B21B00EDE100147E28 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		091D38B41B00EE0500147E28 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		092558F91B2E9E74001CFA4C /* answering_service.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = answering_service.png; path = "New message Icons/answering_service.png"; sourceTree = "<group>"; };
+		092558FA1B2E9E74001CFA4C /* appointment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appointment.png; path = "New message Icons/appointment.png"; sourceTree = "<group>"; };
+		092558FB1B2E9E74001CFA4C /* hospital_admission.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hospital_admission.png; path = "New message Icons/hospital_admission.png"; sourceTree = "<group>"; };
+		092558FC1B2E9E74001CFA4C /* newborn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newborn.png; path = "New message Icons/newborn.png"; sourceTree = "<group>"; };
+		092558FD1B2E9E74001CFA4C /* patientNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = patientNew.png; path = "New message Icons/patientNew.png"; sourceTree = "<group>"; };
+		092558FE1B2E9E74001CFA4C /* providerNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = providerNew.png; path = "New message Icons/providerNew.png"; sourceTree = "<group>"; };
+		092558FF1B2E9E74001CFA4C /* rounding_doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rounding_doctor.png; path = "New message Icons/rounding_doctor.png"; sourceTree = "<group>"; };
+		092559001B2E9E74001CFA4C /* rx_refill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rx_refill.png; path = "New message Icons/rx_refill.png"; sourceTree = "<group>"; };
+		092559011B2E9E74001CFA4C /* triage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = triage.png; path = "New message Icons/triage.png"; sourceTree = "<group>"; };
+		092559021B2E9E74001CFA4C /* urgent_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = urgent_message.png; path = "New message Icons/urgent_message.png"; sourceTree = "<group>"; };
 		092EC4161AFC775E003A3608 /* zipzap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = zipzap.xcodeproj; path = ../zipzap/zipzap.xcodeproj; sourceTree = "<group>"; };
 		092EC4251AFC8FF5003A3608 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		092EC4261AFC8FF5003A3608 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
@@ -463,6 +483,23 @@
 				091D38A81B00ECC400147E28 /* TestFairy.h */,
 			);
 			name = TestFairy;
+			sourceTree = "<group>";
+		};
+		0925590D1B2E9E7F001CFA4C /* Message Icon */ = {
+			isa = PBXGroup;
+			children = (
+				092558F91B2E9E74001CFA4C /* answering_service.png */,
+				092558FA1B2E9E74001CFA4C /* appointment.png */,
+				092558FB1B2E9E74001CFA4C /* hospital_admission.png */,
+				092558FC1B2E9E74001CFA4C /* newborn.png */,
+				092558FD1B2E9E74001CFA4C /* patientNew.png */,
+				092558FE1B2E9E74001CFA4C /* providerNew.png */,
+				092558FF1B2E9E74001CFA4C /* rounding_doctor.png */,
+				092559001B2E9E74001CFA4C /* rx_refill.png */,
+				092559011B2E9E74001CFA4C /* triage.png */,
+				092559021B2E9E74001CFA4C /* urgent_message.png */,
+			);
+			name = "Message Icon";
 			sourceTree = "<group>";
 		};
 		092EC4171AFC775E003A3608 /* Products */ = {
@@ -974,6 +1011,7 @@
 		5FFF2AE0171824A70000B80B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0925590D1B2E9E7F001CFA4C /* Message Icon */,
 				0994FA2F1B25659700938F19 /* Message List Icon */,
 				09BEB38C1B0DA76300A5D1DE /* New Login Screen */,
 				092EC5861B008FFA003A3608 /* Passcoda */,
@@ -1122,7 +1160,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0994FA2C1B25658C00938F19 /* RxRefill.png in Resources */,
+				092559051B2E9E74001CFA4C /* hospital_admission.png in Resources */,
 				5F8EC141180E99060080A62E /* Storyboard.storyboard in Resources */,
+				092559031B2E9E74001CFA4C /* answering_service.png in Resources */,
 				092EC5951B008FFA003A3608 /* papasscode_marker.png in Resources */,
 				5FF0EACC194733B4001A33D4 /* search-sea.png in Resources */,
 				0994FA261B25658C00938F19 /* HospitalAdmission.png in Resources */,
@@ -1130,7 +1170,9 @@
 				5F96F1A9189928DD0015F065 /* Storyboard-iPad.storyboard in Resources */,
 				0994FA291B25658C00938F19 /* Newborn.png in Resources */,
 				092EC5911B008FFA003A3608 /* papasscode_background.png in Resources */,
+				092559081B2E9E74001CFA4C /* providerNew.png in Resources */,
 				0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */,
+				092559041B2E9E74001CFA4C /* appointment.png in Resources */,
 				092EC58F1B008FFA003A3608 /* digitCell.psd in Resources */,
 				5F82A8A1170B3D8E00FE72B8 /* InfoPlist.strings in Resources */,
 				0994FA3A1B2AB82200938F19 /* Newprovider.png in Resources */,
@@ -1146,10 +1188,12 @@
 				092EC4FD1AFE6DB0003A3608 /* RemedyConnect_Diamond_Small.png in Resources */,
 				5F82A8AB170B3D8E00FE72B8 /* Default@2x.png in Resources */,
 				5F81390B1855EBB400EF3E20 /* icon-72.png in Resources */,
+				0925590C1B2E9E74001CFA4C /* urgent_message.png in Resources */,
 				5F81390C1855EBB400EF3E20 /* icon-76.png in Resources */,
 				5F82A8AD170B3D8E00FE72B8 /* Default-568h@2x.png in Resources */,
 				5F8EC149180EA2620080A62E /* button.9.png in Resources */,
 				0994FA2E1B25658C00938F19 /* Urgent.png in Resources */,
+				092559061B2E9E74001CFA4C /* newborn.png in Resources */,
 				5F82D6751862EE1F00430B91 /* splashscreen.png in Resources */,
 				5F8EC148180EA2620080A62E /* background_texture.png in Resources */,
 				092EC5921B008FFA003A3608 /* papasscode_background@2x.png in Resources */,
@@ -1166,17 +1210,20 @@
 				0994FA2A1B25658C00938F19 /* Patient.png in Resources */,
 				09A7E26F1B144487009F6256 /* userName.png in Resources */,
 				0994FA281B25658C00938F19 /* Provider.png in Resources */,
+				092559091B2E9E74001CFA4C /* rounding_doctor.png in Resources */,
 				5FF0EAD619475036001A33D4 /* location.png in Resources */,
 				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
 				09BEB3891B0DA75300A5D1DE /* button.png in Resources */,
 				0994FA271B25658C00938F19 /* Appointment.png in Resources */,
 				5F81390E1855EBB400EF3E20 /* icon-120.png in Resources */,
 				0994FA2B1B25658C00938F19 /* Roundingdoctor.png in Resources */,
+				0925590A1B2E9E74001CFA4C /* rx_refill.png in Resources */,
 				5FF0EACD194733B4001A33D4 /* search-tree.png in Resources */,
 				09A7E2701B144487009F6256 /* userName@2x.png in Resources */,
 				5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */,
 				5F916648183F926A00E74748 /* OpenSans-Bold.ttf in Resources */,
 				5F916649183F926A00E74748 /* OpenSans-BoldItalic.ttf in Resources */,
+				092559071B2E9E74001CFA4C /* patientNew.png in Resources */,
 				5F91664A183F926A00E74748 /* OpenSans-CondBold.ttf in Resources */,
 				092EC4FB1AFE6DB0003A3608 /* RemedyConnect Horizontal Logo for Mobile.jpg in Resources */,
 				5F9D77BC1860915E00808660 /* testbutton.png in Resources */,
@@ -1186,6 +1233,7 @@
 				09BEB38B1B0DA75300A5D1DE /* whitebkgrnd.png in Resources */,
 				5F916639183F88DB00E74748 /* style.css in Resources */,
 				5F3226751899433E00B01D06 /* about.htm in Resources */,
+				0925590B1B2E9E74001CFA4C /* triage.png in Resources */,
 				5F3226761899433E00B01D06 /* terms_and_conditions.htm in Resources */,
 				09BEB3881B0DA75300A5D1DE /* background.png in Resources */,
 			);

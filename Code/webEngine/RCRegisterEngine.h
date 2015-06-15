@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-//Delegate method for forgot passwords
+#import "Macros.h"
 @protocol registerWebDelegate <NSObject>
--(void)logoutFinishedLoading:(BOOL)pResultDict;
--(void)logoutFailedLoading:(NSError *)error;
+-(void)RegisterManagerDidReceiveResponse:(NSDictionary*)pResultDict;
+-(void)RegisterManagerDidFailWithError:(NSError *)error;
 @end
 
 @interface RCRegisterEngine : NSObject
@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSMutableData *m_cReceivedData;
 
 +(RCRegisterEngine *)sharedHelper;
--(void)LogoutTheUser;
 
+//Registering User for Notification
+-(void)sendRequestForRegister:(NSString *)praticeId  Physician:(NSString *)physicianId device:(NSString *)DeviceId;
 @end

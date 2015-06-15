@@ -244,11 +244,11 @@
      {
          if ([urgentID isEqualToString:@"1"])
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
          }
          else
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Newpatient.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"patientNew.png"];
          }
          return cell;
      }
@@ -258,11 +258,11 @@
      {
          if ([urgentID isEqualToString:@"1"])
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
          }
          else
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Newprovider.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"providerNew.png"];
          }
          return cell;
      }
@@ -272,7 +272,7 @@
      {
          if ([urgentID isEqualToString:@"1"])
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
          }
          else
          {
@@ -287,11 +287,11 @@
      {
          if ([urgentID isEqualToString:@"1"])
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
          }
          else
          {
-             cell.iConImage.image = [UIImage imageNamed:@"RxRefill.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"rx_refill.png"];
          }
          return cell;
      }
@@ -302,11 +302,11 @@
      {
          if ([urgentID isEqualToString:@"1"])
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
          }
          else
          {
-             cell.iConImage.image = [UIImage imageNamed:@"AnsweringService.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"answering_service.png"];
          }
          return cell;
      }
@@ -317,11 +317,11 @@
      {
          if ([urgentID isEqualToString:@"1"])
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
          }
          else
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Triage.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"triage.png"];
          }
          return cell;
      }
@@ -331,11 +331,11 @@
      {
          if ([urgentID isEqualToString:@"1"])
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
          }
          else
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Roundingdoctor.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"rounding_doctor.png"];
          }
          return cell;
      }
@@ -345,11 +345,11 @@
      {
          if ([urgentID isEqualToString:@"1"])
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
          }
          else
          {
-             cell.iConImage.image = [UIImage imageNamed:@"HospitalAdmission.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"hospital_admission.png"];
          }
          return cell;
      }
@@ -359,11 +359,11 @@
      {
          if ([urgentID isEqualToString:@"1"])
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Urgent.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
          }
          else
          {
-             cell.iConImage.image = [UIImage imageNamed:@"Appointment.png"];
+             cell.iConImage.image = [UIImage imageNamed:@"appointment.png"];
          }
          return cell;
      }
@@ -374,6 +374,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
      messageHelper = [self.dataArray objectAtIndex:indexPath.row];
+     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:messageHelper.messageDetails forKey:@"Details"];
+    [defaults setObject:messageHelper.phoneNumber forKey:@"phoneNumber"];
+    [defaults synchronize];
     [self performSegueWithIdentifier:@"MoveToMessageDetail" sender:self];
 }
 
@@ -522,9 +526,6 @@
              messageHelper.callerTypeID = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"callTypeId"];
              messageHelper.phoneNumber = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"phone"];
             messageHelper.urgentId = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"urgent"];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:[[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"message"] forKey:@"Details"];
-            [defaults setObject:[[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"phone"] forKey:@"phoneNumber"];
             [self.dataArray addObject:messageHelper];
             NSLog(@"%lu",(unsigned long)[self.dataArray count]);
 

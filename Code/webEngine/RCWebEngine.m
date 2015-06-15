@@ -186,7 +186,8 @@ static RCWebEngine *sharedEngine = nil;
             }
         }
     }
-    else {
+    else
+    {
         NSLog(@"Received data nil when converted to NSString");
     }
     

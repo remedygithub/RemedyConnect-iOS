@@ -22,19 +22,25 @@ static RCRegisterEngine *sharedHelper = nil;
     return sharedHelper;
 }
 
--(void)LogoutTheUser
+
+//Registering User for Notification.
+-(void)sendRequestForRegister:(NSString *)praticeId  Physician:(NSString *)physicianId device:(NSString *)DeviceId
 {
-    NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
-    NSLog(@"%@",userName);
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Users/Logout?UserName=%@",userName];
+    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
+    NSLog(@"%@",token);
+    
+    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/InsertPhysicianMobileDevice?PracticeID=%@&PhysicianID=%@&DeviceID=%@&apikey=%@&token=%@",praticeId,physicianId,DeviceId,apiKey,tokenKey];
     NSLog(@"%@",lUrlString);
     NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSLog(@"URL:%@", lURL);
+    
     NSMutableURLRequest *lRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
-    [lRequest setHTTPMethod:@"POST"];
+    [lRequest setHTTPMethod:@"GET"];
+    [lRequest setValue:[NSString stringWithFormat:@"basic %@",token] forHTTPHeaderField:@"Authorization"];
     NSURLConnection *lConnection = [[NSURLConnection alloc] initWithRequest:lRequest delegate:self];
     [lConnection start];
 }
+
 
 
 #pragma mark NSURLConnectionDelegate Methods
@@ -60,23 +66,57 @@ static RCRegisterEngine *sharedHelper = nil;
     
     NSString* buffStr = [[NSString alloc]initWithBytes:[self.m_cReceivedData bytes] length:[self.m_cReceivedData length] encoding:NSUTF8StringEncoding];//NSNonLossyASCIIStringEncoding];//[[NSString alloc]initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
     
-    if (nil != buffStr) {
+    if (nil != buffStr)
+    {
         //        [m_cReceivedData appendString:buffStr];
         NSLog(@" Received data %@", buffStr);
-        
-        NSError *error;
-         NSDictionary * lJsonData = [NSJSONSerialization JSONObjectWithData:self.m_cReceivedData options:kNilOptions error:&error];
-        // sending back the response to class
-        if (self.delegate != nil) {
-            if ([self.delegate respondsToSelector:@selector(connectionManagerDidReceiveResponse:)]) {
-                [self.delegate logoutFinishedLoading:(BOOL)lJsonData];
+        if ([buffStr isEqualToString:@""]) {
+            
+            if (self.delegate != nil) {
+                if ([self.delegate respondsToSelector:@selector(connectionManagerDidReceiveResponse:)])
+                {
+                    [self.delegate RegisterManagerDidReceiveResponse:[NSDictionary dictionaryWithObjectsAndKeys:@"true",@"success", nil]];
+                }
+                return;
             }
+            
+        }
+        NSError *error;
+        NSDictionary *lJsonData = [NSJSONSerialization JSONObjectWithData:self.m_cReceivedData options:kNilOptions error:&error];
+        // sending back the response to class
+        if (self.delegate != nil)
+        {
+            if ([self.delegate respondsToSelector:@selector(connectionManagerDidReceiveResponse:)]) {
+                [self.delegate RegisterManagerDidReceiveResponse:lJsonData];
+               }
         }
     }
-    else {
+    else
+    {
         NSLog(@"Received data nil when converted to NSString");
     }
     
+    
+//    connection = nil;
+//    
+//    NSString* buffStr = [[NSString alloc]initWithBytes:[self.m_cReceivedData bytes] length:[self.m_cReceivedData length] encoding:NSUTF8StringEncoding];//NSNonLossyASCIIStringEncoding];//[[NSString alloc]initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
+//    
+//    if (nil != buffStr) {
+//        //        [m_cReceivedData appendString:buffStr];
+//        NSLog(@" Received data %@", buffStr);
+//        
+//        NSError *error;
+//        NSDictionary *lJsonData = [NSJSONSerialization JSONObjectWithData:self.m_cReceivedData options:kNilOptions error:&error];
+//        // sending back the response to class
+//        if (self.delegate != nil) {
+//            if ([self.delegate respondsToSelector:@selector(connectionManagerDidReceiveResponse:)]) {
+//                [self.delegate RegisterManagerDidReceiveResponse:lJsonData];
+//            }
+//        }
+//    }
+//    else {
+//        NSLog(@"Received data nil when converted to NSString");
+//    }
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
@@ -84,7 +124,7 @@ static RCRegisterEngine *sharedHelper = nil;
     if (self.delegate != nil) {
         if([self.delegate respondsToSelector:@selector(connectionManagerDidFailWithError:)])
         {
-            [self.delegate logoutFailedLoading:error];
+            [self.delegate RegisterManagerDidFailWithError:error];
         }
     }
 }
