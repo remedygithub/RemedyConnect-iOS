@@ -48,9 +48,9 @@
     }
     else
     {
-        self.title = @"Terms and Conditions";
+        self.title = @"Legal";
 
-        self.Type = [[NSBundle mainBundle] pathForResource:@"terms_and_conditions" ofType:@"htm" inDirectory:nil];
+        self.Type = [[NSBundle mainBundle] pathForResource:@"Legal" ofType:@"html" inDirectory:nil];
     }
     request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:self.Type]];
     [self.webView loadRequest:request];

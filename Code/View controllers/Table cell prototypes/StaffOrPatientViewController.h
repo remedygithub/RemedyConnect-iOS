@@ -15,7 +15,9 @@
 #import "MainMenuViewController.h"
 #import "RCSessionEngine.h"
 #import "UnderDevViewController.h"
-@interface StaffOrPatientViewController : UIViewController<SubMenuDelegate,MainMenuDelegate,SessionEngineDelegate>
+#import "PopoverView.h"
+#import "AboutUsViewController.h"
+@interface StaffOrPatientViewController : UIViewController<SubMenuDelegate,MainMenuDelegate,SessionEngineDelegate,PopoverViewDelegate>
 {
     Logic *logic;
     NSString *practiceName;
@@ -30,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (strong, nonatomic) UIImageView *village;
 @property (weak, nonatomic) UIImageView *backImage;
+@property (strong, nonatomic) IBOutlet UIButton *menuBtn;
 
 
 @end

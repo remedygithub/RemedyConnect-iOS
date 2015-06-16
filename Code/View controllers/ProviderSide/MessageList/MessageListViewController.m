@@ -138,8 +138,8 @@
                                 self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
-                    withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",@"Change application mode",nil]
+                    withStringArray:[NSArray arrayWithObjects:@"Refresh",
+                                     @"Choose Your Practice", @"Legal",@"Logout",@"Patient/Guardian",nil]
                            delegate:self];
 }
 
@@ -172,11 +172,11 @@
             [self performSegueWithIdentifier:@"FromMessageListToTerms" sender:self];
             break;
             
-        case 3:
-            [self performSegueWithIdentifier:@"FromMessageListToAbout" sender:self];
-            break;
+//        case 3:
+//            [self performSegueWithIdentifier:@"FromMessageListToAbout" sender:self];
+//            break;
             
-        case 4:
+        case 3:
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =YES;
             [RCPracticeHelper SharedHelper].isApplicationMode =NO;
@@ -185,7 +185,7 @@
             [self LogoutTheUser];
             break;
             
-        case 5:
+        case 4:
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =NO;
             [RCPracticeHelper SharedHelper].isApplicationMode = YES;
@@ -399,7 +399,7 @@
     if ([segue.identifier isEqualToString:@"FromMessageListToTerms"])
     {
         AboutUsViewController *termsController = [segue destinationViewController];
-        termsController.self.Text = @"Terms and Conditions";
+        termsController.self.Text = @"Legal";
     }
 }
 

@@ -223,8 +223,8 @@ NSArray *menu;
                                 _menuButton.frame.origin.y + _menuButton.frame.size.height);
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
-                    withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions", @"About",@"Change application mode",nil]
+                    withStringArray:[NSArray arrayWithObjects:@"Refresh",
+                                     @"Choose Your Practice", @"Legal",@"Provider/Staff",nil]
                            delegate:self];
 }
 
@@ -242,10 +242,10 @@ NSArray *menu;
         case 2:
             [self performSegueWithIdentifier:@"toTerms" sender:self];
             break;
+//        case 3:
+//            [self performSegueWithIdentifier:@"toAbout" sender:self];
+//            break;
         case 3:
-            [self performSegueWithIdentifier:@"toAbout" sender:self];
-            break;
-        case 4:
             //[RCHelper SharedHelper].pinCreated = YES;
             [self.navigationController popToRootViewControllerAnimated:YES];
             break;
@@ -270,7 +270,7 @@ NSArray *menu;
     }
     if ([segue.identifier isEqualToString:@"toTerms"]) {
         AboutTermsController *termsController = [segue destinationViewController];
-        [termsController setWebTitle: @"Terms and Conditions"];
+        [termsController setWebTitle: @"Legal"];
         [termsController setWebText: [logic getTermsHTML]];
     }
 }

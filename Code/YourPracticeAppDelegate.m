@@ -37,7 +37,7 @@
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
          (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     }
-
+    
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout) name:kApplicationDidTimeoutNotification object:nil];

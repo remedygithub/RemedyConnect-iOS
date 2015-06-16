@@ -143,6 +143,8 @@
                        UIImage *stretchableImage = [btnImag resizableImageWithCapInsets:insets];
                        [self.patientBtn  setBackgroundImage:stretchableImage forState:UIControlStateNormal];
                        [self.providerBtn setBackgroundImage:stretchableImage forState:UIControlStateNormal];
+                        [self.menuBtn setBackgroundImage:btnImag forState:UIControlStateNormal];
+                       
                    });
 }
 
@@ -175,6 +177,54 @@
     [RCHelper SharedHelper].fromSelfSelectBack = NO;
     [RCHelper SharedHelper].fromMenuReturn = NO;
 }
+
+
+- (IBAction)menuBtnTapped:(id)sender
+{
+    CGPoint point = CGPointMake(self.menuBtn.frame.origin.x + self.menuBtn.frame.size.width / 2,
+                                self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
+    [PopoverView showPopoverAtPoint:point
+                             inView:self.view
+                    withStringArray:[NSArray arrayWithObjects:
+                                     @"Choose Your Practice", @"Legal",nil]
+                           delegate:self];
+}
+
+
+
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
+{
+    NSString * praticeName = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameOfPratice"];
+    NSLog(@"%@",praticeName);
+    switch (index)
+    {
+        case 0:
+//            [RCHelper SharedHelper].isLogin = NO;
+//            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+//            [[NSUserDefaults standardUserDefaults]synchronize];
+            [self performSegueWithIdentifier:@"MoveTosearchAgain" sender:self];
+            break;
+            
+        case 1:
+            [self performSegueWithIdentifier:@"SelfToTerms" sender:self];
+            break;
+         
+        default:
+            break;
+    }
+    [popoverView dismiss:TRUE];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+   
+    if ([segue.identifier isEqualToString:@"SelfToTerms"])
+    {
+        AboutUsViewController *termsController = [segue destinationViewController];
+        termsController.self.Text = @"Legal";
+    }
+}
+
 
 //Checking for device Orientation
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

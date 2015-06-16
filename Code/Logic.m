@@ -116,13 +116,13 @@ int itemFromArticleSet = -1;
     [FileHandling prepareTempDirectory];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
-   NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
+    NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
                                             withFeedRoot:[Logic getFeedRoot]];
     
-  // NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.759623 withLongitude:-104.764509
-                                                   // withFeedRoot:[Logic getFeedRoot]];
+  //NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.759623 withLongitude:-104.764509
+                                                  //  withFeedRoot:[Logic getFeedRoot]];
     
-//    NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.318310 withLongitude:-76.546424                                                    withFeedRoot:[Logic getFeedRoot]];
+   // NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.318310 withLongitude:-76.546424                                                    withFeedRoot:[Logic getFeedRoot]];
     [downloader addURLToDownload:URL
                           saveAs:[FileHandling getFilePathWithComponent:@"root.xml" inTemp:YES]];
     [downloader startDownload];
@@ -565,7 +565,7 @@ int itemFromArticleSet = -1;
 
 -(NSString *)getTermsHTML {
     NSError* error = nil;
-    NSString *path = [[NSBundle mainBundle] pathForResource: @"terms_and_conditions" ofType: @"htm"];
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Legal" ofType: @"html"];
     NSString *content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
     return content;
 }

@@ -22,6 +22,7 @@
 		0925590A1B2E9E74001CFA4C /* rx_refill.png in Resources */ = {isa = PBXBuildFile; fileRef = 092559001B2E9E74001CFA4C /* rx_refill.png */; };
 		0925590B1B2E9E74001CFA4C /* triage.png in Resources */ = {isa = PBXBuildFile; fileRef = 092559011B2E9E74001CFA4C /* triage.png */; };
 		0925590C1B2E9E74001CFA4C /* urgent_message.png in Resources */ = {isa = PBXBuildFile; fileRef = 092559021B2E9E74001CFA4C /* urgent_message.png */; };
+		092559131B2FD7C0001CFA4C /* Legal.html in Resources */ = {isa = PBXBuildFile; fileRef = 092559121B2FD7C0001CFA4C /* Legal.html */; };
 		092EC4301AFC8FF5003A3608 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 092EC4261AFC8FF5003A3608 /* ioapi.c */; };
 		092EC4311AFC8FF5003A3608 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 092EC4281AFC8FF5003A3608 /* mztools.c */; };
 		092EC4321AFC8FF5003A3608 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 092EC42A1AFC8FF5003A3608 /* unzip.c */; };
@@ -229,6 +230,7 @@
 		092559001B2E9E74001CFA4C /* rx_refill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rx_refill.png; path = "New message Icons/rx_refill.png"; sourceTree = "<group>"; };
 		092559011B2E9E74001CFA4C /* triage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = triage.png; path = "New message Icons/triage.png"; sourceTree = "<group>"; };
 		092559021B2E9E74001CFA4C /* urgent_message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = urgent_message.png; path = "New message Icons/urgent_message.png"; sourceTree = "<group>"; };
+		092559121B2FD7C0001CFA4C /* Legal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Legal.html; sourceTree = "<group>"; };
 		092EC4161AFC775E003A3608 /* zipzap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = zipzap.xcodeproj; path = ../zipzap/zipzap.xcodeproj; sourceTree = "<group>"; };
 		092EC4251AFC8FF5003A3608 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		092EC4261AFC8FF5003A3608 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
@@ -1042,6 +1044,7 @@
 				5F9D77BB1860915E00808660 /* testbutton.png */,
 				5F940304188FC4FE00DBFD1A /* about.htm */,
 				5F940306188FC50D00DBFD1A /* terms_and_conditions.htm */,
+				092559121B2FD7C0001CFA4C /* Legal.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1231,6 +1234,7 @@
 				0994FA2D1B25658C00938F19 /* Triage.png in Resources */,
 				092EC4F01AFE68D0003A3608 /* back_arrow.png in Resources */,
 				09BEB38B1B0DA75300A5D1DE /* whitebkgrnd.png in Resources */,
+				092559131B2FD7C0001CFA4C /* Legal.html in Resources */,
 				5F916639183F88DB00E74748 /* style.css in Resources */,
 				5F3226751899433E00B01D06 /* about.htm in Resources */,
 				0925590B1B2E9E74001CFA4C /* triage.png in Resources */,

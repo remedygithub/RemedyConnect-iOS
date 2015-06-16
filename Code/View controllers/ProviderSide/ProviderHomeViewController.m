@@ -153,8 +153,8 @@
                                 self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
-                    withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",@"Change application mode",nil]
+                    withStringArray:[NSArray arrayWithObjects:@"Refresh",
+                                     @"Choose Your Practice", @"Legal",@"Logout",@"Patient/Guardian",nil]
                            delegate:self];
 }
 
@@ -181,7 +181,6 @@
             [RCPracticeHelper SharedHelper].isApplicationMode =NO;
             [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
             [RCPracticeHelper SharedHelper].isLoginTimeOut = NO;
-
             [self LogoutTheUser];
             break;
             
@@ -189,11 +188,11 @@
             [self performSegueWithIdentifier:@"Terms" sender:self];
             break;
             
-         case 3:
-            [self performSegueWithIdentifier:@"AboutUs" sender:self];
-            break;
+//         case 3:
+//            [self performSegueWithIdentifier:@"AboutUs" sender:self];
+//            break;
             
-         case 4:
+         case 3:
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =YES;
             [RCPracticeHelper SharedHelper].isApplicationMode =NO;
@@ -202,7 +201,7 @@
             [self LogoutTheUser];
             break;
             
-         case 5:
+         case 4:
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =NO;
             [RCPracticeHelper SharedHelper].isApplicationMode = YES;
@@ -343,7 +342,7 @@
     if ([segue.identifier isEqualToString:@"Terms"])
     {
         AboutUsViewController *termsController = [segue destinationViewController];
-        termsController.self.Text = @"Terms and Conditions";
+        termsController.self.Text = @"Legal";
     }
 }
 

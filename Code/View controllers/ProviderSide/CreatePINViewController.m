@@ -64,8 +64,8 @@
                                 self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
-                    withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Logout",@"Change application mode",nil]
+                    withStringArray:[NSArray arrayWithObjects:
+                                     @"Choose Your Practice", @"Legal",@"Logout",@"Patient/Guardian",nil]
                            delegate:self];
 }
 
@@ -78,15 +78,15 @@
     //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
     switch (index)
     {
+//        case 0:
+//            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
+//            {
+//                [RCHelper SharedHelper].isLogin = NO;
+//                [logic setUpdateDownloadStarterDelegate:self];
+//                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
+//            }
+//            break;
         case 0:
-            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
-            {
-                [RCHelper SharedHelper].isLogin = NO;
-                [logic setUpdateDownloadStarterDelegate:self];
-                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
-            }
-            break;
-        case 1:
           
             [RCHelper SharedHelper].isLogin = NO;
             [RCPracticeHelper SharedHelper].isChangePractice =YES;
@@ -98,15 +98,15 @@
 
             break;
             
-        case 2:
+        case 1:
             [self performSegueWithIdentifier:@"FromPinToTerms" sender:self];
             break;
             
-        case 3:
-            [self performSegueWithIdentifier:@"FromPinToAbout" sender:self];
-            break;
+//        case 3:
+//            [self performSegueWithIdentifier:@"FromPinToAbout" sender:self];
+//            break;
             
-        case 4:
+        case 2:
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =YES;
             [RCPracticeHelper SharedHelper].isApplicationMode =NO;
@@ -115,7 +115,7 @@
             [self LogoutTheUser];
             break;
             
-        case 5:
+        case 3:
             [RCPracticeHelper SharedHelper].isChangePractice =NO;
             [RCPracticeHelper SharedHelper].isLogout =NO;
             [RCPracticeHelper SharedHelper].isApplicationMode = YES;
@@ -302,7 +302,7 @@
     if ([segue.identifier isEqualToString:@"FromPinToTerms"])
     {
         AboutUsViewController *termsController = [segue destinationViewController];
-        termsController.self.Text = @"Terms and Conditions";
+        termsController.self.Text = @"Legal";
     }
     if ([segue.identifier isEqualToString:@"FromPinToAbout"])
     {

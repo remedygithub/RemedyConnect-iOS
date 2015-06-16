@@ -81,15 +81,11 @@
     
 }
 
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 //Back Button Action
 - (IBAction)backBtnTapped:(id)sender
@@ -202,8 +198,8 @@
                                 self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
     [PopoverView showPopoverAtPoint:point
                              inView:self.view
-                    withStringArray:[NSArray arrayWithObjects:@"Update Your Practice Info",
-                                     @"Choose Your Practice", @"Terms and Conditions",@"About Us",@"Change application mode",nil]
+                    withStringArray:[NSArray arrayWithObjects:
+                                     @"Choose Your Practice", @"Legal",nil]
                            delegate:self];
 }
 
@@ -215,34 +211,34 @@
     //NSString  * searchPraticeString =[[RCHelper SharedHelper] getSearchURLByName:praticeName];
     switch (index)
     {
+//        case 0:
+//            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
+//            {
+//                [RCHelper SharedHelper].isLogin = NO;
+//                [logic setUpdateDownloadStarterDelegate:self];
+//                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
+//            }
+//            break;
         case 0:
-            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
-            {
-                [RCHelper SharedHelper].isLogin = NO;
-                [logic setUpdateDownloadStarterDelegate:self];
-                [logic handleActionWithTag:index shouldProceedToPage:FALSE];
-            }
-            break;
-        case 1:
             [RCHelper SharedHelper].isLogin = NO;
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
             [[NSUserDefaults standardUserDefaults]synchronize];
             [self performSegueWithIdentifier:@"FromLoginToSelect" sender:self];
             break;
             
-        case 2:
+        case 1:
             [self performSegueWithIdentifier:@"LoginToTerms" sender:self];
             break;
             
-        case 3:
-            [self performSegueWithIdentifier:@"LoginToAboutUs" sender:self];
-            break;
+//        case 2:
+//            [self performSegueWithIdentifier:@"LoginToAboutUs" sender:self];
+//            break;
            
-        case 4:
-            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            [self.navigationController popViewControllerAnimated:YES];
-            break;
+//        case 2:
+//            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+//            [[NSUserDefaults standardUserDefaults]synchronize];
+//            [self.navigationController popViewControllerAnimated:YES];
+//            break;
             
             default:
             break;
@@ -640,11 +636,10 @@
         CreatePINViewController *detailAboutSpeaker = (CreatePINViewController*)segue.destinationViewController;
         detailAboutSpeaker.self.registerHelper = helper;
     }
-    
     if ([segue.identifier isEqualToString:@"LoginToTerms"])
     {
         AboutUsViewController *termsController = [segue destinationViewController];
-        termsController.self.Text = @"Terms and Conditions";
+        termsController.self.Text = @"Legal";
     }
     if ([segue.identifier isEqualToString:@"LoginToAboutUs"])
     {
