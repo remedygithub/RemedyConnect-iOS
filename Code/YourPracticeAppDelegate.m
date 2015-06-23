@@ -152,6 +152,9 @@
 {
     NSLog(@"User Info Data...");
     [[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo];
+    NSString *alert = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    UIAlertView *Push = [[UIAlertView alloc]initWithTitle:alert message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [Push show];
 }
 
 //Failure case for remote notification.
