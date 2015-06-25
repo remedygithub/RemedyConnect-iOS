@@ -15,7 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 //#import "SearchPracticeViewController.h"
 @interface StaffOrPatientViewController ()
-
+@property(nonatomic, strong) UIViewController *lastLauncedController;
 @end
 
 @implementation StaffOrPatientViewController
@@ -47,8 +47,8 @@
         NSString *savedClassName = [[NSUserDefaults standardUserDefaults] objectForKey:KLastLaunchedController];
         if (savedClassName)
         {
-            UIViewController *lastLauncedController = [self.storyboard   instantiateViewControllerWithIdentifier:savedClassName];
-            [self.navigationController pushViewController:lastLauncedController animated:NO];
+           _lastLauncedController  = [self.storyboard   instantiateViewControllerWithIdentifier:savedClassName];
+            [self.navigationController pushViewController:_lastLauncedController animated:NO];
         }
    }
 }

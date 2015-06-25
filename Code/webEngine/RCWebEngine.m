@@ -130,6 +130,32 @@ static RCWebEngine *sharedEngine = nil;
     [lConnection start];
 }
 
+
+-(void)CheckMessageReadOrUnread
+{
+    NSString *practice = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPracticeId"];
+    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
+    NSString *physican = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhysicanId"];
+    NSString *callId = [[NSUserDefaults standardUserDefaults] objectForKey:@"CallerID"];
+
+    NSLog(@"%@ callID: %@",physican, callId);
+    
+    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/MarkSecureCallOpen?CallID=%@&PhysicianID=%@&apikey=%@&token=%@",callId,physican,apiKey,tokenKey];
+    
+    //  NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/GetCall?PracticeID=%@&CallID=%@&apikey=%@&token=%@",practice,callId,apiKey,tokenKey];
+    NSLog(@"%@",lUrlString);
+    NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    NSLog(@"URL:%@", lURL);
+    
+    NSMutableURLRequest *lRequest = [[NSMutableURLRequest alloc] initWithURL:lURL];
+    [lRequest setHTTPMethod:@"POST"];
+    //[lRequest setHTTPMethod:@"GET"];
+    [lRequest setValue:[NSString stringWithFormat:@"basic %@",token] forHTTPHeaderField:@"Authorization"];
+    NSURLConnection *lConnection = [[NSURLConnection alloc] initWithRequest:lRequest delegate:self];
+    [lConnection start];
+}
+
+
 #pragma mark NSURLConnectionDelegate Methods
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

@@ -469,8 +469,14 @@
          [defaults synchronize];
      
         NSData *devicetoken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
-        NSLog(@"%@",devicetoken);
-         [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:devicetoken];
+        NSLog(@"iPhone6 token: %@",devicetoken);
+        
+        //MARK: -Converting Username into Hash, So we can use it for registering the user with PushIo Manager
+         NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
+         NSData *hashUserString = (NSData *)[userName MD5];
+         NSLog(@"%@",hashUserString);
+        
+         [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:hashUserString];
          [RCHelper SharedHelper].isLogin = YES;
          [RCPinEngine SharedWebEngine].delegate = self;
          [[RCPinEngine SharedWebEngine] checkPinTimeOutSession];

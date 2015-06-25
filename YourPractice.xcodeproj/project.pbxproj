@@ -65,6 +65,10 @@
 		092EC5951B008FFA003A3608 /* papasscode_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 092EC58D1B008FFA003A3608 /* papasscode_marker.png */; };
 		092EC5961B008FFA003A3608 /* papasscode_marker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 092EC58E1B008FFA003A3608 /* papasscode_marker@2x.png */; };
 		092EC59A1B00AC5B003A3608 /* PushIOManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 092EC5981B00AC5B003A3608 /* PushIOManager.framework */; };
+		094B74151B3BBD5D00A93487 /* Icon-Circle-darkBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 094B74111B3BBD5C00A93487 /* Icon-Circle-darkBlue.png */; };
+		094B74161B3BBD5D00A93487 /* Icon-Circle-darkBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 094B74121B3BBD5C00A93487 /* Icon-Circle-darkBlue@2x.png */; };
+		094B74171B3BBD5D00A93487 /* Icon-Circle-lightBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 094B74131B3BBD5C00A93487 /* Icon-Circle-lightBlue.png */; };
+		094B74181B3BBD5D00A93487 /* Icon-Circle-lightBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 094B74141B3BBD5C00A93487 /* Icon-Circle-lightBlue@2x.png */; };
 		0950F0851B3917600042A9EC /* pushio_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0950F0841B3917600042A9EC /* pushio_config.json */; };
 		099282491B0F091400D37DBD /* RCSessionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 099282481B0F091400D37DBD /* RCSessionEngine.m */; };
 		0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */; };
@@ -304,6 +308,10 @@
 		092EC58D1B008FFA003A3608 /* papasscode_marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papasscode_marker.png; sourceTree = "<group>"; };
 		092EC58E1B008FFA003A3608 /* papasscode_marker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "papasscode_marker@2x.png"; sourceTree = "<group>"; };
 		092EC5981B00AC5B003A3608 /* PushIOManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushIOManager.framework; path = Libs/Push.IO/PushIOManager.framework; sourceTree = "<group>"; };
+		094B74111B3BBD5C00A93487 /* Icon-Circle-darkBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Circle-darkBlue.png"; sourceTree = "<group>"; };
+		094B74121B3BBD5C00A93487 /* Icon-Circle-darkBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Circle-darkBlue@2x.png"; sourceTree = "<group>"; };
+		094B74131B3BBD5C00A93487 /* Icon-Circle-lightBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Circle-lightBlue.png"; sourceTree = "<group>"; };
+		094B74141B3BBD5C00A93487 /* Icon-Circle-lightBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Circle-lightBlue@2x.png"; sourceTree = "<group>"; };
 		0950F0841B3917600042A9EC /* pushio_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pushio_config.json; path = "Libs/Push.IO/Production Json/pushio_config.json"; sourceTree = "<group>"; };
 		099282471B0F091400D37DBD /* RCSessionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCSessionEngine.h; path = webEngine/RCSessionEngine.h; sourceTree = "<group>"; };
 		099282481B0F091400D37DBD /* RCSessionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCSessionEngine.m; path = webEngine/RCSessionEngine.m; sourceTree = "<group>"; };
@@ -696,6 +704,10 @@
 		092EC5861B008FFA003A3608 /* Passcoda */ = {
 			isa = PBXGroup;
 			children = (
+				094B74111B3BBD5C00A93487 /* Icon-Circle-darkBlue.png */,
+				094B74121B3BBD5C00A93487 /* Icon-Circle-darkBlue@2x.png */,
+				094B74131B3BBD5C00A93487 /* Icon-Circle-lightBlue.png */,
+				094B74141B3BBD5C00A93487 /* Icon-Circle-lightBlue@2x.png */,
 				092EC5871B008FFA003A3608 /* digitCell.psd */,
 				092EC5881B008FFA003A3608 /* failedBg.psd */,
 				092EC5891B008FFA003A3608 /* papasscode_background.png */,
@@ -1174,6 +1186,7 @@
 				0994FA291B25658C00938F19 /* Newborn.png in Resources */,
 				092EC5911B008FFA003A3608 /* papasscode_background.png in Resources */,
 				092559081B2E9E74001CFA4C /* providerNew.png in Resources */,
+				094B74181B3BBD5D00A93487 /* Icon-Circle-lightBlue@2x.png in Resources */,
 				0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */,
 				092559041B2E9E74001CFA4C /* appointment.png in Resources */,
 				092EC58F1B008FFA003A3608 /* digitCell.psd in Resources */,
@@ -1185,6 +1198,7 @@
 				092EC5941B008FFA003A3608 /* papasscode_failed_bg@2x.png in Resources */,
 				092EC5961B008FFA003A3608 /* papasscode_marker@2x.png in Resources */,
 				092EC4F11AFE68D0003A3608 /* back_arrow@2x.png in Resources */,
+				094B74151B3BBD5D00A93487 /* Icon-Circle-darkBlue.png in Resources */,
 				5F8EC155180EA42B0080A62E /* Images.xcassets in Resources */,
 				5F82A8A9170B3D8E00FE72B8 /* Default.png in Resources */,
 				5FCEE57619489F51000BE1A8 /* menu.png in Resources */,
@@ -1200,8 +1214,10 @@
 				5F82D6751862EE1F00430B91 /* splashscreen.png in Resources */,
 				5F8EC148180EA2620080A62E /* background_texture.png in Resources */,
 				092EC5921B008FFA003A3608 /* papasscode_background@2x.png in Resources */,
+				094B74161B3BBD5D00A93487 /* Icon-Circle-darkBlue@2x.png in Resources */,
 				5F81390F1855EBB400EF3E20 /* icon-144.png in Resources */,
 				09A7E26E1B144487009F6256 /* password@2x.png in Resources */,
+				094B74171B3BBD5D00A93487 /* Icon-Circle-lightBlue.png in Resources */,
 				092EC5901B008FFA003A3608 /* failedBg.psd in Resources */,
 				09A7E2721B144771009F6256 /* input.png in Resources */,
 				5F8EC14C180EA2620080A62E /* logo.png in Resources */,
@@ -1344,8 +1360,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1360,7 +1376,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "5894ccd3-7a6c-4247-81d1-4aa6b96a9880";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1377,8 +1393,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1386,7 +1402,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "5894ccd3-7a6c-4247-81d1-4aa6b96a9880";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1397,8 +1413,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",
@@ -1416,7 +1432,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1428,8 +1444,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",
@@ -1447,7 +1463,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;

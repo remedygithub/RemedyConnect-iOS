@@ -34,4 +34,5 @@
 -(void)getLoginInTimeOutDetails;
 -(void)checkUserUnreadMessages;
 -(void)getMessageListInformation;
+-(void)CheckMessageReadOrUnread;
 @end

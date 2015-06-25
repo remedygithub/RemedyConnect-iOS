@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *descpLabel;
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *iConImage;
+@property (strong, nonatomic) IBOutlet UIImageView *readImage;
 
 @end

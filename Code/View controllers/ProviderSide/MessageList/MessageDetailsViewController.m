@@ -29,16 +29,22 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
     [self displayImages];
     [self getUserLoginSession];
-
 }
+
+
 
 -(void)getUserLoginSession
 {
     [RCPinEngine SharedWebEngine].delegate = self;
     [[RCPinEngine SharedWebEngine]checkLoginSessionOfUser];
+}
+
+-(void)checkReadOrUnreadMessage
+{
+    [RCWebEngine SharedWebEngine].delegate = self;
+    [[RCWebEngine SharedWebEngine] CheckMessageReadOrUnread];
 }
 
 - (void)hasStartedDownloading:(NSString *)processString
@@ -280,6 +286,7 @@
 {
     if ([[pResultDict objectForKey:@"successfull"]integerValue])
     {
+        [self checkReadOrUnreadMessage];
     }
     else
     {
@@ -395,6 +402,7 @@
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
     
+
 }
 
 -(void)connectionManagerDidFailWithError:(NSError *)error

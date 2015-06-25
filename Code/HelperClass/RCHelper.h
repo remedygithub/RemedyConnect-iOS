@@ -72,6 +72,8 @@
 @property (nonatomic, strong) NSString *callerTypeID;
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) NSString *urgentId;
+@property (nonatomic, strong) NSString *callerId;
+@property (nonatomic, strong) NSString *messageOpened;
 
 
 //Instance Method

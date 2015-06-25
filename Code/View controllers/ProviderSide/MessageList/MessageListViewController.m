@@ -28,10 +28,14 @@
                                              selector:@selector(resetAction)
                                                  name:kResetPinNotification
                                                object:nil];
-    
+    self.messageTableView.contentSize = CGSizeMake(320, 540);
+
     [self displayImages];
     [self getUserLoginSession];
 }
+
+
+
 
 -(void)resetAction
 {
@@ -227,8 +231,6 @@
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MessageListCell" owner:self options:nil];
         cell = [nib objectAtIndex: 0];
-        
-        
     }
   
     RCHelper *messageInfo = [self.dataArray objectAtIndex:indexPath.row];
@@ -237,137 +239,259 @@
     cell.timeLabel.text = messageInfo.messageDate;
     NSString *iConID = [NSString stringWithFormat:@"%@",messageInfo.callerTypeID];
     NSString *urgentID = [NSString stringWithFormat:@"%@",messageInfo.urgentId];
+    NSString *readID = [NSString stringWithFormat:@"%@",messageInfo.messageOpened];
+   
     NSLog(@"%@",iConID);
     NSLog(@"%@",urgentID);
+    NSLog(@"message opened:%@",readID);
 
      if ([iConID isEqualToString:@"1"])
      {
-         if ([urgentID isEqualToString:@"1"])
+         if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
+         }
+         else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+         }
+         else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"patientNew.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
          }
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"patientNew.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
          }
-         return cell;
      }
     
     
      if ([iConID isEqualToString:@"2"] )
      {
-         if ([urgentID isEqualToString:@"1"])
+         if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
+         }
+         else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
+         }
+         else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"providerNew.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
          }
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"providerNew.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
          }
-         return cell;
      }
     
     
      if ([iConID isEqualToString:@"3"])
      {
-         if ([urgentID isEqualToString:@"1"])
+         if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
+         }
+         else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
+         }
+         else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"Newborn.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
          }
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"Newborn.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
          }
-         return cell;
+
      }
     
-    
-    
-     if ([iConID isEqualToString:@"4"])
+     if ([iConID isEqualToString:@"4"] )
      {
-         if ([urgentID isEqualToString:@"1"])
+         if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
+         }
+         else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
+         }
+         else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"rx_refill.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
          }
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"rx_refill.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
          }
-         return cell;
+
      }
     
     
     
      if ([iConID isEqualToString:@"5"])
      {
-         if ([urgentID isEqualToString:@"1"])
+         if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
+         }
+         else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
+         }
+         else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"answering_service.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
          }
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"answering_service.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
          }
-         return cell;
+
      }
    
     
     
-     if ([iConID isEqualToString:@"6"])
+     if ([iConID isEqualToString:@"6"] )
      {
-         if ([urgentID isEqualToString:@"1"])
+         if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
+         }
+         else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
+         }
+         else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"triage.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
          }
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"triage.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
          }
-         return cell;
+
      }
     
     
      if ([iConID isEqualToString:@"14"])
      {
-         if ([urgentID isEqualToString:@"1"])
+         if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
+         }
+         else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
+         }
+         else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"rounding_doctor.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
          }
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"rounding_doctor.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
          }
-         return cell;
+
      }
     
     
      if ([iConID isEqualToString:@"15"])
      {
-         if ([urgentID isEqualToString:@"1"])
+         if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"] )
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
+         }
+         else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
+         }
+         else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"hospital_admission.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
          }
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"hospital_admission.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
          }
-         return cell;
+
      }
     
     
      if ([iConID isEqualToString:@"17"])
      {
-         if ([urgentID isEqualToString:@"1"])
+         if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"] )
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
+         }
+         else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+
+
+         }
+         else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+         {
+             cell.iConImage.image = [UIImage imageNamed:@"appointment.png"];
+             cell.readImage.image = [UIImage imageNamed:@""];
          }
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"appointment.png"];
+             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
          }
-         return cell;
      }
-    return cell;
+    
+        return cell;
 }
 
 
@@ -377,6 +501,8 @@
      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:messageHelper.messageDetails forKey:@"Details"];
     [defaults setObject:messageHelper.phoneNumber forKey:@"phoneNumber"];
+    [defaults setObject:messageHelper.callerId forKey:@"CallerID"];
+    [defaults synchronize];
     [defaults synchronize];
     [self performSegueWithIdentifier:@"MoveToMessageDetail" sender:self];
 }
@@ -526,6 +652,8 @@
              messageHelper.callerTypeID = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"callTypeId"];
              messageHelper.phoneNumber = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"phone"];
             messageHelper.urgentId = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"urgent"];
+            messageHelper.callerId = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"callID"];
+            messageHelper.messageOpened = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"wasOpened"];
             [self.dataArray addObject:messageHelper];
             NSLog(@"%lu",(unsigned long)[self.dataArray count]);
 
@@ -619,5 +747,21 @@
     
     UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
+}
+
+
+//Checking for device Orientation
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
+    {
+        NSLog(@"Landscape");
+        self.messageTableView.contentInset = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-64, 0);
+    }
+    else
+    {
+        NSLog(@"Portrait");
+        self.messageTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }
 }
 @end
