@@ -16,6 +16,7 @@
 //#import "TestFlight.h"
 
 @interface MainMenuViewController ()
+@property (nonatomic, strong)PopoverView *mPopver;
 
 @end
 
@@ -221,11 +222,19 @@ NSArray *menu;
 - (IBAction)menuButtonPressed:(id)sender {
     CGPoint point = CGPointMake(_menuButton.frame.origin.x + _menuButton.frame.size.width / 2,
                                 _menuButton.frame.origin.y + _menuButton.frame.size.height);
-    [PopoverView showPopoverAtPoint:point
-                             inView:self.view
-                    withStringArray:[NSArray arrayWithObjects:@"Refresh",
-                                     @"Choose Your Practice", @"Legal",@"Provider/Staff",nil]
-                           delegate:self];
+//    [PopoverView showPopoverAtPoint:point
+//                             inView:self.view
+//                    withStringArray:[NSArray arrayWithObjects:@"Refresh",
+//                                     @"Choose Your Practice", @"Legal",@"Provider/Staff",nil]
+//                           delegate:self];
+    
+    if (_mPopver) {
+        [_mPopver removeFromSuperview];
+        _mPopver = nil;
+    }
+    _mPopver= [[PopoverView alloc] initWithFrame:CGRectZero];
+    [_mPopver showAtPoint:point inView:self.view withStringArray:[NSArray arrayWithObjects:@"Refresh",@"Choose Your Practice", @"Legal",@"Provider/Staff",nil]];
+    _mPopver.delegate = self;
 }
 
 - (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
@@ -254,6 +263,21 @@ NSArray *menu;
             break;
      }
     [popoverView dismiss:TRUE];
+    if (_mPopver)
+    {
+        [_mPopver removeFromSuperview];
+        _mPopver = nil;
+    }
+}
+
+
+- (void)popoverViewDidDismiss:(PopoverView *)popoverView
+{
+    if (_mPopver)
+    {
+        [_mPopver removeFromSuperview];
+        _mPopver = nil;
+    }
 }
 
 -(void)clearData
@@ -352,6 +376,10 @@ NSArray *menu;
 //Checking for device Orientation
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    if (_mPopver)
+    {
+        [self menuButtonPressed:nil];
+    }
     if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
     {
         NSLog(@"Landscape");
@@ -437,5 +465,7 @@ NSArray *menu;
         }
     }
 }
+
+
 
 @end

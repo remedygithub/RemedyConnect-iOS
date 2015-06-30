@@ -9,7 +9,7 @@
 #import "MessageListViewController.h"
 
 @interface MessageListViewController ()
-
+@property (nonatomic, strong)PopoverView *mPopver;
 @end
 
 @implementation MessageListViewController
@@ -140,11 +140,19 @@
 {
     CGPoint point = CGPointMake(self.menuBtn.frame.origin.x + self.menuBtn.frame.size.width / 2,
                                 self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
-    [PopoverView showPopoverAtPoint:point
-                             inView:self.view
-                    withStringArray:[NSArray arrayWithObjects:@"Refresh",
-                                     @"Choose Your Practice", @"Legal",@"Logout",@"Patient/Guardian",nil]
-                           delegate:self];
+//    [PopoverView showPopoverAtPoint:point
+//                             inView:self.view
+//                    withStringArray:[NSArray arrayWithObjects:@"Refresh",
+//                                     @"Choose Your Practice", @"Legal",@"Logout",@"Patient/Guardian",nil]
+//                           delegate:self];
+    
+    if (_mPopver) {
+        [_mPopver removeFromSuperview];
+        _mPopver = nil;
+    }
+    _mPopver= [[PopoverView alloc] initWithFrame:CGRectZero];
+    [_mPopver showAtPoint:point inView:self.view withStringArray:[NSArray arrayWithObjects:@"Refresh",@"Choose Your Practice", @"Legal",@"Logout",@"Patient/Guardian",nil]];
+    _mPopver.delegate = self;
 }
 
 
@@ -203,8 +211,22 @@
             
     }
     [popoverView dismiss:TRUE];
+    if (_mPopver)
+    {
+        [_mPopver removeFromSuperview];
+        _mPopver = nil;
+    }
 }
 
+- (void)popoverViewDidDismiss:(PopoverView *)popoverView
+{
+    if (_mPopver)
+    {
+        [_mPopver removeFromSuperview];
+        _mPopver = nil;
+    }
+    
+}
 
 #pragma UITableView Delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -753,6 +775,11 @@
 //Checking for device Orientation
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    if (_mPopver)
+    {
+        [self menuBtnTapped:nil];
+    }
+    
     if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
     {
         NSLog(@"Landscape");
