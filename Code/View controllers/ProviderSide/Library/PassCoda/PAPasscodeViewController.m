@@ -50,7 +50,7 @@
                 break;
                 
             case PasscodeActionEnter:
-                self.title = NSLocalizedString(@"Enter PIN", nil);
+                //self.title = NSLocalizedString(@"Enter PIN", nil);
                 _enterPrompt = NSLocalizedString(@"Enter your PIN", nil);
                 break;
                 
@@ -67,7 +67,8 @@
     return self;
 }
 
-- (void)loadView {
+- (void)loadView
+{
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 
@@ -96,11 +97,13 @@
         CGFloat xLeft = 0;
         for (int i=0;i<4;i++) {
             UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
-            backgroundImageView.frame = CGRectOffset(backgroundImageView.frame, xLeft, 0);
+           // backgroundImageView.frame = CGRectOffset(backgroundImageView.frame, xLeft, 0);
+            backgroundImageView.frame = CGRectOffset(backgroundImageView.frame, xLeft,-40);
             [digitPanel addSubview:backgroundImageView];
             digitImageViews[i] = [[UIImageView alloc] initWithImage:markerImage];
             digitImageViews[i].autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
-            digitImageViews[i].frame = CGRectOffset(digitImageViews[i].frame, backgroundImageView.frame.origin.x+MARKER_X, MARKER_Y);
+          //  digitImageViews[i].frame = CGRectOffset(digitImageViews[i].frame, backgroundImageView.frame.origin.x+MARKER_X, MARKER_Y);
+            digitImageViews[i].frame = CGRectOffset(digitImageViews[i].frame, backgroundImageView.frame.origin.x+MARKER_X, MARKER_Y-40);
             [digitPanel addSubview:digitImageViews[i]];
             xLeft += DIGIT_SPACING + backgroundImage.size.width;
         }
@@ -131,7 +134,8 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidHideNotification object:nil];
     [contentView addSubview:passcodeTextField];
 
-    promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, contentView.bounds.size.width, PROMPT_HEIGHT)];
+    //promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, contentView.bounds.size.width, PROMPT_HEIGHT)];
+    promptLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, contentView.bounds.size.width, PROMPT_HEIGHT-35)];
     promptLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     promptLabel.backgroundColor = [UIColor clearColor];
     promptLabel.textColor = [UIColor colorWithRed:0.30 green:0.34 blue:0.42 alpha:1.0];
@@ -448,8 +452,11 @@
     }
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
 
 @end

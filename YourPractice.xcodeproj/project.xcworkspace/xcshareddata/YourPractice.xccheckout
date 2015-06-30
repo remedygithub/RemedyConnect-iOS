@@ -22,7 +22,7 @@
 		<key>7CC78D3C3F251B03D713FA2C2D89B382DBC81485</key>
 		<string>../..</string>
 		<key>82DF43EF5CA016D15C41E0AF1AF686E9973475B7</key>
-		<string>../..Libs/zipzap/</string>
+		<string>../..Libs/zipzap</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:RemedyConnect/iOS.git</string>

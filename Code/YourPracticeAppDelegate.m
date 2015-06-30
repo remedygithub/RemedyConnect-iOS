@@ -1,4 +1,4 @@
-//
+    //
 //  GPAppDelegate.m
 //  Greenwood Pediatrics
 //
@@ -152,6 +152,14 @@
 {
     NSLog(@"User Info Data...");
     [[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo];
+    
+    int currentBadgeCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BadgeCount"];
+    
+    //Set the badge count on the app icon in the home screen
+    int badgeValue = [[[userInfo valueForKey:@"aps"] valueForKey:@"badge"] intValue];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = badgeValue + currentBadgeCount;
+    [[NSUserDefaults standardUserDefaults] setInteger:badgeValue + currentBadgeCount forKey:@"BadgeCount"];
+    
     NSString *alert = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
     UIAlertView *Push = [[UIAlertView alloc]initWithTitle:alert message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [Push show];
@@ -302,6 +310,11 @@
     {
         [self applicationDidTimeout];
     }
+    
+    NSUserDefaults *lDefaults = [NSUserDefaults standardUserDefaults];
+    //Remove the badge count
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [lDefaults setInteger:0 forKey:@"BadgeCount"];
    
 }
 

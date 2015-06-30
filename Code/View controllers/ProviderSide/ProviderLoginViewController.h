@@ -33,6 +33,9 @@
     Logic *logic;
 
 }
+
+@property(nonatomic, strong) PopoverView *popView;
+
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UIView *logoView;
 @property (weak, nonatomic) IBOutlet UILabel *detaillabel;

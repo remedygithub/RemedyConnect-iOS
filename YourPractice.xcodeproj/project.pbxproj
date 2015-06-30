@@ -69,6 +69,7 @@
 		094B74161B3BBD5D00A93487 /* Icon-Circle-darkBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 094B74121B3BBD5C00A93487 /* Icon-Circle-darkBlue@2x.png */; };
 		094B74171B3BBD5D00A93487 /* Icon-Circle-lightBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 094B74131B3BBD5C00A93487 /* Icon-Circle-lightBlue.png */; };
 		094B74181B3BBD5D00A93487 /* Icon-Circle-lightBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 094B74141B3BBD5C00A93487 /* Icon-Circle-lightBlue@2x.png */; };
+		094B74291B3D028E00A93487 /* pushio_config_debug.json in Resources */ = {isa = PBXBuildFile; fileRef = 094B74281B3D028E00A93487 /* pushio_config_debug.json */; };
 		0950F0851B3917600042A9EC /* pushio_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0950F0841B3917600042A9EC /* pushio_config.json */; };
 		099282491B0F091400D37DBD /* RCSessionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 099282481B0F091400D37DBD /* RCSessionEngine.m */; };
 		0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */; };
@@ -312,6 +313,7 @@
 		094B74121B3BBD5C00A93487 /* Icon-Circle-darkBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Circle-darkBlue@2x.png"; sourceTree = "<group>"; };
 		094B74131B3BBD5C00A93487 /* Icon-Circle-lightBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Circle-lightBlue.png"; sourceTree = "<group>"; };
 		094B74141B3BBD5C00A93487 /* Icon-Circle-lightBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Circle-lightBlue@2x.png"; sourceTree = "<group>"; };
+		094B74281B3D028E00A93487 /* pushio_config_debug.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pushio_config_debug.json; path = "Libs/Push.IO/Developer Json/pushio_config_debug.json"; sourceTree = "<group>"; };
 		0950F0841B3917600042A9EC /* pushio_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pushio_config.json; path = "Libs/Push.IO/Production Json/pushio_config.json"; sourceTree = "<group>"; };
 		099282471B0F091400D37DBD /* RCSessionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCSessionEngine.h; path = webEngine/RCSessionEngine.h; sourceTree = "<group>"; };
 		099282481B0F091400D37DBD /* RCSessionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCSessionEngine.m; path = webEngine/RCSessionEngine.m; sourceTree = "<group>"; };
@@ -838,6 +840,7 @@
 		5F82A895170B3D8E00FE72B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				094B74281B3D028E00A93487 /* pushio_config_debug.json */,
 				0950F0841B3917600042A9EC /* pushio_config.json */,
 				091D38B41B00EE0500147E28 /* OpenGLES.framework */,
 				091D38B21B00EDE100147E28 /* AVFoundation.framework */,
@@ -1189,6 +1192,7 @@
 				094B74181B3BBD5D00A93487 /* Icon-Circle-lightBlue@2x.png in Resources */,
 				0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */,
 				092559041B2E9E74001CFA4C /* appointment.png in Resources */,
+				094B74291B3D028E00A93487 /* pushio_config_debug.json in Resources */,
 				092EC58F1B008FFA003A3608 /* digitCell.psd in Resources */,
 				5F82A8A1170B3D8E00FE72B8 /* InfoPlist.strings in Resources */,
 				0994FA3A1B2AB82200938F19 /* Newprovider.png in Resources */,
@@ -1376,7 +1380,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "5894ccd3-7a6c-4247-81d1-4aa6b96a9880";
+				PROVISIONING_PROFILE = "e851bdac-215b-4ad3-9d86-eba25029379a";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1402,7 +1406,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "5894ccd3-7a6c-4247-81d1-4aa6b96a9880";
+				PROVISIONING_PROFILE = "e851bdac-215b-4ad3-9d86-eba25029379a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

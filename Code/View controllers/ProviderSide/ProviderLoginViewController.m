@@ -14,7 +14,7 @@
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @interface ProviderLoginViewController ()
-
+@property (nonatomic, strong)PopoverView *mPopver;
 @end
 
 @implementation ProviderLoginViewController
@@ -194,14 +194,28 @@
 //MenuBtn Action
 - (IBAction)menuBtnTapped:(id)sender
 {
+    
     CGPoint point = CGPointMake(self.menuBtn.frame.origin.x + self.menuBtn.frame.size.width / 2,
                                 self.menuBtn.frame.origin.y + self.menuBtn.frame.size.height);
-    [PopoverView showPopoverAtPoint:point
-                             inView:self.view
-                    withStringArray:[NSArray arrayWithObjects:
-                                     @"Choose Your Practice", @"Legal",nil]
-                           delegate:self];
+    
+//    [PopoverView showPopoverAtPoint:point
+//                             inView:self.view
+//                    withStringArray:[NSArray arrayWithObjects:
+//                                     @"Choose Your Practice", @"Legal",nil]
+//                           delegate:self];
+    
+    if (_mPopver) {
+        [_mPopver removeFromSuperview];
+        _mPopver = nil;
+    }
+    _mPopver= [[PopoverView alloc] initWithFrame:CGRectZero];
+    [_mPopver showAtPoint:point inView:self.view withStringArray:[NSArray arrayWithObjects:@"Choose Your Practice", @"Legal",nil]];
+    _mPopver.delegate = self;
+    
+    
 }
+
+
 
 
 - (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
@@ -244,8 +258,20 @@
             break;
     }
     [popoverView dismiss:TRUE];
+    if (_mPopver) {
+        [_mPopver removeFromSuperview];
+        _mPopver = nil;
+    }
 }
-
+- (void)popoverViewDidDismiss:(PopoverView *)popoverView
+{
+    if (_mPopver)
+    {
+        [_mPopver removeFromSuperview];
+        _mPopver = nil;
+    }
+    
+}
 
 -(void)LogoutTheUser
 {
@@ -473,10 +499,11 @@
         
         //MARK: -Converting Username into Hash, So we can use it for registering the user with PushIo Manager
          NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
-         NSData *hashUserString = (NSData *)[userName MD5];
+         NSString *hashUserString = [userName MD5];
          NSLog(@"%@",hashUserString);
         
-         [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:hashUserString];
+         [[PushIOManager sharedInstance] registerUserID:hashUserString];
+         [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:devicetoken];
          [RCHelper SharedHelper].isLogin = YES;
          [RCPinEngine SharedWebEngine].delegate = self;
          [[RCPinEngine SharedWebEngine] checkPinTimeOutSession];
@@ -748,15 +775,17 @@
 
 //Checking for device Orientation
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-
 {
+    if (_mPopver)
+    {
+        [self menuBtnTapped:nil];
+    }
     [self.userNameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
     if (([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeLeft) || ([[UIApplication sharedApplication] statusBarOrientation] == UIInterfaceOrientationLandscapeRight))
     {
         NSLog(@"Landscape");
         self.scrollView.contentSize = CGSizeMake(0,[UIScreen mainScreen].bounds.size.height+160);
-
     }
     else
     {

@@ -66,12 +66,13 @@
 -(void)checkUserUnreadMessageCount
 {
     [RCWebEngine SharedWebEngine].delegate = self;
-    [RCWebEngine SharedWebEngine].checkUserUnreadMessages;
+    [[RCWebEngine SharedWebEngine] checkUserUnreadMessages];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self checkUserUnreadMessageCount];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self.navigationController setNavigationBarHidden:YES];    
 }
@@ -218,8 +219,9 @@
 }
 
 
--(void)assignMessageCountValue:(NSString *)countValue
+-(void)assignMessageCountValue
 {
+    NSString *countValue = [[NSUserDefaults standardUserDefaults] objectForKey:@"MessageCount"];
     NSLog(@"%@",countValue);
     if ([countValue isEqualToString:@"0"])
     {
@@ -356,7 +358,11 @@
         NSString * messageCount = [NSString stringWithFormat:@"%@",[pResultDict objectForKey:@"count"]];
         NSLog(@"Damm %@",messageCount);
         
-        [self assignMessageCountValue:messageCount];
+        NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+        [defaults setObject:messageCount forKey:@"MessageCount"];
+        [defaults synchronize];
+        
+        [self assignMessageCountValue];
     }
     else
     {
