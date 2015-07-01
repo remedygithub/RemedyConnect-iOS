@@ -308,7 +308,19 @@
 {
     if ([[pResultDict objectForKey:@"successfull"]integerValue])
     {
-        [self checkReadOrUnreadMessage];
+        if (self.isFromCheckMessage)
+        {
+            NSString * messageCount = [NSString stringWithFormat:@"%@",[pResultDict objectForKey:@"count"]];
+            NSLog(@"Damm %@",messageCount);
+            [UIApplication sharedApplication].applicationIconBadgeNumber = [messageCount integerValue];
+            [[NSUserDefaults standardUserDefaults] setInteger:[messageCount integerValue] forKey:@"BadgeCount"];;
+            self.isFromCheckMessage = NO;
+        }
+        else
+        {
+            [self checkReadOrUnreadMessage];
+        }
+        
     }
     else
     {
@@ -421,16 +433,24 @@
 }
 
 
+
+#pragma MARK-Web Delegate Methods
 -(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
 {
-    
-
+    if ([[pResultDict objectForKey:@"successfull"]integerValue])
+    {
+       //Message read
+         self.isFromCheckMessage = YES;
+        [self getUserLoginSession];
+    }
 }
 
 -(void)connectionManagerDidFailWithError:(NSError *)error
 {
-    
+    UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [lAlert show];
 }
+
 
 //Checking for device Orientation
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

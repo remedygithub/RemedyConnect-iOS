@@ -253,6 +253,17 @@
     {
         self.messageCountLabel.text = countValue;
     }
+    [self ChangeBadgeCount];
+}
+
+
+-(void)ChangeBadgeCount
+{
+    NSString *countValue = [[NSUserDefaults standardUserDefaults] objectForKey:@"MessageCount"];
+    NSLog(@"%@",countValue);
+
+    [UIApplication sharedApplication].applicationIconBadgeNumber = [countValue integerValue];
+    [[NSUserDefaults standardUserDefaults] setInteger:[countValue integerValue] forKey:@"BadgeCount"];;
 }
 
 -(void)LogoutTheUser

@@ -36,5 +36,6 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (strong, nonatomic) IBOutlet UIButton *menuBtn;
+@property (assign, nonatomic) BOOL isFromCheckMessage;
 
 @end

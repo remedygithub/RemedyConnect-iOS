@@ -28,7 +28,7 @@
 @property (nonatomic, readwrite) BOOL isFromDetailMessage;
 
 //Passcode Bool
-@property (nonatomic, readwrite) BOOL isPassCodeView;
+//@property (nonatomic, readwrite) BOOL isPassCodeView;
 @property (nonatomic, readwrite) BOOL isCreateTimeOutRequest;
 
 //Navigation Bool

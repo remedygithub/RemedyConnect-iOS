@@ -99,17 +99,10 @@
 - (IBAction)forgotBtnTapped:(id)sender
 {
     NSLog(@"%@",self.userNameTextField.text);
-    if ([self.userNameTextField.text isEqualToString:@""] )
-    {
-        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:@"Username cannot be blank" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
-    else
-    {
-        self.forgotUrl = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://webteleservicestest.remedyconnect.com/Mobile/Providers/Default.aspx?username=%@",self.userNameTextField.text]];
-         NSLog(@"%@",self.forgotUrl);
-        [[UIApplication sharedApplication]openURL:self.forgotUrl];
-    }
+    self.forgotUrl = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://webteleservicestest.remedyconnect.com/Mobile/Providers/Default.aspx?username=%@",self.userNameTextField.text]];
+    NSLog(@"%@",self.forgotUrl);
+    [[UIApplication sharedApplication]openURL:self.forgotUrl];
+
 }
 
 - (IBAction)loginBtnTapped:(id)sender

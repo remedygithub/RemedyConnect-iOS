@@ -622,6 +622,10 @@
     if ([[pResultDict objectForKey:@"successfull"]integerValue])
     {
         [self getMessageList];
+        NSString * messageCount = [NSString stringWithFormat:@"%@",[pResultDict objectForKey:@"count"]];
+        NSLog(@"Damm %@",messageCount);
+        [UIApplication sharedApplication].applicationIconBadgeNumber = [messageCount integerValue];
+        [[NSUserDefaults standardUserDefaults] setInteger:[messageCount integerValue] forKey:@"BadgeCount"];;
     }
     else
     {
@@ -678,7 +682,6 @@
             messageHelper.messageOpened = [[[pResultDict objectForKey:@"messages"] objectAtIndex:i]objectForKey:@"wasOpened"];
             [self.dataArray addObject:messageHelper];
             NSLog(@"%lu",(unsigned long)[self.dataArray count]);
-
         }
     }
     [self.messageTableView reloadData];
@@ -690,6 +693,7 @@
     UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
 }
+
 
 -(void)clearData
 {
@@ -770,6 +774,7 @@
     UIAlertView *lAlert = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@ Please try later", [error localizedDescription]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [lAlert show];
 }
+
 
 
 //Checking for device Orientation

@@ -198,7 +198,7 @@
 {
     [super viewDidLoad];
     
-    [RCHelper SharedHelper].isPassCodeView = true;
+    //[RCHelper SharedHelper].isPassCodeView = true;
 //    if ([_delegate respondsToSelector:@selector(PAPasscodeViewControllerDidCancel:)])
 //    {
 //        if (_simple) {
@@ -222,12 +222,13 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [RCHelper SharedHelper].isPassCodeView = false;
+    //[RCHelper SharedHelper].isPassCodeView = false;
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskPortraitUpsideDown;
-}
+//- (NSUInteger)supportedInterfaceOrientations
+//{
+//    return UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskPortraitUpsideDown;
+//}
 
 - (void)cancel:(id)sender {
     [_delegate PAPasscodeViewControllerDidCancel:self];
@@ -360,7 +361,6 @@
     failedAttemptsLabel.frame = CGRectMake(x, y, failedAttemptsLabel.bounds.size.width, failedAttemptsLabel.bounds.size.height);
 }
 
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0)
@@ -457,6 +457,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(NSUInteger)supportedInterfaceOrientations
+{
+        return ((1 << UIInterfaceOrientationLandscapeLeft) | (1 << UIInterfaceOrientationLandscapeRight) | (1 <<UIInterfaceOrientationPortrait) | (1 << UIInterfaceOrientationPortraitUpsideDown));
+}
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
 
 @end

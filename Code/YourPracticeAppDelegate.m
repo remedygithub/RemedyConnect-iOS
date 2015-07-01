@@ -29,7 +29,9 @@
     if(IS_OS_8_OR_LATER)
     {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
+//        //[[UIApplication sharedApplication] registerForRemoteNotifications];
+      //  UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound )categories:nil];
+      //  [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         
     } else
     {
@@ -59,14 +61,7 @@
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-    
-        if ([RCHelper SharedHelper].isPassCodeView)
-        {
-            return UIInterfaceOrientationMaskPortrait;
-        }
-        else
-            return UIInterfaceOrientationMaskAll;
-        
+    return UIInterfaceOrientationMaskAll;
 }
 
 
@@ -339,6 +334,5 @@
 {
     [m_cActivityIndicator stopAnimating];
 }
-
 
 @end
