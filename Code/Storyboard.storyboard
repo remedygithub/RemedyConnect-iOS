@@ -1054,6 +1054,7 @@
                     <navigationItem key="navigationItem" id="5ds-qn-B06"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="backImage" destination="XTA-fB-4Av" id="RET-fr-8HN"/>
                         <outlet property="createPin" destination="jZ6-El-mZz" id="K9B-On-BFH"/>
                         <outlet property="menuBtn" destination="ghp-WX-ECD" id="2Ur-FS-H3G"/>
                         <segue destination="oMf-Hl-tEe" kind="push" identifier="FromPinToAbout" id="cNM-in-eHG"/>
@@ -1202,7 +1203,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Gm-iq-qZu">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Gm-iq-qZu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmn-by-JDv">
@@ -1333,7 +1334,7 @@
                                     <outlet property="delegate" destination="lfd-fq-MMB" id="4Lv-cc-a3t"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Your Secure Messages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fs8-Fd-btP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your Secure Messages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fs8-Fd-btP">
                                 <rect key="frame" x="74" y="27" width="169" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="169" id="67V-79-sui"/>
@@ -1607,15 +1608,15 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="cfG-rP-kXA"/>
-        <segue reference="Pb6-Vq-zgU"/>
+        <segue reference="Syr-Nf-Tr2"/>
+        <segue reference="nyo-sS-3lt"/>
+        <segue reference="vEe-pD-j9d"/>
+        <segue reference="tLC-Bn-IEk"/>
         <segue reference="eF5-Dc-4Os"/>
         <segue reference="ra9-QH-37U"/>
-        <segue reference="qsH-Hu-HYl"/>
+        <segue reference="LV1-wv-wCh"/>
         <segue reference="lj3-vq-Z0e"/>
         <segue reference="cSc-5f-5Z6"/>
-        <segue reference="LV1-wv-wCh"/>
-        <segue reference="TAt-5L-lLW"/>
-        <segue reference="8rv-F8-1Y1"/>
+        <segue reference="qsH-Hu-HYl"/>
     </inferredMetricsTieBreakers>
 </document>

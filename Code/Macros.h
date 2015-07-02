@@ -46,6 +46,7 @@
 
 #define kResetPinNotification @"ResetPinNotification"
 #define KLastLaunchedController @"LastLaunchedController"
+#define kNewArrivedMessageCount @"NewArrivedMessageCount"
 
 #define kUserName @"UserName"
 #define kSecretPin @"SecretPin"

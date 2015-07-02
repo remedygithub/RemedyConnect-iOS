@@ -34,8 +34,7 @@
 
     [RCWebEngine SharedWebEngine].delegate = self;
     [[RCWebEngine SharedWebEngine] sendRequestForRegister:practieID Physician:physicanID device:hashUserString];
-    
-    
+ 
     [self.menuBtn setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
     
     if ([RCHelper SharedHelper].isLogin)
@@ -46,6 +45,15 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
+
+     NSLog(@"position:x=%f y =%f, width=%f, height = %f",self.createPin.frame.origin.x,self.createPin.frame.origin.y, self.createPin.frame.size.width,self.createPin.frame.size.height);
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"position:x=%f y =%f, width=%f, height = %f",self.createPin.frame.origin.x,self.createPin.frame.origin.y, self.createPin.frame.size.width,self.createPin.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning {

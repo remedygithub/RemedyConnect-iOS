@@ -29,7 +29,7 @@
     if(IS_OS_8_OR_LATER)
     {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-//        //[[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
       //  UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound )categories:nil];
       //  [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         
@@ -157,7 +157,16 @@
     
     NSString *alert = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
     UIAlertView *Push = [[UIAlertView alloc]initWithTitle:alert message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cowbell" ofType:@"wav"];
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: path];
+    audioPlayer  =[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:NULL];
+    audioPlayer.numberOfLoops = 1;
+    [audioPlayer play];
     [Push show];
+    
+    [RCPinEngine SharedWebEngine].delegate = self;
+    [[RCPinEngine SharedWebEngine]checkLoginSessionOfUser];
+    
 }
 
 //Failure case for remote notification.
@@ -170,6 +179,39 @@
     // Error in registration
     NSLog(@"Failed to get device token: %@",err);
 }
+
+
+
+#pragma MARK:-PinEngine Delegate Method
+-(void)PinManagerDidReceiveResponse:(NSDictionary *)pResultDict
+{
+    NSString * messageCount = [NSString stringWithFormat:@"%@",[pResultDict objectForKey:@"count"]];
+    NSLog(@"Damm %@",messageCount);
+    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+    [defaults setObject:messageCount forKey:@"MessageCount"];
+    [defaults synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNewArrivedMessageCount object:nil];
+  
+}
+
+
+-(void)PinManagerDidFailWithError:(NSError *)error
+{
+    
+}
+
+
+-(void)connectionManagerDidReceiveResponse:(NSDictionary *)pResultDict
+{
+    
+}
+
+-(void)connectionManagerDidFailWithError:(NSError *)error
+{
+    
+}
+
 
 
 

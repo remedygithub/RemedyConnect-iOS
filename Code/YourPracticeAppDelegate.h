@@ -19,13 +19,17 @@
 #import "ProviderHomeViewController.h"
 #import "MessageListViewController.h"
 #import "MessageDetailsViewController.h"
+#import <AVFoundation/AVFoundation.h>
+#import "RCPinEngine.h"
+#import "RCWebEngine.h"
 
-
-@interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate,PAPasscodeViewControllerDelegate,PushIOManagerDelegate>
+@interface YourPracticeAppDelegate : UIResponder <UIApplicationDelegate,PAPasscodeViewControllerDelegate,PushIOManagerDelegate,PinEngineDelegate,WebEngineDelegate>
 {
     ALActivityIndicatorView *m_cActivityIndicator;
     PAPasscodeViewController *passcode;
     NSString *deviceTokenStr;
+    AVAudioPlayer *audioPlayer;
+
 }
 
 

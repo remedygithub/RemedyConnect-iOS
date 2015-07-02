@@ -26,8 +26,10 @@
 }
 @property (strong,nonatomic) RCHelper *registerHelper;
 @property (weak, nonatomic) IBOutlet UIButton *menuBtn;
+@property (weak, nonatomic) IBOutlet UIButton *manualMenuBtn;
+
 @property (weak, nonatomic) IBOutlet UIView *logoView;
-@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (weak, nonatomic) IBOutlet UIImageView *backImage;
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UIButton *createPin;

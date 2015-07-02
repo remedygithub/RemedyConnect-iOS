@@ -98,6 +98,7 @@
 		09BEB38A1B0DA75300A5D1DE /* remedyconnect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BEB3861B0DA75300A5D1DE /* remedyconnect-logo.png */; };
 		09BEB38B1B0DA75300A5D1DE /* whitebkgrnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BEB3871B0DA75300A5D1DE /* whitebkgrnd.png */; };
 		09BEB3911B0DDF8600A5D1DE /* UnderDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BEB3901B0DDF8600A5D1DE /* UnderDevViewController.m */; };
+		09F732941B44E9B80000E9F6 /* cowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 09F732931B44E9B80000E9F6 /* cowbell.wav */; };
 		5F0AE35718CE1BE10027824B /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0AE35618CE1BE10027824B /* NSString+URLEncoding.m */; };
 		5F1EF761182E76B30078F89B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1EF760182E76B30078F89B /* libz.dylib */; };
 		5F3226751899433E00B01D06 /* about.htm in Resources */ = {isa = PBXBuildFile; fileRef = 5F940304188FC4FE00DBFD1A /* about.htm */; };
@@ -345,6 +346,7 @@
 		09BEB3871B0DA75300A5D1DE /* whitebkgrnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whitebkgrnd.png; path = "New Login Screen UI/whitebkgrnd.png"; sourceTree = "<group>"; };
 		09BEB38F1B0DDF8600A5D1DE /* UnderDevViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderDevViewController.h; sourceTree = "<group>"; };
 		09BEB3901B0DDF8600A5D1DE /* UnderDevViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderDevViewController.m; sourceTree = "<group>"; };
+		09F732931B44E9B80000E9F6 /* cowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cowbell.wav; path = Sound/cowbell.wav; sourceTree = "<group>"; };
 		5F0AE35518CE1BE10027824B /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		5F0AE35618CE1BE10027824B /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		5F1EF753182D9F790078F89B /* ArticleSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleSetViewController.h; sourceTree = "<group>"; };
@@ -758,6 +760,14 @@
 			name = "New Login Screen";
 			sourceTree = "<group>";
 		};
+		09F732951B44E9C40000E9F6 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				09F732931B44E9B80000E9F6 /* cowbell.wav */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
 		5F4701201855CE1900506CD2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,6 +1038,7 @@
 		5FFF2AE0171824A70000B80B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				09F732951B44E9C40000E9F6 /* Sound */,
 				0925590D1B2E9E7F001CFA4C /* Message Icon */,
 				0994FA2F1B25659700938F19 /* Message List Icon */,
 				09BEB38C1B0DA76300A5D1DE /* New Login Screen */,
@@ -1212,6 +1223,7 @@
 				0925590C1B2E9E74001CFA4C /* urgent_message.png in Resources */,
 				5F81390C1855EBB400EF3E20 /* icon-76.png in Resources */,
 				5F82A8AD170B3D8E00FE72B8 /* Default-568h@2x.png in Resources */,
+				09F732941B44E9B80000E9F6 /* cowbell.wav in Resources */,
 				5F8EC149180EA2620080A62E /* button.9.png in Resources */,
 				0994FA2E1B25658C00938F19 /* Urgent.png in Resources */,
 				092559061B2E9E74001CFA4C /* newborn.png in Resources */,
@@ -1364,8 +1376,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1380,7 +1392,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "e851bdac-215b-4ad3-9d86-eba25029379a";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1397,8 +1409,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1406,7 +1418,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "e851bdac-215b-4ad3-9d86-eba25029379a";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1417,8 +1429,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",
@@ -1436,7 +1448,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1448,8 +1460,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",
@@ -1467,7 +1479,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;

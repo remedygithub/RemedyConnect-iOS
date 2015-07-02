@@ -14,11 +14,10 @@
 
 @implementation ProviderHomeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
     [self.navigationController setNavigationBarHidden:YES];
     practiceName = [[NSUserDefaults standardUserDefaults]objectForKey:@"nameOfPratice"];
 
@@ -35,12 +34,22 @@
     {
         [self checkUserUnreadMessageCount];
     }
+    
+    
+    self.messageCountLabel.hidden = YES;
+    //[self assignMessageCountValue];
+    
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(resetAction)
                                                  name:kResetPinNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(assignMessageCountValue)
+                                                 name:kNewArrivedMessageCount
                                                object:nil];
 }
 
@@ -72,6 +81,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.messageCountLabel.hidden = YES;
+
     [self checkUserUnreadMessageCount];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self.navigationController setNavigationBarHidden:YES];    
@@ -251,6 +262,7 @@
     }
     else
     {
+        self.messageCountLabel.hidden = NO;
         self.messageCountLabel.text = countValue;
     }
     [self ChangeBadgeCount];
