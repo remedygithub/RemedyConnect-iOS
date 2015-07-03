@@ -155,14 +155,27 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber = badgeValue + currentBadgeCount;
     [[NSUserDefaults standardUserDefaults] setInteger:badgeValue + currentBadgeCount forKey:@"BadgeCount"];
     
-    NSString *alert = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-    UIAlertView *Push = [[UIAlertView alloc]initWithTitle:alert message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"cowbell" ofType:@"wav"];
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: path];
-    audioPlayer  =[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:NULL];
-    audioPlayer.numberOfLoops = 1;
-    [audioPlayer play];
-    [Push show];
+    NSString *alertText = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+//    UIAlertView *Push = [[UIAlertView alloc]initWithTitle:alert message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"cowbell" ofType:@"wav"];
+//    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: path];
+//    audioPlayer  =[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:NULL];
+//    audioPlayer.numberOfLoops = 1;
+//    [audioPlayer play];
+//    [Push show];
+    NSString *fileName = @"cowbell.wav";
+    
+    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath],fileName]];
+    NSError *error;
+    
+    if (alertText.length > 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:alertText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        audioPlayer.numberOfLoops = 1;
+        [audioPlayer play];
+        [alert show];
+    }
     
     [RCPinEngine SharedWebEngine].delegate = self;
     [[RCPinEngine SharedWebEngine]checkLoginSessionOfUser];

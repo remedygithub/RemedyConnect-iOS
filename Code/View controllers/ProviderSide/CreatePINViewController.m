@@ -47,7 +47,24 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 
      NSLog(@"position:x=%f y =%f, width=%f, height = %f",self.createPin.frame.origin.x,self.createPin.frame.origin.y, self.createPin.frame.size.width,self.createPin.frame.size.height);
+    //[self constraintsForCreatePin];
 }
+
+
+//-(void)constraintsForCreatePin
+//{
+//    if (IS_IPHONE_4)
+//    {
+//        [self.createPin removeConstraints:self.createPin.constraints];
+//        self.createPin.frame = CGRectMake(70, 275, 180, 64);
+//        [self.createPin setImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
+//        [self.view addSubview:self.createPin];
+//    }
+//    else
+//    {
+//        [self.createPin addConstraints:self.createPin.constraints];
+//    }
+//}
 
 
 -(void)viewDidAppear:(BOOL)animated
