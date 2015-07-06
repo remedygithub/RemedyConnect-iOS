@@ -91,6 +91,8 @@
 - (IBAction)backBtnTapped:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:KLastLaunchedController];
+
     [[NSUserDefaults standardUserDefaults]synchronize];
 //    [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -229,6 +231,7 @@
         case 0:
             [RCHelper SharedHelper].isLogin = NO;
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPath];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:KLastLaunchedController];
             [[NSUserDefaults standardUserDefaults]synchronize];
             [self performSegueWithIdentifier:@"FromLoginToSelect" sender:self];
             break;

@@ -634,6 +634,7 @@
         [RCPracticeHelper SharedHelper].isApplicationMode = NO;
         [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
         [RCPracticeHelper SharedHelper].isLoginTimeOut = YES;
+        
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Your session has expired" message:@"You will need to login again. Please press OK to proceed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         alert.tag = 10;
         [alert show];

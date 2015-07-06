@@ -27,6 +27,7 @@
     Logic *logic;
     NSString *practiceName;
     SessionTime *timeSession;
+    UIAlertView *loginSessionAlert ;
 
 }
 @property (nonatomic, strong) RCHelper *messageHelper;

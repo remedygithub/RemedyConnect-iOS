@@ -589,7 +589,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRh-Nr-HDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-472" y="974"/>
+            <point key="canvasLocation" x="-70" y="958"/>
         </scene>
         <!--Staff Or Patient View Controller-->
         <scene sceneID="Muz-O0-h1H">
@@ -733,7 +733,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knr-xS-fns" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-982" y="1011"/>
+            <point key="canvasLocation" x="-902" y="951"/>
         </scene>
         <!--Provider Login View Controller-->
         <scene sceneID="drK-fr-CCw">
@@ -1550,7 +1550,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0C-R1-WkK">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0C-R1-WkK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
@@ -1594,15 +1594,15 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eF5-Dc-4Os"/>
-        <segue reference="ra9-QH-37U"/>
-        <segue reference="cSc-5f-5Z6"/>
         <segue reference="qsH-Hu-HYl"/>
-        <segue reference="lj3-vq-Z0e"/>
-        <segue reference="LV1-wv-wCh"/>
-        <segue reference="vEe-pD-j9d"/>
-        <segue reference="Syr-Nf-Tr2"/>
+        <segue reference="KU8-ks-pYN"/>
+        <segue reference="ra9-QH-37U"/>
+        <segue reference="Pb6-Vq-zgU"/>
+        <segue reference="Fct-SW-F0v"/>
         <segue reference="nyo-sS-3lt"/>
-        <segue reference="tLC-Bn-IEk"/>
+        <segue reference="PHN-Ac-KIr"/>
+        <segue reference="lj3-vq-Z0e"/>
+        <segue reference="cSc-5f-5Z6"/>
+        <segue reference="LV1-wv-wCh"/>
     </inferredMetricsTieBreakers>
 </document>

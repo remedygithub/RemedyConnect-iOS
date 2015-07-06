@@ -263,7 +263,7 @@
     else
     {
         self.messageCountLabel.hidden = NO;
-        self.messageCountLabel.text = countValue;
+        self.messageCountLabel.text = [NSString stringWithFormat:@"%ld",(long)[countValue integerValue]];
     }
     [self ChangeBadgeCount];
 }
@@ -416,8 +416,14 @@
         [RCPracticeHelper SharedHelper].isApplicationMode = NO;
         [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
         [RCPracticeHelper SharedHelper].isLoginTimeOut = YES;
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Login Expired" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        
+        if (loginSessionAlert)
+        {
+            [loginSessionAlert dismissWithClickedButtonIndex:0 animated:NO];
+
+        }
+        loginSessionAlert = [[UIAlertView alloc]initWithTitle:@"Your session has expired" message:@"You will need to login again. Please press OK to proceed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [loginSessionAlert show];
         [self LogoutTheUser];
         
     }
