@@ -37,5 +37,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (strong, nonatomic) IBOutlet UIButton *menuBtn;
 @property (assign, nonatomic) BOOL isFromCheckMessage;
+@property (strong, nonatomic) IBOutlet UILabel *mainPhoneNumber;
+@property (strong, nonatomic) NSIndexPath *selectedIndex;
 
 @end

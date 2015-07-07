@@ -28,6 +28,11 @@
     NSLog(@"phone Number %@", cellNumber);
     self.phoneLabel.attributedText = [[NSAttributedString alloc] initWithString:cellNumber attributes:underlineAttribute];
     
+    NSString *blockNumber = [NSString stringWithFormat:@"*67-%@",cellNumber];
+    NSLog(@"Block phone Number %@", blockNumber);
+
+    self.mainPhoneNumber.attributedText = [[NSAttributedString alloc] initWithString:blockNumber attributes:underlineAttribute];
+    
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self displayImages];
@@ -71,9 +76,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:YES forKey:@"BackToList"];
-    [defaults synchronize];
+    if(!_selectedIndex){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:YES forKey:@"BackToList"];
+        [defaults synchronize];
+    }
+   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -89,9 +97,11 @@
     if (Back)
     {
         [RCHelper SharedHelper].isFromDetailMessage = YES;
-        UIViewController *controller =  [self.storyboard instantiateViewControllerWithIdentifier:@"MessageListViewController"];
+        MessageListViewController *controller =  [self.storyboard instantiateViewControllerWithIdentifier:@"MessageListViewController"];
         [self.navigationController pushViewController:controller animated:NO];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"BackToList"];
+        controller.selectedIndexPathRow = self.selectedIndex;
+
     }
     else
     {
@@ -219,14 +229,43 @@
 
 - (IBAction)phoneNumBtnTapped:(id)sender
 {
-    NSString *phoneNumber = self.messageDetailHelper.phoneNumber;
-    NSString *cleanedString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
-    NSLog(@"%@",cleanedString);
     
-    NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
-    
-    NSLog(@"making call with %@",telURL);
-    [[UIApplication sharedApplication] openURL:telURL];
+    NSLog(@"Button Tag is : %li",(long)[sender tag]);
+    switch ([sender tag])
+    {
+        case 20:
+        {
+            NSString *phoneNumber = [[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"];
+            NSLog(@"%@",phoneNumber);
+            NSString *cleanedString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+            NSLog(@"%@",cleanedString);
+            
+            NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
+            
+            NSLog(@"making call with %@",telURL);
+            [[UIApplication sharedApplication] openURL:telURL];
+        }
+        break;
+            
+        case 40:
+        {
+            NSString *cellNumber = [[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"];
+            NSString *callBlockNumber = [NSString stringWithFormat:@"*67-%@",cellNumber];
+            NSLog(@"Block phone Number %@", callBlockNumber);
+            NSString *cleanedString = [[callBlockNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+            NSLog(@"%@",cleanedString);
+            NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
+            NSLog(@"making call with %@",telURL);
+            [[UIApplication sharedApplication] openURL:telURL];
+        }
+            
+            
+            break;
+        default:
+            NSLog(@"Default Message here");
+            break;
+    }
+
 }
 
 

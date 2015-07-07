@@ -30,4 +30,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *messageTableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) IBOutlet UIButton *menuBtn;
+@property (strong, nonatomic)  NSIndexPath *selectedIndexPathRow;
+
 @end

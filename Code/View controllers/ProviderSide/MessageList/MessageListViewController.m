@@ -8,7 +8,8 @@
 
 #import "MessageListViewController.h"
 
-@interface MessageListViewController ()
+@interface MessageListViewController (){
+}
 @property (nonatomic, strong)PopoverView *mPopver;
 @end
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+  
     logic = [Logic sharedLogic];
     self.dataArray = [[NSMutableArray alloc]init];
     [self.navigationController setNavigationBarHidden:YES];
@@ -32,6 +34,7 @@
 
     [self displayImages];
     [self getUserLoginSession];
+    
 }
 
 
@@ -277,7 +280,7 @@
          else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
          }
          else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
          {
@@ -287,7 +290,7 @@
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"patientNew.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
          }
      }
     
@@ -302,7 +305,7 @@
          else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
          else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
@@ -313,7 +316,7 @@
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"providerNew.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
      }
@@ -329,7 +332,7 @@
          else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
          else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
@@ -340,7 +343,7 @@
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"Newborn.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
 
@@ -356,7 +359,7 @@
          else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
          else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
@@ -367,7 +370,7 @@
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"rx_refill.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
 
@@ -385,7 +388,7 @@
          else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
          else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
@@ -396,7 +399,7 @@
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"answering_service.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
 
@@ -414,7 +417,7 @@
          else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
          else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
@@ -425,7 +428,7 @@
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"triage.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
 
@@ -442,7 +445,7 @@
          else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
          else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
@@ -453,7 +456,7 @@
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"rounding_doctor.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
 
@@ -470,7 +473,7 @@
          else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
 
          }
          else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
@@ -481,11 +484,10 @@
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"hospital_admission.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
          }
 
      }
-    
     
      if ([iConID isEqualToString:@"17"])
      {
@@ -497,9 +499,7 @@
          else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
          {
              cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
-
-
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
          }
          else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
          {
@@ -509,24 +509,34 @@
          else
          {
              cell.iConImage.image = [UIImage imageNamed:@"appointment.png"];
-             cell.readImage.image = [UIImage imageNamed:@"Icon-Circle-lightBlue.png"];
+             cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
          }
      }
-    
         return cell;
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+     _selectedIndexPathRow = [tableView indexPathForSelectedRow];
+     NSLog(@"%@",_selectedIndexPathRow);
+    
      messageHelper = [self.dataArray objectAtIndex:indexPath.row];
-     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:messageHelper.messageDetails forKey:@"Details"];
     [defaults setObject:messageHelper.phoneNumber forKey:@"phoneNumber"];
     [defaults setObject:messageHelper.callerId forKey:@"CallerID"];
     [defaults synchronize];
     [defaults synchronize];
     [self performSegueWithIdentifier:@"MoveToMessageDetail" sender:self];
+}
+
+
+-(void)moveCellRowToSelectedIndex:(NSIndexPath *)selectedPath
+{
+    [self.messageTableView selectRowAtIndexPath:selectedPath
+                           animated:NO
+                     scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 
@@ -537,6 +547,7 @@
     if ([[segue identifier] isEqualToString:@"MoveToMessageDetail"])
     {
         MessageDetailsViewController *detail = (MessageDetailsViewController*)segue.destinationViewController;
+        detail.selectedIndex = _selectedIndexPathRow;
         detail.messageDetailHelper = messageHelper;
     }
     if ([segue.identifier isEqualToString:@"FromMessageListToAbout"])
@@ -686,6 +697,12 @@
         }
     }
     [self.messageTableView reloadData];
+    if (_selectedIndexPathRow)
+    {
+        [self moveCellRowToSelectedIndex:_selectedIndexPathRow];
+    }
+    
+   
 }
 
 -(void)connectionManagerDidFailWithError:(NSError *)error
