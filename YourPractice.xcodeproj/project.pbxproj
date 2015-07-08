@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09154EB61B4B7E6E00126881 /* yellow_Unread.png in Resources */ = {isa = PBXBuildFile; fileRef = 09154EB51B4B7E6E00126881 /* yellow_Unread.png */; };
-		09154EBB1B4B8CB700126881 /* yellow_Unread@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09154EBA1B4B8CB700126881 /* yellow_Unread@2x.png */; };
+		090F80D71B4CF54B0094E1E8 /* yellow_Unread.png in Resources */ = {isa = PBXBuildFile; fileRef = 090F80D61B4CF54B0094E1E8 /* yellow_Unread.png */; };
+		090F80D91B4CF6450094E1E8 /* yellow_Unread@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 090F80D81B4CF6450094E1E8 /* yellow_Unread@2x.png */; };
 		091D38A91B00ECC400147E28 /* libTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D38A71B00ECC400147E28 /* libTestFairy.a */; };
 		091D38AF1B00EDBF00147E28 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D38AE1B00EDBF00147E28 /* CoreMedia.framework */; };
 		091D38B11B00EDD800147E28 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D38B01B00EDD800147E28 /* CoreMotion.framework */; };
@@ -224,8 +224,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09154EB51B4B7E6E00126881 /* yellow_Unread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellow_Unread.png; path = Passcoda/yellow_Unread.png; sourceTree = "<group>"; };
-		09154EBA1B4B8CB700126881 /* yellow_Unread@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yellow_Unread@2x.png"; path = "Passcoda/yellow_Unread@2x.png"; sourceTree = "<group>"; };
+		090F80D61B4CF54B0094E1E8 /* yellow_Unread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellow_Unread.png; path = Passcoda/yellow_Unread.png; sourceTree = "<group>"; };
+		090F80D81B4CF6450094E1E8 /* yellow_Unread@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yellow_Unread@2x.png"; path = "Passcoda/yellow_Unread@2x.png"; sourceTree = "<group>"; };
 		091D38A71B00ECC400147E28 /* libTestFairy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFairy.a; sourceTree = "<group>"; };
 		091D38A81B00ECC400147E28 /* TestFairy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFairy.h; sourceTree = "<group>"; };
 		091D38AE1B00EDBF00147E28 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -1060,8 +1060,8 @@
 				5FF0EACA194733B4001A33D4 /* search-sea.png */,
 				5FF0EACB194733B4001A33D4 /* search-tree.png */,
 				5F82D6741862EE1F00430B91 /* splashscreen.png */,
-				09154EB51B4B7E6E00126881 /* yellow_Unread.png */,
-				09154EBA1B4B8CB700126881 /* yellow_Unread@2x.png */,
+				090F80D61B4CF54B0094E1E8 /* yellow_Unread.png */,
+				090F80D81B4CF6450094E1E8 /* yellow_Unread@2x.png */,
 				092EC4FE1AFE6DB9003A3608 /* Roc Logo */,
 				5F91663A183F926A00E74748 /* fonts */,
 				5F8EC154180EA42B0080A62E /* Images.xcassets */,
@@ -1259,11 +1259,11 @@
 				0994FA281B25658C00938F19 /* Provider.png in Resources */,
 				092559091B2E9E74001CFA4C /* rounding_doctor.png in Resources */,
 				5FF0EAD619475036001A33D4 /* location.png in Resources */,
-				09154EBB1B4B8CB700126881 /* yellow_Unread@2x.png in Resources */,
+				090F80D91B4CF6450094E1E8 /* yellow_Unread@2x.png in Resources */,
 				5F916652183F926A00E74748 /* OpenSans-Regular.ttf in Resources */,
 				09BEB3891B0DA75300A5D1DE /* button.png in Resources */,
 				0994FA271B25658C00938F19 /* Appointment.png in Resources */,
-				09154EB61B4B7E6E00126881 /* yellow_Unread.png in Resources */,
+				090F80D71B4CF54B0094E1E8 /* yellow_Unread.png in Resources */,
 				5F81390E1855EBB400EF3E20 /* icon-120.png in Resources */,
 				09F7329A1B4530470000E9F6 /* buttonLengthyNew.png in Resources */,
 				0994FA2B1B25658C00938F19 /* Roundingdoctor.png in Resources */,

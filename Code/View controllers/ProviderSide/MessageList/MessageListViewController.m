@@ -30,14 +30,22 @@
                                              selector:@selector(resetAction)
                                                  name:kResetPinNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getMessageList)
+                                                 name:kNewArrivedMessageCount
+                                               object:nil];
+    
     self.messageTableView.contentSize = CGSizeMake(320, 540);
 
     [self displayImages];
     [self getUserLoginSession];
-    
+
 }
 
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
 
 
 -(void)resetAction
@@ -105,14 +113,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if ([RCHelper SharedHelper].isFromDetailMessage)
+    if (_selectedIndexPathRow)
     {
-        [self getMessageList];
+        [self moveCellRowToSelectedIndex:_selectedIndexPathRow];
     }
-
+    
+        NSLog(@"%s",__PRETTY_FUNCTION__);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"BackToHome"];
     [defaults synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self.navigationController setNavigationBarHidden:YES];
@@ -518,7 +530,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     _selectedIndexPathRow = [tableView indexPathForSelectedRow];
+    
+    RCHelper *messageInfo = [self.dataArray objectAtIndex:indexPath.row];
+    messageInfo.messageOpened = @"1";
+    [self.messageTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+     _selectedIndexPathRow = indexPath;
      NSLog(@"%@",_selectedIndexPathRow);
     
      messageHelper = [self.dataArray objectAtIndex:indexPath.row];
@@ -526,7 +542,6 @@
     [defaults setObject:messageHelper.messageDetails forKey:@"Details"];
     [defaults setObject:messageHelper.phoneNumber forKey:@"phoneNumber"];
     [defaults setObject:messageHelper.callerId forKey:@"CallerID"];
-    [defaults synchronize];
     [defaults synchronize];
     [self performSegueWithIdentifier:@"MoveToMessageDetail" sender:self];
 }
@@ -603,7 +618,6 @@
     [statusHUD hide:YES afterDelay:2];
     // We have to reload the data:
     [logic resetAfterUpdate];
-    [self viewDidLoad];
 }
 
 - (void)hasFailed {
@@ -621,6 +635,7 @@
 
 -(void)getMessageList
 {
+    _selectedIndexPathRow = nil;
     [statusHUD hide:YES afterDelay:1.0];
     [RCWebEngine SharedWebEngine].delegate = self;
     [[RCWebEngine SharedWebEngine] getMessageListInformation];

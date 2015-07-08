@@ -30,7 +30,14 @@
     
     UIImageView *yourImageView = [[UIImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [yourImageView setImage:img];
-    [yourImageView setContentMode:UIViewContentModeCenter];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [yourImageView setContentMode:UIViewContentModeScaleToFill];
+    }
+    else{
+        [yourImageView setContentMode:UIViewContentModeCenter];
+
+    }
     [self.view addSubview:yourImageView];
     
     [self.webView setDelegate:self];

@@ -76,7 +76,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(!_selectedIndex){
+    if(!_selectedIndex)
+    {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setBool:YES forKey:@"BackToList"];
         [defaults synchronize];
@@ -96,15 +97,15 @@
     BOOL Back = [[NSUserDefaults standardUserDefaults]objectForKey:@"BackToList"];
     if (Back)
     {
-        [RCHelper SharedHelper].isFromDetailMessage = YES;
         MessageListViewController *controller =  [self.storyboard instantiateViewControllerWithIdentifier:@"MessageListViewController"];
         [self.navigationController pushViewController:controller animated:NO];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"BackToList"];
         controller.selectedIndexPathRow = self.selectedIndex;
-
+        [RCHelper SharedHelper].isFromDetailMessage = YES;
     }
     else
     {
+        [RCHelper SharedHelper].isFromDetailMessage = YES;
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
