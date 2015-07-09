@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "SSZipArchive.h"
 #import "Macros.h"
+#import "RCHelper.h"
 
 @interface MainMenuViewController : UIViewController <MainMenuDelegate, PopoverViewDelegate, MBProgressHUDDelegate, UpdateDownloadStarterDelegate, UINavigationControllerDelegate,
 UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,SSZipArchiveDelegate,SubMenuDelegate>

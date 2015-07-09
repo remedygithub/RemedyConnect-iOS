@@ -448,7 +448,7 @@
             [self clearData];
             [RCHelper SharedHelper].pinCreated = NO;
             NSMutableDictionary *userDict = [[RCHelper SharedHelper] getLoggedInUser];
-            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:YES];
+            [[RCHelper SharedHelper] setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:NO];
             [self performSegueWithIdentifier:@"MoveBackToSelectPractice" sender:self];
         }
         else if ([RCPracticeHelper SharedHelper].isLogout)

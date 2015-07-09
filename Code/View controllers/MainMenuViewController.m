@@ -40,6 +40,7 @@ NSArray *menu;
     [Skin applyMainLogoOnImageView:_logoImageView];
     [Skin applyBackgroundOnButton:_menuButton];
     menu = [logic getDataToDisplayForMainMenu];
+    [[RCHelper SharedHelper] removeAllUsersPinAndLogoff];
     [self setFrames];
     [self displayImages];
     
@@ -247,6 +248,7 @@ NSArray *menu;
             [logic resetBeforeSelection];
             [self clearData];
             [self performSegueWithIdentifier:@"BackToPracticeSearch" sender:self];
+
             break;
         case 2:
             [self performSegueWithIdentifier:@"toTerms" sender:self];
@@ -257,6 +259,7 @@ NSArray *menu;
         case 3:
             //[RCHelper SharedHelper].pinCreated = YES;
             [self.navigationController popToRootViewControllerAnimated:YES];
+        
             break;
             
         default:

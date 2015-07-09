@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>F4A70C1D-A4C4-417E-8E6F-F1EDA689E5E3</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>YourPractice</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7CC78D3C3F251B03D713FA2C2D89B382DBC81485</key>
@@ -16,7 +16,7 @@
 		<string>github.com:pixelglow/zipzap.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>YourPractice.xcodeproj/project.xcworkspace</string>
+	<string>YourPractice.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7CC78D3C3F251B03D713FA2C2D89B382DBC81485</key>

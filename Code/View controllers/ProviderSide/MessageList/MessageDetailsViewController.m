@@ -28,10 +28,10 @@
     NSLog(@"phone Number %@", cellNumber);
     self.phoneLabel.attributedText = [[NSAttributedString alloc] initWithString:cellNumber attributes:underlineAttribute];
     
-    NSString *blockNumber = [NSString stringWithFormat:@"*67-%@",cellNumber];
-    NSLog(@"Block phone Number %@", blockNumber);
-
-    self.mainPhoneNumber.attributedText = [[NSAttributedString alloc] initWithString:blockNumber attributes:underlineAttribute];
+//    NSString *blockNumber = [NSString stringWithFormat:@"*67-%@",cellNumber];
+//    NSLog(@"Block phone Number %@", blockNumber);
+//
+//    self.mainPhoneNumber.attributedText = [[NSAttributedString alloc] initWithString:blockNumber attributes:underlineAttribute];
     
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromClass([self class]) forKey:KLastLaunchedController];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -230,43 +230,15 @@
 
 - (IBAction)phoneNumBtnTapped:(id)sender
 {
+    NSString *phoneNumber = [[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"];
+    NSLog(@"%@",phoneNumber);
+    NSString *cleanedString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
+    NSLog(@"%@",cleanedString);
     
-    NSLog(@"Button Tag is : %li",(long)[sender tag]);
-    switch ([sender tag])
-    {
-        case 20:
-        {
-            NSString *phoneNumber = [[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"];
-            NSLog(@"%@",phoneNumber);
-            NSString *cleanedString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
-            NSLog(@"%@",cleanedString);
-            
-            NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
-            
-            NSLog(@"making call with %@",telURL);
-            [[UIApplication sharedApplication] openURL:telURL];
-        }
-        break;
-            
-        case 40:
-        {
-            NSString *cellNumber = [[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"];
-            NSString *callBlockNumber = [NSString stringWithFormat:@"*67-%@",cellNumber];
-            NSLog(@"Block phone Number %@", callBlockNumber);
-            NSString *cleanedString = [[callBlockNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
-            NSLog(@"%@",cleanedString);
-            NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
-            NSLog(@"making call with %@",telURL);
-            [[UIApplication sharedApplication] openURL:telURL];
-        }
-            
-            
-            break;
-        default:
-            NSLog(@"Default Message here");
-            break;
-    }
-
+    NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
+    
+    NSLog(@"making call with %@",telURL);
+    [[UIApplication sharedApplication] openURL:telURL];
 }
 
 

@@ -152,4 +152,13 @@ static RCHelper *sharedHelper = nil;
     }
 }
 
+-(void)removeAllUsersPinAndLogoff
+{
+    NSMutableArray *userArray = [[NSUserDefaults standardUserDefaults] valueForKey:kUserDetails];
+    if (userArray) {
+        for (NSMutableDictionary *userDict in userArray) {
+            [self setUserWithUserName:[userDict valueForKey:kUserName] andPin:nil andLoggedIN:NO];
+    }
+    }
+}
 @end

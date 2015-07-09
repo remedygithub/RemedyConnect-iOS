@@ -84,4 +84,6 @@
 -(NSMutableDictionary *) setUserWithUserName:(NSString *)userName andPin:(NSString *)pin andLoggedIN:(BOOL)isLoggedIn;
 -(NSMutableDictionary *)getLoggedInUser;
 -(NSMutableDictionary *)getUser:(NSString *)userName;
+-(void)removeAllUsersPinAndLogoff;
 @end
+
