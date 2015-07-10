@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Macros.h"
 #import <Security/Security.h>
+
+#define TestUrl     @"https://tsapitest.remedyconnect.com/api"
+#define ProdUrl     @""
+#define apiUrl TestUrl
+
+
 //Delegate methods
 @protocol WebEngineDelegate <NSObject>
 

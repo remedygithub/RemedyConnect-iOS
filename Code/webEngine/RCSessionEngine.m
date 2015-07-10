@@ -37,7 +37,7 @@ static RCSessionEngine *sharedEngine = nil;
 {
     NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
     NSLog(@"%@",userName);
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Users/Logout?UserName=%@",userName];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/api/Users/Logout?UserName=%@",apiUrl,userName];
     NSLog(@"%@",lUrlString);
     NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSLog(@"URL:%@", lURL);

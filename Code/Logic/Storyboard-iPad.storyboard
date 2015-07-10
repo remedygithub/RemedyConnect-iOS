@@ -451,11 +451,11 @@
                                     <action selector="patientBtnTapped:" destination="Omd-eA-kM5" eventType="touchUpInside" id="kFx-4n-fcB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkE-Yb-cPC">
-                                <rect key="frame" x="693" y="40" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkE-Yb-cPC">
+                                <rect key="frame" x="658" y="45" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="kaO-yB-9QL"/>
-                                    <constraint firstAttribute="width" constant="40" id="zOO-xc-YVv"/>
+                                    <constraint firstAttribute="width" constant="50" id="P4h-JA-zlo"/>
+                                    <constraint firstAttribute="height" constant="50" id="aGR-vE-kxu"/>
                                 </constraints>
                                 <state key="normal" image="menu.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -515,17 +515,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sI5-pB-874" firstAttribute="top" secondItem="TiF-5z-9y2" secondAttribute="bottom" constant="8" id="19z-lh-xGz"/>
+                            <constraint firstAttribute="trailing" secondItem="MkE-Yb-cPC" secondAttribute="trailing" constant="60" id="2aQ-aQ-5rm"/>
                             <constraint firstAttribute="trailing" secondItem="FsO-bj-cM9" secondAttribute="trailing" id="3P5-go-0hm"/>
+                            <constraint firstItem="MkE-Yb-cPC" firstAttribute="top" secondItem="dgj-3x-fg3" secondAttribute="bottom" constant="45" id="577-yQ-a8d"/>
                             <constraint firstItem="T1e-rq-AS2" firstAttribute="top" secondItem="TiF-5z-9y2" secondAttribute="bottom" constant="292" id="InQ-dd-2df"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rMz-0O-lwG" secondAttribute="trailing" constant="104" id="J0s-Y1-Fjt"/>
                             <constraint firstAttribute="centerX" secondItem="TiF-5z-9y2" secondAttribute="centerX" constant="-5.5" id="JNQ-l1-QS2"/>
                             <constraint firstItem="FsO-bj-cM9" firstAttribute="leading" secondItem="pfX-cQ-adz" secondAttribute="leading" constant="-141" id="L5o-Bf-9Mc"/>
                             <constraint firstAttribute="trailing" secondItem="FsO-bj-cM9" secondAttribute="trailing" id="QC2-Yx-HV6"/>
                             <constraint firstItem="bt6-su-Utu" firstAttribute="trailing" secondItem="TiF-5z-9y2" secondAttribute="trailing" id="SJA-9g-2em"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="MkE-Yb-cPC" secondAttribute="trailing" constant="15" id="VW4-d5-ZNn"/>
                             <constraint firstItem="T1e-rq-AS2" firstAttribute="top" secondItem="bt6-su-Utu" secondAttribute="bottom" constant="369" id="VYQ-nF-Bdk"/>
                             <constraint firstItem="FsO-bj-cM9" firstAttribute="leading" secondItem="sI5-pB-874" secondAttribute="leading" constant="-306" id="XRM-hz-NeR"/>
-                            <constraint firstItem="MkE-Yb-cPC" firstAttribute="top" secondItem="dgj-3x-fg3" secondAttribute="bottom" constant="20" id="aOO-TD-Qwi"/>
                             <constraint firstItem="T1e-rq-AS2" firstAttribute="top" secondItem="FsO-bj-cM9" secondAttribute="bottom" id="bjF-07-6n0"/>
                             <constraint firstItem="FsO-bj-cM9" firstAttribute="leading" secondItem="kr6-dd-QMB" secondAttribute="leading" id="eUP-QU-1DG"/>
                             <constraint firstItem="rMz-0O-lwG" firstAttribute="top" secondItem="dgj-3x-fg3" secondAttribute="bottom" constant="145" id="eip-QA-cJi"/>
@@ -1523,13 +1523,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="um7-SY-8x6"/>
-        <segue reference="EdX-ET-nij"/>
-        <segue reference="uwy-M1-1MU"/>
-        <segue reference="u1v-pS-rSs"/>
         <segue reference="9iK-b9-Kpp"/>
-        <segue reference="PA5-1m-dPA"/>
-        <segue reference="Mtr-os-rt2"/>
+        <segue reference="uwy-M1-1MU"/>
+        <segue reference="EdX-ET-nij"/>
+        <segue reference="U95-4R-psE"/>
+        <segue reference="um7-SY-8x6"/>
         <segue reference="4jB-Hp-Vwt"/>
+        <segue reference="PA5-1m-dPA"/>
+        <segue reference="u1v-pS-rSs"/>
     </inferredMetricsTieBreakers>
 </document>

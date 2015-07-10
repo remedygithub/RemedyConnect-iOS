@@ -38,7 +38,7 @@ static RCPinEngine *sharedEngine = nil;
     NSString *physican = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhysicanId"];
     NSLog(@"%@",physican);
     
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Physician/GetPhysiciansPinTimeout?PracticeID=%@&PhysicianID=%@&apikey=%@&token=%@",practice,physican,apiKey,tokenKey];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/Physician/GetPhysiciansPinTimeout?PracticeID=%@&PhysicianID=%@&apikey=%@&token=%@",apiUrl,practice,physican,apiKey,tokenKey];
     
     
     //     NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/GetUnreadCalls?PhysicianID=%@&apikey=%@&token=%@",physican,apiKey,tokenKey];
@@ -62,7 +62,7 @@ static RCPinEngine *sharedEngine = nil;
     NSString *physican = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhysicanId"];
     NSLog(@"%@",physican);
     
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/GetUnreadCalls?PhysicianID=%@&apikey=%@&token=%@",physican,apiKey,tokenKey];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/Communication/GetUnreadCalls?PhysicianID=%@&apikey=%@&token=%@",apiUrl,physican,apiKey,tokenKey];
     
     NSLog(@"%@",lUrlString);
     NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];

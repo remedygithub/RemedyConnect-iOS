@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "Macros.h"
 
+#define TestUrl     @"https://tsapitest.remedyconnect.com/api"
+#define ProdUrl     @""
+#define apiUrl TestUrl
+
 @protocol PinEngineDelegate <NSObject>
 -(void)PinManagerDidReceiveResponse:(NSDictionary*)pResultDict;
 -(void)PinManagerDidFailWithError:(NSError *)error;

@@ -37,7 +37,7 @@ static RCWebEngine *sharedEngine = nil;
 //Logging User
 -(void)userLogin:(NSString *)userName password:(NSString *)userPassword
 {
-   NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Users/Login?UserName=%@&Password=%@",userName,userPassword];
+   NSString *lUrlString = [NSString stringWithFormat:@"%@/Users/Login?UserName=%@&Password=%@",apiUrl,userName,userPassword];
    
     NSLog(@"%@",lUrlString);
     
@@ -58,7 +58,7 @@ static RCWebEngine *sharedEngine = nil;
     NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"responseToken"];
     NSLog(@"%@",token);
     
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/InsertPhysicianMobileDevice?PracticeID=%@&PhysicianID=%@&DeviceID=%@&apikey=%@&token=%@",praticeId,physicianId,DeviceId,apiKey,tokenKey];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/Communication/InsertPhysicianMobileDevice?PracticeID=%@&PhysicianID=%@&DeviceID=%@&apikey=%@&token=%@",apiUrl,praticeId,physicianId,DeviceId,apiKey,tokenKey];
     NSLog(@"%@",lUrlString);
     NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSLog(@"URL:%@", lURL);
@@ -77,7 +77,7 @@ static RCWebEngine *sharedEngine = nil;
     NSString *practice = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPracticeId"];
     NSLog(@"%@",token);
     
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Physician/GetPracticeTimeout?PracticeID=%@&apikey=%@&token=%@",practice,apiKey,tokenKey];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/Physician/GetPracticeTimeout?PracticeID=%@&apikey=%@&token=%@",apiUrl,practice,apiKey,tokenKey];
     NSLog(@"%@",lUrlString);
     NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSLog(@"URL:%@", lURL);
@@ -97,7 +97,7 @@ static RCWebEngine *sharedEngine = nil;
     NSString *physican = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhysicanId"];
     NSLog(@"%@",physican);
   
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/GetUnreadCalls?PhysicianID=%@&apikey=%@&token=%@",physican,apiKey,tokenKey];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/Communication/GetUnreadCalls?PhysicianID=%@&apikey=%@&token=%@",apiUrl,physican,apiKey,tokenKey];
     
     NSLog(@"%@",lUrlString);
     NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
@@ -117,7 +117,7 @@ static RCWebEngine *sharedEngine = nil;
     NSString *physican = [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhysicanId"];
     NSLog(@"%@",physican);
     
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/GetCallsByProvider?PhysicianID=%@&PracticeID=%@&apikey=%@&token=%@",physican,practice,apiKey,tokenKey];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/Communication/GetCallsByProvider?PhysicianID=%@&PracticeID=%@&apikey=%@&token=%@",apiUrl,physican,practice,apiKey,tokenKey];
     
     NSLog(@"%@",lUrlString);
     NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
@@ -140,7 +140,7 @@ static RCWebEngine *sharedEngine = nil;
 
     NSLog(@"%@ callID: %@",physican, callId);
     
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/MarkSecureCallOpen?CallID=%@&PhysicianID=%@&apikey=%@&token=%@",callId,physican,apiKey,tokenKey];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/api/Communication/MarkSecureCallOpen?CallID=%@&PhysicianID=%@&apikey=%@&token=%@",apiUrl,callId,physican,apiKey,tokenKey];
     
     //  NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/GetCall?PracticeID=%@&CallID=%@&apikey=%@&token=%@",practice,callId,apiKey,tokenKey];
     NSLog(@"%@",lUrlString);
