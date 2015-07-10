@@ -140,7 +140,7 @@ static RCWebEngine *sharedEngine = nil;
 
     NSLog(@"%@ callID: %@",physican, callId);
     
-    NSString *lUrlString = [NSString stringWithFormat:@"%@/api/Communication/MarkSecureCallOpen?CallID=%@&PhysicianID=%@&apikey=%@&token=%@",apiUrl,callId,physican,apiKey,tokenKey];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/Communication/MarkSecureCallOpen?CallID=%@&PhysicianID=%@&apikey=%@&token=%@",apiUrl,callId,physican,apiKey,tokenKey];
     
     //  NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/GetCall?PracticeID=%@&CallID=%@&apikey=%@&token=%@",practice,callId,apiKey,tokenKey];
     NSLog(@"%@",lUrlString);

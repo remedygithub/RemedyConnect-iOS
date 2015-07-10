@@ -1523,13 +1523,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9iK-b9-Kpp"/>
-        <segue reference="uwy-M1-1MU"/>
         <segue reference="EdX-ET-nij"/>
-        <segue reference="U95-4R-psE"/>
         <segue reference="um7-SY-8x6"/>
         <segue reference="4jB-Hp-Vwt"/>
-        <segue reference="PA5-1m-dPA"/>
+        <segue reference="Dre-OJ-l0R"/>
+        <segue reference="ITA-R2-aTw"/>
+        <segue reference="uwy-M1-1MU"/>
         <segue reference="u1v-pS-rSs"/>
+        <segue reference="9iK-b9-Kpp"/>
     </inferredMetricsTieBreakers>
 </document>
