@@ -163,7 +163,7 @@
 //    audioPlayer.numberOfLoops = 1;
 //    [audioPlayer play];
 //    [Push show];
-    NSString *fileName = @"cowbell.wav";
+    NSString *fileName = @"RemedyConnect Secure Messaging Sound.aiff";
     
     NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath],fileName]];
     NSError *error;
