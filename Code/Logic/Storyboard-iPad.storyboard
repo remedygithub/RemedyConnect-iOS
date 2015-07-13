@@ -59,7 +59,7 @@
         <!--Main menu-->
         <scene sceneID="g9a-Ql-0qT">
             <objects>
-                <viewController storyboardIdentifier="MainMenu" id="buS-Kw-cOR" customClass="MainMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainMenuViewController" id="buS-Kw-cOR" customClass="MainMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zel-SY-ac0"/>
                         <viewControllerLayoutGuide type="bottom" id="1oj-hC-yqC"/>
@@ -174,7 +174,7 @@
                         <outlet property="logoImageView" destination="ZVY-sT-gvz" id="jLz-q6-XcQ"/>
                         <outlet property="menuButton" destination="AR1-2A-zxL" id="6p6-jm-r4f"/>
                         <outlet property="menuHeightConstraint" destination="SJj-lq-IHG" id="dkz-9z-OGN"/>
-                        <segue destination="Et6-g8-9lu" kind="push" identifier="ToSubMenu" id="w9B-Hq-YDd"/>
+                        <segue destination="Et6-g8-9lu" kind="push" identifier="MenuToArticle" id="w9B-Hq-YDd"/>
                         <segue destination="9Sa-I2-Xbo" kind="push" identifier="ToPage" id="du4-PP-ZTH"/>
                         <segue destination="yhs-rB-l7k" kind="push" identifier="ToArticleSet" id="uwy-M1-1MU"/>
                         <segue destination="sRh-7w-rLb" kind="modal" identifier="BackToPracticeSearch" modalTransitionStyle="coverVertical" id="kqf-jh-1Ap"/>
@@ -185,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEa-Fh-2Hi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="513" y="-181"/>
+            <point key="canvasLocation" x="601" y="-197"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="dZj-Fe-IBD">
@@ -1527,11 +1527,11 @@
         <segue reference="4jB-Hp-Vwt"/>
         <segue reference="EdX-ET-nij"/>
         <segue reference="um7-SY-8x6"/>
-        <segue reference="du4-PP-ZTH"/>
-        <segue reference="u1v-pS-rSs"/>
         <segue reference="w9B-Hq-YDd"/>
+        <segue reference="u1v-pS-rSs"/>
         <segue reference="kqf-jh-1Ap"/>
         <segue reference="uwy-M1-1MU"/>
+        <segue reference="du4-PP-ZTH"/>
         <segue reference="ITA-R2-aTw"/>
     </inferredMetricsTieBreakers>
 </document>
