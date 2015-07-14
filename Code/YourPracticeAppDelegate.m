@@ -28,10 +28,8 @@
     // Differentiate between ios 8 and ios 7,6 push notification registration
     if(IS_OS_8_OR_LATER)
     {
-        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert |UIUserNotificationTypeBadge) categories:nil]];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-      //  UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound )categories:nil];
-      //  [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         
     } else
     {
@@ -56,8 +54,6 @@
     [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
-
-
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
@@ -108,12 +104,9 @@
     {
         UINavigationController *navigationController = (UINavigationController *)rootViewController.presentedViewController;
         UIViewController *lastViewController = [[navigationController viewControllers] lastObject];
-        
         return [self visibleViewController:lastViewController];
     }
-    
     UIViewController *presentedViewController = (UIViewController *)rootViewController.presentedViewController;
-    
     return [self visibleViewController:presentedViewController];
 }
 
@@ -154,27 +147,17 @@
     int badgeValue = [[[userInfo valueForKey:@"aps"] valueForKey:@"badge"] intValue];
     [UIApplication sharedApplication].applicationIconBadgeNumber = badgeValue + currentBadgeCount;
     [[NSUserDefaults standardUserDefaults] setInteger:badgeValue + currentBadgeCount forKey:@"BadgeCount"];
-    
-    NSString *alertText = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-//    UIAlertView *Push = [[UIAlertView alloc]initWithTitle:alert message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"cowbell" ofType:@"wav"];
-//    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: path];
-//    audioPlayer  =[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:NULL];
-//    audioPlayer.numberOfLoops = 1;
-//    [audioPlayer play];
-//    [Push show];
-    NSString *fileName = @"RemedyConnect Secure Messaging Sound.aiff";
-    
-    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath],fileName]];
+    NSString *alertString = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    NSString *playSoundOnAlert = [NSString stringWithFormat:@"%@", [[userInfo objectForKey:@"aps"] objectForKey:@"sound"]];
+    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath],playSoundOnAlert]];
     NSError *error;
     
-    if (alertText.length > 0)
+    if (alertString.length > 0)
     {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:alertText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:alertString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        audioPlayer.numberOfLoops = 1;
-        [audioPlayer play];
         [alert show];
+        [audioPlayer play];
     }
     
     [RCPinEngine SharedWebEngine].delegate = self;

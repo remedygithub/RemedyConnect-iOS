@@ -10,7 +10,7 @@
 #import "Macros.h"
 
 #define TestUrl     @"https://tsapitest.remedyconnect.com/api"
-#define ProdUrl     @""
+#define ProdUrl     @"https://liveagent.remedyoncall.com/api"
 #define apiUrl TestUrl
 
 @protocol SessionEngineDelegate <NSObject>

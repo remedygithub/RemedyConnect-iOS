@@ -24,9 +24,12 @@
     self.messageDetails.text = messageDetail;
     
     NSString *cellNumber = [[NSUserDefaults standardUserDefaults]objectForKey:@"phoneNumber"];
+    NSString *formatttedNumber = [self formatPhoneNumber:cellNumber];
+    NSLog(@"The phone number:%@",formatttedNumber);
+    
     NSDictionary *underlineAttribute = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
-    NSLog(@"phone Number %@", cellNumber);
-    self.phoneLabel.attributedText = [[NSAttributedString alloc] initWithString:cellNumber attributes:underlineAttribute];
+    NSLog(@"phone Number %@", formatttedNumber);
+    self.phoneLabel.attributedText = [[NSAttributedString alloc] initWithString:formatttedNumber attributes:underlineAttribute];
     
 //    NSString *blockNumber = [NSString stringWithFormat:@"*67-%@",cellNumber];
 //    NSLog(@"Block phone Number %@", blockNumber);
@@ -39,6 +42,17 @@
     [self getUserLoginSession];
 }
 
+
+-(NSString *)formatPhoneNumber:(NSString *)phone
+{
+    NSMutableString *str = [[NSMutableString alloc] initWithString:phone];
+    int three = 3;
+    for(int i = 0; i < 2 ; i++){
+        [str insertString:@"-" atIndex:(i==0 ? three : three*(i+1)+i )];
+    }
+    NSLog(@"%@",str);
+    return str;
+}
 
 
 -(void)getUserLoginSession
@@ -234,10 +248,8 @@
     NSLog(@"%@",phoneNumber);
     NSString *cleanedString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
     NSLog(@"%@",cleanedString);
-    
-    NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
-    
-    NSLog(@"making call with %@",telURL);
+    NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", cleanedString]];
+    NSLog(@"making call with %@",[telURL absoluteString]);
     [[UIApplication sharedApplication] openURL:telURL];
 }
 

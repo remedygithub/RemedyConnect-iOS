@@ -12,6 +12,13 @@
 #import <CommonCrypto/CommonDigest.h>
 #define kOFFSET_FOR_KEYBOARD 80.0
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+#define kForgotTest     @"https://webteleservicestest.remedyconnect.com"
+#define KForgotProd     @"https://admin.remedyoncall.com"
+#define forgotLink    KForgotProd
+
+#define TestUrl     @"https://tsapitest.remedyconnect.com/api"
+#define ProdUrl     @"https://liveagent.remedyoncall.com/api"
+#define apiUrl TestUrl
 
 @interface ProviderLoginViewController ()
 @property (nonatomic, strong)PopoverView *mPopver;
@@ -559,7 +566,7 @@
     NSData *devicetoken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
     NSLog(@"%@",devicetoken);
     
-    NSString *lUrlString = [NSString stringWithFormat:@"https://tsapitest.remedyconnect.com/api/Communication/InsertPhysicianMobileDevice?PracticeID=%@&PhysicianID=%@&DeviceID=%@&apikey=%@&token=%@",practice,physican,hashUserString,apiKey,tokenKey];
+    NSString *lUrlString = [NSString stringWithFormat:@"%@/Communication/InsertPhysicianMobileDevice?PracticeID=%@&PhysicianID=%@&DeviceID=%@&apikey=%@&token=%@",apiUrl,practice,physican,hashUserString,apiKey,tokenKey];
   
         NSURL *lURL = [NSURL URLWithString:[lUrlString stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding]];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:lURL];

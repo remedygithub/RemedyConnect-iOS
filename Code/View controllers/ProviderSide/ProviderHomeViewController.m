@@ -7,7 +7,9 @@
 //
 
 #import "ProviderHomeViewController.h"
-
+#define AdminTest   @"https://webteleservicestest.remedyconnect.com/Default.aspx?ReturnUrl=%2fPractice%2fInformation%2fMainOffice.aspx"
+#define AdminProd   @"https://admin.remedyoncall.com/Default.aspx?ReturnUrl=%2f"
+#define adminUrl   AdminTest
 @interface ProviderHomeViewController ()
 @property (nonatomic, strong)PopoverView *mPopver;
 @end
@@ -116,7 +118,7 @@
 
 - (IBAction)adminBtnTapped:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://webteleservicestest.remedyconnect.com/Default.aspx?ReturnUrl=%2fPractice%2fInformation%2fMainOffice.aspx"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:adminUrl]];
 }
 
 
