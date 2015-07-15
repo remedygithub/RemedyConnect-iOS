@@ -9,7 +9,7 @@
 #import "ProviderHomeViewController.h"
 #define AdminTest   @"https://webteleservicestest.remedyconnect.com/Default.aspx?ReturnUrl=%2fPractice%2fInformation%2fMainOffice.aspx"
 #define AdminProd   @"https://admin.remedyoncall.com/Default.aspx?ReturnUrl=%2f"
-#define adminUrl   AdminTest
+#define adminUrl   AdminProd
 @interface ProviderHomeViewController ()
 @property (nonatomic, strong)PopoverView *mPopver;
 @end
@@ -419,13 +419,13 @@
         [RCPracticeHelper SharedHelper].isPinFailureAttempt = NO;
         [RCPracticeHelper SharedHelper].isLoginTimeOut = YES;
         
-        if (loginSessionAlert)
+        if (_loginSessionAlert)
         {
-            [loginSessionAlert dismissWithClickedButtonIndex:0 animated:NO];
+            [_loginSessionAlert dismissWithClickedButtonIndex:0 animated:NO];
 
         }
-        loginSessionAlert = [[UIAlertView alloc]initWithTitle:@"Your session has expired" message:@"You will need to login again. Please press OK to proceed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [loginSessionAlert show];
+        _loginSessionAlert = [[UIAlertView alloc]initWithTitle:@"Your session has expired" message:@"You will need to login again. Please press OK to proceed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [_loginSessionAlert show];
         [self LogoutTheUser];
         
     }

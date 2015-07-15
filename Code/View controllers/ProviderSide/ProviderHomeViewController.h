@@ -27,9 +27,9 @@
     Logic *logic;
     NSString *practiceName;
     SessionTime *timeSession;
-    UIAlertView *loginSessionAlert ;
 
 }
+@property (nonatomic, strong) UIAlertView *loginSessionAlert ;
 @property (nonatomic, strong) RCHelper *messageHelper;
 @property (weak, nonatomic) IBOutlet UIButton *menuBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;

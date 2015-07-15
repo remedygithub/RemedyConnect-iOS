@@ -248,7 +248,7 @@
     NSLog(@"%@",phoneNumber);
     NSString *cleanedString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet characterSetWithCharactersInString:@"0123456789-+()"] invertedSet]] componentsJoinedByString:@""];
     NSLog(@"%@",cleanedString);
-    NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", cleanedString]];
+    NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", cleanedString]];
     NSLog(@"making call with %@",[telURL absoluteString]);
     [[UIApplication sharedApplication] openURL:telURL];
 }

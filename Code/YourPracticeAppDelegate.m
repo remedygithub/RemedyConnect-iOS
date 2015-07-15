@@ -78,9 +78,9 @@
     
     if (passcode)
     {
-        [passcode.view removeFromSuperview];
-        [passcode removeFromParentViewController];
-        passcode = nil;
+         [passcode.view removeFromSuperview];
+         [passcode removeFromParentViewController];
+         passcode = nil;
     }
     passcode = [[PAPasscodeViewController alloc] initForAction:PasscodeActionEnter];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)

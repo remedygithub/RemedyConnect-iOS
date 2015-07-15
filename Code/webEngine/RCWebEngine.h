@@ -11,10 +11,10 @@
 #import <Security/Security.h>
 
 #define TestUrl     @"https://tsapitest.remedyconnect.com/api"
-#define ProdUrl     @"https://liveagent.remedyoncall.com/api"
-#define apiUrl TestUrl
+#define ProdUrl     @"https://api.remedyoncall.com/api"
+#define apiUrl ProdUrl
 
-
+//https://liveagent.remedyoncall.com/api/Communication/GetCallsByProvider?PhysicianID=%@&PracticeID=%@
 //Delegate methods
 @protocol WebEngineDelegate <NSObject>
 

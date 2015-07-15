@@ -17,8 +17,8 @@
 #define forgotLink    KForgotProd
 
 #define TestUrl     @"https://tsapitest.remedyconnect.com/api"
-#define ProdUrl     @"https://liveagent.remedyoncall.com/api"
-#define apiUrl TestUrl
+#define ProdUrl     @"https://api.remedyoncall.com/api"
+#define apiUrl ProdUrl
 
 @interface ProviderLoginViewController ()
 @property (nonatomic, strong)PopoverView *mPopver;
@@ -108,7 +108,7 @@
 - (IBAction)forgotBtnTapped:(id)sender
 {
     NSLog(@"%@",self.userNameTextField.text);
-    self.forgotUrl = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"https://webteleservicestest.remedyconnect.com/Mobile/Providers/Default.aspx?username=%@",self.userNameTextField.text]];
+    self.forgotUrl = [[NSURL alloc]initWithString:[NSString stringWithFormat:@"%@/Mobile/Providers/Default.aspx?username=%@",forgotLink,self.userNameTextField.text]];
     NSLog(@"%@",self.forgotUrl);
     [[UIApplication sharedApplication]openURL:self.forgotUrl];
 
