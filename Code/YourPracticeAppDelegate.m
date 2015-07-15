@@ -343,11 +343,10 @@
     {
         [self applicationDidTimeout];
     }
-    
-    NSUserDefaults *lDefaults = [NSUserDefaults standardUserDefaults];
-    //Remove the badge count
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    [lDefaults setInteger:0 forKey:@"BadgeCount"];
+//    NSUserDefaults *lDefaults = [NSUserDefaults standardUserDefaults];
+//    //Remove the badge count
+//    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+//    [lDefaults setInteger:0 forKey:@"BadgeCount"];
    
 }
 
