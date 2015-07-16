@@ -40,7 +40,6 @@ NSArray *menu;
     [Skin applyMainLogoOnImageView:_logoImageView];
     [Skin applyBackgroundOnButton:_menuButton];
     menu = [logic getDataToDisplayForMainMenu];
-    [[RCHelper SharedHelper] removeAllUsersPinAndLogoff];
     [self setFrames];
     [self displayImages];
     
@@ -247,8 +246,8 @@ NSArray *menu;
         case 1:
             [logic resetBeforeSelection];
             [self clearData];
+            [[RCHelper SharedHelper] removeAllUsersPinAndLogoff];
             [self performSegueWithIdentifier:@"BackToPracticeSearch" sender:self];
-
             break;
         case 2:
             [self performSegueWithIdentifier:@"toTerms" sender:self];
