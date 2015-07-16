@@ -1412,7 +1412,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "d0d7d875-3806-48e6-8f07-a73d26c6f0a2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1438,7 +1438,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "d2a46067-4332-4c77-b041-ffd1bcd6b05b";
+				PROVISIONING_PROFILE = "d0d7d875-3806-48e6-8f07-a73d26c6f0a2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1449,8 +1449,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",
@@ -1468,7 +1468,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d0d7d875-3806-48e6-8f07-a73d26c6f0a2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1480,8 +1480,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Darshan Puttannaiah (QX47DR8CLT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",
@@ -1499,7 +1499,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d0d7d875-3806-48e6-8f07-a73d26c6f0a2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
