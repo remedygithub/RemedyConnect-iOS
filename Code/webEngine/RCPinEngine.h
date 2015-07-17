@@ -11,7 +11,7 @@
 
 #define TestUrl     @"https://tsapitest.remedyconnect.com/api"
 #define ProdUrl     @"https://api.remedyoncall.com/api"
-#define apiUrl ProdUrl
+#define apiUrl TestUrl
 
 @protocol PinEngineDelegate <NSObject>
 -(void)PinManagerDidReceiveResponse:(NSDictionary*)pResultDict;

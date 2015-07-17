@@ -1252,7 +1252,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="121" id="7JP-oA-hjq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1643,15 +1643,15 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VT2-W5-8X0"/>
+        <segue reference="LV1-wv-wCh"/>
         <segue reference="KU8-ks-pYN"/>
         <segue reference="ra9-QH-37U"/>
         <segue reference="Pb6-Vq-zgU"/>
-        <segue reference="Fct-SW-F0v"/>
         <segue reference="TAt-5L-lLW"/>
+        <segue reference="w0h-D8-hUi"/>
+        <segue reference="Zmm-6h-E1O"/>
         <segue reference="lj3-vq-Z0e"/>
-        <segue reference="LV1-wv-wCh"/>
-        <segue reference="qsH-Hu-HYl"/>
         <segue reference="cSc-5f-5Z6"/>
+        <segue reference="qsH-Hu-HYl"/>
     </inferredMetricsTieBreakers>
 </document>

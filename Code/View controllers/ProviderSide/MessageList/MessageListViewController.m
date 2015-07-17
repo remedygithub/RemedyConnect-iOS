@@ -271,6 +271,7 @@
     }
   
     RCHelper *messageInfo = [self.dataArray objectAtIndex:indexPath.row];
+   
     cell.fNameAndLName.text = [NSString stringWithFormat:@"%@ %@",messageInfo.messageFName, messageInfo.messageLName];
     cell.descpLabel.text = messageInfo.messageDetails;
     cell.timeLabel.text = messageInfo.messageDate;
@@ -553,6 +554,7 @@
                            animated:NO
                      scrollPosition:UITableViewScrollPositionMiddle];
 }
+
 
 
 #pragma mark - Navigation
