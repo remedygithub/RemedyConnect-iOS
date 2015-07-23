@@ -49,7 +49,8 @@
                                                object:nil];
     self.launchDict = [[NSDictionary alloc]initWithDictionary:launchOptions];
     NSLog(@"%@",self.launchDict);
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     [[PushIOManager sharedInstance] setDelegate:self];
     [[PushIOManager sharedInstance] didFinishLaunchingWithOptions:launchOptions];
     return YES;
@@ -223,7 +224,6 @@
 {
     // Push IO registration was successful
     NSLog(@"Successfull");
-    
 }
 
 - (void)registrationFailedWithError:(NSError *)error statusCode:(int)statusCode

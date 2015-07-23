@@ -14,11 +14,11 @@
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define kForgotTest     @"https://webteleservicestest.remedyconnect.com"
 #define KForgotProd     @"https://admin.remedyoncall.com"
-#define forgotLink    KForgotProd
+#define forgotLink    kForgotTest
 
 #define TestUrl     @"https://tsapitest.remedyconnect.com/api"
 #define ProdUrl     @"https://api.remedyoncall.com/api"
-#define apiUrl ProdUrl
+#define apiUrl TestUrl
 
 @interface ProviderLoginViewController ()
 @property (nonatomic, strong)PopoverView *mPopver;
@@ -57,6 +57,7 @@
     [super viewWillAppear:animated];
     [statusHUD hide:YES afterDelay:0];
     [self.navigationController setNavigationBarHidden:YES];
+
     self.userNameTextField.text = @"";
     self.passwordTextField.text = @"";
     [self checkViewOrientation];
@@ -505,6 +506,7 @@
          NSString *hashUserString = [userName MD5];
          NSLog(@"%@",hashUserString);
         
+         [PushIOManager sharedInstance] .delegate = self;
          [[PushIOManager sharedInstance] registerUserID:hashUserString];
          [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:devicetoken];
          [RCHelper SharedHelper].isLogin = YES;
