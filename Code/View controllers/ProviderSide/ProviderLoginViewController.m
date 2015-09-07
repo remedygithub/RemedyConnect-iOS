@@ -14,11 +14,11 @@
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define kForgotTest     @"https://webteleservicestest.remedyconnect.com"
 #define KForgotProd     @"https://admin.remedyoncall.com"
-#define forgotLink    kForgotTest
+#define forgotLink    KForgotProd
 
 #define TestUrl     @"https://tsapitest.remedyconnect.com/api"
 #define ProdUrl     @"https://api.remedyoncall.com/api"
-#define apiUrl TestUrl
+#define apiUrl ProdUrl
 
 @interface ProviderLoginViewController ()
 @property (nonatomic, strong)PopoverView *mPopver;
