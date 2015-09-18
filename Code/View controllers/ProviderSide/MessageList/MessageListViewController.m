@@ -502,6 +502,33 @@
 
      }
     
+    
+    if ([iConID isEqualToString:@"16"])
+    {
+        if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"] )
+        {
+            cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+            cell.readImage.image = [UIImage imageNamed:@""];
+        }
+        else if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"0"])
+        {
+            cell.iConImage.image = [UIImage imageNamed:@"urgent_message.png"];
+            cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
+            
+        }
+        else if ([urgentID isEqualToString:@"0"] && [readID isEqualToString:@"1"])
+        {
+            cell.iConImage.image = [UIImage imageNamed:@"Roundingdoctor.png"];
+            cell.readImage.image = [UIImage imageNamed:@""];
+        }
+        else
+        {
+            cell.iConImage.image = [UIImage imageNamed:@"Roundingdoctor.png"];
+            cell.readImage.image = [UIImage imageNamed:@"yellow_Unread.png"];
+        }
+        
+    }
+    
      if ([iConID isEqualToString:@"17"])
      {
          if ([urgentID isEqualToString:@"1"] && [readID isEqualToString:@"1"] )
