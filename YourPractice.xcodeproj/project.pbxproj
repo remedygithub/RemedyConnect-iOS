@@ -73,7 +73,6 @@
 		0950F0851B3917600042A9EC /* pushio_config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0950F0841B3917600042A9EC /* pushio_config.json */; };
 		095A5A461B4E2E8C006A9087 /* yellow_Unread.png in Resources */ = {isa = PBXBuildFile; fileRef = 095A5A441B4E2E8C006A9087 /* yellow_Unread.png */; };
 		095A5A471B4E2E8C006A9087 /* yellow_Unread@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 095A5A451B4E2E8C006A9087 /* yellow_Unread@2x.png */; };
-		098EED5D1B54D1C200C41286 /* RemedyConnect Secure Messaging Sound.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 098EED5C1B54D1C200C41286 /* RemedyConnect Secure Messaging Sound.aiff */; };
 		099282491B0F091400D37DBD /* RCSessionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 099282481B0F091400D37DBD /* RCSessionEngine.m */; };
 		0992824E1B0F3BAF00D37DBD /* buttonLengthy.png in Resources */ = {isa = PBXBuildFile; fileRef = 0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */; };
 		0994FA161B25604A00938F19 /* MessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0994FA151B25604A00938F19 /* MessageListCell.m */; };
@@ -101,7 +100,7 @@
 		09BEB38A1B0DA75300A5D1DE /* remedyconnect-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BEB3861B0DA75300A5D1DE /* remedyconnect-logo.png */; };
 		09BEB38B1B0DA75300A5D1DE /* whitebkgrnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BEB3871B0DA75300A5D1DE /* whitebkgrnd.png */; };
 		09BEB3911B0DDF8600A5D1DE /* UnderDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BEB3901B0DDF8600A5D1DE /* UnderDevViewController.m */; };
-		09F732941B44E9B80000E9F6 /* cowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = 09F732931B44E9B80000E9F6 /* cowbell.wav */; };
+		09DB28361BB1132E0051099F /* default.wav in Resources */ = {isa = PBXBuildFile; fileRef = 09DB28351BB1132E0051099F /* default.wav */; };
 		09F7329A1B4530470000E9F6 /* buttonLengthyNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F732981B4530470000E9F6 /* buttonLengthyNew.png */; };
 		09F7329B1B4530470000E9F6 /* buttonLengthyNew@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F732991B4530470000E9F6 /* buttonLengthyNew@2x.png */; };
 		5F0AE35718CE1BE10027824B /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0AE35618CE1BE10027824B /* NSString+URLEncoding.m */; };
@@ -323,7 +322,6 @@
 		0950F0841B3917600042A9EC /* pushio_config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pushio_config.json; path = "Libs/Push.IO/Production Json/pushio_config.json"; sourceTree = "<group>"; };
 		095A5A441B4E2E8C006A9087 /* yellow_Unread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellow_Unread.png; path = "msg icon/yellow_Unread.png"; sourceTree = "<group>"; };
 		095A5A451B4E2E8C006A9087 /* yellow_Unread@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yellow_Unread@2x.png"; path = "msg icon/yellow_Unread@2x.png"; sourceTree = "<group>"; };
-		098EED5C1B54D1C200C41286 /* RemedyConnect Secure Messaging Sound.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; name = "RemedyConnect Secure Messaging Sound.aiff"; path = "Sound/RemedyConnect Secure Messaging Sound.aiff"; sourceTree = "<group>"; };
 		099282471B0F091400D37DBD /* RCSessionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCSessionEngine.h; path = webEngine/RCSessionEngine.h; sourceTree = "<group>"; };
 		099282481B0F091400D37DBD /* RCSessionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCSessionEngine.m; path = webEngine/RCSessionEngine.m; sourceTree = "<group>"; };
 		0992824D1B0F3BAF00D37DBD /* buttonLengthy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonLengthy.png; path = "New Login Screen UI/buttonLengthy.png"; sourceTree = "<group>"; };
@@ -354,7 +352,7 @@
 		09BEB3871B0DA75300A5D1DE /* whitebkgrnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whitebkgrnd.png; path = "New Login Screen UI/whitebkgrnd.png"; sourceTree = "<group>"; };
 		09BEB38F1B0DDF8600A5D1DE /* UnderDevViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderDevViewController.h; sourceTree = "<group>"; };
 		09BEB3901B0DDF8600A5D1DE /* UnderDevViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderDevViewController.m; sourceTree = "<group>"; };
-		09F732931B44E9B80000E9F6 /* cowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cowbell.wav; path = Sound/cowbell.wav; sourceTree = "<group>"; };
+		09DB28351BB1132E0051099F /* default.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = default.wav; path = Sound/default.wav; sourceTree = "<group>"; };
 		09F732981B4530470000E9F6 /* buttonLengthyNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonLengthyNew.png; path = "New Login Screen UI/buttonLengthyNew.png"; sourceTree = "<group>"; };
 		09F732991B4530470000E9F6 /* buttonLengthyNew@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "buttonLengthyNew@2x.png"; path = "New Login Screen UI/buttonLengthyNew@2x.png"; sourceTree = "<group>"; };
 		5F0AE35518CE1BE10027824B /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -775,8 +773,7 @@
 		09F732951B44E9C40000E9F6 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				09F732931B44E9B80000E9F6 /* cowbell.wav */,
-				098EED5C1B54D1C200C41286 /* RemedyConnect Secure Messaging Sound.aiff */,
+				09DB28351BB1132E0051099F /* default.wav */,
 			);
 			name = Sound;
 			sourceTree = "<group>";
@@ -1205,6 +1202,7 @@
 			files = (
 				0994FA2C1B25658C00938F19 /* RxRefill.png in Resources */,
 				092559051B2E9E74001CFA4C /* hospital_admission.png in Resources */,
+				09DB28361BB1132E0051099F /* default.wav in Resources */,
 				5F8EC141180E99060080A62E /* Storyboard.storyboard in Resources */,
 				09F7329B1B4530470000E9F6 /* buttonLengthyNew@2x.png in Resources */,
 				092559031B2E9E74001CFA4C /* answering_service.png in Resources */,
@@ -1239,7 +1237,6 @@
 				0925590C1B2E9E74001CFA4C /* urgent_message.png in Resources */,
 				5F81390C1855EBB400EF3E20 /* icon-76.png in Resources */,
 				5F82A8AD170B3D8E00FE72B8 /* Default-568h@2x.png in Resources */,
-				09F732941B44E9B80000E9F6 /* cowbell.wav in Resources */,
 				5F8EC149180EA2620080A62E /* button.9.png in Resources */,
 				0994FA2E1B25658C00938F19 /* Urgent.png in Resources */,
 				092559061B2E9E74001CFA4C /* newborn.png in Resources */,
@@ -1282,7 +1279,6 @@
 				092EC4FB1AFE6DB0003A3608 /* RemedyConnect Horizontal Logo for Mobile.jpg in Resources */,
 				5F9D77BC1860915E00808660 /* testbutton.png in Resources */,
 				5F81390A1855EBB400EF3E20 /* icon-57.png in Resources */,
-				098EED5D1B54D1C200C41286 /* RemedyConnect Secure Messaging Sound.aiff in Resources */,
 				0994FA2D1B25658C00938F19 /* Triage.png in Resources */,
 				092EC4F01AFE68D0003A3608 /* back_arrow.png in Resources */,
 				09BEB38B1B0DA75300A5D1DE /* whitebkgrnd.png in Resources */,

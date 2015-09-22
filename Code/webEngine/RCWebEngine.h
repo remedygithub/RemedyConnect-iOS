@@ -12,7 +12,7 @@
 
 #define TestUrl     @"https://tsapitest.remedyconnect.com/api"
 #define ProdUrl     @"https://api.remedyoncall.com/api"
-#define apiUrl ProdUrl
+#define apiUrl TestUrl
 
 //https://liveagent.remedyoncall.com/api/Communication/GetCallsByProvider?PhysicianID=%@&PracticeID=%@
 //Delegate methods

@@ -149,7 +149,7 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber = badgeValue + currentBadgeCount;
     [[NSUserDefaults standardUserDefaults] setInteger:badgeValue + currentBadgeCount forKey:@"BadgeCount"];
     NSString *alertString = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-    NSString *playSoundOnAlert = [NSString stringWithFormat:@"%@", [[userInfo objectForKey:@"aps"] objectForKey:@"sound"]];
+    NSString *playSoundOnAlert = [NSString stringWithFormat:@"%@.wav", [[userInfo objectForKey:@"aps"] objectForKey:@"sound"]];
     NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath],playSoundOnAlert]];
     NSError *error;
     
