@@ -140,7 +140,7 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     NSLog(@"User Info Data...");
-    [[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo];
+    //[[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo];
     
     int currentBadgeCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BadgeCount"];
     NSLog(@"%d",currentBadgeCount);
