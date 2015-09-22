@@ -143,11 +143,12 @@
     [[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo];
     
     int currentBadgeCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BadgeCount"];
-    
+    NSLog(@"%d",currentBadgeCount);
     //Set the badge count on the app icon in the home screen
     int badgeValue = [[[userInfo valueForKey:@"aps"] valueForKey:@"badge"] intValue];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = badgeValue + currentBadgeCount;
-    [[NSUserDefaults standardUserDefaults] setInteger:badgeValue + currentBadgeCount forKey:@"BadgeCount"];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = badgeValue;
+    [[NSUserDefaults standardUserDefaults] setInteger:badgeValue  forKey:@"BadgeCount"];
+    
     NSString *alertString = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
     NSString *playSoundOnAlert = [NSString stringWithFormat:@"%@.wav", [[userInfo objectForKey:@"aps"] objectForKey:@"sound"]];
     NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",[[NSBundle mainBundle] resourcePath],playSoundOnAlert]];
