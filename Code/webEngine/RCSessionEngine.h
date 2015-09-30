@@ -11,7 +11,7 @@
 
 #define TestUrl     @"https://tsapitest.remedyconnect.com/api"
 #define ProdUrl     @"https://api.remedyoncall.com/api"
-#define apiUrl TestUrl
+#define apiUrl ProdUrl
 
 @protocol SessionEngineDelegate <NSObject>
 -(void)SessionManagerDidReceiveResponse:(NSDictionary*)pResultDict;

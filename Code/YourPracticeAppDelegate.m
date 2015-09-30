@@ -11,6 +11,8 @@
 #import "TestFairy.h"
 #import "ReachabilityManager.h"
 #import "RCHelper.h"
+#import <AudioToolbox/AudioToolbox.h>
+
 
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
@@ -141,7 +143,8 @@
 {
     NSLog(@"User Info Data...");
     //[[PushIOManager sharedInstance] didReceiveRemoteNotification:userInfo];
-    
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+
     int currentBadgeCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"BadgeCount"];
     NSLog(@"%d",currentBadgeCount);
     //Set the badge count on the app icon in the home screen

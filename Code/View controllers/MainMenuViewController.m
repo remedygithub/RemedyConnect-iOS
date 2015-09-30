@@ -13,6 +13,7 @@
 #import "PracticeSearchViewController.h"
 #import "AboutTermsController.h"
 #import "MainMenuButtonCell.h"
+#import "RCHelper.h"
 //#import "TestFlight.h"
 
 @interface MainMenuViewController ()
@@ -47,8 +48,39 @@ NSArray *menu;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self setMenuHeightInOrientation:[UIApplication sharedApplication].statusBarOrientation beforeRotation:NO];
+    [super viewWillAppear:animated];
+    
+    if (![RCHelper SharedHelper].isBackFromArticle)
+    {
+        [self fetchLatestData];
+    }
+    [[self navigationController] setNavigationBarHidden:TRUE];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.collectionView performBatchUpdates:nil completion:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[self navigationController] setNavigationBarHidden:FALSE animated:TRUE];
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:TRUE];
+}
 
 
+-(void)fetchLatestData
+{
+    if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
+    {
+        [logic setUpdateDownloadStarterDelegate:self];
+        [logic handleActionWithTag:0 shouldProceedToPage:FALSE];
+    }
+}
 
 
 -(void)displayImages
@@ -240,13 +272,17 @@ NSArray *menu;
 - (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
     switch (index) {
         case 0:
-            [logic setUpdateDownloadStarterDelegate:self];
-            [logic handleActionWithTag:0 shouldProceedToPage:FALSE];
+            if ([NetworkViewController SharedWebEngine].NetworkConnectionCheck)
+            {
+                [logic setUpdateDownloadStarterDelegate:self];
+                [logic handleActionWithTag:0 shouldProceedToPage:FALSE];
+            }
             break;
         case 1:
             [logic resetBeforeSelection];
             [self clearData];
             [[RCHelper SharedHelper] removeAllUsersPinAndLogoff];
+            [RCHelper SharedHelper].isBackFromArticle = NO;
             [self performSegueWithIdentifier:@"BackToPracticeSearch" sender:self];
             break;
         case 2:
@@ -257,6 +293,7 @@ NSArray *menu;
 //            break;
         case 3:
             //[RCHelper SharedHelper].pinCreated = YES;
+            [RCHelper SharedHelper].isBackFromArticle = NO;
             [self.navigationController popToRootViewControllerAnimated:YES];
         
             break;
@@ -302,36 +339,22 @@ NSArray *menu;
 }
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self setMenuHeightInOrientation:[UIApplication sharedApplication].statusBarOrientation beforeRotation:NO];
-    [super viewWillAppear:animated];
-    [[self navigationController] setNavigationBarHidden:TRUE];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-}
 
-- (void)viewDidAppear:(BOOL)animated {
-    [self.collectionView performBatchUpdates:nil completion:nil];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [[self navigationController] setNavigationBarHidden:FALSE animated:TRUE];
-    [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:TRUE];
-}
 
 #pragma mark - HUD handling
-- (void)hudWasHidden:(MBProgressHUD *)hud {
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
 	[statusHUD removeFromSuperview];
 	statusHUD = nil;
 }
 
 #pragma mark - DownloaderUIDelegate
-- (void)hasStartedDownloading {
+- (void)hasStartedDownloading
+{
     statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
     [statusHUD setDelegate:self];
     [statusHUD setDimBackground:TRUE];
-    [statusHUD setLabelText:@"Starting download..."];
+    [statusHUD setLabelText:@"Fetching Latest Data..."];
 }
 
 - (void)switchToIndeterminate {

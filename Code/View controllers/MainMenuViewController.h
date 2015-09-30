@@ -14,9 +14,11 @@
 #import "SSZipArchive.h"
 #import "Macros.h"
 #import "RCHelper.h"
+#import "NetworkViewController.h"
+
 
 @interface MainMenuViewController : UIViewController <MainMenuDelegate, PopoverViewDelegate, MBProgressHUDDelegate, UpdateDownloadStarterDelegate, UINavigationControllerDelegate,
-UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,SSZipArchiveDelegate,SubMenuDelegate>
+UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,SSZipArchiveDelegate,SubMenuDelegate,NetworkDelegate>
 {
     MBProgressHUD *statusHUD;
     NSString *practiceName;

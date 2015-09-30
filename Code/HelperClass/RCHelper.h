@@ -34,6 +34,7 @@
 //Navigation Bool
 @property (nonatomic, readwrite) BOOL isBackFromDetail;
 @property (nonatomic, readwrite) BOOL isBackFromMessageList;
+@property (nonatomic, readwrite) BOOL isBackFromArticle;
 
 
 +(RCHelper *)SharedHelper;

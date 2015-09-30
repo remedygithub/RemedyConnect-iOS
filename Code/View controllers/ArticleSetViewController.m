@@ -33,7 +33,8 @@ NSArray *articleSetItems;
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent {
-    if (nil == parent) {
+    if (nil == parent)
+    {
         [logic unwindBackStack];
     }
 }

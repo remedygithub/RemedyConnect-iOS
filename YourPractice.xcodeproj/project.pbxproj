@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091A9C631BBAF45C00CB20D9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091A9C621BBAF45C00CB20D9 /* AudioToolbox.framework */; };
 		091D38A91B00ECC400147E28 /* libTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D38A71B00ECC400147E28 /* libTestFairy.a */; };
 		091D38AF1B00EDBF00147E28 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D38AE1B00EDBF00147E28 /* CoreMedia.framework */; };
 		091D38B11B00EDD800147E28 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091D38B01B00EDD800147E28 /* CoreMotion.framework */; };
@@ -224,6 +225,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		091A9C621BBAF45C00CB20D9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		091D38A71B00ECC400147E28 /* libTestFairy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFairy.a; sourceTree = "<group>"; };
 		091D38A81B00ECC400147E28 /* TestFairy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFairy.h; sourceTree = "<group>"; };
 		091D38AE1B00EDBF00147E28 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -475,6 +477,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				091A9C631BBAF45C00CB20D9 /* AudioToolbox.framework in Frameworks */,
 				09A7E2651B1433C4009F6256 /* Security.framework in Frameworks */,
 				091D38B51B00EE0500147E28 /* OpenGLES.framework in Frameworks */,
 				5F934AE318CDDF3E002C4940 /* SystemConfiguration.framework in Frameworks */,
@@ -860,6 +863,7 @@
 		5F82A895170B3D8E00FE72B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				091A9C621BBAF45C00CB20D9 /* AudioToolbox.framework */,
 				094B74281B3D028E00A93487 /* pushio_config_debug.json */,
 				0950F0841B3917600042A9EC /* pushio_config.json */,
 				091D38B41B00EE0500147E28 /* OpenGLES.framework */,
@@ -1118,7 +1122,7 @@
 				ORGANIZATIONNAME = "NewPush LLC";
 				TargetAttributes = {
 					5F82A892170B3D8E00FE72B8 = {
-						DevelopmentTeam = QX47DR8CLT;
+						DevelopmentTeam = 7VU2ZQ2EYC;
 					};
 				};
 			};
@@ -1392,8 +1396,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (54KA9QF3GH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (54KA9QF3GH)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1408,7 +1412,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d693c589-9d86-4f62-816e-49aaa5ab24bd";
+				PROVISIONING_PROFILE = "5bc779ce-e3c9-48e6-a0db-9d682152ad6b";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1425,8 +1429,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (54KA9QF3GH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (54KA9QF3GH)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1434,7 +1438,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "d693c589-9d86-4f62-816e-49aaa5ab24bd";
+				PROVISIONING_PROFILE = "5bc779ce-e3c9-48e6-a0db-9d682152ad6b";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1445,8 +1449,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",
@@ -1464,7 +1468,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "d693c589-9d86-4f62-816e-49aaa5ab24bd";
+				PROVISIONING_PROFILE = "5727fbdd-884f-4e1a-9b94-9fd21fcd9061";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1476,8 +1480,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (PT2R4GC68D)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/Push.IO",
@@ -1495,7 +1499,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "d693c589-9d86-4f62-816e-49aaa5ab24bd";
+				PROVISIONING_PROFILE = "5727fbdd-884f-4e1a-9b94-9fd21fcd9061";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;

@@ -9,6 +9,7 @@
 #import "MenuViewController.h"
 #import "Logic.h"
 #import "Skin.h"
+#import "RCHelper.h"
 
 @interface MenuViewController ()
 
@@ -30,9 +31,11 @@ NSArray *menuItems;
     NSLog(@"%lu",(unsigned long)[menuItems count]);
     [self setTitle:logic.title];
     [self displayImages];
+    [RCHelper SharedHelper].isBackFromArticle = YES;
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
+- (void)didMoveToParentViewController:(UIViewController *)parent
+{
     if (nil == parent) {
         [logic unwindBackStack];
     }
