@@ -1396,8 +1396,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (54KA9QF3GH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (54KA9QF3GH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1412,7 +1412,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "5bc779ce-e3c9-48e6-a0db-9d682152ad6b";
+				PROVISIONING_PROFILE = "5727fbdd-884f-4e1a-9b94-9fd21fcd9061";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1429,8 +1429,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Darshan Puttannaiah (54KA9QF3GH)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Darshan Puttannaiah (54KA9QF3GH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1438,7 +1438,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "5bc779ce-e3c9-48e6-a0db-9d682152ad6b";
+				PROVISIONING_PROFILE = "5727fbdd-884f-4e1a-9b94-9fd21fcd9061";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
