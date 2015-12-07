@@ -40,8 +40,11 @@ NSLayoutConstraint *oldConstraint;
     [self registerForKeyboardNotifications];
     
     [self.view endEditing:YES];
-    
 }
+
+
+
+
 - (void)registerForKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -57,6 +60,8 @@ NSLayoutConstraint *oldConstraint;
     [[UIApplication sharedApplication] setStatusBarHidden:FALSE
                                             withAnimation:UIStatusBarAnimationFade];
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    [_practiceNameField resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 - (void)showNoConnectionPopup {
