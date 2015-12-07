@@ -18,6 +18,8 @@
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @interface PracticeSearchViewController ()
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
@@ -35,8 +37,22 @@ NSLayoutConstraint *oldConstraint;
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
+    [self registerForKeyboardNotifications];
+    
+    [self.view endEditing:YES];
+    
 }
-
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
 - (void)viewWillDisappear:(BOOL)animated {
     [[UIApplication sharedApplication] setStatusBarHidden:FALSE
                                             withAnimation:UIStatusBarAnimationFade];
@@ -52,7 +68,8 @@ NSLayoutConstraint *oldConstraint;
     [alert show];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     [self startDownloading:nil];
     return YES;
 }
@@ -97,44 +114,47 @@ NSLayoutConstraint *oldConstraint;
     }
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.containerView
-                                                                      attribute:NSLayoutAttributeLeading
-                                                                      relatedBy:0
-                                                                         toItem:self.view
-                                                                      attribute:NSLayoutAttributeLeft
-                                                                     multiplier:1.0
-                                                                       constant:0];
-    [self.view addConstraint:leftConstraint];
-    
-    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.containerView
-                                                                       attribute:NSLayoutAttributeTrailing
-                                                                       relatedBy:0
-                                                                          toItem:self.view
-                                                                       attribute:NSLayoutAttributeRight
-                                                                      multiplier:1.0
-                                                                        constant:0];
-    [self.view addConstraint:rightConstraint];
-    
-    BOOL isLandscape = UIInterfaceOrientationIsLandscape(self.interfaceOrientation);
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenHeight;
-    if (!isLandscape) {
-        screenHeight = screenRect.size.height;
-    }
-    else {
-        screenHeight = screenRect.size.width;
-    }
-    
-    //CGRect screenRect = [[UIScreen mainScreen] bounds];
-    //CGFloat screenHeight = screenRect.size.height;
-    
-    _containerHeightConstraint.constant = screenHeight;
-}
+//- (void)viewWillLayoutSubviews {
+//    [super viewWillLayoutSubviews];
+//    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.containerView
+//                                                                      attribute:NSLayoutAttributeLeading
+//                                                                      relatedBy:0
+//                                                                         toItem:self.view
+//                                                                      attribute:NSLayoutAttributeLeft
+//                                                                     multiplier:1.0
+//                                                                       constant:0];
+//    [self.view addConstraint:leftConstraint];
+//    
+//    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.containerView
+//                                                                       attribute:NSLayoutAttributeTrailing
+//                                                                       relatedBy:0
+//                                                                          toItem:self.view
+//                                                                       attribute:NSLayoutAttributeRight
+//                                                                      multiplier:1.0
+//                                                                        constant:0];
+//    [self.view addConstraint:rightConstraint];
+//    
+//   // BOOL isLandscape = UIInterfaceOrientationIsLandscape(self.interfaceOrientation);
+//    BOOL isLandscape = UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation );
+//
+//    CGRect screenRect = [[UIScreen mainScreen] bounds];
+//    CGFloat screenHeight;
+//    if (!isLandscape) {
+//        screenHeight = screenRect.size.height;
+//    }
+//    else {
+//        screenHeight = screenRect.size.width;
+//    }
+//    
+//    //CGRect screenRect = [[UIScreen mainScreen] bounds];
+//    //CGFloat screenHeight = screenRect.size.height;
+//    
+//    _containerHeightConstraint.constant = screenHeight;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
     tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     tapper.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapper];
@@ -143,6 +163,12 @@ NSLayoutConstraint *oldConstraint;
     [magnifyingGlass setText:[[NSString alloc] initWithUTF8String:"\xF0\x9F\x94\x8D"]];
     [magnifyingGlass sizeToFit];
     
+    _searchButton.titleLabel.numberOfLines = 1;
+    _searchButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    _searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _searchButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    _searchButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    
     [_practiceNameField setLeftView:magnifyingGlass];
     [_practiceNameField setLeftViewMode:UITextFieldViewModeAlways];
     [_practiceNameField setDelegate:self];
@@ -150,6 +176,37 @@ NSLayoutConstraint *oldConstraint;
     _locationView.layer.cornerRadius = 4;
 }
 
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    //CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    _scrollView.contentSize = CGSizeMake(1, screenHeight);
+    
+}
+//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+//{
+//    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+//     {
+//         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+//         // do whatever
+//         if (orientation == UIInterfaceOrientationPortrait ||orientation == UIInterfaceOrientationPortraitUpsideDown ) {
+//             // constant to zero
+//             _bottomConstraint.constant = 0;
+//         }
+//         else{
+//             //constant to 10
+//             _bottomConstraint.constant = 15;
+//         }
+//         
+//     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+//     {
+//         
+//     }];
+//    
+//    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+//}
 - (void)handleSingleTap:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
 }
@@ -249,4 +306,63 @@ NSLayoutConstraint *oldConstraint;
     [alert show];
 }
 
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your app might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+        //[self.scrollView scrollRectToVisible:activeField.frame animated:YES];
+        self.bottomConstraint.constant = -kbSize.height+25;
+
+        [UIView animateWithDuration:0.3f
+                         animations:^{
+                              [self.view layoutIfNeeded];
+                         }
+                         completion:^(BOOL finished){
+                             
+                         }
+         
+    ];
+}
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    self.bottomConstraint.constant = 0;
+    [UIView animateWithDuration:0.3f
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }
+     
+     ];
+
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    activeField = nil;
+}
 @end

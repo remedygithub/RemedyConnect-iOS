@@ -13,12 +13,12 @@
 #import "TPKeyboardAvoidingScrollView.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface PracticeSearchViewController : UIViewController <MBProgressHUDDelegate, PracticeListDownloadStarterDelegate, CLLocationManagerDelegate, UITextFieldDelegate>
+@interface PracticeSearchViewController : UIViewController <MBProgressHUDDelegate, PracticeListDownloadStarterDelegate, CLLocationManagerDelegate, UITextFieldDelegate, UIScrollViewDelegate>
 {
     MBProgressHUD *statusHUD;
 }
 
-@property (weak, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *practiceNameField;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
