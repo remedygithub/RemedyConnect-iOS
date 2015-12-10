@@ -218,6 +218,7 @@ static FileDownloader * sharedInstance = nil;
 //Parsing Data
 -(void)getDataFromXmlResponse:(NSDictionary *)dict
 {
+    [statusHUD setLabelText:@"Searching......"];
     if ([dict count] == 4)
     {
         NSLog(@"No Data");

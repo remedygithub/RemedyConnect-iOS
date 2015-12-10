@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="ieC-YF-9xV">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -1507,26 +1506,29 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k96-9O-550" userLabel="Container for location-based searching">
-                                        <rect key="frame" x="30" y="650" width="688" height="35"/>
+                                        <rect key="frame" x="30" y="650" width="688" height="75"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location.png" translatesAutoresizingMaskIntoConstraints="NO" id="tXj-Ff-8Rn">
-                                                <rect key="frame" x="-2" y="8" width="20" height="20"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can't find your practice?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJa-OO-75l">
+                                                <rect key="frame" x="254" y="8" width="181" height="26"/>
                                                 <animations/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Can't find your practice?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJa-OO-75l">
-                                                <rect key="frame" x="16" y="12" width="119" height="12"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="72D-71-X1r"/>
+                                                    <constraint firstAttribute="width" constant="181" id="lWV-tn-OAo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                                 <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2W-8R-8oF" userLabel="Location search button">
-                                                <rect key="frame" x="135" y="1" width="553" height="35"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2W-8R-8oF" userLabel="Location search button">
+                                                <rect key="frame" x="0.0" y="39" width="688" height="35"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="OZW-VZ-ysT"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Search by current location">
                                                     <color key="titleShadowColor" red="0.0050532110040000001" green="0.098655894399999999" blue="0.22261400519999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -1534,11 +1536,27 @@
                                                     <action selector="startLocationSearch:" destination="5Gk-L0-Wga" eventType="touchUpInside" id="ezH-uY-3Lw"/>
                                                 </connections>
                                             </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.png" translatesAutoresizingMaskIntoConstraints="NO" id="tXj-Ff-8Rn">
+                                                <rect key="frame" x="64" y="21" width="33" height="33"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="33" id="cRU-QL-LK5"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="ytU-yq-Oha"/>
+                                            <constraint firstItem="tXj-Ff-8Rn" firstAttribute="leading" secondItem="k96-9O-550" secondAttribute="leading" constant="64" id="6KH-9e-bX7"/>
+                                            <constraint firstAttribute="trailing" secondItem="N2W-8R-8oF" secondAttribute="trailing" id="9Xi-d2-C7D"/>
+                                            <constraint firstItem="N2W-8R-8oF" firstAttribute="leading" secondItem="k96-9O-550" secondAttribute="leading" id="AlV-dW-1Vr"/>
+                                            <constraint firstItem="NJa-OO-75l" firstAttribute="centerX" secondItem="k96-9O-550" secondAttribute="centerX" id="IEW-Km-KRQ"/>
+                                            <constraint firstItem="tXj-Ff-8Rn" firstAttribute="centerY" secondItem="k96-9O-550" secondAttribute="centerY" id="V46-XR-TbT"/>
+                                            <constraint firstItem="NJa-OO-75l" firstAttribute="top" secondItem="k96-9O-550" secondAttribute="topMargin" id="gaE-a4-Fgk"/>
+                                            <constraint firstAttribute="trailing" secondItem="tXj-Ff-8Rn" secondAttribute="trailing" constant="591" id="jV0-r1-tPd"/>
+                                            <constraint firstItem="NJa-OO-75l" firstAttribute="centerX" secondItem="N2W-8R-8oF" secondAttribute="centerX" id="mCV-6Y-SvQ"/>
+                                            <constraint firstItem="N2W-8R-8oF" firstAttribute="top" secondItem="NJa-OO-75l" secondAttribute="bottom" constant="5" id="wBn-zA-S76"/>
+                                            <constraint firstAttribute="height" constant="75" id="ytU-yq-Oha"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

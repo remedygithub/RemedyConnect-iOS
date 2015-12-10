@@ -18,7 +18,7 @@
     if (self) {
         // Initialization code
         
-        self.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7];
+        self.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.0];
         
         m_cActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge];
         CGSize screenSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);

@@ -12,6 +12,8 @@
 #import "DefaultPracticeHandling.h"
 #import "Downloader.h"
 #import "Parser.h"
+#import "MBProgressHUD.h"
+
 //#import "TestFlight.h"
 #import "Data.h"
 
@@ -24,6 +26,8 @@
 #pragma mark - Internal vars
 
 Downloader *downloader;
+MBProgressHUD *statusHUD;
+
 NSArray *practiceList = nil;
 NSMutableArray *feedStack = nil;
 
@@ -111,7 +115,10 @@ int itemFromArticleSet = -1;
     [downloader startDownload];
 }
 
--(void)startDownloadingRootForPracticeSelectionByLocation:(CLLocation *)location; {
+-(void)startDownloadingRootForPracticeSelectionByLocation:(CLLocation *)location;
+{
+    //[statusHUD setLabelText:@"Searching......"];
+
     locationBasedSearch = true;
     [FileHandling prepareTempDirectory];
     downloader = [[Downloader alloc] init];
@@ -119,8 +126,8 @@ int itemFromArticleSet = -1;
     NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
                                           withFeedRoot:[Logic getFeedRoot]];
     
-  // NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.759623 withLongitude:-104.764509
-                                                  // withFeedRoot:[Logic getFeedRoot]];
+//   NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.759623 withLongitude:-104.764509
+//                                                   withFeedRoot:[Logic getFeedRoot]];
     
    // NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.318310 withLongitude:-76.546424                                                    withFeedRoot:[Logic getFeedRoot]];
     NSLog(@"%@",URL);

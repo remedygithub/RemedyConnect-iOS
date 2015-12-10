@@ -15,6 +15,7 @@
 #import "ReachabilityManager.h"
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
+
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 @interface PracticeSearchViewController ()
@@ -25,6 +26,8 @@
 
 @implementation PracticeSearchViewController
 Logic *logic;
+MBProgressHUD *statusHUD;
+
 UIGestureRecognizer *tapper;
 UITextField *activeField;
 CLLocationManager *locationManager;
@@ -112,7 +115,9 @@ NSLayoutConstraint *oldConstraint;
         statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
         [statusHUD setDelegate:self];
         [statusHUD setDimBackground:TRUE];
-        [statusHUD setLabelText:@"Waiting for location..."];
+        //[statusHUD setLabelText:@"Waiting for location..."];
+      [[[UIApplication sharedApplication] delegate] performSelector:@selector(startActivity)];
+        //[self hasStartedDownloading:@"Searching....."];
     }
     else {
         [self showNoConnectionPopup];
@@ -168,11 +173,11 @@ NSLayoutConstraint *oldConstraint;
     [magnifyingGlass setText:[[NSString alloc] initWithUTF8String:"\xF0\x9F\x94\x8D"]];
     [magnifyingGlass sizeToFit];
     
-    _searchButton.titleLabel.numberOfLines = 1;
-    _searchButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    _searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    _searchButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-    _searchButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+//    _searchButton.titleLabel.numberOfLines = 1;
+//    _searchButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+//    _searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    _searchButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+//    _searchButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
     
     [_practiceNameField setLeftView:magnifyingGlass];
     [_practiceNameField setLeftViewMode:UITextFieldViewModeAlways];
@@ -224,13 +229,13 @@ NSLayoutConstraint *oldConstraint;
 #pragma mark - DownloaderUIDelegate
 
 - (void)hasStartedDownloading {
-    if (nil != statusHUD) {
-        [statusHUD hide:TRUE];
-    }
-    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-    [statusHUD setDelegate:self];
-    [statusHUD setDimBackground:TRUE];
-    [statusHUD setLabelText:@"Starting download..."];
+//    if (nil != statusHUD) {
+//        [statusHUD hide:TRUE];
+//    }
+//    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+//    [statusHUD setDelegate:self];
+//    [statusHUD setDimBackground:TRUE];
+//    [statusHUD setLabelText:@"Starting download..."];
 }
 
 - (void)switchToIndeterminate {
@@ -254,8 +259,11 @@ NSLayoutConstraint *oldConstraint;
 
 - (void)didFinish {
     [statusHUD setMode:MBProgressHUDModeText];
-    [statusHUD setLabelText:@"Finished!"];
-    [statusHUD hide:YES afterDelay:2];
+    //[statusHUD setLabelText:@"Finished!"];
+    //[statusHUD hide:YES afterDelay:2];
+    [statusHUD hide:YES];
+    [[[UIApplication sharedApplication] delegate] performSelector:@selector(stopActivity)];
+
     if ([[logic getPracticeList] count] == 0) {
         [logic setCanAdvanceToPracticeSelect:FALSE];
         NSString *message;
@@ -291,13 +299,17 @@ NSLayoutConstraint *oldConstraint;
 
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    [statusHUD setLabelText:@"Found location."];
-    [statusHUD hide:YES afterDelay:2];
+    //[statusHUD setLabelText:@"Searching......"];
+    //[statusHUD hide:YES afterDelay:2];
+    [locationManager stopUpdatingLocation];
+
     CLLocation *location = [locations lastObject];
     logic = [Logic sharedLogic];
     [logic setPracticeListDownloadStarterDelegate:self];
     [logic startDownloadingRootForPracticeSelectionByLocation:location];
     [manager stopUpdatingHeading];
+    //[statusHUD setLabelText:@"Found location."];
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -369,5 +381,19 @@ NSLayoutConstraint *oldConstraint;
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     activeField = nil;
+}
+
+- (void)hasStartedDownloading:(NSString *)processString
+{
+    if (nil != statusHUD)
+    {
+        [statusHUD hide:TRUE];
+    }
+    statusHUD = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    [statusHUD setDelegate:self];
+    [statusHUD setDimBackground:TRUE];
+    [statusHUD show:YES];
+    [statusHUD setLabelText:processString];
+    [self.view bringSubviewToFront:statusHUD];
 }
 @end
