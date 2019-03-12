@@ -12,6 +12,7 @@
 #import "PopoverView.h"
 #import "PracticeSearchViewController.h"
 #import "AboutTermsController.h"
+#import "ExternalLinkViewController.h"
 #import "MainMenuButtonCell.h"
 #import "RCHelper.h"
 //#import "TestFlight.h"
@@ -53,10 +54,10 @@ NSArray *menu;
     [self setMenuHeightInOrientation:[UIApplication sharedApplication].statusBarOrientation beforeRotation:NO];
     [super viewWillAppear:animated];
     
-    if (![RCHelper SharedHelper].isBackFromArticle)
-    {
-        [self fetchLatestData];
-    }
+//    if (![RCHelper SharedHelper].isBackFromArticle)
+//    {
+//        [self fetchLatestData];
+//    }
     [[self navigationController] setNavigationBarHidden:TRUE];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
@@ -213,11 +214,21 @@ NSArray *menu;
     else
     {
         [logic setMainMenuDelegate:self];
+        [logic setLinkDelegate:self];
         [logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
 
     }
     //[logic handleActionWithTag:indexPath.row shouldProceedToPage:FALSE];
 }
+
+
+#pragma ExternalLink Delegate Method
+- (void)sendExternalLinkBackToParentController:(NSString *)linkUrl;
+{
+    NSLog(@"%@",linkUrl);
+    [self performSegueWithIdentifier:@"MoveToLink" sender:linkUrl];
+}
+
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {}
@@ -325,7 +336,8 @@ NSArray *menu;
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"toAbout"]) {
         AboutTermsController *aboutController = [segue destinationViewController];
         [aboutController setWebTitle: @"About"];
@@ -335,6 +347,12 @@ NSArray *menu;
         AboutTermsController *termsController = [segue destinationViewController];
         [termsController setWebTitle: @"Legal"];
         [termsController setWebText: [logic getTermsHTML]];
+    }
+    
+    if ([segue.identifier isEqualToString:@"MoveToLink"])
+    {
+        ExternalLinkViewController *link = [segue destinationViewController];
+        link.linkUrlString = sender;
     }
 }
 

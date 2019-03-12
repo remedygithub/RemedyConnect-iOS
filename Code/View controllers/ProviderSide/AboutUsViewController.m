@@ -66,7 +66,6 @@
     
     if (theConnection)
     {
-        
         receivedData = [NSMutableData data];
     }
     else

@@ -27,6 +27,10 @@
 - (void)hasFailed;
 @end
 
+@protocol ExternalLinkDelegate <NSObject>
+- (void)sendExternalLinkBackToParentController:(NSString *)linkUrl;
+@end
+
 @protocol ShouldDownloadStartDelegate <NSObject>
 @end
 
@@ -52,6 +56,8 @@
 @end
 
 @interface Logic : NSObject <DownloaderDelegate>
+@property (nonatomic, strong) id<ExternalLinkDelegate> linkDelegate;
+
 @property (nonatomic, strong) UIViewController <ShouldDownloadStartDelegate> *downloadStartDelegate;
 @property (nonatomic, strong) UIViewController <PracticeListDownloadStarterDelegate> *practiceListDownloadStarterDelegate;
 @property (nonatomic, strong) UIViewController <MainDownloadStarterDelegate> *mainDownloadStarterDelegate;

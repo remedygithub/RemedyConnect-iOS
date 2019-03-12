@@ -123,11 +123,11 @@ int itemFromArticleSet = -1;
     [FileHandling prepareTempDirectory];
     downloader = [[Downloader alloc] init];
     [downloader setDelegate:self];
-    NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
+   NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:location.coordinate.latitude withLongitude:location.coordinate.longitude
                                           withFeedRoot:[Logic getFeedRoot]];
     
-//   NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.759623 withLongitude:-104.764509
-//                                                   withFeedRoot:[Logic getFeedRoot]];
+  // NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.759623 withLongitude:-104.764509
+                                                   //withFeedRoot:[Logic getFeedRoot]];
     
    // NSString *URL = [SearchURLGenerator getSearchURLWithLatitude:39.318310 withLongitude:-76.546424                                                    withFeedRoot:[Logic getFeedRoot]];
     NSLog(@"%@",URL);
@@ -407,7 +407,15 @@ int itemFromArticleSet = -1;
     // For external links, we should fire the default browser, remember
     // MainViewController.FireBrowser from the Android version:
     if (nil != externalLink && ![externalLink isEqualToString:@""]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:externalLink]];
+        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:externalLink]];
+        
+        if (self.linkDelegate != nil) {
+            if([self.linkDelegate respondsToSelector:@selector(sendExternalLinkBackToParentController:)])
+            {
+                [self.linkDelegate sendExternalLinkBackToParentController:externalLink];
+            }
+        }
+       
     }
     // For articleset pages
     if (nil == feed && proceedToPage) {

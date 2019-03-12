@@ -18,7 +18,7 @@
 
 
 @interface MainMenuViewController : UIViewController <MainMenuDelegate, PopoverViewDelegate, MBProgressHUDDelegate, UpdateDownloadStarterDelegate, UINavigationControllerDelegate,
-UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,SSZipArchiveDelegate,SubMenuDelegate,NetworkDelegate>
+UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,SSZipArchiveDelegate,SubMenuDelegate,NetworkDelegate,ExternalLinkDelegate>
 {
     MBProgressHUD *statusHUD;
     NSString *practiceName;

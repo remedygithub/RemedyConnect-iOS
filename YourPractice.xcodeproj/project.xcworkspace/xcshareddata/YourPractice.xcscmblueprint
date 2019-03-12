@@ -9,11 +9,11 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F4A70C1D-A4C4-417E-8E6F-F1EDA689E5E3",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "82DF43EF5CA016D15C41E0AF1AF686E9973475B7" : "YourPracticeLibs\/zipzap",
-    "7CC78D3C3F251B03D713FA2C2D89B382DBC81485" : "YourPractice"
+    "82DF43EF5CA016D15C41E0AF1AF686E9973475B7" : "YourPractice\/Libs\/zipzap\/",
+    "7CC78D3C3F251B03D713FA2C2D89B382DBC81485" : "YourPractice\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "YourPractice",
-  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "YourPractice.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {

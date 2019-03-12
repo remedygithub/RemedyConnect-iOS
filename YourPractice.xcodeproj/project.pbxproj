@@ -178,6 +178,9 @@
 		5FF0EACC194733B4001A33D4 /* search-sea.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF0EACA194733B4001A33D4 /* search-sea.png */; };
 		5FF0EACD194733B4001A33D4 /* search-tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF0EACB194733B4001A33D4 /* search-tree.png */; };
 		5FF0EAD619475036001A33D4 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF0EAD519475036001A33D4 /* location.png */; };
+		816598C91C9A5F6C001A3B54 /* ExternalLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 816598C81C9A5F6C001A3B54 /* ExternalLinkViewController.m */; };
+		8182A5181C9AAB4C003B228E /* blueBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8182A5161C9AAB4C003B228E /* blueBack.png */; };
+		8182A5191C9AAB4C003B228E /* blueBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8182A5171C9AAB4C003B228E /* blueBack@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -473,6 +476,10 @@
 		5FFF2AC61717FD020000B80B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5FFF2AC81717FD110000B80B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5FFF2ACA1717FD1C0000B80B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		816598C71C9A5F6B001A3B54 /* ExternalLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternalLinkViewController.h; sourceTree = "<group>"; };
+		816598C81C9A5F6C001A3B54 /* ExternalLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExternalLinkViewController.m; sourceTree = "<group>"; };
+		8182A5161C9AAB4C003B228E /* blueBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueBack.png; sourceTree = "<group>"; };
+		8182A5171C9AAB4C003B228E /* blueBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueBack@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -722,6 +729,8 @@
 		092EC5861B008FFA003A3608 /* Passcoda */ = {
 			isa = PBXGroup;
 			children = (
+				8182A5161C9AAB4C003B228E /* blueBack.png */,
+				8182A5171C9AAB4C003B228E /* blueBack@2x.png */,
 				094B74111B3BBD5C00A93487 /* Icon-Circle-darkBlue.png */,
 				094B74121B3BBD5C00A93487 /* Icon-Circle-darkBlue@2x.png */,
 				094B74131B3BBD5C00A93487 /* Icon-Circle-lightBlue.png */,
@@ -960,6 +969,8 @@
 				5F91352E180FE7EC00CB60E4 /* PageViewController.m */,
 				5F940301188FBE3E00DBFD1A /* AboutTermsController.h */,
 				5F940302188FBE3E00DBFD1A /* AboutTermsController.m */,
+				816598C71C9A5F6B001A3B54 /* ExternalLinkViewController.h */,
+				816598C81C9A5F6C001A3B54 /* ExternalLinkViewController.m */,
 				5F50B90F1896B4A500AA9006 /* UINavigationController+Orientation.h */,
 				5F50B9101896B4A500AA9006 /* UINavigationController+Orientation.m */,
 				5FB5FA6E189821AA00156897 /* MainMenuButtonCell.h */,
@@ -1278,6 +1289,7 @@
 				0994FA2B1B25658C00938F19 /* Roundingdoctor.png in Resources */,
 				0925590A1B2E9E74001CFA4C /* rx_refill.png in Resources */,
 				5FF0EACD194733B4001A33D4 /* search-tree.png in Resources */,
+				8182A5191C9AAB4C003B228E /* blueBack@2x.png in Resources */,
 				09A7E2701B144487009F6256 /* userName@2x.png in Resources */,
 				5F91664F183F926A00E74748 /* OpenSans-Italic.ttf in Resources */,
 				5F916648183F926A00E74748 /* OpenSans-Bold.ttf in Resources */,
@@ -1294,6 +1306,7 @@
 				092559131B2FD7C0001CFA4C /* Legal.html in Resources */,
 				5F916639183F88DB00E74748 /* style.css in Resources */,
 				5F3226751899433E00B01D06 /* about.htm in Resources */,
+				8182A5181C9AAB4C003B228E /* blueBack.png in Resources */,
 				0925590B1B2E9E74001CFA4C /* triage.png in Resources */,
 				5F3226761899433E00B01D06 /* terms_and_conditions.htm in Resources */,
 				09BEB3881B0DA75300A5D1DE /* background.png in Resources */,
@@ -1346,6 +1359,7 @@
 				5F8138E61855D28400EF3E20 /* Logic.m in Sources */,
 				092EC4331AFC8FF5003A3608 /* zip.c in Sources */,
 				092EC54C1AFE6E58003A3608 /* SessionTime.m in Sources */,
+				816598C91C9A5F6C001A3B54 /* ExternalLinkViewController.m in Sources */,
 				092EC56F1AFE7B91003A3608 /* Practice.m in Sources */,
 				5F8138E71855D28400EF3E20 /* Skin.m in Sources */,
 				5F8138E81855D28400EF3E20 /* SelectYourPracticeTableCell.m in Sources */,
@@ -1418,7 +1432,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "f9d063b7-3c26-4762-951f-1e8a74d18bc3";
+				PROVISIONING_PROFILE = "8dc83450-07f5-4cf4-a657-d1a31c00fbf6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1444,7 +1458,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "f9d063b7-3c26-4762-951f-1e8a74d18bc3";
+				PROVISIONING_PROFILE = "8dc83450-07f5-4cf4-a657-d1a31c00fbf6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1455,8 +1469,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1465,7 +1479,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supporting Files/YourPractice-Prefix.pch";
 				INFOPLIST_FILE = "Supporting Files/YourPractice-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/MBProgressHUD",
@@ -1475,7 +1489,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "f9d063b7-3c26-4762-951f-1e8a74d18bc3";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1487,8 +1501,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Remedy Web, Inc. (7VU2ZQ2EYC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1497,7 +1511,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Supporting Files/YourPractice-Prefix.pch";
 				INFOPLIST_FILE = "Supporting Files/YourPractice-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Libs/MBProgressHUD",
@@ -1507,7 +1521,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = YourPractice;
-				PROVISIONING_PROFILE = "f9d063b7-3c26-4762-951f-1e8a74d18bc3";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;

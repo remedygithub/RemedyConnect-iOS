@@ -51,9 +51,12 @@ Logic *logic;
     static NSString *CellIdentifier = @"practiceCell";
     SelectYourPracticeTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
                                                                         forIndexPath:indexPath];
-
+   
+  
+    
     NSString *practiceName = [[practiceList objectAtIndex:indexPath.row] objectForKey:@"name"];
     NSLog(@"%@",practiceName);
+    
     NSString *practiceLocation = [[practiceList objectAtIndex:indexPath.row] objectForKey:@"location"];;
     NSLog(@"%@",practiceLocation);
     
